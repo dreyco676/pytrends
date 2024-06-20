@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytrends"
-version = "4.9.2"
+version = "4.9.3"
 description = "Pseudo API for Google Trends"
 urls = {homepage = "https://github.com/dreyco676/pytrends"}
 requires-python = ">=3.7"

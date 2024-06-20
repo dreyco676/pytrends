@@ -15,31 +15,44 @@ from urllib.parse import quote
 
 BASE_TRENDS_URL = 'https://trends.google.com/trends'
 
-
+country_codes = [
+    'cy', 'pe', 'hk', 'co', 'mx', 'br', 'ua', 'ng', 'ph', 'au',
+    'tr', 'vn', 'tw', 'ar', 'gi', 'my', 'gh', 'ec', 'na', 'sb',
+    'ni', 'gt', 'pr', 'sg', 'bh', 'nf', 'pl', 'bo', 'ag', 'om',
+    'sa', 'bn', 'lb', 'pk', 'py', 'qa', 'ru', 'pa', 'cu', 'np',
+    'sl', 'do', 'sv', 'mt', 'eg', 'kw', 'et', 'ly', 'fj', 'jm',
+    'kh', 'uy', 'bd', 'mm', 'vc', 'af', 'tj', 'ai', 'bz', 'pg',
+    'by', 'iq', 'tn', 'ge', 'kz', 'gr', 'jo', 'nr', 've', 'lv',
+    'pt', 'dz', 'ht', 'gy', 'bi', 'ps', 'gp', 'am'
+]
 class TrendReq(object):
     """
     Google Trends API
     """
     GET_METHOD = 'get'
     POST_METHOD = 'post'
-    GENERAL_URL = f'{BASE_TRENDS_URL}/api/explore'
-    INTEREST_OVER_TIME_URL = f'{BASE_TRENDS_URL}/api/widgetdata/multiline'
-    MULTIRANGE_INTEREST_OVER_TIME_URL = f'{BASE_TRENDS_URL}/api/widgetdata/multirange'
-    INTEREST_BY_REGION_URL = f'{BASE_TRENDS_URL}/api/widgetdata/comparedgeo'
-    RELATED_QUERIES_URL = f'{BASE_TRENDS_URL}/api/widgetdata/relatedsearches'
-    TRENDING_SEARCHES_URL = f'{BASE_TRENDS_URL}/hottrends/visualize/internal/data'
-    TOP_CHARTS_URL = f'{BASE_TRENDS_URL}/api/topcharts'
-    SUGGESTIONS_URL = f'{BASE_TRENDS_URL}/api/autocomplete/'
-    CATEGORIES_URL = f'{BASE_TRENDS_URL}/api/explore/pickers/category'
-    TODAY_SEARCHES_URL = f'{BASE_TRENDS_URL}/api/dailytrends'
-    REALTIME_TRENDING_SEARCHES_URL = f'{BASE_TRENDS_URL}/api/realtimetrends'
+
     ERROR_CODES = (500, 502, 504, 429)
 
-    def __init__(self, hl='en-US', tz=360, geo='', timeout=(2, 5), proxies='',
+    def __init__(self, hl='en-US', base_url=None, tz=360, geo='', timeout=(2, 5), proxies='',
                  retries=0, backoff_factor=0, requests_args=None):
         """
         Initialize default values for params
         """
+        self.BASE_TRENDS_URL = f'https://trends.google.com.{base_url}/trends' if base_url is not None and base_url in country_codes else 'https://trends.google.com/trends'
+
+        self.GENERAL_URL = f'{self.BASE_TRENDS_URL}/api/explore'
+        self.INTEREST_OVER_TIME_URL = f'{self.BASE_TRENDS_URL}/api/widgetdata/multiline'
+        self.MULTIRANGE_INTEREST_OVER_TIME_URL = f'{self.BASE_TRENDS_URL}/api/widgetdata/multirange'
+        self.INTEREST_BY_REGION_URL = f'{self.BASE_TRENDS_URL}/api/widgetdata/comparedgeo'
+        self.RELATED_QUERIES_URL = f'{self.BASE_TRENDS_URL}/api/widgetdata/relatedsearches'
+        self.TRENDING_SEARCHES_URL = f'{self.BASE_TRENDS_URL}/hottrends/visualize/internal/data'
+        self.TOP_CHARTS_URL = f'{self.BASE_TRENDS_URL}/api/topcharts'
+        self.SUGGESTIONS_URL = f'{self.BASE_TRENDS_URL}/api/autocomplete/'
+        self.CATEGORIES_URL = f'{self.BASE_TRENDS_URL}/api/explore/pickers/category'
+        self.TODAY_SEARCHES_URL = f'{self.BASE_TRENDS_URL}/api/dailytrends'
+        self.REALTIME_TRENDING_SEARCHES_URL = f'{self.BASE_TRENDS_URL}/api/realtimetrends'
+
         # google rate limit
         self.google_rl = 'You have reached your quota limit. Please try again later.'
         self.results = None
@@ -74,7 +87,7 @@ class TrendReq(object):
             if "proxies" in self.requests_args:
                 try:
                     return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
+                        f'{self.BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
                         timeout=self.timeout,
                         **self.requests_args
                     ).cookies.items()))
@@ -87,7 +100,7 @@ class TrendReq(object):
                     proxy = ''
                 try:
                     return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
+                        f'{self.BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
                         timeout=self.timeout,
                         proxies=proxy,
                         **self.requests_args
@@ -197,7 +210,7 @@ class TrendReq(object):
         """Makes request to Google to get API tokens for interest over time, interest by region and related queries"""
         # make the request and parse the returned json
         widget_dicts = self._get_data(
-            url=TrendReq.GENERAL_URL,
+            url=self.GENERAL_URL,
             method=TrendReq.POST_METHOD,
             params=self.token_payload,
             trim_chars=4,
@@ -234,7 +247,7 @@ class TrendReq(object):
 
         # make the request and parse the returned json
         req_json = self._get_data(
-            url=TrendReq.INTEREST_OVER_TIME_URL,
+            url=self.INTEREST_OVER_TIME_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=over_time_payload,
@@ -263,7 +276,9 @@ class TrendReq(object):
         if 'isPartial' in df:
             # make other dataframe from isPartial key data
             # split list columns into seperate ones, remove brackets and split on comma
-            df = df.fillna(False)
+            df = df.infer_objects(copy=False)
+            # .fillna(False)
+
             result_df2 = df['isPartial'].apply(lambda x: pd.Series(
                 str(x).replace('[', '').replace(']', '').split(',')))
             result_df2.columns = ['isPartial']
@@ -294,7 +309,7 @@ class TrendReq(object):
 
         # make the request and parse the returned json
         req_json = self._get_data(
-            url=TrendReq.MULTIRANGE_INTEREST_OVER_TIME_URL,
+            url=self.MULTIRANGE_INTEREST_OVER_TIME_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=over_time_payload,
@@ -349,7 +364,7 @@ class TrendReq(object):
 
         # parse returned json
         req_json = self._get_data(
-            url=TrendReq.INTEREST_BY_REGION_URL,
+            url=self.INTEREST_BY_REGION_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=region_payload,
@@ -401,7 +416,7 @@ class TrendReq(object):
 
             # parse the returned json
             req_json = self._get_data(
-                url=TrendReq.RELATED_QUERIES_URL,
+                url=self.RELATED_QUERIES_URL,
                 method=TrendReq.GET_METHOD,
                 trim_chars=5,
                 params=related_payload,
@@ -449,7 +464,7 @@ class TrendReq(object):
 
             # parse the returned json
             req_json = self._get_data(
-                url=TrendReq.RELATED_QUERIES_URL,
+                url=self.RELATED_QUERIES_URL,
                 method=TrendReq.GET_METHOD,
                 trim_chars=5,
                 params=related_payload,
@@ -483,7 +498,7 @@ class TrendReq(object):
         # forms become obsolete due to the new TRENDING_SEARCHES_URL
         # forms = {'ajax': 1, 'pn': pn, 'htd': '', 'htv': 'l'}
         req_json = self._get_data(
-            url=TrendReq.TRENDING_SEARCHES_URL,
+            url=self.TRENDING_SEARCHES_URL,
             method=TrendReq.GET_METHOD
         )[pn]
         result_df = pd.DataFrame(req_json)
@@ -493,7 +508,7 @@ class TrendReq(object):
         """Request data from Google Daily Trends section and returns a dataframe"""
         forms = {'ns': 15, 'geo': pn, 'tz': '-180', 'hl': self.hl}
         req_json = self._get_data(
-            url=TrendReq.TODAY_SEARCHES_URL,
+            url=self.TODAY_SEARCHES_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=forms,
@@ -526,7 +541,7 @@ class TrendReq(object):
 
         forms = {'ns': 15, 'geo': pn, 'tz': '300', 'hl': self.hl, 'cat': cat, 'fi' : '0', 'fs' : '0', 'ri' : ri_value, 'rs' : rs_value, 'sort' : 0}
         req_json = self._get_data(
-            url=TrendReq.REALTIME_TRENDING_SEARCHES_URL,
+            url=self.REALTIME_TRENDING_SEARCHES_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=forms
@@ -556,7 +571,7 @@ class TrendReq(object):
 
         # make the request and parse the returned json
         req_json = self._get_data(
-            url=TrendReq.TOP_CHARTS_URL,
+            url=self.TOP_CHARTS_URL,
             method=TrendReq.GET_METHOD,
             trim_chars=5,
             params=chart_payload
@@ -575,7 +590,7 @@ class TrendReq(object):
         parameters = {'hl': self.hl}
 
         req_json = self._get_data(
-            url=TrendReq.SUGGESTIONS_URL + kw_param,
+            url=self.SUGGESTIONS_URL + kw_param,
             params=parameters,
             method=TrendReq.GET_METHOD,
             trim_chars=5
@@ -588,7 +603,7 @@ class TrendReq(object):
         params = {'hl': self.hl}
 
         req_json = self._get_data(
-            url=TrendReq.CATEGORIES_URL,
+            url=self.CATEGORIES_URL,
             params=params,
             method=TrendReq.GET_METHOD,
             trim_chars=5
