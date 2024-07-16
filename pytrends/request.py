@@ -126,7 +126,7 @@ class TrendReq(object):
                           connect=self.retries,
                           backoff_factor=self.backoff_factor,
                           status_forcelist=TrendReq.ERROR_CODES,
-                          method_whitelist=frozenset(['GET', 'POST']))
+                          allowed_methods=frozenset(['GET', 'POST']))
             s.mount('https://', HTTPAdapter(max_retries=retry))
 
         s.headers.update(self.headers)
