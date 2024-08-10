@@ -263,7 +263,8 @@ class TrendReq(object):
         if 'isPartial' in df:
             # make other dataframe from isPartial key data
             # split list columns into seperate ones, remove brackets and split on comma
-            df = df.fillna(False)
+            with pd.option_context("future.no_silent_downcasting", True):
+                df = df.fillna(False)
             result_df2 = df['isPartial'].apply(lambda x: pd.Series(
                 str(x).replace('[', '').replace(']', '').split(',')))
             result_df2.columns = ['isPartial']
