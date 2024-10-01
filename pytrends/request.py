@@ -263,7 +263,21 @@ class TrendReq(object):
         if 'isPartial' in df:
             # make other dataframe from isPartial key data
             # split list columns into seperate ones, remove brackets and split on comma
-            df = df.fillna(False)
+            # Infer object types before filling missing values
+            df = df.infer_objects(copy=False)
+
+            # Handle missing values column by column to avoid downcasting
+            for col in df.columns:
+                if df[col].dtype == 'object':
+                    # Handle missing values in object-type columns (strings or mixed types)
+                    df[col] = df[col].fillna("Unknown")  # Replace NaNs with "Unknown" for strings
+                elif df[col].dtype in ['int64', 'float64']:
+                    # Handle missing numeric values
+                    df[col] = df[col].fillna(0)  # Replace NaNs with 0 for numeric data
+                elif df[col].dtype == 'bool':
+                    # Handle missing boolean values
+                    df[col] = df[col].fillna(False)  # Replace NaNs with False for booleans
+                    
             result_df2 = df['isPartial'].apply(lambda x: pd.Series(
                 str(x).replace('[', '').replace(']', '').split(',')))
             result_df2.columns = ['isPartial']
