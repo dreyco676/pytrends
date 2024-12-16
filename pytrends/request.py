@@ -78,7 +78,8 @@ class TrendReq(object):
                         timeout=self.timeout,
                         **self.requests_args
                     ).cookies.items()))
-                except:
+                except Exception as e:
+                    print(f'Proxy error. {e}')
                     continue
             else:
                 if len(self.proxies) > 0:
