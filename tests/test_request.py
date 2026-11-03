@@ -788,3 +788,14 @@ def test_diagnostics_use_logging_not_print(mocked_responses, caplog, capsys):
     assert capsys.readouterr().out == ''
     assert 'Proxy error. Changing IP' in caplog.text
     assert 'Failed after 3 attemps, abort fetching.' in caplog.text
+
+
+def test_proxied_requests_fetch_one_cookie_per_proxy(mocked_responses):
+    proxies = ['https://127.0.0.1:1', 'https://127.0.0.2:1']
+    mocked_responses.add(method='GET', url=f'{BASE_TRENDS_URL}/api/test', json={'default': {}})
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={'NID': 'test'}) as get_cookie:
+        pytrend = TrendReq(proxies=proxies)
+        for _ in range(4):
+            pytrend._get_data(url=f'{BASE_TRENDS_URL}/api/test')
+    # the init plus four data requests, alternating between the two proxies
+    assert get_cookie.call_count <= len(proxies)

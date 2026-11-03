@@ -102,9 +102,10 @@ class TrendReq(object):
         self.retries = retries
         self.backoff_factor = backoff_factor
         self.proxy_index = 0
+        self._proxy_cookies_cache = {}
         # copy so that popping 'headers' below doesn't mutate the caller's dict
         self.requests_args = dict(requests_args or {})
-        self.cookies = self.GetGoogleCookie()
+        self.cookies = self._proxy_cookies() if len(self.proxies) > 0 else self.GetGoogleCookie()
         # intialize widget payloads
         self.token_payload = dict()
         self.interest_over_time_widget = dict()
@@ -158,6 +159,13 @@ class TrendReq(object):
                         raise
                     continue
 
+    def _proxy_cookies(self):
+        """Return the cookies for the current proxy, fetching them only the first time that proxy is used"""
+        proxy = self.proxies[self.proxy_index]
+        if proxy not in self._proxy_cookies_cache:
+            self._proxy_cookies_cache[proxy] = self.GetGoogleCookie()
+        return self._proxy_cookies_cache[proxy]
+
     def GetNewProxy(self):
         """
         Increment proxy INDEX; zero on overflow
@@ -186,7 +194,7 @@ class TrendReq(object):
 
         s.headers.update(self.headers)
         if len(self.proxies) > 0:
-            self.cookies = self.GetGoogleCookie()
+            self.cookies = self._proxy_cookies()
             s.proxies.update({'https': self.proxies[self.proxy_index]})
         if method == TrendReq.POST_METHOD:
             response = s.post(url, timeout=self.timeout,
