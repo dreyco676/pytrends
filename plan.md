@@ -194,7 +194,7 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
   - Register a `live` marker, and make `addopts` add `-m "not live" --block-network`.
   - Create `tests/test_live.py` with `pytestmark = pytest.mark.live` and a fixture that sleeps ~2 s between tests.
   - Document the live command in CONTRIBUTING.
-- [ ] **1.2 LIVE** `test_live_cookie_url_answers_200_with_nid`: the URL `GetGoogleCookie` requests returns 200 and sets NID. Expected: fails (404), so mark it strict xfail → 2.9.
+- [x] **1.2 LIVE** (done 2026-11-03 on branch `live-cookie-test`; observed `404 == 200` before quarantine, now strict xfail plan 2.9) `test_live_cookie_url_answers_200_with_nid`: the URL `GetGoogleCookie` requests returns 200 and sets NID. Expected: fails (404), so mark it strict xfail → 2.9.
 - [ ] **1.3 LIVE** `test_live_build_payload_returns_widget_tokens`: TIMESERIES, GEO_MAP and RELATED_QUERIES widgets come back with tokens. Expected: pass.
 - [ ] **1.4 LIVE** `test_live_interest_over_time_shape`: DatetimeIndex, one int column per keyword in 0–100, and a bool `isPartial`. Expected: pass.
 - [ ] **1.5 LIVE** `test_live_interest_over_time_multiple_regions`: `geo=['US-NY','US-IL']` gives `(keyword, region)` MultiIndex columns. Expected: unknown.
