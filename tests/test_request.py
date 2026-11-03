@@ -1,6 +1,8 @@
 from dataclasses import dataclass
+from pathlib import Path
 from unittest.mock import ANY, MagicMock, patch
 import json
+import logging
 import re
 import warnings
 
@@ -11,8 +13,9 @@ import requests
 import responses
 from pandas.testing import assert_frame_equal
 
+from pytrends import dailydata
 from pytrends.exceptions import ResponseError, TooManyRequestsError
-from pytrends.request import TrendReq, BASE_TRENDS_URL
+from pytrends.request import TrendReq, BASE_TRENDS_URL, TRENDING_RSS_URL, parse_trending_rss
 
 
 @dataclass
@@ -480,98 +483,6 @@ def test_related_queries_result_rising():
 
 
 @pytest.mark.vcr
-def test_trending_searches_ok():
-    pytrend = TrendReq()
-    # trending_searches doesn't need to call build_payload.
-    df_result = pytrend.trending_searches()
-    # NOTE: This expected result needs to be rebuilt from scratch every time the cassette is rewritten.
-    # They're time-dependent.
-    expected_result = ExpectedResult(
-        length=20,
-        df_head=pd.DataFrame({0: ['Chabelo', 'Jonathan Majors', 'Benavidez vs Plant']}),
-        df_tail=pd.DataFrame(
-            {0: ['Gonzaga', 'Reese Witherspoon', 'France vs Netherlands']},
-            index=pd.Index([17, 18, 19])
-        )
-    )
-    expected_result.assert_equals(df_result)
-
-
-@pytest.mark.vcr
-def test_realtime_trending_searches_ok():
-    pytrend = TrendReq()
-    # realtime_trending_searches doesn't need to call build_payload.
-    df_result = pytrend.realtime_trending_searches()
-    # NOTE: This expected result needs to be rebuilt from scratch every time the cassette is rewritten.
-    # They're time-dependent.
-    # NOTE: The result returned by this function is a monster.
-    # Strings of almost 200 characters, lists of strings, lists of lists of strings...
-    # Rebuilding a full 3-head-tail result from scratch is a chore, with a single record for head
-    # and tail is more than enough.
-    expected_result = ExpectedResult(
-        length=111,
-        head_tail_length=1,
-        df_head=pd.DataFrame({
-            'title': [
-                ('Caleb Plant, '
-                 'Boxing, Canelo Álvarez, '
-                 'David Benavidez, '
-                 'Anthony Dirrell')
-            ],
-            'entityNames': [
-                [
-                    'Caleb Plant',
-                    'Boxing',
-                    'Canelo Álvarez',
-                    'David Benavidez',
-                    'Anthony Dirrell',
-                ]
-            ]
-        }),
-        df_tail=pd.DataFrame({
-            'title': [
-                ('Ron DeSantis, '
-                 'Casey DeSantis, '
-                 'Republican Party, '
-                 'Christina DeSantis')
-            ],
-            'entityNames': [
-                [
-                    'Ron DeSantis',
-                    'Casey DeSantis',
-                    'Republican Party',
-                    'Christina DeSantis',
-                ]
-            ]
-        }, index=pd.Index([110]))
-    )
-    expected_result.assert_equals(df_result)
-
-
-@pytest.mark.vcr
-def test_top_charts_ok():
-    pytrend = TrendReq()
-    # top_chars doesn't need to call build_payload.
-    df_result = pytrend.top_charts(date=2021)
-    df_expected = pd.DataFrame({
-        'title': [
-            'Australia vs India',
-            'India vs England',
-            'IPL',
-            'NBA',
-            'Euro 2021',
-            'Copa América',
-            'India vs New Zealand',
-            'T20 World Cup',
-            'Squid Game',
-            'DMX'
-        ],
-        'exploreQuery': ['', '', '', '', '', 'Copa America', '', '', '', '']
-    })
-    assert_frame_equal(df_result, df_expected)
-
-
-@pytest.mark.vcr
 def test_suggestions_ok():
     pytrend = TrendReq()
     # suggestions doesn't need to call build_payload.
@@ -603,12 +514,11 @@ def test_request_args_passing(mocked_responses):
         match=[responses.matchers.header_matcher({'User-Agent': 'pytrends'})]
     )
     mocked_responses.add(
-        url=TrendReq.TRENDING_SEARCHES_URL,
+        url=TRENDING_RSS_URL,
         method='GET',
         match=[responses.matchers.header_matcher({'User-Agent': 'pytrends'})],
-        json={
-            'united_states': ['term 1', 'term 2']
-        }
+        body=TRENDING_RSS_FIXTURE.read_bytes(),
+        content_type='text/xml',
     )
     requests_args = {'headers': {
         'User-Agent': 'pytrends',
@@ -900,3 +810,115 @@ def test_interest_over_time_multiple_regions():
     assert df[('pizza', 'US-IL')].notna().all()
     assert (df[('pizza', 'US-NY')] >= 0).all()
     assert (df[('pizza', 'US-IL')] >= 0).all()
+
+
+TRENDING_RSS_FIXTURE = Path(__file__).parent / 'fixtures' / 'trending_rss_US.xml'
+
+
+def test_trending_rss_items_parse_into_dataframe():
+    df = parse_trending_rss(TRENDING_RSS_FIXTURE.read_bytes())
+    assert list(df.columns) == ['title', 'approx_traffic', 'pub_date', 'articles']
+    assert len(df) == 10
+    assert df.iloc[0]['title'] == 'sc lottery'
+    assert df.iloc[0]['approx_traffic'] == '500+'
+    assert df.iloc[0]['pub_date'] == 'Tue, 3 Nov 2026 10:50:00 -0800'
+
+
+def test_trending_searches_requests_rss_for_country_code(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        responses.GET,
+        TRENDING_RSS_URL,
+        body=TRENDING_RSS_FIXTURE.read_bytes(),
+        content_type='text/xml',
+        match=[responses.matchers.query_param_matcher({'geo': 'US'})],
+    )
+    titles = TrendReq().trending_searches(pn='US')
+    assert len(titles) == 10
+    assert titles.iloc[0] == 'sc lottery'
+
+
+def test_today_searches_and_realtime_use_rss(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        responses.GET,
+        TRENDING_RSS_URL,
+        body=TRENDING_RSS_FIXTURE.read_bytes(),
+        content_type='text/xml',
+        match=[responses.matchers.query_param_matcher({'geo': 'US'})],
+    )
+    pytrend = TrendReq()
+    today = pytrend.today_searches(pn='US')
+    realtime = pytrend.realtime_trending_searches(pn='US')
+
+    feed_requests = [call for call in mocked_responses.calls if call.request.url.startswith(TRENDING_RSS_URL)]
+    assert len(feed_requests) == 2
+    assert today.iloc[0] == 'sc lottery'
+    assert list(realtime.columns) == ['title', 'approx_traffic', 'pub_date', 'articles']
+    assert realtime.iloc[0]['articles'][0] == {
+        'title': 'Palmetto Cash 5 delivers million dollar treat to Barnwell lotto player on Halloween',
+        'url': 'https://www.wjbf.com/news/south-carolina-news/palmetto-cash-5-delivers-million-dollar-treat-to-barnwell-on-halloween/',
+        'source': 'WJBF',
+    }
+
+
+@pytest.mark.parametrize('method', ['trending_searches', 'today_searches', 'realtime_trending_searches'])
+def test_legacy_country_names_raise_value_error(mocked_responses, method):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    pytrend = TrendReq()
+    with pytest.raises(ValueError, match="two-letter country code such as 'US'"):
+        getattr(pytrend, method)(pn='united_states')
+    assert not [call for call in mocked_responses.calls if call.request.url.startswith(TRENDING_RSS_URL)]
+
+
+@pytest.mark.parametrize('prefix', [")]}'\n", ")]}',\n", ")]}'", ")]}',"])
+def test_get_data_strips_any_xssi_prefix(mocked_responses, prefix):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/api/test',
+        body=prefix + '{"default": {"ok": true}}',
+        content_type='application/json',
+    )
+    pytrend = TrendReq()
+    assert pytrend._get_data(url=f'{BASE_TRENDS_URL}/api/test') == {'default': {'ok': True}}
+
+
+def test_diagnostics_use_logging_not_print(mocked_responses, caplog, capsys):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        body=requests.exceptions.ProxyError(),
+    )
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    with caplog.at_level(logging.WARNING, logger='pytrends'):
+        TrendReq(proxies=['https://127.0.0.1:1', 'https://127.0.0.2:1'])
+
+        def always_rate_limited(timeframe):
+            raise ResponseError('rate limited', None)
+
+        with patch.object(dailydata, 'sleep'), pytest.raises(ResponseError):
+            dailydata._fetch_data(None, always_rate_limited, '2021-01-01 2021-01-31')
+    assert capsys.readouterr().out == ''
+    assert 'Proxy error. Changing IP' in caplog.text
+    assert 'Failed after 3 attemps, abort fetching.' in caplog.text

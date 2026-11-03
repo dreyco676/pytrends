@@ -1,5 +1,8 @@
 from itertools import product
 import json
+import logging
+import re
+import xml.etree.ElementTree as ET
 
 import pandas as pd
 import requests
@@ -14,6 +17,51 @@ from urllib.parse import quote
 
 
 BASE_TRENDS_URL = 'https://trends.google.com/trends'
+# Google prefixes JSON responses with ')]}' and sometimes a comma, then a newline
+logger = logging.getLogger('pytrends')
+XSSI_PREFIX = re.compile(r"^\)\]\}',?\n?")
+TRENDING_RSS_URL = 'https://trends.google.com/trending/rss'
+HT_NAMESPACE = '{https://trends.google.com/trending/rss}'
+
+
+def parse_trending_rss(content: bytes) -> pd.DataFrame:
+    """Parse the Trending Now RSS feed into one row per trending search."""
+    items = ET.fromstring(content).findall('./channel/item')
+    return pd.DataFrame(
+        [
+            {
+                'title': item.findtext('title'),
+                'approx_traffic': item.findtext(f'{HT_NAMESPACE}approx_traffic'),
+                'pub_date': item.findtext('pubDate'),
+                'articles': [
+                    {
+                        'title': news.findtext(f'{HT_NAMESPACE}news_item_title'),
+                        'url': news.findtext(f'{HT_NAMESPACE}news_item_url'),
+                        'source': news.findtext(f'{HT_NAMESPACE}news_item_source'),
+                    }
+                    for news in item.findall(f'{HT_NAMESPACE}news_item')
+                ],
+            }
+            for item in items
+        ],
+        columns=['title', 'approx_traffic', 'pub_date', 'articles'],
+    )
+
+
+def _parse_ranked_list(req_json, index, make_frame):
+    """Return the ranked list at index as a dataframe, or None when Google sent no such list"""
+    try:
+        return make_frame(req_json['default']['rankedList'][index]['rankedKeyword'])
+    except (KeyError, IndexError):
+        return None
+
+
+def _topic_frame(ranked_keywords):
+    return pd.json_normalize(ranked_keywords, sep='_')
+
+
+def _query_frame(ranked_keywords):
+    return pd.DataFrame(ranked_keywords)[['query', 'value']]
 
 
 class TrendReq(object):
@@ -28,7 +76,6 @@ class TrendReq(object):
     INTEREST_BY_REGION_URL = f'{BASE_TRENDS_URL}/api/widgetdata/comparedgeo'
     RELATED_QUERIES_URL = f'{BASE_TRENDS_URL}/api/widgetdata/relatedsearches'
     TRENDING_SEARCHES_URL = f'{BASE_TRENDS_URL}/hottrends/visualize/internal/data'
-    TOP_CHARTS_URL = f'{BASE_TRENDS_URL}/api/topcharts'
     SUGGESTIONS_URL = f'{BASE_TRENDS_URL}/api/autocomplete/'
     CATEGORIES_URL = f'{BASE_TRENDS_URL}/api/explore/pickers/category'
     TODAY_SEARCHES_URL = f'{BASE_TRENDS_URL}/api/dailytrends'
@@ -100,14 +147,14 @@ class TrendReq(object):
                         **self.requests_args
                     ))
                 except requests.exceptions.ProxyError:
-                    print('Proxy error. Changing IP')
+                    logger.warning('Proxy error. Changing IP')
                     if len(self.proxies) > 1:
                         self.proxies.remove(self.proxies[self.proxy_index])
                         # the removed proxy may have been the last one in the list
                         if self.proxy_index >= len(self.proxies):
                             self.proxy_index = 0
                     else:
-                        print('No more proxies available. Bye!')
+                        logger.warning('No more proxies available. Bye!')
                         raise
                     continue
 
@@ -120,12 +167,10 @@ class TrendReq(object):
         else:
             self.proxy_index = 0
 
-    def _get_data(self, url, method=GET_METHOD, trim_chars=0, **kwargs):
+    def _get_data(self, url, method=GET_METHOD, **kwargs):
         """Send a request to Google and return the JSON response as a Python object
         :param url: the url to which the request will be sent
         :param method: the HTTP method ('get' or 'post')
-        :param trim_chars: how many characters should be trimmed off the beginning of the content of the response
-            before this is passed to the JSON parser
         :param kwargs: any extra key arguments passed to the request builder (usually query parameters or data)
         :return:
         """
@@ -161,7 +206,7 @@ class TrendReq(object):
             # trim initial characters
             # some responses start with garbage characters, like ")]}',"
             # these have to be cleaned before being passed to the json parser
-            content = response.text[trim_chars:]
+            content = XSSI_PREFIX.sub('', response.text)
             # parse json
             self.GetNewProxy()
             return json.loads(content)
@@ -216,7 +261,6 @@ class TrendReq(object):
             url=TrendReq.GENERAL_URL,
             method=TrendReq.POST_METHOD,
             params=self.token_payload,
-            trim_chars=4,
         )['widgets']
         # order of the json matters...
         first_region_token = True
@@ -238,21 +282,24 @@ class TrendReq(object):
                 self.related_queries_widget_list.append(widget)
         return
 
+    def _widget_params(self, widget):
+        """Build the query parameters the widget endpoints expect for one widget"""
+        return {
+            # convert to string as requests will mangle
+            'req': json.dumps(widget['request']),
+            'token': widget['token'],
+            'tz': self.tz,
+        }
+
     def interest_over_time(self):
         """Request data from Google's Interest Over Time section and return a dataframe"""
 
-        over_time_payload = {
-            # convert to string as requests will mangle
-            'req': json.dumps(self.interest_over_time_widget['request']),
-            'token': self.interest_over_time_widget['token'],
-            'tz': self.tz
-        }
+        over_time_payload = self._widget_params(self.interest_over_time_widget)
 
         # make the request and parse the returned json
         req_json = self._get_data(
             url=TrendReq.INTEREST_OVER_TIME_URL,
             method=TrendReq.GET_METHOD,
-            trim_chars=5,
             params=over_time_payload,
         )
 
@@ -305,18 +352,12 @@ class TrendReq(object):
     def multirange_interest_over_time(self):
         """Request data from Google's Interest Over Time section across different time ranges and return a dataframe"""
 
-        over_time_payload = {
-            # convert to string as requests will mangle
-            'req': json.dumps(self.interest_over_time_widget['request']),
-            'token': self.interest_over_time_widget['token'],
-            'tz': self.tz
-        }
+        over_time_payload = self._widget_params(self.interest_over_time_widget)
 
         # make the request and parse the returned json
         req_json = self._get_data(
             url=TrendReq.MULTIRANGE_INTEREST_OVER_TIME_URL,
             method=TrendReq.GET_METHOD,
-            trim_chars=5,
             params=over_time_payload,
         )
 
@@ -352,7 +393,6 @@ class TrendReq(object):
         """Request data from Google's Interest by Region section and return a dataframe"""
 
         # make the request
-        region_payload = dict()
         # self.geo is always a list after build_payload, e.g. [''] for worldwide
         if self.geo == ['']:
             self.interest_by_region_widget['request'][
@@ -364,17 +404,12 @@ class TrendReq(object):
         self.interest_by_region_widget['request'][
             'includeLowSearchVolumeGeos'] = inc_low_vol
 
-        # convert to string as requests will mangle
-        region_payload['req'] = json.dumps(
-            self.interest_by_region_widget['request'])
-        region_payload['token'] = self.interest_by_region_widget['token']
-        region_payload['tz'] = self.tz
+        region_payload = self._widget_params(self.interest_by_region_widget)
 
         # parse returned json
         req_json = self._get_data(
             url=TrendReq.INTEREST_BY_REGION_URL,
             method=TrendReq.GET_METHOD,
-            trim_chars=5,
             params=region_payload,
         )
         df = pd.DataFrame(req_json['default']['geoMapData'])
@@ -389,10 +424,7 @@ class TrendReq(object):
         result_df = df['value'].apply(lambda x: pd.Series(
             str(x).replace('[', '').replace(']', '').split(',')))
         if inc_geo_code:
-            if geo_column in df.columns:
-                result_df[geo_column] = df[geo_column]
-            else:
-                print('Could not find geo_code column; Skipping')
+            result_df[geo_column] = df[geo_column]
 
         # rename each column with its search term
         for idx, kw in enumerate(self.kw_list):
@@ -410,7 +442,6 @@ class TrendReq(object):
         """
 
         # make the request
-        related_payload = dict()
         result_dict = dict()
         for request_json in self.related_topics_widget_list:
             # ensure we know which keyword we are looking at rather than relying on order
@@ -418,34 +449,17 @@ class TrendReq(object):
                 kw = request_json['keywordName']
             except KeyError:
                 kw = ''
-            # convert to string as requests will mangle
-            related_payload['req'] = json.dumps(request_json['request'])
-            related_payload['token'] = request_json['token']
-            related_payload['tz'] = self.tz
+            related_payload = self._widget_params(request_json)
 
             # parse the returned json
             req_json = self._get_data(
                 url=TrendReq.RELATED_QUERIES_URL,
                 method=TrendReq.GET_METHOD,
-                trim_chars=5,
                 params=related_payload,
             )
 
-            # top topics
-            try:
-                top_list = req_json['default']['rankedList'][0]['rankedKeyword']
-                df_top = pd.json_normalize(top_list, sep='_')
-            except (KeyError, IndexError):
-                # in case no top topics are found, the lines above will throw a KeyError or IndexError
-                df_top = None
-
-            # rising topics
-            try:
-                rising_list = req_json['default']['rankedList'][1]['rankedKeyword']
-                df_rising = pd.json_normalize(rising_list, sep='_')
-            except (KeyError, IndexError):
-                # in case no rising topics are found, the lines above will throw a KeyError or IndexError
-                df_rising = None
+            df_top = _parse_ranked_list(req_json, 0, _topic_frame)
+            df_rising = _parse_ranked_list(req_json, 1, _topic_frame)
 
             result_dict[kw] = {'rising': df_rising, 'top': df_top}
         return result_dict
@@ -457,7 +471,6 @@ class TrendReq(object):
         """
 
         # make the request
-        related_payload = dict()
         result_dict = dict()
         for request_json in self.related_queries_widget_list:
             # ensure we know which keyword we are looking at rather than relying on order
@@ -465,132 +478,43 @@ class TrendReq(object):
                 kw = request_json['keywordName']
             except KeyError:
                 kw = ''
-            # convert to string as requests will mangle
-            related_payload['req'] = json.dumps(request_json['request'])
-            related_payload['token'] = request_json['token']
-            related_payload['tz'] = self.tz
+            related_payload = self._widget_params(request_json)
 
             # parse the returned json
             req_json = self._get_data(
                 url=TrendReq.RELATED_QUERIES_URL,
                 method=TrendReq.GET_METHOD,
-                trim_chars=5,
                 params=related_payload,
             )
 
-            # top queries
-            try:
-                top_df = pd.DataFrame(
-                    req_json['default']['rankedList'][0]['rankedKeyword'])
-                top_df = top_df[['query', 'value']]
-            except (KeyError, IndexError):
-                # in case no top queries are found, the lines above will throw a KeyError or IndexError
-                top_df = None
-
-            # rising queries
-            try:
-                rising_df = pd.DataFrame(
-                    req_json['default']['rankedList'][1]['rankedKeyword'])
-                rising_df = rising_df[['query', 'value']]
-            except (KeyError, IndexError):
-                # in case no rising queries are found, the lines above will throw a KeyError or IndexError
-                rising_df = None
+            top_df = _parse_ranked_list(req_json, 0, _query_frame)
+            rising_df = _parse_ranked_list(req_json, 1, _query_frame)
 
             result_dict[kw] = {'top': top_df, 'rising': rising_df}
         return result_dict
 
-    def trending_searches(self, pn='united_states'):
-        """Request data from Google's Hot Searches section and return a dataframe"""
+    def _trending_feed(self, pn):
+        """Fetch Google's Trending Now feed for a country code and parse it into a dataframe"""
+        if len(pn) != 2 or not pn.isalpha():
+            raise ValueError(f"pn must be a two-letter country code such as 'US', got {pn!r}")
+        response = requests.get(TRENDING_RSS_URL, params={'geo': pn}, headers=self.headers,
+                                timeout=self.timeout, **self.requests_args)
+        return parse_trending_rss(response.content)
 
-        # make the request
-        # forms become obsolete due to the new TRENDING_SEARCHES_URL
-        # forms = {'ajax': 1, 'pn': pn, 'htd': '', 'htv': 'l'}
-        req_json = self._get_data(
-            url=TrendReq.TRENDING_SEARCHES_URL,
-            method=TrendReq.GET_METHOD
-        )[pn]
-        result_df = pd.DataFrame(req_json)
-        return result_df
+    def trending_searches(self, pn='US'):
+        """Request Google's Trending Now feed for a country code and return the trending search titles"""
+        return self._trending_feed(pn)['title']
 
     def today_searches(self, pn='US'):
-        """Request data from Google Daily Trends section and returns a dataframe"""
-        forms = {'ns': 15, 'geo': pn, 'tz': '-180', 'hl': self.hl}
-        req_json = self._get_data(
-            url=TrendReq.TODAY_SEARCHES_URL,
-            method=TrendReq.GET_METHOD,
-            trim_chars=5,
-            params=forms,
-            **self.requests_args
-        )['default']['trendingSearchesDays'][0]['trendingSearches']
-        # parse the returned json
-        result_df = pd.DataFrame(trend['title'] for trend in req_json)
-        return result_df.iloc[:, -1]
+        """Request Google's Trending Now feed for a country code and return the trending search titles"""
+        return self._trending_feed(pn)['title']
 
     def realtime_trending_searches(self, pn='US', cat='all', count=300):
-        """Request data from Google Realtime Search Trends section and returns a dataframe"""
-        # Don't know what some of the params mean here, followed the nodejs library
-        # https://github.com/pat310/google-trends-api/ 's implemenration
+        """Request Google's Trending Now feed for a country code and return one row per trending search.
 
-        # sort: api accepts only 0 as the value, optional parameter
-
-        # ri: number of trending stories IDs returned,
-        # max value of ri supported is 300, based on emperical evidence
-
-        ri_value = 300
-        if count < ri_value:
-            ri_value = count
-
-        # rs : don't know what is does but it's max value is never more than the ri_value based on emperical evidence
-        # max value of ri supported is 200, based on emperical evidence
-        rs_value = 200
-        if count < rs_value:
-            rs_value = count-1
-
-        forms = {
-            'ns': 15, 'geo': pn, 'tz': '300', 'hl': self.hl, 'cat': cat,
-            'fi': '0', 'fs': '0', 'ri': ri_value, 'rs': rs_value, 'sort': 0,
-        }
-        req_json = self._get_data(
-            url=TrendReq.REALTIME_TRENDING_SEARCHES_URL,
-            method=TrendReq.GET_METHOD,
-            trim_chars=5,
-            params=forms
-        )['storySummaries']['trendingStories']
-
-        # parse the returned json
-        wanted_keys = ["entityNames", "title"]
-
-        final_json = [{key: ts[key] for key in ts.keys() if key in wanted_keys} for ts in req_json]
-
-        result_df = pd.DataFrame(final_json)
-
-        return result_df
-
-    def top_charts(self, date, hl='en-US', tz=300, geo='GLOBAL'):
-        """Request data from Google's Top Charts section and return a dataframe"""
-
-        try:
-            date = int(date)
-        except:  # noqa: E722
-            raise ValueError(
-                'The date must be a year with format YYYY. See https://github.com/GeneralMills/pytrends/issues/355')
-
-        # create the payload
-        chart_payload = {'hl': hl, 'tz': tz, 'date': date, 'geo': geo,
-                         'isMobile': False}
-
-        # make the request and parse the returned json
-        req_json = self._get_data(
-            url=TrendReq.TOP_CHARTS_URL,
-            method=TrendReq.GET_METHOD,
-            trim_chars=5,
-            params=chart_payload
-        )
-        try:
-            df = pd.DataFrame(req_json['topCharts'][0]['listItems'])
-        except IndexError:
-            df = None
-        return df
+        cat and count are ignored: the RSS feed has no equivalent parameters.
+        """
+        return self._trending_feed(pn)
 
     def suggestions(self, keyword):
         """Request data from Google's Keyword Suggestion dropdown and return a dictionary"""
@@ -602,8 +526,7 @@ class TrendReq(object):
         req_json = self._get_data(
             url=TrendReq.SUGGESTIONS_URL + kw_param,
             params=parameters,
-            method=TrendReq.GET_METHOD,
-            trim_chars=5
+            method=TrendReq.GET_METHOD
         )['default']['topics']
         return req_json
 
@@ -615,8 +538,7 @@ class TrendReq(object):
         req_json = self._get_data(
             url=TrendReq.CATEGORIES_URL,
             params=params,
-            method=TrendReq.GET_METHOD,
-            trim_chars=5
+            method=TrendReq.GET_METHOD
         )
         return req_json
 
