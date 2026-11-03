@@ -4,6 +4,7 @@ import json
 import logging
 import re
 import warnings
+from urllib.parse import parse_qs, urlsplit
 
 import pandas as pd
 import pytest
@@ -799,3 +800,31 @@ def test_proxied_requests_fetch_one_cookie_per_proxy(mocked_responses):
             pytrend._get_data(url=f'{BASE_TRENDS_URL}/api/test')
     # the init plus four data requests, alternating between the two proxies
     assert get_cookie.call_count <= len(proxies)
+
+
+def test_get_explore_url_describes_the_current_payload():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza', 'bagel'], timeframe='today 12-m', geo='US')
+    parts = urlsplit(pytrend.get_explore_url())
+    assert f'{parts.scheme}://{parts.netloc}{parts.path}' == 'https://trends.google.com/trends/explore'
+    assert parse_qs(parts.query) == {'date': ['today 12-m'], 'geo': ['US'], 'q': ['pizza,bagel']}
+
+
+def test_get_explore_url_omits_worldwide_geo_and_keeps_category_and_property():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], cat=71, timeframe='today 5-y', geo='', gprop='images')
+    query = parse_qs(urlsplit(pytrend.get_explore_url()).query)
+    assert query == {'date': ['today 5-y'], 'q': ['pizza'], 'cat': ['71'], 'gprop': ['images']}
+
+
+def test_get_explore_url_rejects_different_timeframes():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza', 'bagel'], timeframe=['2021-01-01 2021-01-05', '2021-02-01 2021-02-05'])
+    with pytest.raises(ValueError, match='one timeframe'):
+        pytrend.get_explore_url()
