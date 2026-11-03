@@ -53,7 +53,10 @@ precision = 2
 show_missing = true
 
 [tool.pytest.ini_options]
-addopts = "--cov pytrends/"
+addopts = "--cov pytrends/ -m 'not live' --block-network"
+markers = [
+    "live: calls the real Google Trends API; deselected by default",
+]
 
 [tool.ruff]
 line-length = 127

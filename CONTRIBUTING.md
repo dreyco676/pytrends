@@ -18,6 +18,16 @@ To run the tests, simply run `pytest` inside the project root:
 $ pytest
 ```
 
+## Running the live tests
+
+Some tests call the real Google Trends API. They are deselected by default because they need network access, are slow, and Google's responses change over time. To run them:
+
+```bash
+$ uv run pytest -o addopts="" -m live
+```
+
+Each live test pauses for 2 seconds afterwards so that Google does not rate-limit the run.
+
 ## About the test suite
 
 There are two main libraries used in the test suite:

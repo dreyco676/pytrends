@@ -190,7 +190,7 @@ Upstream is archived, so "adopt" means re-implementing the change here through t
 
 Each LIVE test calls the public API, asserts the documented shape, and records the result. Expected outcomes come from the 2026-11-03 probe.
 
-- [ ] **1.1 TIDY** Live-test scaffolding:
+- [x] **1.1 TIDY** (done 2026-11-03 on branch `live-tests`; observed default run 16 passed / 10 xfailed, `-m live` collects 0 tests, lint clean) Live-test scaffolding:
   - Register a `live` marker, and make `addopts` add `-m "not live" --block-network`.
   - Create `tests/test_live.py` with `pytestmark = pytest.mark.live` and a fixture that sleeps ~2 s between tests.
   - Document the live command in CONTRIBUTING.
