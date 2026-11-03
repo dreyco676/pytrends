@@ -211,53 +211,54 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
 
 ### Phase 2: Core request path (offline TDD with `responses`)
 
-- [ ] **2.1 TEST** (characterization; expected green) `test_429_json_response_raises_too_many_requests`. Pins the current `_get_data` behavior before it changes.
-- [ ] **2.2 TEST** `test_non_200_javascript_response_raises_response_error`: a 500 with `text/javascript`. Red today: `JSONDecodeError` (D5).
-- [ ] **2.3 TEST** `test_response_without_content_type_raises_response_error`: a 429 without `Content-Type` should raise `TooManyRequestsError`. Red today: `KeyError` (D5).
-- [ ] **2.4 TEST** `test_retries_use_allowed_methods`: `TrendReq(retries=2, backoff_factor=0.1)` completes a request, and the session's `Retry` has `allowed_methods == {'GET', 'POST'}`. Red on urllib3 2.x: `TypeError` (D4). Import `Retry` from `urllib3`.
-- [ ] **2.5 TEST** `test_init_does_not_mutate_requests_args`: the caller's dict still has `headers` after construction (D9).
-- [ ] **2.6 TEST** `test_cookie_error_with_requests_args_proxy_propagates`: the first cookie request raises `ConnectionError` and a second would succeed; construction must raise. Red today: it doesn't raise (D7). Use a counting `side_effect` or two ordered `responses` registrations so the test can't hang.
-- [ ] **2.7 TEST** `test_failing_last_proxy_is_skipped_without_index_error`: reproduce D15 first. If it doesn't reproduce, mark the item done as "not a defect".
-- [ ] **2.8 TIDY** Rewrite `test_initial_data` with `responses`, using an NID cookie with no expiry. Delete its cassette and remove the xfail.
-- [ ] **2.9 TEST** The cookie request goes to a URL that answers 200. The probe found `https://trends.google.com/` → 301 → 200 with NID; confirm with 1.2.
+- [x] **2.1 TEST** (done 2026-11-03 on branch `phase2-offline`; characterization, passed on first run) `test_429_json_response_raises_too_many_requests`. Pins the current `_get_data` behavior before it changes.
+- [x] **2.2 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `JSONDecodeError` at request.py:157; Green: grouped the content-type checks under `status_code == 200`) `test_non_200_javascript_response_raises_response_error`: a 500 with `text/javascript`. Red today: `JSONDecodeError` (D5).
+- [x] **2.3 TEST** (done 2026-11-03 on branch `phase2-offline`; Red confirmed against pre-2.2 code: `KeyError: 'content-type'`; it passes now because the 2.2 change checks `Content-Type` only for 200 responses, so the 429 never reads the header) `test_response_without_content_type_raises_response_error`: a 429 without `Content-Type` should raise `TooManyRequestsError`. Red today: `KeyError` (D5).
+- [x] **2.4 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `TypeError` on `method_whitelist` at request.py:125 with urllib3 2.8; Green: `allowed_methods`, and `Retry` now imported from `urllib3.util.retry`; passes on urllib3 1.26.5 and 2.8) `test_retries_use_allowed_methods`: `TrendReq(retries=2, backoff_factor=0.1)` completes a request, and the session's `Retry` has `allowed_methods == {'GET', 'POST'}`. Red on urllib3 2.x: `TypeError` (D4). Import `Retry` from `urllib3`.
+- [x] **2.5 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: caller's dict lost `headers`; Green: `TrendReq` copies `requests_args` before popping) `test_init_does_not_mutate_requests_args`: the caller's dict still has `headers` after construction (D9).
+- [x] **2.6 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: "DID NOT RAISE"; Green: removed the bare `except` from the `requests_args` proxy branch of `GetGoogleCookie`, which also removes one of the two `noqa: E722` clauses) `test_cookie_error_with_requests_args_proxy_propagates`: the first cookie request raises `ConnectionError` and a second would succeed; construction must raise. Red today: it doesn't raise (D7). Use a counting `side_effect` or two ordered `responses` registrations so the test can't hang.
+- [x] **2.7 TEST** (done 2026-11-03 on branch `phase2-offline`; D15 reproduced: `IndexError` at request.py:83; Green: reset `proxy_index` to 0 when the removed proxy was last. Still open: the caller's proxy list is mutated, which needs its own test, not covered here) `test_failing_last_proxy_is_skipped_without_index_error`: reproduce D15 first. If it doesn't reproduce, mark the item done as "not a defect".
+- [x] **2.8 TIDY** (done 2026-11-03 on branch `phase2-offline`; cassette deleted, xfail removed, test now passes on both stacks) Rewrite `test_initial_data` with `responses`, using an NID cookie with no expiry. Delete its cassette and remove the xfail.
+- [x] **2.9 TEST** (done 2026-11-03 on branch `phase2-offline`; cookie request now goes to `{BASE_TRENDS_URL}/?geo=US`, which answers 200 directly with NID; 1.2 xfail removed and passing live; the 24 cassette cookie URIs were rewritten, but their recorded status is still 404, which must be resolved before 2.10 makes non-2xx responses raise) The cookie request goes to a URL that answers 200. The probe found `https://trends.google.com/` → 301 → 200 with NID; confirm with 1.2.
   - Red step: first change the mocked URL in `test_initial_data`.
   - In the same commit, rewrite the cookie-interaction `uri` in every cassette.
   - Remove the xfail from 1.2.
-- [ ] **2.10 TEST** `test_non_2xx_cookie_response_raises`, so a future Google change fails loudly (D3).
-- [ ] **2.11 TEST** `test_empty_geo_after_country_queries_worldwide`: `build_payload(geo='US')` then `build_payload(geo='')` gives a comparison item with `geo == ''` (D6).
-- [ ] **2.12 TEST** `test_timeframe_list_length_mismatch_raises_value_error`: a clear message instead of `IndexError` (D8).
-- [ ] **2.13 TEST** `test_interest_by_region_sends_requested_resolution`, parametrized over world/`CITY` and `US`/`DMA`; assert on the `req` that is sent. Red today: `COUNTRY` (D1). This replaces `test_interest_by_region_city_resolution` and its cassette. Remove the xfail from 1.7.
-- [ ] **2.14 TEST** `test_related_queries_empty_ranked_list_returns_none`. Red today: `IndexError` (D10).
-- [ ] **2.15 TEST** `test_related_topics_empty_ranked_list_returns_none`: the same for topics.
-- [ ] **2.16 TEST** `test_related_results_keyed_by_full_keyword_name`, parametrized over both methods: a widget with `keywordName: 'blockchain + bitcoin'` produces that key (D10, PR #527).
-- [ ] **2.17 TEST** (characterization) `test_categories_returns_parsed_tree`. This method has no coverage today.
-- [ ] **2.18 TEST** (characterization) `test_interest_by_region_includes_geo_code_when_requested`.
+- [x] **2.10 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: "DID NOT RAISE"; Green: `GetGoogleCookie` checks the status through a `_nid_cookie` helper in both branches. Cassettes: the recorded status of the cookie interaction was changed from 404 to 200 in all 24 cassettes (hand-edited, not re-recorded; the URI was already changed in 2.9). Re-record these cassettes once the rate limit clears) `test_non_2xx_cookie_response_raises`, so a future Google change fails loudly (D3).
+- [x] **2.11 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `['US'] == ['']`; Green: `build_payload` defaults `geo=None`, falls back to the constructor's geo (now stored as `default_geo`) only when omitted, so `geo=''` means worldwide) `test_empty_geo_after_country_queries_worldwide`: `build_payload(geo='US')` then `build_payload(geo='')` gives a comparison item with `geo == ''` (D6).
+- [x] **2.12 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `IndexError`; Green: a length check raises `ValueError` naming the expected and actual counts) `test_timeframe_list_length_mismatch_raises_value_error`: a clear message instead of `IndexError` (D8).
+- [x] **2.13 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `COUNTRY` sent for both cases; Green: `interest_by_region` compares the list form of geo (`[""]`, `["US"]`); deleted `test_interest_by_region_city_resolution` and its cassette. Open: the 1.7 live test (stashed on `live-build-payload`) still has its xfail and must have it removed when that work is restored) `test_interest_by_region_sends_requested_resolution`, parametrized over world/`CITY` and `US`/`DMA`; assert on the `req` that is sent. Red today: `COUNTRY` (D1). This replaces `test_interest_by_region_city_resolution` and its cassette. Remove the xfail from 1.7.
+- [x] **2.14 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `IndexError`; Green: `related_queries` catches `(KeyError, IndexError)` for top and rising) `test_related_queries_empty_ranked_list_returns_none`. Red today: `IndexError` (D10).
+- [x] **2.15 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `IndexError`; Green: `related_topics` catches `(KeyError, IndexError)` for top and rising) `test_related_topics_empty_ranked_list_returns_none`: the same for topics.
+- [x] **2.16 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `['blockchain']`; Green: both methods key by the widget's `keywordName`; the 2.14 and 2.15 widget fixtures gained a `keywordName` as real responses have) `test_related_results_keyed_by_full_keyword_name`, parametrized over both methods: a widget with `keywordName: 'blockchain + bitcoin'` produces that key (D10, PR #527).
+- [x] **2.17 TEST** (done 2026-11-03 on branch `phase2-offline`; characterization, passed on first run) `test_categories_returns_parsed_tree`. This method has no coverage today.
+- [x] **2.18 TEST** (done 2026-11-03 on branch `phase2-offline`; characterization, passed on first run) `test_interest_by_region_includes_geo_code_when_requested`.
 
 ### Phase 3: Dependency fallout (pandas 3, warnings)
 
-- [ ] **3.1 TEST** Remove the xfail from the 5 `test_interest_over_time_*` tests. Red: column-label dtype. Build the result from a dict of columns so the labels match a normally constructed frame on both pandas 2 and 3 (D12).
-- [ ] **3.2 TEST** The same for `test_interest_by_region_ok`.
-- [ ] **3.3 TEST** Remove the xfail from both multirange tests. Red: `json_normalize` `TypeError`. Parse `columnData` without `json_normalize` (D12).
-- [ ] **3.4 TEST** `test_interest_over_time_emits_no_warnings`. It is red only on the lowest supported pandas, so run it in a local copy of the 0.8 lowest-direct environment. Supersedes PRs #627 and #629.
-- [ ] **3.5 TEST** `test_daily_data_scale_has_no_gaps`, using a fake `TrendReq` and a patched `sleep`. Red on pandas 3: NaN scale values (D13).
-- [ ] **3.6 TEST** `test_fetch_data_raises_after_retries_exhausted`, instead of reading a stale payload (D13).
-- [ ] **3.7 TEST** `test_daily_data_returns_documented_columns`. Decide whether to drop `isPartial` or document 5 columns.
-- [ ] **3.8 TIDY** Set `filterwarnings = ["error"]` in the pytest config; both CI jobs must stay green.
+- [x] **3.1 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `object` vs `StringDtype` column labels on pandas 3; Green: single-region labels rebuilt with `pd.Index(list(...))`; the 5 tests pass on pandas 3 and 2.2.2) Remove the xfail from the 5 `test_interest_over_time_*` tests. Red: column-label dtype. Build the result from a dict of columns so the labels match a normally constructed frame on both pandas 2 and 3 (D12).
+- [x] **3.2 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: same `object` vs `StringDtype` labels; Green: `interest_by_region` rebuilds its labels the same way; passes on pandas 3 and 2.2.2) The same for `test_interest_by_region_ok`.
+- [x] **3.3 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: `TypeError` from `json_normalize` on a Series of lists, then `object` vs `StringDtype` labels; Green: frame built from `df['columnData'].tolist()` and labels normalized; passes on pandas 3 and 2.2.2. The offline `test_request.py` suite now has no xfails on pandas 3.)  Remove the xfail from both multirange tests. Red: `json_normalize` `TypeError`. Parse `columnData` without `json_normalize` (D12).
+- [x] **3.4 TEST** (done 2026-11-03 on branch `phase2-offline`; Red on pandas 2.2.2: FutureWarning from `fillna` on the whole frame; the test passes on pandas 3 already, so the Red was confirmed only on the lowest-direct stack; Green: only `isPartial` is mapped to bool, with missing values as False; the 44 offline tests pass on both stacks with FutureWarning as an error) It is red only on the lowest supported pandas, so run it in a local copy of the 0.8 lowest-direct environment. Supersedes PRs #627 and #629.
+- [x] **3.5 TEST** (done 2026-11-03 on branch `phase2-offline`; Red on pandas 3: 58 of 59 scale values NaN; Green: `ffill` assigned back instead of in place. Note for 3.8: `dailydata.py` still uses `join(lsuffix=..., rsuffix=...)`, which raises a `Pandas4Warning`, so it must move to `suffixes=` before warnings can be errors) `test_daily_data_scale_has_no_gaps`, using a fake `TrendReq` and a patched `sleep`. Red on pandas 3: NaN scale values (D13).
+- [x] **3.6 TEST** (done 2026-11-03 on branch `phase2-offline`; Red: "DID NOT RAISE"; Green: `_fetch_data` re-raises the last `ResponseError` instead of breaking out and reading stale data) `test_fetch_data_raises_after_retries_exhausted`, instead of reading a stale payload (D13).
+- [x] **3.7 TEST** (done 2026-11-03 on branch `phase2-offline`; decision: keep `isPartial` and document 5 columns, since dropping it would change the output; the docstring now says 5 and describes `isPartial`) `test_daily_data_returns_documented_columns`. Decide whether to drop `isPartial` or document 5 columns.
+- [x] **3.8 TIDY** (done 2026-11-03 on branch `phase2-offline`; the one remaining warning was `join(lsuffix=, rsuffix=)` in `dailydata.py`, now a `pd.merge` with `suffixes=`; `filterwarnings = ["error"]` set; 47 offline tests pass on pandas 3 and 2.2.2; coverage 92%) Set `filterwarnings = ["error"]` in the pytest config; both CI jobs must stay green.
 
 ### Phase 4: Removed endpoints
 
-- [ ] **4.1 DECIDE** `trending_searches`, `today_searches`, `realtime_trending_searches` and `top_charts` all return 404.
-  - Options:
-    - (a) remove them;
-    - (b) re-implement on the Trending Now RSS feed;
-    - (c) make the legacy methods raise a clear error pointing to a new RSS-backed `trending_now(geo)`.
-  - Recommended: (c) for the three trending methods, and (a) for `top_charts`, which has no known replacement.
-  - Close PR #621.
-- [ ] **4.2 TEST** `test_removed_endpoints_raise_clear_error_without_request`, parametrized. No network call is made, and the message names the replacement. This removes D11 and the remaining bare `except:`.
-- [ ] **4.3 LIVE** `test_live_trending_rss_parses`: the feed is reachable, and its items carry a title, approximate traffic, a pub date and news items. Save a fixture to `tests/fixtures/`.
-- [ ] **4.4 TEST** `test_trending_now_parses_feed_into_dataframe`, offline from the fixture. Use stdlib `xml.etree`; no lxml needed.
-- [ ] **4.5 TEST** `test_trending_now_requests_given_geo`.
-- [ ] **4.6 TIDY** Delete the obsolete cassettes and tests for removed endpoints, and update 1.11 to the new contract.
+- [x] **4.1 DECIDE** (decided 2026-11-03) `trending_searches`, `today_searches`, `realtime_trending_searches` and `top_charts` all return 404.
+  - Decisions:
+    - Re-implement `trending_searches`, `today_searches` and `realtime_trending_searches` on the Trending Now RSS feed (`trends.google.com/trending/rss?geo=XX`), keeping their names.
+    - Their `pn`/`geo` argument accepts 2-letter country codes only. Legacy names such as `'united_states'` raise a clear error. This is breaking and belongs in 5.0.0.
+    - Remove `top_charts`, which has no replacement.
+  - Open: the RSS items have no `entityNames`, so `realtime_trending_searches` loses that column. Decide its new columns while doing 4.5.
+  - Close PR #621 (realtime articles) when this is merged.
+- [ ] **4.2 LIVE** `test_live_trending_rss_parses`: the RSS feed for `geo=US` answers 200 XML, and its items carry a title, approximate traffic, a pub date and news items. Save the response as `tests/fixtures/trending_rss_US.xml`.
+- [ ] **4.3 TEST** `test_trending_rss_items_parse_into_dataframe`, offline from the fixture. Use stdlib `xml.etree`; no lxml needed.
+- [ ] **4.4 TEST** `test_trending_searches_requests_rss_for_country_code`: `trending_searches(pn='US')` requests the feed with `geo=US` and returns the item titles, using a mocked response. Red today: the old endpoint returns 404.
+- [ ] **4.5 TEST** `test_today_searches_and_realtime_use_rss`: both methods use the same feed. `realtime_trending_searches` returns the columns decided above. Because `today_searches` is rewritten, D11 (the duplicate `requests_args`) goes away with it.
+- [ ] **4.6 TEST** `test_legacy_country_names_raise_value_error`: `trending_searches(pn='united_states')` raises `ValueError` that names the expected code format, without a network call.
+- [ ] **4.7 TIDY** Remove `top_charts` and its test and cassette. Delete the cassettes and tests for the old trending endpoints (`test_trending_searches_ok`, `test_realtime_trending_searches_ok`). Update 1.11 to a live check of the RSS methods.
 
 ### Phase 5: Structural cleanup (behavior pinned by Phases 2–4)
 

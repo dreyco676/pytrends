@@ -57,6 +57,9 @@ addopts = "--cov pytrends/ -m 'not live' --block-network"
 markers = [
     "live: calls the real Google Trends API; deselected by default",
 ]
+filterwarnings = [
+    "error",
+]
 
 [tool.ruff]
 line-length = 127
