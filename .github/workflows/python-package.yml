@@ -1,41 +1,48 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Python package
+# Lint and test pytrends on every push and pull request to master.
+name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: Lint with ruff
+        run: uv run --locked ruff check .
 
+  test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
-
+        python-version: ["3.12", "3.13", "3.14", "3.15"]
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install build
-        python -m build --wheel
-        python -m pip install -r requirements-dev.txt
-        python -m pip install dist/pytrends-*.whl
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pytest --block-network --cov-report term
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: Install locked dependencies
+        run: uv sync --locked --python ${{ matrix.python-version }}
+      - name: Test with pytest
+        run: uv run --no-sync pytest --block-network
+
+  lowest-direct:
+    # Runs against the minimum declared runtime versions to catch floors that are too low.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: Install minimum declared runtime versions
+        run: |
+          uv venv --python 3.12 .venv-lowest
+          uv pip install --python .venv-lowest/bin/python --resolution lowest-direct -e .
+          uv pip install --python .venv-lowest/bin/python pytest pytest-cov pytest-recording responses
+      - name: Test with pytest
+        run: .venv-lowest/bin/python -m pytest --block-network
