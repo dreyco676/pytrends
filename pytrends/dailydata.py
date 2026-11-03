@@ -39,7 +39,7 @@ def _fetch_data(pytrends, build_payload, timeframe: str) -> pd.DataFrame:
             attempts += 1
             if attempts > 3:
                 print('Failed after 3 attemps, abort fetching.')
-                break
+                raise  # never read stale data from a failed request
         else:
             fetched = True
     return pytrends.interest_over_time()
@@ -76,7 +76,7 @@ def get_daily_data(word: str,
             we are fecthing the data for.
 
     Returns:
-        complete (pd.DataFrame): Contains 4 columns.
+        complete (pd.DataFrame): Contains 5 columns.
             The column named after the word argument contains the daily search
             volume already scaled and comparable through time.
             The column f'{word}_unscaled' is the original daily data fetched
@@ -87,6 +87,8 @@ def get_daily_data(word: str,
             so that there are no NaN present.
             The column 'scale' contains the scale used to obtain the scaled
             daily data.
+            The column 'isPartial' is Google's partial-data flag from the
+            monthly request.
     """
 
     # Set up start and stop dates
@@ -117,10 +119,13 @@ def get_daily_data(word: str,
         sleep(wait_time)  # don't go too fast or Google will send 429s
 
     daily = pd.concat(results.values()).drop(columns=['isPartial'])
-    complete = daily.join(monthly, lsuffix='_unscaled', rsuffix='_monthly')
+    # same as a left join on the index; merge's suffixes work on pandas 2.2 and 3 alike
+    complete = pd.merge(daily, monthly, left_index=True, right_index=True, how='left',
+                        suffixes=('_unscaled', '_monthly'))
 
     # Scale daily data by monthly weights so the data is comparable
-    complete[f'{word}_monthly'].ffill(inplace=True)  # fill NaN values
+    # assign back: an in-place ffill on a column is a no-op under pandas copy-on-write (pandas 3)
+    complete[f'{word}_monthly'] = complete[f'{word}_monthly'].ffill()  # fill NaN values
     complete['scale'] = complete[f'{word}_monthly'] / 100
     complete[word] = complete[f'{word}_unscaled'] * complete.scale
 
