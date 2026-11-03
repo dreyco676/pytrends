@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU227bOBD9FdZBgKQIrUsSONEN2xZtHzbYhyL7si8FJY4kwhTJknTkxDDQ39jf
-        65d0KNtJGmCBAkX3xQaHozlnzgxP0ftBEslUV4KqigE8I03PrANfrnxLr/YxxQYo7wSMRltPGq08
-        KF/OhBJeMEldwySUyRkZMDKshqfAKLjvSw53ogE6HWZV4YWXUL23VltyEV+Qk7+0Jx/0SvHTV6+S
-        ItrdF87fSyBKqwbKmX+7fLi6fvfm/NOXq/d6efPPn542b2bV683AbCdUFueGcS5Ul8Xb0NVZozls
-        WqSaJZdmHaWpWRNmke6ZY8pRB1a0U+amZs2yswE/O2rbNm+01DY7StP0sWYosa01v988u/Sw9pRJ
-        0alspVCyfE9lcUzYymsSY2C96zo7v47NOkd9aA+i65HUVQgc6p/jgcQkwOTb16QiE9YzYisrT6Jo
-        HMd5p3UnYd7oIRID68BFEJR0kdW19nOjulOSxPExwVqoHrVggPkDErUTehqHhsxBvCSZ4INGub4D
-        20o9Zr3gHNTWWNiMvfBAnWENZHimo2Um3wrlDnIsFoudHBwabZkXWmU4OdgyIoZuU2vLweJk/hiA
-        C0ZcYwEUYYqTkyeNFgvEP928bD3U2UtLvTbZc1mnux9bi7fbI6k7/bPq1RZp4OfR7ip8GiXrZ6fP
-        U4+fk8t4fXnBzU7hJ2H3zCS0PqNB1X2PWsn7HxvFLAtOy9UkT3KdciNON79MNv15sgTXIj6OpvUI
-        Pzkd9APdTYdOEL8BHQfyX5LQEeql8DRIszcJI9Yg6bRCWfr/qpMf6DzBUSceIHvU67BaXDgj2X0m
-        lBQKaC11s8z3D/vyAh/RbjsRB/ehiCYnQytlQhHByxlr6fRmaXBSDIKdEavRMWchBR2Skd5CW77s
-        Ez3RsKlEYDG5GZWsBll+nHJ2RfDBVYiJmfjHqsJURV2hz86LqK5Iga+2uu2Z//b1X4dTIBMTvAtx
-        zL3tsQx8WYHzwMnfn27IyBxq5EkbBMEZEt8LR9A/0SjmL+tJSUYgS6XHQ8ko9FR9BwAA//8DAJLZ
-        dfhqBgAA
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"tBkz89CA3Rq8EokLZKt-cA\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-Wh4ToeTRXXokYNTbKKTasQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -86,49 +82,74 @@ interactions:
     uri: https://trends.google.com/trends/api/topcharts?hl=en-US&tz=300&date=2021&geo=GLOBAL&isMobile=False
   response:
     body:
-      string: !!binary |
-        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
+      string: ")]}'\n{\"topCharts\":[{\"listTitle\":\"Searches\",\"listItems\":[{\"title\":\"Australia
+        vs India\",\"exploreQuery\":\"\"},{\"title\":\"India vs England\",\"exploreQuery\":\"\"},{\"title\":\"IPL\",\"exploreQuery\":\"\"},{\"title\":\"NBA\",\"exploreQuery\":\"\"},{\"title\":\"Euro
+        2021\",\"exploreQuery\":\"\"},{\"title\":\"Copa Am\xE9rica\",\"exploreQuery\":\"Copa
+        America\"},{\"title\":\"India vs New Zealand\",\"exploreQuery\":\"\"},{\"title\":\"T20
+        World Cup\",\"exploreQuery\":\"\"},{\"title\":\"Squid Game\",\"exploreQuery\":\"\"},{\"title\":\"DMX\",\"exploreQuery\":\"\"}],\"id\":\"95dd33a8-8de4-4f7e-888f-e61925d48b35\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"News\",\"listItems\":[{\"title\":\"Afghanistan\",\"exploreQuery\":\"\"},{\"title\":\"AMC
+        Stock\",\"exploreQuery\":\"\"},{\"title\":\"COVID Vaccine\",\"exploreQuery\":\"\"},{\"title\":\"Dogecoin\",\"exploreQuery\":\"\"},{\"title\":\"GME
+        Stock\",\"exploreQuery\":\"\"},{\"title\":\"Stimulus Check\",\"exploreQuery\":\"\"},{\"title\":\"Georgia
+        Senate Race\",\"exploreQuery\":\"\"},{\"title\":\"Hurricane Ida\",\"exploreQuery\":\"\"},{\"title\":\"COVID\",\"exploreQuery\":\"\"},{\"title\":\"Ethereum
+        Price\",\"exploreQuery\":\"\"}],\"id\":\"12671d45-ca76-450b-9ced-14f27b4587b4\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Actors\",\"listItems\":[{\"title\":\"Alec
+        Baldwin\",\"exploreQuery\":\"\"},{\"title\":\"Pete Davidson\",\"exploreQuery\":\"\"},{\"title\":\"Aryan
+        Khan\",\"exploreQuery\":\"\"},{\"title\":\"Gina Carano\",\"exploreQuery\":\"\"},{\"title\":\"Armie
+        Hammer\",\"exploreQuery\":\"\"},{\"title\":\"Carmen Salinas\",\"exploreQuery\":\"\"},{\"title\":\"Shehnaaz
+        Gill\",\"exploreQuery\":\"\"},{\"title\":\"Elliot Page\",\"exploreQuery\":\"\"},{\"title\":\"Dave
+        Chappelle\",\"exploreQuery\":\"\"},{\"title\":\"Brenda Song\",\"exploreQuery\":\"\"}],\"id\":\"6f376003-d9e5-42bf-805c-4dbaa67ba350\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Athletes\",\"listItems\":[{\"title\":\"Christian
+        Eriksen\",\"exploreQuery\":\"\"},{\"title\":\"Tiger Woods\",\"exploreQuery\":\"\"},{\"title\":\"Simone
+        Biles\",\"exploreQuery\":\"\"},{\"title\":\"Emma Raducanu\",\"exploreQuery\":\"\"},{\"title\":\"Henry
+        Ruggs III\",\"exploreQuery\":\"Henry Ruggs\"},{\"title\":\"Neeraj Chopra\",\"exploreQuery\":\"\"},{\"title\":\"\u5927\u8C37
+        \u7FD4\u5E73 (Shohei Ohtani)\",\"exploreQuery\":\"\u5927\u8C37 \u7FD4\u5E73\"},{\"title\":\"Odell
+        Beckham Jr.\",\"exploreQuery\":\"Odell Beckham\"},{\"title\":\"Rafael Nadal\",\"exploreQuery\":\"\"},{\"title\":\"Tyson
+        Fury\",\"exploreQuery\":\"\"}],\"id\":\"f9055675-fee6-49dc-9127-1f5580b98c52\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Foods\",\"listItems\":[{\"title\":\"Birria
+        tacos\",\"exploreQuery\":\"\"},{\"title\":\"Nasi goreng\",\"exploreQuery\":\"\"},{\"title\":\"Feta
+        pasta\",\"exploreQuery\":\"\"},{\"title\":\"Charcuterie board\",\"exploreQuery\":\"\"},{\"title\":\"\u751F\u59DC
+        \u713C\u304D (Sh\u014Dgayaki)\",\"exploreQuery\":\"\u751F\u59DC \u713C\u304D\"},{\"title\":\"Potato
+        Soup\",\"exploreQuery\":\"\"},{\"title\":\"\u3076\u308A \u306E \u7167\u308A
+        \u713C\u304D (Teriyaki Amberjack)\",\"exploreQuery\":\"\u3076\u308A \u306E
+        \u7167\u308A \u713C\u304D\"},{\"title\":\"\u8C5A\u6C41 (Tonjiru)\",\"exploreQuery\":\"\u8C5A\u6C41\"},{\"title\":\"Baked
+        oats\",\"exploreQuery\":\"\"},{\"title\":\"Overnight oats\",\"exploreQuery\":\"\"}],\"id\":\"a701c855-e7ac-4f5d-81e6-bc60481b4cf6\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Games\",\"listItems\":[{\"title\":\"PopCat\",\"exploreQuery\":\"\"},{\"title\":\"FIFA
+        22\",\"exploreQuery\":\"\"},{\"title\":\"Battlefield 2042\",\"exploreQuery\":\"\"},{\"title\":\"\u30E2\u30F3\u30CF\u30F3
+        \u30E9\u30A4\u30BA (Monster Hunter Rise)\",\"exploreQuery\":\"\u30E2\u30F3\u30CF\u30F3
+        \u30E9\u30A4\u30BA\"},{\"title\":\"Resident Evil Village\",\"exploreQuery\":\"\"},{\"title\":\"Genshin
+        Impact\",\"exploreQuery\":\"\"},{\"title\":\"Call of Duty: Vanguard\",\"exploreQuery\":\"Call
+        of Duty Vanguard\"},{\"title\":\"Far Cry 6\",\"exploreQuery\":\"\"},{\"title\":\"Madden
+        NFL 22\",\"exploreQuery\":\"\"},{\"title\":\"Metroid Dread\",\"exploreQuery\":\"\"}],\"id\":\"aca1c759-8464-4b5d-9b44-3ca9a54e3205\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Movies\",\"listItems\":[{\"title\":\"Eternals\",\"exploreQuery\":\"\"},{\"title\":\"Black
+        Widow\",\"exploreQuery\":\"\"},{\"title\":\"Dune\",\"exploreQuery\":\"\"},{\"title\":\"Shang-Chi
+        and the Legend of the Ten Rings\",\"exploreQuery\":\"Shang Chi\"},{\"title\":\"Red
+        Notice\",\"exploreQuery\":\"\"},{\"title\":\"Mortal Kombat\",\"exploreQuery\":\"\"},{\"title\":\"Cruella\",\"exploreQuery\":\"\"},{\"title\":\"Halloween
+        Kills\",\"exploreQuery\":\"\"},{\"title\":\"Godzilla vs. Kong\",\"exploreQuery\":\"Godzilla
+        vs Kong\"},{\"title\":\"Army of the Dead\",\"exploreQuery\":\"\"}],\"id\":\"50ff48b0-fd34-4a43-bf0e-8836fd0c9495\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Passings\",\"listItems\":[{\"title\":\"DMX\",\"exploreQuery\":\"\"},{\"title\":\"Gabby
+        Petito\",\"exploreQuery\":\"\"},{\"title\":\"Mar\xEDlia Mendon\xE7a\",\"exploreQuery\":\"\"},{\"title\":\"Prince
+        Philip\",\"exploreQuery\":\"\"},{\"title\":\"Brian Laundrie\",\"exploreQuery\":\"\"},{\"title\":\"MC
+        Kevin\",\"exploreQuery\":\"\"},{\"title\":\"L\xE1zaro Barbosa de Sousa\",\"exploreQuery\":\"Lazaro\"},{\"title\":\"Peter
+        R. de Vries\",\"exploreQuery\":\"Peter R de Vries\"},{\"title\":\"Paulo Gustavo\",\"exploreQuery\":\"\"},{\"title\":\"Helen
+        McCrory\",\"exploreQuery\":\"\"}],\"id\":\"7581b88d-bec1-4b2b-9735-441ebbc0e682\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"People\",\"listItems\":[{\"title\":\"Alec
+        Baldwin\",\"exploreQuery\":\"\"},{\"title\":\"Kyle Rittenhouse\",\"exploreQuery\":\"\"},{\"title\":\"Christian
+        Eriksen\",\"exploreQuery\":\"\"},{\"title\":\"Tiger Woods\",\"exploreQuery\":\"\"},{\"title\":\"Simone
+        Biles\",\"exploreQuery\":\"\"},{\"title\":\"Joe Biden\",\"exploreQuery\":\"\"},{\"title\":\"Emma
+        Raducanu\",\"exploreQuery\":\"\"},{\"title\":\"Derek Chauvin\",\"exploreQuery\":\"\"},{\"title\":\"Henry
+        Ruggs III\",\"exploreQuery\":\"Henry Ruggs\"},{\"title\":\"Pete Davidson\",\"exploreQuery\":\"\"}],\"id\":\"d19ef71e-c9c7-4433-aa79-f799b7c80037\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Songs\",\"listItems\":[{\"title\":\"drivers
+        license, Olivia Rodrigo\",\"exploreQuery\":\"drivers license\"},{\"title\":\"MONTERO
+        (Call Me by Your Name), Lil Nas X\",\"exploreQuery\":\"MONTERO\"},{\"title\":\"INDUSTRY
+        BABY, Lil Nas X feat. Jack Harlow\",\"exploreQuery\":\"INDUSTRY BABY\"},{\"title\":\"Fancy
+        Like, Walker Hayes\",\"exploreQuery\":\"Fancy Like\"},{\"title\":\"MAPA, SB19\",\"exploreQuery\":\"MAPA\"},{\"title\":\"good
+        4 u, Olivia Rodrigo\",\"exploreQuery\":\"good 4 u\"},{\"title\":\"Butter,
+        BTS\",\"exploreQuery\":\"Butter\"},{\"title\":\"Jalebi Baby, Tesher\",\"exploreQuery\":\"Jalebi
+        Baby\"},{\"title\":\"Wellerman, Nathan Evans\",\"exploreQuery\":\"Wellerman\"},{\"title\":\"Good
+        Days, SZA\",\"exploreQuery\":\"Good Days\"}],\"id\":\"f8872571-f1c0-419c-86d9-5cb1fb767065\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"Sports
+        Teams\",\"listItems\":[{\"title\":\"Real Madrid CF\",\"exploreQuery\":\"Real
+        Madrid\"},{\"title\":\"Chelsea F.C.\",\"exploreQuery\":\"Chelsea\"},{\"title\":\"Paris
+        Saint-Germain F.C.\",\"exploreQuery\":\"PSG\"},{\"title\":\"FC Barcelona\",\"exploreQuery\":\"Barcelona\"},{\"title\":\"Sociedade
+        Esportiva Palmeiras\",\"exploreQuery\":\"Palmeiras\"},{\"title\":\"Los Angeles
+        Lakers\",\"exploreQuery\":\"Lakers\"},{\"title\":\"Sport Club Corinthians
+        Paulista\",\"exploreQuery\":\"Corinthians\"},{\"title\":\"Boston Red Sox\",\"exploreQuery\":\"Red
+        Sox\"},{\"title\":\"S\xE3o Paulo FC\",\"exploreQuery\":\"Sao Paulo\"},{\"title\":\"Manchester
+        City F.C.\",\"exploreQuery\":\"Manchester City\"}],\"id\":\"d9455cb5-cccb-4e8e-a327-83190f4d0981\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false},{\"listTitle\":\"TV
+        Shows\",\"listItems\":[{\"title\":\"Squid Game\",\"exploreQuery\":\"\"},{\"title\":\"Bridgerton\",\"exploreQuery\":\"\"},{\"title\":\"WandaVision\",\"exploreQuery\":\"\"},{\"title\":\"Cobra
+        Kai\",\"exploreQuery\":\"\"},{\"title\":\"Loki\",\"exploreQuery\":\"\"},{\"title\":\"Sweet
+        Tooth\",\"exploreQuery\":\"\"},{\"title\":\"Lupin\",\"exploreQuery\":\"\"},{\"title\":\"Ginny
+        and Georgia\",\"exploreQuery\":\"\"},{\"title\":\"True Beauty\",\"exploreQuery\":\"\"},{\"title\":\"BBB21\",\"exploreQuery\":\"\"}],\"id\":\"ff7164ec-9635-412a-82a0-0d829606d350\",\"type\":\"fe_expandable_list\",\"title\":\"\",\"template\":\"fe\",\"embedTemplate\":\"fe_embed\",\"version\":\"1\",\"isLong\":false,\"isCurated\":false}],\"interactive\":{\"url\":\"https://about.google/intl/ALL_us/stories/year-in-search-2021/?utm_source\\u003dtrends_site\\u0026utm_medium\\u003dreferral\\u0026utm_campaign\\u003dyis2021\",\"imgUrl\":\"https://ssl.gstatic.com/trends_tpt/baa5b524944141977dea99ff9a33827ebb95f93f4a195d163da648673dba6f60.jpg\"}}"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -136,8 +157,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-lbzLHyWpGC-s3ubvtZwisg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

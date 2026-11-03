@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU247bNhD9FcaLBXaDpXWJt050QxIgTQO0fWiT5wUljiRiKZIhqZUdw0B+I7/X
-        L+lQtrObBQoEKJIXGxyO5pw5MzxF7wdJJFNdCaoqBvCMND2zDnw5+pY+P8YUG6C8EzAZbT1ptPKg
-        fLkQSnjBJHUNk1AmV2TAyDAO94FJcN+XHO5EA3Q+LKrCCy+hemOttmQVr8jFn9qTX/Wo+OWTJ0kR
-        He4L57cSiNKqgXLRvB7f/vL3b927bQo3H/S71fQHvH61qJ7uBmY7obI4N4xzobos3oeurhrNYdci
-        1Sy5NpsoTc2GMIt0rxxTjjqwop0zdzVrbjsb8LOztm3zRktts7M0Tb/WDCX2tebb3YNLDxtPmRSd
-        ykaFkuVHKutzwkavSYyBzaHr7NmL2Gxy1If2ILoeST0PgVP9Z3ggMQkw+f4pqciM9YDYaOVFFE3T
-        tOy07iQsGz1EYmAduAiCki6yutZ+aVR3SZI4PidYC9WjFgwwf0KidkZP49CQOYmXJDN80CjXd2Bb
-        qaesF5yD2hsLu6kXHqgzrIEMz3SyzOR7odxJjvV6fZCDQ6Mt80KrDCcHe0bE0O1qbTlYnMzLAbhg
-        xDUWQBGmOLm412i9RvzL3ePWQ52jtNRrkz2Udb77trV4vz+TutPfq15tkQZ+Hh2uwqdRsnlwupl7
-        vEmu4831ipuDwvfCHplJaH1Gg6rHHrWS228bxSwLTstxlid5kXIjLnf/m2z6/WQJrkV8Hs3rEX5y
-        OuhP9DAdOkP8AHQcyH9JQieob4WnQZqjSRixAUnnFcrSn6tOfqJzD0ed+ATZV71Oq8WFM5JtM6Gk
-        UEBrqZvb/Piwr1f4iA7biTi4D0U0OxlaKROKCF4uWEvnN0uDk2IQ7IJYjY65CCnokIz0FtrycZ/o
-        iYbNJQKL2c2oZDXI8u2ccyiCD65CTMzEP1YVpirqCn12WUR1RQp8tdX7nvl/Pn9xOAUyM8G7EMfc
-        9z2WgY8jOA+cfPjrdzIxhxp50gZBcIbE98IR9E80iuXjelKSCcit0tOpZBR6qv4FAAD//wMAtuli
-        yGoGAAA=
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"cBuG6SHgIy2e_UoI4wMeBA\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-5Af1XMivM5wnCTG_f9uAmg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,42 +84,73 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22geo%22%3A+%22%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22geo%22%3A+%22%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        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
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2021-01-01 2021-12-31","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza"},{"text":"bagel"}],"showLegend":false,"showAverages":true,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZEUAP1yZpuQe1rT3qJE7Ou14x_68IuEn","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"dataMode":"PERCENTAGES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","showLegend":false,"helpDialog":{"title":"Compared
+        breakdown by region","content":"See which term ranked highest in each region
+        during the specified time frame. Values are scaled from 0 to 100, where 100
+        is the region with peak popularity, a value of 50 is the region where the
+        term is half as popular, and a value of 0 means that term was less than 1%
+        as popular as the peak."},"bullets":[{"value":"pizza","color":"PALETTE_COLOR_1"},{"value":"bagel","color":"PALETTE_COLOR_2"}],"token":"APP6_UEAAAAAZEUAP9WWnZADrhI1dnr3oYEsogaBjJx5","id":"GEO_MAP","type":"fe_multi_heat_map","title":"Compared
+        breakdown by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"pizza"},"id":"TITLE_0","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZEUAPxZ-BxXDvGKRuJ9REwGoIhoC5HM5","id":"GEO_MAP_0","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZEUAPyFN1gP6iH1QANwlu6j00yHCzbAG","id":"RELATED_QUERIES_0","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel"},"id":"TITLE_1","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_2","index":1,"bullet":"bagel","token":"APP6_UEAAAAAZEUAP7BHIzg3MrLpMawiGpz9ltRCKqUh","id":"GEO_MAP_1","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_2","keywordName":"bagel","token":"APP6_UEAAAAAZEUAP7sOSR5M8G0LRKBMeOEF5ucMpT63","id":"RELATED_QUERIES_1","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"},{"keyword":"bagel","name":"bagel","type":"Search term"}],"timeRanges":["2021","2021"],"examples":[],"shareText":"Explore
+        search interest for pizza, bagel by time, location and popularity on Google
+        Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -131,8 +158,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-t1mCX45P9p1R4vr8-R_UQw'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -179,60 +204,78 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%7B%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22COUNTRY%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22dataMode%22%3A+%22PERCENTAGES%22%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAZEUAP9WWnZADrhI1dnr3oYEsogaBjJx5&tz=360
   response:
     body:
-      string: !!binary |
-        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
-        AAD//wMASe9NYvZ2AAA=
+      string: ')]}'',
+
+        {"default":{"geoMapData":[{"geoCode":"PR","geoName":"Puerto Rico","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"US","geoName":"United
+        States","value":[97,3],"formattedValue":["97%","3%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"GU","geoName":"Guam","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VI","geoName":"U.S.
+        Virgin Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NZ","geoName":"New
+        Zealand","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"MQ","geoName":"Martinique","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"JE","geoName":"Jersey","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SK","geoName":"Slovakia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IM","geoName":"Isle
+        of Man","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"RE","geoName":"R\u00e9union","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SX","geoName":"Sint
+        Maarten","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GP","geoName":"Guadeloupe","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"RO","geoName":"Romania","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NO","geoName":"Norway","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"SV","geoName":"El
+        Salvador","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IE","geoName":"Ireland","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"MP","geoName":"Northern
+        Mariana Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"HU","geoName":"Hungary","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"LK","geoName":"Sri
+        Lanka","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"YT","geoName":"Mayotte","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GF","geoName":"French
+        Guiana","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GT","geoName":"Guatemala","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TC","geoName":"Turks
+        \u0026 Caicos Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MF","geoName":"St.
+        Martin","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NC","geoName":"New
+        Caledonia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IT","geoName":"Italy","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"PA","geoName":"Panama","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PM","geoName":"St.
+        Pierre \u0026 Miquelon","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GY","geoName":"Guyana","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TT","geoName":"Trinidad
+        \u0026 Tobago","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MT","geoName":"Malta","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IS","geoName":"Iceland","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PF","geoName":"French
+        Polynesia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MX","geoName":"Mexico","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"ZA","geoName":"South
+        Africa","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"MV","geoName":"Maldives","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KN","geoName":"St.
+        Kitts \u0026 Nevis","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PL","geoName":"Poland","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PK","geoName":"Pakistan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"JM","geoName":"Jamaica","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MD","geoName":"Moldova","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LU","geoName":"Luxembourg","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SE","geoName":"Sweden","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"NL","geoName":"Netherlands","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"SM","geoName":"San
+        Marino","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SG","geoName":"Singapore","value":[93,7],"formattedValue":["93%","7%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"LI","geoName":"Liechtenstein","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MU","geoName":"Mauritius","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PT","geoName":"Portugal","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LC","geoName":"St.
+        Lucia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MY","geoName":"Malaysia","value":[98,2],"formattedValue":["98%","2%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"SR","geoName":"Suriname","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LT","geoName":"Lithuania","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GR","geoName":"Greece","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"HK","geoName":"Hong
+        Kong","value":[94,6],"formattedValue":["94%","6%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"LB","geoName":"Lebanon","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MO","geoName":"Macao","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"HN","geoName":"Honduras","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GD","geoName":"Grenada","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"WS","geoName":"Samoa","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PE","geoName":"Peru","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"UY","geoName":"Uruguay","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PY","geoName":"Paraguay","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MN","geoName":"Mongolia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VC","geoName":"St.
+        Vincent \u0026 Grenadines","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GL","geoName":"Greenland","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TR","geoName":"T\u00fcrkiye","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"QA","geoName":"Qatar","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SH","geoName":"St.
+        Helena","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"HR","geoName":"Croatia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PH","geoName":"Philippines","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"SZ","geoName":"Eswatini","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NA","geoName":"Namibia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"XK","geoName":"Kosovo","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MG","geoName":"Madagascar","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NI","geoName":"Nicaragua","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"RS","geoName":"Serbia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KW","geoName":"Kuwait","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MK","geoName":"North
+        Macedonia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TO","geoName":"Tonga","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"OM","geoName":"Oman","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LS","geoName":"Lesotho","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VU","geoName":"Vanuatu","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SC","geoName":"Seychelles","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VG","geoName":"British
+        Virgin Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MA","geoName":"Morocco","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ZW","geoName":"Zimbabwe","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IN","geoName":"India","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"SI","geoName":"Slovenia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LV","geoName":"Latvia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SN","geoName":"Senegal","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KE","geoName":"Kenya","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ID","geoName":"Indonesia","value":[99,1],"formattedValue":["99%","1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"VE","geoName":"Venezuela","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VN","geoName":"Vietnam","value":[100,0],"formattedValue":["100%","\u003c1%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"TN","geoName":"Tunisia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MZ","geoName":"Mozambique","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TG","geoName":"Togo","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SB","geoName":"Solomon
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ST","geoName":"S\u00e3o
+        Tom\u00e9 \u0026 Pr\u00edncipe","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NP","geoName":"Nepal","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PW","geoName":"Palau","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ZM","geoName":"Zambia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ME","geoName":"Montenegro","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NG","geoName":"Nigeria","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TH","geoName":"Thailand","value":[98,2],"formattedValue":["98%","2%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"HT","geoName":"Haiti","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TW","geoName":"Taiwan","value":[96,4],"formattedValue":["96%","4%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"KH","geoName":"Cambodia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GM","geoName":"Gambia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MR","geoName":"Mauritania","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"JO","geoName":"Jordan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GQ","geoName":"Equatorial
+        Guinea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"RW","geoName":"Rwanda","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MW","geoName":"Malawi","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ML","geoName":"Mali","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PG","geoName":"Papua
+        New Guinea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NE","geoName":"Niger","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"UZ","geoName":"Uzbekistan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TZ","geoName":"Tanzania","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TM","geoName":"Turkmenistan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MM","geoName":"Myanmar
+        (Burma)","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"UG","geoName":"Uganda","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IL","geoName":"Israel","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PS","geoName":"Palestine","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LA","geoName":"Laos","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TL","geoName":"Timor-Leste","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SO","geoName":"Somalia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SD","geoName":"Sudan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SA","geoName":"Saudi
+        Arabia","value":[97,3],"formattedValue":["97%","3%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"GN","geoName":"Guinea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TD","geoName":"Chad","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LY","geoName":"Libya","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"LR","geoName":"Liberia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"UA","geoName":"Ukraine","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"YE","geoName":"Yemen","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SL","geoName":"Sierra
+        Leone","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KG","geoName":"Kyrgyzstan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KR","geoName":"South
+        Korea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GW","geoName":"Guinea-Bissau","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IQ","geoName":"Iraq","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"RU","geoName":"Russia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TJ","geoName":"Tajikistan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KZ","geoName":"Kazakhstan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SS","geoName":"South
+        Sudan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SY","geoName":"Syria","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"JP","geoName":"Japan","value":[95,5],"formattedValue":["95%","5%"],"maxValueIndex":0,"hasData":[true,true]},{"geoCode":"IR","geoName":"Iran","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"SJ","geoName":"Svalbard
+        \u0026 Jan Mayen","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MH","geoName":"Marshall
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KI","geoName":"Kiribati","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AW","geoName":"Aruba","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AF","geoName":"Afghanistan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AO","geoName":"Angola","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AI","geoName":"Anguilla","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AX","geoName":"\u00c5land
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AL","geoName":"Albania","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AD","geoName":"Andorra","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AE","geoName":"United
+        Arab Emirates","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AR","geoName":"Argentina","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AM","geoName":"Armenia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AS","geoName":"American
+        Samoa","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AQ","geoName":"Antarctica","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TF","geoName":"French
+        Southern Territories","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AG","geoName":"Antigua
+        \u0026 Barbuda","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AU","geoName":"Australia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AT","geoName":"Austria","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"AZ","geoName":"Azerbaijan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BI","geoName":"Burundi","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BE","geoName":"Belgium","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BJ","geoName":"Benin","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BQ","geoName":"Caribbean
+        Netherlands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BF","geoName":"Burkina
+        Faso","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BD","geoName":"Bangladesh","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BG","geoName":"Bulgaria","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BH","geoName":"Bahrain","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BS","geoName":"Bahamas","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BA","geoName":"Bosnia
+        \u0026 Herzegovina","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BL","geoName":"St.
+        Barth\u00e9lemy","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BY","geoName":"Belarus","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BZ","geoName":"Belize","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BM","geoName":"Bermuda","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BO","geoName":"Bolivia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BR","geoName":"Brazil","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BB","geoName":"Barbados","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BN","geoName":"Brunei","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BT","geoName":"Bhutan","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BV","geoName":"Bouvet
+        Island","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"BW","geoName":"Botswana","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CF","geoName":"Central
+        African Republic","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CA","geoName":"Canada","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CC","geoName":"Cocos
+        (Keeling) Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CH","geoName":"Switzerland","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CL","geoName":"Chile","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CN","geoName":"China","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CI","geoName":"C\u00f4te
+        d\u2019Ivoire","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CM","geoName":"Cameroon","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CD","geoName":"Congo
+        - Kinshasa","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CG","geoName":"Congo
+        - Brazzaville","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CK","geoName":"Cook
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CO","geoName":"Colombia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KM","geoName":"Comoros","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CV","geoName":"Cape
+        Verde","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CR","geoName":"Costa
+        Rica","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CU","geoName":"Cuba","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CW","geoName":"Cura\u00e7ao","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CX","geoName":"Christmas
+        Island","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KY","geoName":"Cayman
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CY","geoName":"Cyprus","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"CZ","geoName":"Czechia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DE","geoName":"Germany","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DJ","geoName":"Djibouti","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DM","geoName":"Dominica","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DK","geoName":"Denmark","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DO","geoName":"Dominican
+        Republic","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"DZ","geoName":"Algeria","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"EC","geoName":"Ecuador","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"EG","geoName":"Egypt","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ER","geoName":"Eritrea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"EH","geoName":"Western
+        Sahara","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ES","geoName":"Spain","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"EE","geoName":"Estonia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"ET","geoName":"Ethiopia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FI","geoName":"Finland","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FJ","geoName":"Fiji","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FK","geoName":"Falkland
+        Islands (Islas Malvinas)","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FR","geoName":"France","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FO","geoName":"Faroe
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"FM","geoName":"Micronesia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GA","geoName":"Gabon","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GB","geoName":"United
+        Kingdom","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GE","geoName":"Georgia","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GG","geoName":"Guernsey","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GH","geoName":"Ghana","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GI","geoName":"Gibraltar","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"HM","geoName":"Heard
+        \u0026 McDonald Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"IO","geoName":"British
+        Indian Ocean Territory","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MC","geoName":"Monaco","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"MS","geoName":"Montserrat","value":[0,0],"formattedValue":["",""],"maxValueIndex":1,"hasData":[false,false]},{"geoCode":"NF","geoName":"Norfolk
+        Island","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NU","geoName":"Niue","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"NR","geoName":"Nauru","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"PN","geoName":"Pitcairn
+        Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"KP","geoName":"North
+        Korea","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"GS","geoName":"South
+        Georgia \u0026 South Sandwich Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TK","geoName":"Tokelau","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"TV","geoName":"Tuvalu","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"UM","geoName":"U.S.
+        Outlying Islands","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"VA","geoName":"Vatican
+        City","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]},{"geoCode":"WF","geoName":"Wallis
+        \u0026 Futuna","value":[0,0],"formattedValue":["",""],"maxValueIndex":0,"hasData":[false,false]}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -240,8 +283,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-6gnlzV9_STMfqfQioE6ojA'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

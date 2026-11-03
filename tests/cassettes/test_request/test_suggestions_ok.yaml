@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU224bNxD9FUaGATswtZfIVbw3tA+9oUGRFi7yGHCXs7uEuSRLUl45goD8Rn6v
-        X9IhJcWOgQIBivZFAoezc86cGZ5q9JMkkqmhBtVUE3hGupFZB77e+J6+PsYUm6C+FzAbbT3ptPKg
-        fL0QSnjBJHUdk1BnV2TCyLSZHgOz4H6sOdyLDmg8LJrKCy+h+d5abckqXZGLX7UnP+iN4pcvXmRV
-        crivnH+QQJRWHdSLd3rF32m+vv1Zr3/65ubtL2/at799t2he7iZmB6GKtDSMc6GGIt2Hrq46zWHX
-        I9UiuzbbJM/NljCLdK8cU446sKKPmbuWdXeDDfjFWd/3ZaeltsVZnuefa4YS+1bzh92TSw9bT5kU
-        gyo2CiUrj1TW54RtvCYpBraHrotXN6nZlqgPHUEMI5J6HQKn+q/wQFISYMr9S9KQiPWE2MbKiySZ
-        53k5aD1IWHZ6SsTEBnAJBCVdYnWr/dKo4ZJkaXpOsBaqRy0YYP6ERG1Ez9PQkDmJl2URPmhU6nuw
-        vdRzMQrOQe2Nhd08Cg/UGdZBgWc6W2bKvVDuJMd6vT7IwaHTlnmhVYGTgz0jYhp2rbYcLE7m2wm4
-        YMR1FkARpji5eNRovUb8y93z1kOdo7TUa1M8lTXefdlaut+fST3or1WvtUgDP08OV+HTJNs+Ob2P
-        Pb7PrtPt9Yqbg8KPwh6ZSeh9QYOqxx61kg9fNopZFpyWmyhPdpNzIy53/5ps/vVkCa5Fep7E9Qg/
-        JZ30B3qYDo0Q/wE6DuSfJKEztHfC0yDN0SSM2IKkcYWK/P9VpzzReYSjTnyA4rNep9XiwhnJHgqh
-        pFBAW6m7u/L4sK9X+IgO24k4uA9VEp0MrZQJRQSvF6yn8c3S4KQYBLsgVqNjLkIKOiQjo4W+ft4n
-        eqJhsURgEd2MStaCrH+MOYci+OAaxMRM/GNNZZqqbdBnl1XSNqTCV9vcjsz/9fGTwymQyATvQhxz
-        b0csA39uwHng5I/f35CZOdTIkz4IgjMkfhSOoH+iUSyf15OSzEDulJ5PJZPQU/M3AAAA//8DAKZg
-        wqtqBgAA
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"Wo4dWod7TIo7H69PKLbPQA\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce--ikn4nlA2wLxXb930hFLdA'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -86,11 +82,11 @@ interactions:
     uri: https://trends.google.com/trends/api/autocomplete/pizza?hl=en-US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAFzOPw+CMBAF8N1P0dxiTEigmqAyEycHBzfDQFpKL1CO0PoPwndXYqLY8S75vfdW
-        2bgMFgPIQuXX2kEygKMWhYXkMoBBCQmEJozieHODABy6uni/Ttj3+XQ/2+lM0WoYgy8oQ84rvtem
-        q6qZOqKgDkXBPL6O1pwprM08413alTvL3SwgJYMNWd+fp8WeleohG+FPZpKupf7JA5H0h2v5UPet
-        iGZWo3XUPRkp1v5XfwKycXwBAAD//wMAGgRfuUkBAAA=
+      string: ')]}'',
+
+        {"default":{"topics":[{"mid":"/m/0663v","title":"Pizza","type":"Dish"},{"mid":"/g/11k19hmrkk","title":"Licorice
+        Pizza","type":"2021 film"},{"mid":"/m/0rg8s1t","title":"Dominos Pizza","type":"Topic"},{"mid":"/m/0dfxdnc","title":"Pizza
+        dough","type":"Food"},{"mid":"/g/11hdxfw7c0","title":"history of pizza","type":"Food"}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -98,8 +94,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-V0MoaUKFMg_svsxFB1V4Xw'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

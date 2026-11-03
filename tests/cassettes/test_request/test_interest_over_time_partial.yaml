@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU227bOBD9FdZBgKQIrUsdONEN+7LpS9EFinaBPBWUOJIIUyRL0pFSw0B/Y39v
-        v2SHst2kARYosNi+2OBwNOfMmeEpej9IIpnqSlBVMYBnpOmZdeDLrW/pzTGm2ADlg4DRaOtJo5UH
-        5cuFUMILJqlrmIQyuSIDRobt8BQYBfd9yeFBNEDnw6IqvPASqt+t1Zas4hW5eK89udNbxS9fvUqK
-        6HBfOP8ogSitGigXn9oP99Mf9zfJvVqv32/ubu/u/lyNi+r1bmC2EyqLc8M4F6rL4n3o6qrRHHYt
-        Us2SazNFaWomwizSvXJMOerAinbO3NWs2XQ24GdnbdvmjZbaZmdpmn6vGUrsa80fd88uPUyeMik6
-        lW0VSpYfqazPCdt6TWIMTIeusze3sZly1If2ILoeSd2EwKn+GzyQmASYfP+aVGTGekZsa+VFFI3j
-        uOy07iQsGz1EYmAduAiCki6yutZ+aVR3SZI4PidYC9WjFgwwf0KidkZP49CQOYmXJDN80CjXD2Bb
-        qcesF5yD2hsLu7EXHqgzrIEMz3S0zOR7odxJjvV6fZCDQ6Mt80KrDCcHe0bE0O1qbTlYnMxvA3DB
-        iGssgCJMcXLxpNF6jfiXu5ethzpHaanXJnsu63z3Y2vxfn8mdad/Vr3aIg38PDpchU+jZHp2+jz3
-        +Dm5jqfrFTcHhZ+EPTKT0PqMBlWPPWolH39sFLMsOC23szzJbcqNuNz9Z7Lpz5MluBbxeTSvR/jJ
-        6aC/0sN06AzxP6DjQP5NEjpCvRGeBmmOJmHEBJLOK5Slv1ad/ETnCY468RWy73qdVosLZyR7zISS
-        QgGtpW42+fFhX6/wER22E3FwH4podjK0UiYUEbxcsJbOb5YGJ8Ug2AWxGh1zEVLQIRnpLbTlyz7R
-        Ew2bSwQWs5tRyWqQ5ds551AEH1yFmJiJf6wqTFXUFfrssojqihT4aquPPfN/f/vL4RTIzATvQhxz
-        P/ZYBr5swXng5NOHd2RkDjXypA2C4AyJ74Uj6J9oFMuX9aQkI5CN0uOpZBR6qv4BAAD//wMA0PhF
-        BmoGAAA=
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"UfRYxOY81Yn77NkF9FFV4w\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-_wZLMKngB7BH6uBM6Dfq4g'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,43 +84,73 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        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
-        Vo0j11oiAAA=
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2018-03-26 2023-03-26","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza"},{"text":"bagel"}],"showLegend":false,"showAverages":true,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPPQLmhmp72Rbs838Ywtsm7YSkLL-9","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2018-03-26
+        2023-03-26","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"time":"2018-03-26
+        2023-03-26","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"dataMode":"PERCENTAGES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","showLegend":false,"helpDialog":{"title":"Compared
+        breakdown by region","content":"See which term ranked highest in each region
+        during the specified time frame. Values are scaled from 0 to 100, where 100
+        is the region with peak popularity, a value of 50 is the region where the
+        term is half as popular, and a value of 0 means that term was less than 1%
+        as popular as the peak."},"bullets":[{"value":"pizza","color":"PALETTE_COLOR_1"},{"value":"bagel","color":"PALETTE_COLOR_2"}],"token":"APP6_UEAAAAAZCFPPTLnUAMg-8gYaSC-b8QBKVDKfcr6","id":"GEO_MAP","type":"fe_multi_heat_map","title":"Compared
+        breakdown by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"pizza"},"id":"TITLE_0","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2018-03-26
+        2023-03-26","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPPWkyr4OzeYHKsUlPRm2xuqWTTMsh","id":"GEO_MAP_0","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2018-03-26
+        2023-03-26","originalTimeRangeForExploreUrl":"today 5-y","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-03-25
+        2018-03-25"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPPZoMOg5JmKl8J5q11pb-vioxL4vL","id":"RELATED_QUERIES_0","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel"},"id":"TITLE_1","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2018-03-26
+        2023-03-26","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_2","index":1,"bullet":"bagel","token":"APP6_UEAAAAAZCFPPUgm8MGtKXkW-6AJLHg5pQkPL3_l","id":"GEO_MAP_1","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2018-03-26
+        2023-03-26","originalTimeRangeForExploreUrl":"today 5-y","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-03-25
+        2018-03-25"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_2","keywordName":"bagel","token":"APP6_UEAAAAAZCFPPRhn0iJ4ceZ5ANDt9AXFxYnntJOe","id":"RELATED_QUERIES_1","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"},{"keyword":"bagel","name":"bagel","type":"Search term"}],"timeRanges":["Past
+        5 years","Past 5 years"],"examples":[],"shareText":"Explore search interest
+        for pizza, bagel by time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -132,8 +158,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-MpJDttYCV3AOhBkFw7KQMQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -180,91 +204,270 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/multiline?req=%7B%22time%22%3A+%222018-03-26+2023-03-26%22%2C+%22resolution%22%3A+%22WEEK%22%2C+%22locale%22%3A+%22en-US%22%2C+%22comparisonItem%22%3A+%5B%7B%22geo%22%3A+%7B%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%7B%22geo%22%3A+%7B%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%5D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZCFPPQLmhmp72Rbs838Ywtsm7YSkLL-9&tz=360
   response:
     body:
-      string: !!binary |
-        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
+      string: ')]}'',
+
+        {"default":{"timelineData":[{"time":"1522540800","formattedTime":"Apr 1\u2009\u2013\u20097,
+        2018","formattedAxisTime":"Apr 1, 2018","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1523145600","formattedTime":"Apr
+        8\u2009\u2013\u200914, 2018","formattedAxisTime":"Apr 8, 2018","value":[72,1],"hasData":[true,true],"formattedValue":["72","1"]},{"time":"1523750400","formattedTime":"Apr
+        15\u2009\u2013\u200921, 2018","formattedAxisTime":"Apr 15, 2018","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1524355200","formattedTime":"Apr
+        22\u2009\u2013\u200928, 2018","formattedAxisTime":"Apr 22, 2018","value":[74,1],"hasData":[true,true],"formattedValue":["74","1"]},{"time":"1524960000","formattedTime":"Apr
+        29\u2009\u2013\u2009May 5, 2018","formattedAxisTime":"Apr 29, 2018","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1525564800","formattedTime":"May
+        6\u2009\u2013\u200912, 2018","formattedAxisTime":"May 6, 2018","value":[74,1],"hasData":[true,true],"formattedValue":["74","1"]},{"time":"1526169600","formattedTime":"May
+        13\u2009\u2013\u200919, 2018","formattedAxisTime":"May 13, 2018","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1526774400","formattedTime":"May
+        20\u2009\u2013\u200926, 2018","formattedAxisTime":"May 20, 2018","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1527379200","formattedTime":"May
+        27\u2009\u2013\u2009Jun 2, 2018","formattedAxisTime":"May 27, 2018","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1527984000","formattedTime":"Jun
+        3\u2009\u2013\u20099, 2018","formattedAxisTime":"Jun 3, 2018","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1528588800","formattedTime":"Jun
+        10\u2009\u2013\u200916, 2018","formattedAxisTime":"Jun 10, 2018","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1529193600","formattedTime":"Jun
+        17\u2009\u2013\u200923, 2018","formattedAxisTime":"Jun 17, 2018","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1529798400","formattedTime":"Jun
+        24\u2009\u2013\u200930, 2018","formattedAxisTime":"Jun 24, 2018","value":[80,1],"hasData":[true,true],"formattedValue":["80","1"]},{"time":"1530403200","formattedTime":"Jul
+        1\u2009\u2013\u20097, 2018","formattedAxisTime":"Jul 1, 2018","value":[80,1],"hasData":[true,true],"formattedValue":["80","1"]},{"time":"1531008000","formattedTime":"Jul
+        8\u2009\u2013\u200914, 2018","formattedAxisTime":"Jul 8, 2018","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1531612800","formattedTime":"Jul
+        15\u2009\u2013\u200921, 2018","formattedAxisTime":"Jul 15, 2018","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1532217600","formattedTime":"Jul
+        22\u2009\u2013\u200928, 2018","formattedAxisTime":"Jul 22, 2018","value":[85,1],"hasData":[true,true],"formattedValue":["85","1"]},{"time":"1532822400","formattedTime":"Jul
+        29\u2009\u2013\u2009Aug 4, 2018","formattedAxisTime":"Jul 29, 2018","value":[83,1],"hasData":[true,true],"formattedValue":["83","1"]},{"time":"1533427200","formattedTime":"Aug
+        5\u2009\u2013\u200911, 2018","formattedAxisTime":"Aug 5, 2018","value":[86,1],"hasData":[true,true],"formattedValue":["86","1"]},{"time":"1534032000","formattedTime":"Aug
+        12\u2009\u2013\u200918, 2018","formattedAxisTime":"Aug 12, 2018","value":[80,1],"hasData":[true,true],"formattedValue":["80","1"]},{"time":"1534636800","formattedTime":"Aug
+        19\u2009\u2013\u200925, 2018","formattedAxisTime":"Aug 19, 2018","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1535241600","formattedTime":"Aug
+        26\u2009\u2013\u2009Sep 1, 2018","formattedAxisTime":"Aug 26, 2018","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1535846400","formattedTime":"Sep
+        2\u2009\u2013\u20098, 2018","formattedAxisTime":"Sep 2, 2018","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1536451200","formattedTime":"Sep
+        9\u2009\u2013\u200915, 2018","formattedAxisTime":"Sep 9, 2018","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1537056000","formattedTime":"Sep
+        16\u2009\u2013\u200922, 2018","formattedAxisTime":"Sep 16, 2018","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1537660800","formattedTime":"Sep
+        23\u2009\u2013\u200929, 2018","formattedAxisTime":"Sep 23, 2018","value":[72,1],"hasData":[true,true],"formattedValue":["72","1"]},{"time":"1538265600","formattedTime":"Sep
+        30\u2009\u2013\u2009Oct 6, 2018","formattedAxisTime":"Sep 30, 2018","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1538870400","formattedTime":"Oct
+        7\u2009\u2013\u200913, 2018","formattedAxisTime":"Oct 7, 2018","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1539475200","formattedTime":"Oct
+        14\u2009\u2013\u200920, 2018","formattedAxisTime":"Oct 14, 2018","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1540080000","formattedTime":"Oct
+        21\u2009\u2013\u200927, 2018","formattedAxisTime":"Oct 21, 2018","value":[80,1],"hasData":[true,true],"formattedValue":["80","1"]},{"time":"1540684800","formattedTime":"Oct
+        28\u2009\u2013\u2009Nov 3, 2018","formattedAxisTime":"Oct 28, 2018","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1541289600","formattedTime":"Nov
+        4\u2009\u2013\u200910, 2018","formattedAxisTime":"Nov 4, 2018","value":[73,1],"hasData":[true,true],"formattedValue":["73","1"]},{"time":"1541894400","formattedTime":"Nov
+        11\u2009\u2013\u200917, 2018","formattedAxisTime":"Nov 11, 2018","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1542499200","formattedTime":"Nov
+        18\u2009\u2013\u200924, 2018","formattedAxisTime":"Nov 18, 2018","value":[72,1],"hasData":[true,true],"formattedValue":["72","1"]},{"time":"1543104000","formattedTime":"Nov
+        25\u2009\u2013\u2009Dec 1, 2018","formattedAxisTime":"Nov 25, 2018","value":[74,1],"hasData":[true,true],"formattedValue":["74","1"]},{"time":"1543708800","formattedTime":"Dec
+        2\u2009\u2013\u20098, 2018","formattedAxisTime":"Dec 2, 2018","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1544313600","formattedTime":"Dec
+        9\u2009\u2013\u200915, 2018","formattedAxisTime":"Dec 9, 2018","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1544918400","formattedTime":"Dec
+        16\u2009\u2013\u200922, 2018","formattedAxisTime":"Dec 16, 2018","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1545523200","formattedTime":"Dec
+        23\u2009\u2013\u200929, 2018","formattedAxisTime":"Dec 23, 2018","value":[90,1],"hasData":[true,true],"formattedValue":["90","1"]},{"time":"1546128000","formattedTime":"Dec
+        30, 2018\u2009\u2013\u2009Jan 5, 2019","formattedAxisTime":"Dec 30, 2018","value":[100,2],"hasData":[true,true],"formattedValue":["100","2"]},{"time":"1546732800","formattedTime":"Jan
+        6\u2009\u2013\u200912, 2019","formattedAxisTime":"Jan 6, 2019","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1547337600","formattedTime":"Jan
+        13\u2009\u2013\u200919, 2019","formattedAxisTime":"Jan 13, 2019","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1547942400","formattedTime":"Jan
+        20\u2009\u2013\u200926, 2019","formattedAxisTime":"Jan 20, 2019","value":[73,1],"hasData":[true,true],"formattedValue":["73","1"]},{"time":"1548547200","formattedTime":"Jan
+        27\u2009\u2013\u2009Feb 2, 2019","formattedAxisTime":"Jan 27, 2019","value":[81,1],"hasData":[true,true],"formattedValue":["81","1"]},{"time":"1549152000","formattedTime":"Feb
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Feb 3, 2019","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1549756800","formattedTime":"Feb
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Feb 10, 2019","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1550361600","formattedTime":"Feb
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Feb 17, 2019","value":[80,2],"hasData":[true,true],"formattedValue":["80","2"]},{"time":"1550966400","formattedTime":"Feb
+        24\u2009\u2013\u2009Mar 2, 2019","formattedAxisTime":"Feb 24, 2019","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1551571200","formattedTime":"Mar
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Mar 3, 2019","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1552176000","formattedTime":"Mar
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Mar 10, 2019","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1552780800","formattedTime":"Mar
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Mar 17, 2019","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1553385600","formattedTime":"Mar
+        24\u2009\u2013\u200930, 2019","formattedAxisTime":"Mar 24, 2019","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1553990400","formattedTime":"Mar
+        31\u2009\u2013\u2009Apr 6, 2019","formattedAxisTime":"Mar 31, 2019","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1554595200","formattedTime":"Apr
+        7\u2009\u2013\u200913, 2019","formattedAxisTime":"Apr 7, 2019","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1555200000","formattedTime":"Apr
+        14\u2009\u2013\u200920, 2019","formattedAxisTime":"Apr 14, 2019","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1555804800","formattedTime":"Apr
+        21\u2009\u2013\u200927, 2019","formattedAxisTime":"Apr 21, 2019","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1556409600","formattedTime":"Apr
+        28\u2009\u2013\u2009May 4, 2019","formattedAxisTime":"Apr 28, 2019","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1557014400","formattedTime":"May
+        5\u2009\u2013\u200911, 2019","formattedAxisTime":"May 5, 2019","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1557619200","formattedTime":"May
+        12\u2009\u2013\u200918, 2019","formattedAxisTime":"May 12, 2019","value":[74,1],"hasData":[true,true],"formattedValue":["74","1"]},{"time":"1558224000","formattedTime":"May
+        19\u2009\u2013\u200925, 2019","formattedAxisTime":"May 19, 2019","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1558828800","formattedTime":"May
+        26\u2009\u2013\u2009Jun 1, 2019","formattedAxisTime":"May 26, 2019","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1559433600","formattedTime":"Jun
+        2\u2009\u2013\u20098, 2019","formattedAxisTime":"Jun 2, 2019","value":[80,1],"hasData":[true,true],"formattedValue":["80","1"]},{"time":"1560038400","formattedTime":"Jun
+        9\u2009\u2013\u200915, 2019","formattedAxisTime":"Jun 9, 2019","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1560643200","formattedTime":"Jun
+        16\u2009\u2013\u200922, 2019","formattedAxisTime":"Jun 16, 2019","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1561248000","formattedTime":"Jun
+        23\u2009\u2013\u200929, 2019","formattedAxisTime":"Jun 23, 2019","value":[79,1],"hasData":[true,true],"formattedValue":["79","1"]},{"time":"1561852800","formattedTime":"Jun
+        30\u2009\u2013\u2009Jul 6, 2019","formattedAxisTime":"Jun 30, 2019","value":[82,1],"hasData":[true,true],"formattedValue":["82","1"]},{"time":"1562457600","formattedTime":"Jul
+        7\u2009\u2013\u200913, 2019","formattedAxisTime":"Jul 7, 2019","value":[84,3],"hasData":[true,true],"formattedValue":["84","3"]},{"time":"1563062400","formattedTime":"Jul
+        14\u2009\u2013\u200920, 2019","formattedAxisTime":"Jul 14, 2019","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1563667200","formattedTime":"Jul
+        21\u2009\u2013\u200927, 2019","formattedAxisTime":"Jul 21, 2019","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1564272000","formattedTime":"Jul
+        28\u2009\u2013\u2009Aug 3, 2019","formattedAxisTime":"Jul 28, 2019","value":[84,2],"hasData":[true,true],"formattedValue":["84","2"]},{"time":"1564876800","formattedTime":"Aug
+        4\u2009\u2013\u200910, 2019","formattedAxisTime":"Aug 4, 2019","value":[86,2],"hasData":[true,true],"formattedValue":["86","2"]},{"time":"1565481600","formattedTime":"Aug
+        11\u2009\u2013\u200917, 2019","formattedAxisTime":"Aug 11, 2019","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1566086400","formattedTime":"Aug
+        18\u2009\u2013\u200924, 2019","formattedAxisTime":"Aug 18, 2019","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1566691200","formattedTime":"Aug
+        25\u2009\u2013\u200931, 2019","formattedAxisTime":"Aug 25, 2019","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1567296000","formattedTime":"Sep
+        1\u2009\u2013\u20097, 2019","formattedAxisTime":"Sep 1, 2019","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1567900800","formattedTime":"Sep
+        8\u2009\u2013\u200914, 2019","formattedAxisTime":"Sep 8, 2019","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1568505600","formattedTime":"Sep
+        15\u2009\u2013\u200921, 2019","formattedAxisTime":"Sep 15, 2019","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1569110400","formattedTime":"Sep
+        22\u2009\u2013\u200928, 2019","formattedAxisTime":"Sep 22, 2019","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1569715200","formattedTime":"Sep
+        29\u2009\u2013\u2009Oct 5, 2019","formattedAxisTime":"Sep 29, 2019","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1570320000","formattedTime":"Oct
+        6\u2009\u2013\u200912, 2019","formattedAxisTime":"Oct 6, 2019","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1570924800","formattedTime":"Oct
+        13\u2009\u2013\u200919, 2019","formattedAxisTime":"Oct 13, 2019","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1571529600","formattedTime":"Oct
+        20\u2009\u2013\u200926, 2019","formattedAxisTime":"Oct 20, 2019","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1572134400","formattedTime":"Oct
+        27\u2009\u2013\u2009Nov 2, 2019","formattedAxisTime":"Oct 27, 2019","value":[78,1],"hasData":[true,true],"formattedValue":["78","1"]},{"time":"1572739200","formattedTime":"Nov
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Nov 3, 2019","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1573344000","formattedTime":"Nov
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Nov 10, 2019","value":[77,1],"hasData":[true,true],"formattedValue":["77","1"]},{"time":"1573948800","formattedTime":"Nov
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Nov 17, 2019","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1574553600","formattedTime":"Nov
+        24\u2009\u2013\u200930, 2019","formattedAxisTime":"Nov 24, 2019","value":[73,1],"hasData":[true,true],"formattedValue":["73","1"]},{"time":"1575158400","formattedTime":"Dec
+        1\u2009\u2013\u20097, 2019","formattedAxisTime":"Dec 1, 2019","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1575763200","formattedTime":"Dec
+        8\u2009\u2013\u200914, 2019","formattedAxisTime":"Dec 8, 2019","value":[73,1],"hasData":[true,true],"formattedValue":["73","1"]},{"time":"1576368000","formattedTime":"Dec
+        15\u2009\u2013\u200921, 2019","formattedAxisTime":"Dec 15, 2019","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1576972800","formattedTime":"Dec
+        22\u2009\u2013\u200928, 2019","formattedAxisTime":"Dec 22, 2019","value":[89,2],"hasData":[true,true],"formattedValue":["89","2"]},{"time":"1577577600","formattedTime":"Dec
+        29, 2019\u2009\u2013\u2009Jan 4, 2020","formattedAxisTime":"Dec 29, 2019","value":[99,2],"hasData":[true,true],"formattedValue":["99","2"]},{"time":"1578182400","formattedTime":"Jan
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Jan 5, 2020","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1578787200","formattedTime":"Jan
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Jan 12, 2020","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1579392000","formattedTime":"Jan
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Jan 19, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1579996800","formattedTime":"Jan
+        26\u2009\u2013\u2009Feb 1, 2020","formattedAxisTime":"Jan 26, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1580601600","formattedTime":"Feb
+        2\u2009\u2013\u20098, 2020","formattedAxisTime":"Feb 2, 2020","value":[75,1],"hasData":[true,true],"formattedValue":["75","1"]},{"time":"1581206400","formattedTime":"Feb
+        9\u2009\u2013\u200915, 2020","formattedAxisTime":"Feb 9, 2020","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1581811200","formattedTime":"Feb
+        16\u2009\u2013\u200922, 2020","formattedAxisTime":"Feb 16, 2020","value":[80,2],"hasData":[true,true],"formattedValue":["80","2"]},{"time":"1582416000","formattedTime":"Feb
+        23\u2009\u2013\u200929, 2020","formattedAxisTime":"Feb 23, 2020","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1583020800","formattedTime":"Mar
+        1\u2009\u2013\u20097, 2020","formattedAxisTime":"Mar 1, 2020","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1583625600","formattedTime":"Mar
+        8\u2009\u2013\u200914, 2020","formattedAxisTime":"Mar 8, 2020","value":[73,1],"hasData":[true,true],"formattedValue":["73","1"]},{"time":"1584230400","formattedTime":"Mar
+        15\u2009\u2013\u200921, 2020","formattedAxisTime":"Mar 15, 2020","value":[76,1],"hasData":[true,true],"formattedValue":["76","1"]},{"time":"1584835200","formattedTime":"Mar
+        22\u2009\u2013\u200928, 2020","formattedAxisTime":"Mar 22, 2020","value":[86,2],"hasData":[true,true],"formattedValue":["86","2"]},{"time":"1585440000","formattedTime":"Mar
+        29\u2009\u2013\u2009Apr 4, 2020","formattedAxisTime":"Mar 29, 2020","value":[91,2],"hasData":[true,true],"formattedValue":["91","2"]},{"time":"1586044800","formattedTime":"Apr
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Apr 5, 2020","value":[91,2],"hasData":[true,true],"formattedValue":["91","2"]},{"time":"1586649600","formattedTime":"Apr
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Apr 12, 2020","value":[95,2],"hasData":[true,true],"formattedValue":["95","2"]},{"time":"1587254400","formattedTime":"Apr
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Apr 19, 2020","value":[94,2],"hasData":[true,true],"formattedValue":["94","2"]},{"time":"1587859200","formattedTime":"Apr
+        26\u2009\u2013\u2009May 2, 2020","formattedAxisTime":"Apr 26, 2020","value":[95,2],"hasData":[true,true],"formattedValue":["95","2"]},{"time":"1588464000","formattedTime":"May
+        3\u2009\u2013\u20099, 2020","formattedAxisTime":"May 3, 2020","value":[92,2],"hasData":[true,true],"formattedValue":["92","2"]},{"time":"1589068800","formattedTime":"May
+        10\u2009\u2013\u200916, 2020","formattedAxisTime":"May 10, 2020","value":[98,2],"hasData":[true,true],"formattedValue":["98","2"]},{"time":"1589673600","formattedTime":"May
+        17\u2009\u2013\u200923, 2020","formattedAxisTime":"May 17, 2020","value":[92,2],"hasData":[true,true],"formattedValue":["92","2"]},{"time":"1590278400","formattedTime":"May
+        24\u2009\u2013\u200930, 2020","formattedAxisTime":"May 24, 2020","value":[91,2],"hasData":[true,true],"formattedValue":["91","2"]},{"time":"1590883200","formattedTime":"May
+        31\u2009\u2013\u2009Jun 6, 2020","formattedAxisTime":"May 31, 2020","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1591488000","formattedTime":"Jun
+        7\u2009\u2013\u200913, 2020","formattedAxisTime":"Jun 7, 2020","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1592092800","formattedTime":"Jun
+        14\u2009\u2013\u200920, 2020","formattedAxisTime":"Jun 14, 2020","value":[87,2],"hasData":[true,true],"formattedValue":["87","2"]},{"time":"1592697600","formattedTime":"Jun
+        21\u2009\u2013\u200927, 2020","formattedAxisTime":"Jun 21, 2020","value":[87,2],"hasData":[true,true],"formattedValue":["87","2"]},{"time":"1593302400","formattedTime":"Jun
+        28\u2009\u2013\u2009Jul 4, 2020","formattedAxisTime":"Jun 28, 2020","value":[88,2],"hasData":[true,true],"formattedValue":["88","2"]},{"time":"1593907200","formattedTime":"Jul
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Jul 5, 2020","value":[87,2],"hasData":[true,true],"formattedValue":["87","2"]},{"time":"1594512000","formattedTime":"Jul
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Jul 12, 2020","value":[89,2],"hasData":[true,true],"formattedValue":["89","2"]},{"time":"1595116800","formattedTime":"Jul
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Jul 19, 2020","value":[92,2],"hasData":[true,true],"formattedValue":["92","2"]},{"time":"1595721600","formattedTime":"Jul
+        26\u2009\u2013\u2009Aug 1, 2020","formattedAxisTime":"Jul 26, 2020","value":[89,2],"hasData":[true,true],"formattedValue":["89","2"]},{"time":"1596326400","formattedTime":"Aug
+        2\u2009\u2013\u20098, 2020","formattedAxisTime":"Aug 2, 2020","value":[90,2],"hasData":[true,true],"formattedValue":["90","2"]},{"time":"1596931200","formattedTime":"Aug
+        9\u2009\u2013\u200915, 2020","formattedAxisTime":"Aug 9, 2020","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1597536000","formattedTime":"Aug
+        16\u2009\u2013\u200922, 2020","formattedAxisTime":"Aug 16, 2020","value":[84,2],"hasData":[true,true],"formattedValue":["84","2"]},{"time":"1598140800","formattedTime":"Aug
+        23\u2009\u2013\u200929, 2020","formattedAxisTime":"Aug 23, 2020","value":[85,2],"hasData":[true,true],"formattedValue":["85","2"]},{"time":"1598745600","formattedTime":"Aug
+        30\u2009\u2013\u2009Sep 5, 2020","formattedAxisTime":"Aug 30, 2020","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1599350400","formattedTime":"Sep
+        6\u2009\u2013\u200912, 2020","formattedAxisTime":"Sep 6, 2020","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1599955200","formattedTime":"Sep
+        13\u2009\u2013\u200919, 2020","formattedAxisTime":"Sep 13, 2020","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1600560000","formattedTime":"Sep
+        20\u2009\u2013\u200926, 2020","formattedAxisTime":"Sep 20, 2020","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1601164800","formattedTime":"Sep
+        27\u2009\u2013\u2009Oct 3, 2020","formattedAxisTime":"Sep 27, 2020","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1601769600","formattedTime":"Oct
+        4\u2009\u2013\u200910, 2020","formattedAxisTime":"Oct 4, 2020","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1602374400","formattedTime":"Oct
+        11\u2009\u2013\u200917, 2020","formattedAxisTime":"Oct 11, 2020","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1602979200","formattedTime":"Oct
+        18\u2009\u2013\u200924, 2020","formattedAxisTime":"Oct 18, 2020","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1603584000","formattedTime":"Oct
+        25\u2009\u2013\u200931, 2020","formattedAxisTime":"Oct 25, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1604188800","formattedTime":"Nov
+        1\u2009\u2013\u20097, 2020","formattedAxisTime":"Nov 1, 2020","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1604793600","formattedTime":"Nov
+        8\u2009\u2013\u200914, 2020","formattedAxisTime":"Nov 8, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1605398400","formattedTime":"Nov
+        15\u2009\u2013\u200921, 2020","formattedAxisTime":"Nov 15, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1606003200","formattedTime":"Nov
+        22\u2009\u2013\u200928, 2020","formattedAxisTime":"Nov 22, 2020","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1606608000","formattedTime":"Nov
+        29\u2009\u2013\u2009Dec 5, 2020","formattedAxisTime":"Nov 29, 2020","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1607212800","formattedTime":"Dec
+        6\u2009\u2013\u200912, 2020","formattedAxisTime":"Dec 6, 2020","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1607817600","formattedTime":"Dec
+        13\u2009\u2013\u200919, 2020","formattedAxisTime":"Dec 13, 2020","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1608422400","formattedTime":"Dec
+        20\u2009\u2013\u200926, 2020","formattedAxisTime":"Dec 20, 2020","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1609027200","formattedTime":"Dec
+        27, 2020\u2009\u2013\u2009Jan 2, 2021","formattedAxisTime":"Dec 27, 2020","value":[99,2],"hasData":[true,true],"formattedValue":["99","2"]},{"time":"1609632000","formattedTime":"Jan
+        3\u2009\u2013\u20099, 2021","formattedAxisTime":"Jan 3, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1610236800","formattedTime":"Jan
+        10\u2009\u2013\u200916, 2021","formattedAxisTime":"Jan 10, 2021","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1610841600","formattedTime":"Jan
+        17\u2009\u2013\u200923, 2021","formattedAxisTime":"Jan 17, 2021","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1611446400","formattedTime":"Jan
+        24\u2009\u2013\u200930, 2021","formattedAxisTime":"Jan 24, 2021","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1612051200","formattedTime":"Jan
+        31\u2009\u2013\u2009Feb 6, 2021","formattedAxisTime":"Jan 31, 2021","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1612656000","formattedTime":"Feb
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Feb 7, 2021","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1613260800","formattedTime":"Feb
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Feb 14, 2021","value":[83,2],"hasData":[true,true],"formattedValue":["83","2"]},{"time":"1613865600","formattedTime":"Feb
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Feb 21, 2021","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1614470400","formattedTime":"Feb
+        28\u2009\u2013\u2009Mar 6, 2021","formattedAxisTime":"Feb 28, 2021","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1615075200","formattedTime":"Mar
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Mar 7, 2021","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1615680000","formattedTime":"Mar
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Mar 14, 2021","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1616284800","formattedTime":"Mar
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Mar 21, 2021","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1616889600","formattedTime":"Mar
+        28\u2009\u2013\u2009Apr 3, 2021","formattedAxisTime":"Mar 28, 2021","value":[80,2],"hasData":[true,true],"formattedValue":["80","2"]},{"time":"1617494400","formattedTime":"Apr
+        4\u2009\u2013\u200910, 2021","formattedAxisTime":"Apr 4, 2021","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1618099200","formattedTime":"Apr
+        11\u2009\u2013\u200917, 2021","formattedAxisTime":"Apr 11, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1618704000","formattedTime":"Apr
+        18\u2009\u2013\u200924, 2021","formattedAxisTime":"Apr 18, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1619308800","formattedTime":"Apr
+        25\u2009\u2013\u2009May 1, 2021","formattedAxisTime":"Apr 25, 2021","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1619913600","formattedTime":"May
+        2\u2009\u2013\u20098, 2021","formattedAxisTime":"May 2, 2021","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1620518400","formattedTime":"May
+        9\u2009\u2013\u200915, 2021","formattedAxisTime":"May 9, 2021","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1621123200","formattedTime":"May
+        16\u2009\u2013\u200922, 2021","formattedAxisTime":"May 16, 2021","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1621728000","formattedTime":"May
+        23\u2009\u2013\u200929, 2021","formattedAxisTime":"May 23, 2021","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1622332800","formattedTime":"May
+        30\u2009\u2013\u2009Jun 5, 2021","formattedAxisTime":"May 30, 2021","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1622937600","formattedTime":"Jun
+        6\u2009\u2013\u200912, 2021","formattedAxisTime":"Jun 6, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1623542400","formattedTime":"Jun
+        13\u2009\u2013\u200919, 2021","formattedAxisTime":"Jun 13, 2021","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1624147200","formattedTime":"Jun
+        20\u2009\u2013\u200926, 2021","formattedAxisTime":"Jun 20, 2021","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1624752000","formattedTime":"Jun
+        27\u2009\u2013\u2009Jul 3, 2021","formattedAxisTime":"Jun 27, 2021","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1625356800","formattedTime":"Jul
+        4\u2009\u2013\u200910, 2021","formattedAxisTime":"Jul 4, 2021","value":[88,2],"hasData":[true,true],"formattedValue":["88","2"]},{"time":"1625961600","formattedTime":"Jul
+        11\u2009\u2013\u200917, 2021","formattedAxisTime":"Jul 11, 2021","value":[86,2],"hasData":[true,true],"formattedValue":["86","2"]},{"time":"1626566400","formattedTime":"Jul
+        18\u2009\u2013\u200924, 2021","formattedAxisTime":"Jul 18, 2021","value":[80,2],"hasData":[true,true],"formattedValue":["80","2"]},{"time":"1627171200","formattedTime":"Jul
+        25\u2009\u2013\u200931, 2021","formattedAxisTime":"Jul 25, 2021","value":[83,2],"hasData":[true,true],"formattedValue":["83","2"]},{"time":"1627776000","formattedTime":"Aug
+        1\u2009\u2013\u20097, 2021","formattedAxisTime":"Aug 1, 2021","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1628380800","formattedTime":"Aug
+        8\u2009\u2013\u200914, 2021","formattedAxisTime":"Aug 8, 2021","value":[80,2],"hasData":[true,true],"formattedValue":["80","2"]},{"time":"1628985600","formattedTime":"Aug
+        15\u2009\u2013\u200921, 2021","formattedAxisTime":"Aug 15, 2021","value":[79,2],"hasData":[true,true],"formattedValue":["79","2"]},{"time":"1629590400","formattedTime":"Aug
+        22\u2009\u2013\u200928, 2021","formattedAxisTime":"Aug 22, 2021","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1630195200","formattedTime":"Aug
+        29\u2009\u2013\u2009Sep 4, 2021","formattedAxisTime":"Aug 29, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1630800000","formattedTime":"Sep
+        5\u2009\u2013\u200911, 2021","formattedAxisTime":"Sep 5, 2021","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1631404800","formattedTime":"Sep
+        12\u2009\u2013\u200918, 2021","formattedAxisTime":"Sep 12, 2021","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1632009600","formattedTime":"Sep
+        19\u2009\u2013\u200925, 2021","formattedAxisTime":"Sep 19, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1632614400","formattedTime":"Sep
+        26\u2009\u2013\u2009Oct 2, 2021","formattedAxisTime":"Sep 26, 2021","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1633219200","formattedTime":"Oct
+        3\u2009\u2013\u20099, 2021","formattedAxisTime":"Oct 3, 2021","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1633824000","formattedTime":"Oct
+        10\u2009\u2013\u200916, 2021","formattedAxisTime":"Oct 10, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1634428800","formattedTime":"Oct
+        17\u2009\u2013\u200923, 2021","formattedAxisTime":"Oct 17, 2021","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1635033600","formattedTime":"Oct
+        24\u2009\u2013\u200930, 2021","formattedAxisTime":"Oct 24, 2021","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1635638400","formattedTime":"Oct
+        31\u2009\u2013\u2009Nov 6, 2021","formattedAxisTime":"Oct 31, 2021","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1636243200","formattedTime":"Nov
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Nov 7, 2021","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1636848000","formattedTime":"Nov
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Nov 14, 2021","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1637452800","formattedTime":"Nov
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Nov 21, 2021","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1638057600","formattedTime":"Nov
+        28\u2009\u2013\u2009Dec 4, 2021","formattedAxisTime":"Nov 28, 2021","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1638662400","formattedTime":"Dec
+        5\u2009\u2013\u200911, 2021","formattedAxisTime":"Dec 5, 2021","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1639267200","formattedTime":"Dec
+        12\u2009\u2013\u200918, 2021","formattedAxisTime":"Dec 12, 2021","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1639872000","formattedTime":"Dec
+        19\u2009\u2013\u200925, 2021","formattedAxisTime":"Dec 19, 2021","value":[82,2],"hasData":[true,true],"formattedValue":["82","2"]},{"time":"1640476800","formattedTime":"Dec
+        26, 2021\u2009\u2013\u2009Jan 1, 2022","formattedAxisTime":"Dec 26, 2021","value":[94,2],"hasData":[true,true],"formattedValue":["94","2"],"axisNote":{"text":"An
+        improvement to our data collection system was applied from 1/1/22."}},{"time":"1641081600","formattedTime":"Jan
+        2\u2009\u2013\u20098, 2022","formattedAxisTime":"Jan 2, 2022","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1641686400","formattedTime":"Jan
+        9\u2009\u2013\u200915, 2022","formattedAxisTime":"Jan 9, 2022","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1642291200","formattedTime":"Jan
+        16\u2009\u2013\u200922, 2022","formattedAxisTime":"Jan 16, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1642896000","formattedTime":"Jan
+        23\u2009\u2013\u200929, 2022","formattedAxisTime":"Jan 23, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1643500800","formattedTime":"Jan
+        30\u2009\u2013\u2009Feb 5, 2022","formattedAxisTime":"Jan 30, 2022","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1644105600","formattedTime":"Feb
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Feb 6, 2022","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1644710400","formattedTime":"Feb
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Feb 13, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1645315200","formattedTime":"Feb
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Feb 20, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1645920000","formattedTime":"Feb
+        27\u2009\u2013\u2009Mar 5, 2022","formattedAxisTime":"Feb 27, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1646524800","formattedTime":"Mar
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Mar 6, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1647129600","formattedTime":"Mar
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Mar 13, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1647734400","formattedTime":"Mar
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Mar 20, 2022","value":[69,2],"hasData":[true,true],"formattedValue":["69","2"]},{"time":"1648339200","formattedTime":"Mar
+        27\u2009\u2013\u2009Apr 2, 2022","formattedAxisTime":"Mar 27, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1648944000","formattedTime":"Apr
+        3\u2009\u2013\u20099, 2022","formattedAxisTime":"Apr 3, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1649548800","formattedTime":"Apr
+        10\u2009\u2013\u200916, 2022","formattedAxisTime":"Apr 10, 2022","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1650153600","formattedTime":"Apr
+        17\u2009\u2013\u200923, 2022","formattedAxisTime":"Apr 17, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1650758400","formattedTime":"Apr
+        24\u2009\u2013\u200930, 2022","formattedAxisTime":"Apr 24, 2022","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1651363200","formattedTime":"May
+        1\u2009\u2013\u20097, 2022","formattedAxisTime":"May 1, 2022","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1651968000","formattedTime":"May
+        8\u2009\u2013\u200914, 2022","formattedAxisTime":"May 8, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1652572800","formattedTime":"May
+        15\u2009\u2013\u200921, 2022","formattedAxisTime":"May 15, 2022","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1653177600","formattedTime":"May
+        22\u2009\u2013\u200928, 2022","formattedAxisTime":"May 22, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1653782400","formattedTime":"May
+        29\u2009\u2013\u2009Jun 4, 2022","formattedAxisTime":"May 29, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1654387200","formattedTime":"Jun
+        5\u2009\u2013\u200911, 2022","formattedAxisTime":"Jun 5, 2022","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1654992000","formattedTime":"Jun
+        12\u2009\u2013\u200918, 2022","formattedAxisTime":"Jun 12, 2022","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1655596800","formattedTime":"Jun
+        19\u2009\u2013\u200925, 2022","formattedAxisTime":"Jun 19, 2022","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1656201600","formattedTime":"Jun
+        26\u2009\u2013\u2009Jul 2, 2022","formattedAxisTime":"Jun 26, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1656806400","formattedTime":"Jul
+        3\u2009\u2013\u20099, 2022","formattedAxisTime":"Jul 3, 2022","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1657411200","formattedTime":"Jul
+        10\u2009\u2013\u200916, 2022","formattedAxisTime":"Jul 10, 2022","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1658016000","formattedTime":"Jul
+        17\u2009\u2013\u200923, 2022","formattedAxisTime":"Jul 17, 2022","value":[77,2],"hasData":[true,true],"formattedValue":["77","2"]},{"time":"1658620800","formattedTime":"Jul
+        24\u2009\u2013\u200930, 2022","formattedAxisTime":"Jul 24, 2022","value":[75,2],"hasData":[true,true],"formattedValue":["75","2"]},{"time":"1659225600","formattedTime":"Jul
+        31\u2009\u2013\u2009Aug 6, 2022","formattedAxisTime":"Jul 31, 2022","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1659830400","formattedTime":"Aug
+        7\u2009\u2013\u200913, 2022","formattedAxisTime":"Aug 7, 2022","value":[76,2],"hasData":[true,true],"formattedValue":["76","2"]},{"time":"1660435200","formattedTime":"Aug
+        14\u2009\u2013\u200920, 2022","formattedAxisTime":"Aug 14, 2022","value":[73,2],"hasData":[true,true],"formattedValue":["73","2"]},{"time":"1661040000","formattedTime":"Aug
+        21\u2009\u2013\u200927, 2022","formattedAxisTime":"Aug 21, 2022","value":[70,2],"hasData":[true,true],"formattedValue":["70","2"]},{"time":"1661644800","formattedTime":"Aug
+        28\u2009\u2013\u2009Sep 3, 2022","formattedAxisTime":"Aug 28, 2022","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1662249600","formattedTime":"Sep
+        4\u2009\u2013\u200910, 2022","formattedAxisTime":"Sep 4, 2022","value":[67,2],"hasData":[true,true],"formattedValue":["67","2"]},{"time":"1662854400","formattedTime":"Sep
+        11\u2009\u2013\u200917, 2022","formattedAxisTime":"Sep 11, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1663459200","formattedTime":"Sep
+        18\u2009\u2013\u200924, 2022","formattedAxisTime":"Sep 18, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1664064000","formattedTime":"Sep
+        25\u2009\u2013\u2009Oct 1, 2022","formattedAxisTime":"Sep 25, 2022","value":[67,2],"hasData":[true,true],"formattedValue":["67","2"]},{"time":"1664668800","formattedTime":"Oct
+        2\u2009\u2013\u20098, 2022","formattedAxisTime":"Oct 2, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1665273600","formattedTime":"Oct
+        9\u2009\u2013\u200915, 2022","formattedAxisTime":"Oct 9, 2022","value":[67,2],"hasData":[true,true],"formattedValue":["67","2"]},{"time":"1665878400","formattedTime":"Oct
+        16\u2009\u2013\u200922, 2022","formattedAxisTime":"Oct 16, 2022","value":[64,2],"hasData":[true,true],"formattedValue":["64","2"]},{"time":"1666483200","formattedTime":"Oct
+        23\u2009\u2013\u200929, 2022","formattedAxisTime":"Oct 23, 2022","value":[66,2],"hasData":[true,true],"formattedValue":["66","2"]},{"time":"1667088000","formattedTime":"Oct
+        30\u2009\u2013\u2009Nov 5, 2022","formattedAxisTime":"Oct 30, 2022","value":[71,2],"hasData":[true,true],"formattedValue":["71","2"]},{"time":"1667692800","formattedTime":"Nov
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Nov 6, 2022","value":[64,2],"hasData":[true,true],"formattedValue":["64","2"]},{"time":"1668297600","formattedTime":"Nov
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Nov 13, 2022","value":[66,2],"hasData":[true,true],"formattedValue":["66","2"]},{"time":"1668902400","formattedTime":"Nov
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Nov 20, 2022","value":[62,2],"hasData":[true,true],"formattedValue":["62","2"]},{"time":"1669507200","formattedTime":"Nov
+        27\u2009\u2013\u2009Dec 3, 2022","formattedAxisTime":"Nov 27, 2022","value":[64,2],"hasData":[true,true],"formattedValue":["64","2"]},{"time":"1670112000","formattedTime":"Dec
+        4\u2009\u2013\u200910, 2022","formattedAxisTime":"Dec 4, 2022","value":[64,2],"hasData":[true,true],"formattedValue":["64","2"]},{"time":"1670716800","formattedTime":"Dec
+        11\u2009\u2013\u200917, 2022","formattedAxisTime":"Dec 11, 2022","value":[67,2],"hasData":[true,true],"formattedValue":["67","2"]},{"time":"1671321600","formattedTime":"Dec
+        18\u2009\u2013\u200924, 2022","formattedAxisTime":"Dec 18, 2022","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1671926400","formattedTime":"Dec
+        25\u2009\u2013\u200931, 2022","formattedAxisTime":"Dec 25, 2022","value":[81,2],"hasData":[true,true],"formattedValue":["81","2"]},{"time":"1672531200","formattedTime":"Jan
+        1\u2009\u2013\u20097, 2023","formattedAxisTime":"Jan 1, 2023","value":[74,2],"hasData":[true,true],"formattedValue":["74","2"]},{"time":"1673136000","formattedTime":"Jan
+        8\u2009\u2013\u200914, 2023","formattedAxisTime":"Jan 8, 2023","value":[62,2],"hasData":[true,true],"formattedValue":["62","2"]},{"time":"1673740800","formattedTime":"Jan
+        15\u2009\u2013\u200921, 2023","formattedAxisTime":"Jan 15, 2023","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1674345600","formattedTime":"Jan
+        22\u2009\u2013\u200928, 2023","formattedAxisTime":"Jan 22, 2023","value":[69,2],"hasData":[true,true],"formattedValue":["69","2"]},{"time":"1674950400","formattedTime":"Jan
+        29\u2009\u2013\u2009Feb 4, 2023","formattedAxisTime":"Jan 29, 2023","value":[69,2],"hasData":[true,true],"formattedValue":["69","2"]},{"time":"1675555200","formattedTime":"Feb
+        5\u2009\u2013\u200911, 2023","formattedAxisTime":"Feb 5, 2023","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1676160000","formattedTime":"Feb
+        12\u2009\u2013\u200918, 2023","formattedAxisTime":"Feb 12, 2023","value":[72,2],"hasData":[true,true],"formattedValue":["72","2"]},{"time":"1676764800","formattedTime":"Feb
+        19\u2009\u2013\u200925, 2023","formattedAxisTime":"Feb 19, 2023","value":[66,2],"hasData":[true,true],"formattedValue":["66","2"]},{"time":"1677369600","formattedTime":"Feb
+        26\u2009\u2013\u2009Mar 4, 2023","formattedAxisTime":"Feb 26, 2023","value":[68,2],"hasData":[true,true],"formattedValue":["68","2"]},{"time":"1677974400","formattedTime":"Mar
+        5\u2009\u2013\u200911, 2023","formattedAxisTime":"Mar 5, 2023","value":[67,2],"hasData":[true,true],"formattedValue":["67","2"]},{"time":"1678579200","formattedTime":"Mar
+        12\u2009\u2013\u200918, 2023","formattedAxisTime":"Mar 12, 2023","value":[65,2],"hasData":[true,true],"formattedValue":["65","2"]},{"time":"1679184000","formattedTime":"Mar
+        19\u2009\u2013\u200925, 2023","formattedAxisTime":"Mar 19, 2023","value":[58,2],"hasData":[true,true],"formattedValue":["58","2"],"isPartial":true}],"averages":[77,2]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -272,8 +475,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-S_GgAPAhMU8lSEKou85qEQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU224bNxD9FUaGATswtZdIULw39KFtHlLkwUieA+5ydpcwl2RJyitHENDf6O/1
-        SzKkpNgxECBA0b5I4HB2zpkzw1ONfpJEMjXUoJpqAs9INzLrwNdb39O3p5hiE9QPAmajrSedVh6U
-        rxdCCS+YpK5jEurshkwYmbbTU2AW3I81hwfRAY2HRVN54SU0v1mrLVmlK3L1QXvyu94qfv3qVVYl
-        x/vK+UcJRGnVQb24ze169f5Dnr/zv8pPur+TdwMbFs3r/cTsIFSRloZxLtRQpIfQ1U2nOex7pFpk
-        a7NL8tzsCLNI98Yx5agDK/qYuW9Zdz/YgF9c9H1fdlpqW1zkef6tZihxaDV/3D+79LDzlEkxqGKr
-        ULLyRGVzSdjWa5JiYHfsunhzm5pdifrQEcQwIqm3IXCu/wYPJCUBpjy8Jg2JWM+Iba28SpJ5npeD
-        1oOEZaenRExsAJdAUNIlVrfaL40arkmWppcEa6F61IIB5s9I1Eb0PA0NmbN4WRbhg0alfgDbSz0X
-        o+Ac1MFY2M+j8ECdYR0UeKazZaY8COXOcmw2m6McHDptmRdaFTg5ODAipmHfasvB4mR+mYALRlxn
-        ARRhipOrJ402G8S/3r9sPdQ5SUu9NsVzWePd962lh8OF1IP+WfVaizTw8+R4FT5Nst2z0+fY4+ds
-        ne7WK26OCj8Je2ImofcFDaqeetRKPn7fKGZZcFpuozzZbc6NuN7/a7L5z5MluBbpZRLXI/yUdNJf
-        6HE6NEL8B+g4kB9JQmdo74WnQZqTSRixA0njChX5/6tOeabzBEed+ALFN73Oq8WFM5I9FkJJoYC2
-        Unf35elhr1f4iI7biTi4D1USnQytlAlFBK8XrKfxzdLgpBgEuyBWo2MuQgo6JCOjhb5+2Sd6omGx
-        RGAR3YxK1oKs38WcYxF8cA1iYib+saYyTdU26LPLKmkbUuGrbT6OzP/z198Op0AiE7wLccz9OGIZ
-        +HMLzgMnn+7+IDNzqJEnfRAEZ0j8KBxB/0SjWL6sJyWZgdwrPZ9LJqGn5isAAAD//wMA88ukDGoG
-        AAA=
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"92r54KN22GtDlUofRlRgag\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-9p10R4trAQWSotZkTXQFvw'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,43 +84,73 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22geo%22%3A+%22%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22geo%22%3A+%22%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAOyZ/1PbuBLAf7+/QuOZm3f3JkASoFB+C6lJ85oQSEzv6CvjUWzFUXEkP8kmmA7/
-        +9uVbBOHb71re+/eHaUzJLK0K612P7uLf764/ccPn50lDyOWaufg358dxf6TMZ06B5+dlC+Yc+C0
-        m+3WRhP/E/Ox1d7YbjkNmKllnKVcCpj0i+u+g7FYBjTGRUxsnE1gIJCLhCqupeinbGE0REyC9Fv7
-        LGbX71i+lCrUY1CreGAFfnYu7bBZkuYJCj0cjzpvQOgVjTP8nvCbG+rcXtzeNr6l2CmNWGzEXjRK
-        e4wSFKBRQqJkwlSaw0xYNKXBJRMgz+l/6OGBacoiqeBpE/aSaaa6Usx4hCvxm2d1nk3cse+dn7j+
-        pDvunLhjBw7hxFywjhAypajNY9dwD86EURXMCRcpU3gzoDOL4/K+UjupMEWjGigP0XD0XC4HLDKb
-        nNFYMzvUuWIK5oCUVGUwNmdx8obTWEb27lNzj/1CK5EwnRiPQAvDqEAtx9liypQmiiUwC8aIru8W
-        nsRwmCtGUknSOSNzHs1xPJEwhUhhBoM5VSmZSWW+RTBdwMIIbECoCI3aTdIh5oKInJFWs0m4NpMT
-        Ri9BWJLF4GZpXgkB9Yvamt0mWTAqcBVNqykoZk7jGaG6lIKrdCCVWXW3CI5DljALbocwIbNoTkKa
-        0kIh7gY1whU4qQSPAON0Tk5e+WduB/996B6dHL/uv7sZ7l5m/mCyf7h/0z65Oh/1aPP0dJyDVTk6
-        kdcfuuAafReDp/DPGfPRMXxjJRx+6m4gyhKwuF0H3xlcUOitDvpmCP0dbs5GL4Yz1wMpotIbuO5m
-        ClaUPoOetYKGWrCtxfcz2Pi2Uf+9la2xYIV43dHZsTc+fwh6X8cM9KqhDFEgcKHrHnudnnGH3wgT
-        c0cOHDAO12kdyEyAISD4gQUmYEtfGtApnPch6IRcgw/lxc5sdJr19/HyMEq6xlVYSKYKYjaUS0Gm
-        eRHmNahMGETanIN6E6GKiktYVYKDC8IoPCv4EGaKi8jEs05YwGecWWCQmaKIjfd4k5qAZohquKcQ
-        HsgFBDYACTjSAFUY2itIKSQveTpfx0uD0BpR1lYYSU+gpWFwtiKiziRchIiJmTZDgrR+XFmNH0vk
-        GdCs5oF6dKA5Y6nQhToD1/NcvzsajMZ+y6SIunM/NrdtssejMNuLeN46+vS6v/c+ULtvFtFe3kyY
-        aN+E7RJmPXfkDzsnNZItsjjl/pzR1F/QZIVmz7jHd+SazZj3UmkJZG/g+s3aGczEu52v785n1wkY
-        9K9O3z8MiH9O7j1TLz2ONi4KuqGZcGMkl5m6i/6FNOWRDfnfgjcwepCho4VYV1GLu2dpV+3C8A5H
-        VjeAJRXsiaI64yZIrRQK1Lio9EA3F5ZfpaR7kBQhxxtFMXfajAkerr5W8PjI2oKzX1SSkY9Zs7kd
-        JOYXq30pHk3tt2OZsgM7slUMwWZM3lHFniytaTmIXixVaRYaxwT8HP2rYfZUzaNT44TMPM6JccNN
-        MpEwI+WiGIAH9mD7zR+NleesFGeuF0/1EUJFwI/+6MB9gT7o20i65IFNO1XZSqGIplBf1wVLEedk
-        54ukb2K9oTAi5mma6IOtLZ0leNbNSMooZpsAkq1UQdDqLTDJkqmtne3d3Xar7dw+nnyAbCJk1xDW
-        ZfJayViPZpqdvd7bXB2+655uJ9HoOnjV2fl1MeiFbf1pLdOscRpIYIvmFSI/GahfnWSKAugZfqs6
-        dSucP8NuqXjEBY09mDamImJHUrn2YGfmqv6IkrucXiD49Mw1yF8wFAkyHG+ECX/cn/SPew4WEOgk
-        0L5oPWEpeHtk+G8zF/OqEzfNxtvEfLQbv/3axBGDkTKocUwmqgpoExFdi/PfU1c/DP4xs+QtYqpG
-        /TONPbLlJdIcY+2O+eAgsoRpWPavuorOTXIuM2C7IBrCD90VQ3cm41guUZi1vD6oY+6fdbR5MlkD
-        2wbx1lBftu6V3gnQBDUASE0+qVp5m1gsU+iDXbmRC3e8MMipDmfw1ygKZ1rQsHpaZgI5A7uVxW5t
-        h8V6LKLBZlJsPnnoMdew/XvnPi2oV+W7KY8i21kEUHpqk6ELW8yMA4oAdglPLWRjCnNNCgZH5DLc
-        JBBQUNVC5qYKO5WPziGWsDJLgdJzigU/BMEC/FRmutLSwOwxpVOwz5QFFNyufu+GyoItzWlRygw+
-        /8TBQiL/GdZyqaoU/Dtp3Ww2n6Z1EevHdMG+BNR74vr0155mwadXQdBy/3V55ruvWsudt6eDEtRj
-        d9Dx3Dc+cqPvTtaArWwQ+eW5Vnh9P76+J6zXWoLirwC1lqD10hL87/5G8tISvLQELy3B/39L0L5r
-        CVorLUH5h6lHM03+IW6dDM87+cbGzvuRr0bpvp/v+e1h1FlvCeqcfmkJvjn0X1qCl5bgpSX4O7QE
-        7XstwbOgvrkZdJL2/vXNlbc83OV720evx+4ya/5yVIF6vSWoA/vP0RJcVAe3b1sqQFZNkVjrkewB
-        itoRg9q8eblbV1pOrBnygXUXNg0YvqN6A3WYa37BQ3ZNEeb4yLzuR4javqVIBfdeyiNRzE4bxCg2
-        CAEVjbuCCl1speCDkZ7xG+IZn7Ev/rI4nMzlcojvdN4ymg5pMgSqG75aw/0XAAD//wMAkLLiDWIi
-        AAA=
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2021-01-01 2021-12-31","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza"},{"text":"bagel"}],"showLegend":false,"showAverages":true,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPN9IKzM5ku_LS8B8z2PvYOGa0QQRy","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"dataMode":"PERCENTAGES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","showLegend":false,"helpDialog":{"title":"Compared
+        breakdown by region","content":"See which term ranked highest in each region
+        during the specified time frame. Values are scaled from 0 to 100, where 100
+        is the region with peak popularity, a value of 50 is the region where the
+        term is half as popular, and a value of 0 means that term was less than 1%
+        as popular as the peak."},"bullets":[{"value":"pizza","color":"PALETTE_COLOR_1"},{"value":"bagel","color":"PALETTE_COLOR_2"}],"token":"APP6_UEAAAAAZCFPN7giy1Fj9I7Vcr5Dmg7y0pen2zd2","id":"GEO_MAP","type":"fe_multi_heat_map","title":"Compared
+        breakdown by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"pizza"},"id":"TITLE_0","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPN47GHyrBKCQ3pgOxc6A4XmLGd2sj","id":"GEO_MAP_0","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPN7nxQXGsecj6cc1EJkU_E61w4HQL","id":"RELATED_QUERIES_0","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel"},"id":"TITLE_1","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_2","index":1,"bullet":"bagel","token":"APP6_UEAAAAAZCFPNyZl1PMYAy--4VO_rOt8_y7_2MgA","id":"GEO_MAP_1","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_2","keywordName":"bagel","token":"APP6_UEAAAAAZCFPNzzLAp28xzvTwB5i73F9REwu0WFA","id":"RELATED_QUERIES_1","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"},{"keyword":"bagel","name":"bagel","type":"Search term"}],"timeRanges":["2021","2021"],"examples":[],"shareText":"Explore
+        search interest for pizza, bagel by time, location and popularity on Google
+        Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -132,8 +158,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-JW5pVLQB1dkmhezTsjCtrg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -180,21 +204,40 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/relatedsearches?req=%7B%22restriction%22%3A+%7B%22geo%22%3A+%7B%7D%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22originalTimeRangeForExploreUrl%22%3A+%222021-01-01+2021-12-31%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%22keywordType%22%3A+%22QUERY%22%2C+%22metric%22%3A+%5B%22TOP%22%2C+%22RISING%22%5D%2C+%22trendinessSettings%22%3A+%7B%22compareTime%22%3A+%222020-01-02+2020-12-31%22%7D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22language%22%3A+%22en%22%2C+%22userCountryCode%22%3A+%22ES%22%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZCFPN7nxQXGsecj6cc1EJkU_E61w4HQL&tz=360
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALSYy47aMBRA9/2KyFJVVWE0hAzhsalUddeuu2ln4SaXwcWxGduBMiP+vXYSRESM
-        IJcgsSAGTg7X3If5/Lz/NPjwTjJY0IIbMn8niooVZD+Ytle/DpffYbeVKitXXgtQOzIna/b2RoNl
-        YciAbCgvgMyj4XBAFlLl1BjIflaLxK7atyyp/kYNJXOjChgQzsTKvvZoFIhMP8K/NZcKvrz+LobD
-        OCvZoWW7y1GSUQPVC6PhKHoYukdYPo1GD3FE9oNTLQFUBTkc1ZKpxyyZ4sQcPcwBK3dOcexTHOMU
-        exHNZM6E1EfF2BfFGBnFmt5drq018WlNumqhhXi9p41MSHyJkHQ14vVGojcQONu4haNY7BOLkTtY
-        47F6NsHbaRBFPsMIXULwSbCQMuvdy0Gx8ZIbEM1q6y22uEA5NL5MFC/Lo9fMozXDlghLxmopSNm6
-        8cPy1S5k6arQODFQjN5BymGxkbI4BbpRUH31tHM5rUJVs9G9ktMU7mNWobuL2a9jaGEHI9O3V4OM
-        Lqmy0M2ZwjdSIEupI3fXSlWhzWl77EWrJKP7I13T4K9cCn0XN4cPSzxW0PUJz4zYh5xD3zoa1mae
-        CcM3xSKH2Nrxhjnj8Ml2JHvRPOBvjSZnxnAIUgqaKn2XWFa3COtbIPJ4CaDhNFl6EazQ2EQRsA12
-        Uq3uombhoYN3knt2eucPzpylUrG0FcvpeOyb6L4qoCtZHrMvHBZqLjaQS3vmlzZV5OLU7Ml7rg/t
-        8seLVjU1lAusl/28gOzUKfY7xdc4VUSsTwZGSWYCbXa8tYnRzKtlly9r1eCwBGPttq5vLJg6RKxd
-        +fyG1wg6dliyb/1/QUrBAt+hBi/nkOEth5l8pw1LW1npFZpeIVTxbjvAp1I3WuvE6zK5wqWKi6N1
-        N2EitTvO/rR/7InXJ7nC58jExieXhTCUiSBnq3Zb8oqNr9m0Ghs6LNaNihfgrcHy6UwRvSxV8Tr2
-        oOf9/j8AAAD//wMA2gOSP98VAAA=
+      string: ')]}'',
+
+        {"default":{"rankedList":[{"rankedKeyword":[{"query":"pizza hut","value":100,"formattedValue":"100","hasData":true,"link":"/trends/explore?q\u003dpizza+hut\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        near me","value":68,"formattedValue":"68","hasData":true,"link":"/trends/explore?q\u003dpizza+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        pizza near me","value":65,"formattedValue":"65","hasData":true,"link":"/trends/explore?q\u003dpizza+pizza+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        dominos","value":38,"formattedValue":"38","hasData":true,"link":"/trends/explore?q\u003dpizza+dominos\u0026date\u003d2021-01-01+2021-12-31"},{"query":"dominos","value":37,"formattedValue":"37","hasData":true,"link":"/trends/explore?q\u003ddominos\u0026date\u003d2021-01-01+2021-12-31"},{"query":"la
+        pizza","value":16,"formattedValue":"16","hasData":true,"link":"/trends/explore?q\u003dla+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        delivery","value":13,"formattedValue":"13","hasData":true,"link":"/trends/explore?q\u003dpizza+delivery\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        hut near me","value":11,"formattedValue":"11","hasData":true,"link":"/trends/explore?q\u003dpizza+hut+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"food","value":11,"formattedValue":"11","hasData":true,"link":"/trends/explore?q\u003dfood\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        oven","value":10,"formattedValue":"10","hasData":true,"link":"/trends/explore?q\u003dpizza+oven\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        dough","value":9,"formattedValue":"9","hasData":true,"link":"/trends/explore?q\u003dpizza+dough\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        recipe","value":8,"formattedValue":"8","hasData":true,"link":"/trends/explore?q\u003dpizza+recipe\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizzeria","value":8,"formattedValue":"8","hasData":true,"link":"/trends/explore?q\u003dpizzeria\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        express","value":7,"formattedValue":"7","hasData":true,"link":"/trends/explore?q\u003dpizza+express\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        places","value":7,"formattedValue":"7","hasData":true,"link":"/trends/explore?q\u003dpizza+places\u0026date\u003d2021-01-01+2021-12-31"},{"query":"restaurants","value":7,"formattedValue":"7","hasData":true,"link":"/trends/explore?q\u003drestaurants\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        house","value":6,"formattedValue":"6","hasData":true,"link":"/trends/explore?q\u003dpizza+house\u0026date\u003d2021-01-01+2021-12-31"},{"query":"crust
+        pizza","value":6,"formattedValue":"6","hasData":true,"link":"/trends/explore?q\u003dcrust+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"papa
+        johns pizza","value":6,"formattedValue":"6","hasData":true,"link":"/trends/explore?q\u003dpapa+johns+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"food
+        near me","value":6,"formattedValue":"6","hasData":true,"link":"/trends/explore?q\u003dfood+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        near me delivery","value":5,"formattedValue":"5","hasData":true,"link":"/trends/explore?q\u003dpizza+near+me+delivery\u0026date\u003d2021-01-01+2021-12-31"},{"query":"delivery
+        near me","value":5,"formattedValue":"5","hasData":true,"link":"/trends/explore?q\u003ddelivery+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        little caesars","value":5,"formattedValue":"5","hasData":true,"link":"/trends/explore?q\u003dpizza+little+caesars\u0026date\u003d2021-01-01+2021-12-31"},{"query":"cheese
+        pizza","value":5,"formattedValue":"5","hasData":true,"link":"/trends/explore?q\u003dcheese+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"new
+        york pizza","value":5,"formattedValue":"5","hasData":true,"link":"/trends/explore?q\u003dnew+york+pizza\u0026date\u003d2021-01-01+2021-12-31"}]},{"rankedKeyword":[{"query":"licorice
+        pizza","value":8550,"formattedValue":"Breakout","link":"/trends/explore?q\u003dlicorice+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"history
+        of pizza","value":400,"formattedValue":"+400%","link":"/trends/explore?q\u003dhistory+of+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"stoned
+        pizza","value":300,"formattedValue":"+300%","link":"/trends/explore?q\u003dstoned+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"detroit
+        style pizza","value":190,"formattedValue":"+190%","link":"/trends/explore?q\u003ddetroit+style+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"wood
+        fired pizza near me","value":90,"formattedValue":"+90%","link":"/trends/explore?q\u003dwood+fired+pizza+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"ooni
+        pizza oven","value":90,"formattedValue":"+90%","link":"/trends/explore?q\u003dooni+pizza+oven\u0026date\u003d2021-01-01+2021-12-31"},{"query":"mystic
+        pizza","value":80,"formattedValue":"+80%","link":"/trends/explore?q\u003dmystic+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pizza
+        cosy","value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003dpizza+cosy\u0026date\u003d2021-01-01+2021-12-31"},{"query":"incredible
+        pizza","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dincredible+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"mountain
+        mike pizza","value":50,"formattedValue":"+50%","link":"/trends/explore?q\u003dmountain+mike+pizza\u0026date\u003d2021-01-01+2021-12-31"},{"query":"angels
+        pizza","value":40,"formattedValue":"+40%","link":"/trends/explore?q\u003dangels+pizza\u0026date\u003d2021-01-01+2021-12-31"}]}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -202,8 +245,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-jo5oI9QILQiiIG2qDOsShw'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -248,24 +289,49 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/relatedsearches?req=%7B%22restriction%22%3A+%7B%22geo%22%3A+%7B%7D%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22originalTimeRangeForExploreUrl%22%3A+%222021-01-01+2021-12-31%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%2C+%22keywordType%22%3A+%22QUERY%22%2C+%22metric%22%3A+%5B%22TOP%22%2C+%22RISING%22%5D%2C+%22trendinessSettings%22%3A+%7B%22compareTime%22%3A+%222020-01-02+2020-12-31%22%7D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22language%22%3A+%22en%22%2C+%22userCountryCode%22%3A+%22ES%22%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZCFPNzzLAp28xzvTwB5i73F9REwu0WFA&tz=360
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALSZTW+bQBCG7/0VCKmqqnUUG/x96aW39txLm8MGBoPAi7Msca3I/73DYmxipjK7
-        OFKkhHV499HsfO3469Pxy+jTmxtCxMtMues3V3KRQvgzKfDpd/P4Aw77XIZ65aUEeXDXrorBeeYb
-        yNyR+8qzEtz1ZDweuVEut1wpCH/Viy6u4r/EvPjOFXfXSpYwcrNEpPjZo5IgwuIR/u6yXMK3lz/l
-        eOyHqM20dvXozUOuoP7AG3uTh3H1w/SfE+/Bn7jH0QVLv+Zs4UK1WhBQq4UpkxZmWzBHglf8reJE
-        bK4NtvIoNM8U7bLBMKsJ4PKd6ZYrgm+5sjNdpW5lP/16caGaTwiq+cSKqrC1VcBRK4EW1mxJYM2W
-        dsZq5G3xijjftdAoP5sZ+1mNVklbYwEvcoGO2mKjcsbMOGWc2Br94VFKsU7nBOt0PjReh2A33hi1
-        wnbqU5i+rSdGtjHrSAiSXRuMOuup5VnX4uZogQS+dYIYoOhUMH9KAPpTU0C9Bau3sE7JUKgOHnWw
-        vvnBovSwSvGcqHbq86n84lvmF61tAYY2TyNOGI1yOt/c6Rp9a8s1Ahc0jyoZnnnJaJQtguFUZ5xE
-        XNvtTnDNDiwRtpaDTadz8qimzjNu6lB5WCCEkCUtqhlFNbOLg0raHEvA3jnkMu0Y7D5oKM8qeeuj
-        TEShgHA2KvF6xom3kbfF23IRIwLv8lEZzjPOcGd9W8A9vu7wD6KrxBkfFhAFF+E+CeK7w506pZO8
-        RabLowgArzegig+yX70F01sYWfGpAv3/VVvm2DB2yhrZODNc/uzeAtWCtuecglIZoCd3zUgjeX2Q
-        LqrD/C/lKN8aSSxJJFy+jVR7nBYc1Cc5PJFOJA8gW1wezeX15tLSDKWZljYn1AMctHrXteg5DsPl
-        23B6dKNVB05wuEj4fZBOk5tKcNg5YtkijpL2sP4OVh8k1qwBZ3m6BcoS299C4YtOkGcZbFp3rwWJ
-        ueiNqcWZFmcncXPOXRKkTflyxCG4B16l2VQthpq21tskshUDc5Jn3ttclZpF/5GHILH5wIY+dLDU
-        XUemPVWtzLQyQ2Xb6MTeJYTt/bhqPfs7VSmCuDu4HHB6WtF+WBlhFG/zUnSuofZIZ8n7dGaYyDr2
-        ogt3n7r9vi3DRDZszIvZS2L7dHWvGoynRS1vVJdBzF3tdp7B2Fvs/BWMI/I8vTFmY9O+1buGQsXe
-        3evT8fgPAAD//wMAVx/HgEsaAAA=
+      string: ')]}'',
+
+        {"default":{"rankedList":[{"rankedKeyword":[{"query":"the bagel","value":100,"formattedValue":"100","hasData":true,"link":"/trends/explore?q\u003dthe+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        me","value":97,"formattedValue":"97","hasData":true,"link":"/trends/explore?q\u003dbagel+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"everything
+        bagel","value":92,"formattedValue":"92","hasData":true,"link":"/trends/explore?q\u003deverything+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        near me","value":89,"formattedValue":"89","hasData":true,"link":"/trends/explore?q\u003dbagel+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagels","value":61,"formattedValue":"61","hasData":true,"link":"/trends/explore?q\u003dbagels\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        calories","value":58,"formattedValue":"58","hasData":true,"link":"/trends/explore?q\u003dbagel+calories\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        shop","value":52,"formattedValue":"52","hasData":true,"link":"/trends/explore?q\u003dbagel+shop\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        seasoning","value":50,"formattedValue":"50","hasData":true,"link":"/trends/explore?q\u003dbagel+seasoning\u0026date\u003d2021-01-01+2021-12-31"},{"query":"everything
+        bagel seasoning","value":46,"formattedValue":"46","hasData":true,"link":"/trends/explore?q\u003deverything+bagel+seasoning\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        cafe","value":43,"formattedValue":"43","hasData":true,"link":"/trends/explore?q\u003dbagel+cafe\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        recipe","value":40,"formattedValue":"40","hasData":true,"link":"/trends/explore?q\u003dbagel+recipe\u0026date\u003d2021-01-01+2021-12-31"},{"query":"cream
+        cheese bagel","value":34,"formattedValue":"34","hasData":true,"link":"/trends/explore?q\u003dcream+cheese+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"best
+        bagel","value":33,"formattedValue":"33","hasData":true,"link":"/trends/explore?q\u003dbest+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        bites","value":32,"formattedValue":"32","hasData":true,"link":"/trends/explore?q\u003dbagel+bites\u0026date\u003d2021-01-01+2021-12-31"},{"query":"breakfast
+        bagel","value":30,"formattedValue":"30","hasData":true,"link":"/trends/explore?q\u003dbreakfast+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"breakfast","value":28,"formattedValue":"28","hasData":true,"link":"/trends/explore?q\u003dbreakfast\u0026date\u003d2021-01-01+2021-12-31"},{"query":"calories
+        in bagel","value":28,"formattedValue":"28","hasData":true,"link":"/trends/explore?q\u003dcalories+in+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"egg
+        bagel","value":27,"formattedValue":"27","hasData":true,"link":"/trends/explore?q\u003degg+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        deli","value":25,"formattedValue":"25","hasData":true,"link":"/trends/explore?q\u003dbagel+deli\u0026date\u003d2021-01-01+2021-12-31"},{"query":"new
+        york bagel","value":25,"formattedValue":"25","hasData":true,"link":"/trends/explore?q\u003dnew+york+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"einstein
+        bagel","value":24,"formattedValue":"24","hasData":true,"link":"/trends/explore?q\u003deinstein+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"manhattan
+        bagel","value":22,"formattedValue":"22","hasData":true,"link":"/trends/explore?q\u003dmanhattan+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"what
+        a bagel","value":22,"formattedValue":"22","hasData":true,"link":"/trends/explore?q\u003dwhat+a+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        sandwich","value":22,"formattedValue":"22","hasData":true,"link":"/trends/explore?q\u003dbagel+sandwich\u0026date\u003d2021-01-01+2021-12-31"},{"query":"coffee
+        meets bagel","value":22,"formattedValue":"22","hasData":true,"link":"/trends/explore?q\u003dcoffee+meets+bagel\u0026date\u003d2021-01-01+2021-12-31"}]},{"rankedKeyword":[{"query":"rover
+        bagel","value":350,"formattedValue":"+350%","link":"/trends/explore?q\u003drover+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"kettlemans
+        bagel","value":250,"formattedValue":"+250%","link":"/trends/explore?q\u003dkettlemans+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        karen","value":180,"formattedValue":"+180%","link":"/trends/explore?q\u003dbagel+karen\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        bites air fryer","value":120,"formattedValue":"+120%","link":"/trends/explore?q\u003dbagel+bites+air+fryer\u0026date\u003d2021-01-01+2021-12-31"},{"query":"the
+        better bagel","value":100,"formattedValue":"+100%","link":"/trends/explore?q\u003dthe+better+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        mania","value":100,"formattedValue":"+100%","link":"/trends/explore?q\u003dbagel+mania\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        bites in air fryer","value":80,"formattedValue":"+80%","link":"/trends/explore?q\u003dbagel+bites+in+air+fryer\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        crust state college","value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003dbagel+crust+state+college\u0026date\u003d2021-01-01+2021-12-31"},{"query":"pick
+        a bagel nyc","value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003dpick+a+bagel+nyc\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        girl","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dbagel+girl\u0026date\u003d2021-01-01+2021-12-31"},{"query":"modern
+        bread and bagel","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dmodern+bread+and+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"tandem
+        bagel","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dtandem+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"brunch
+        near me","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dbrunch+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"fairmount
+        bagel","value":60,"formattedValue":"+60%","link":"/trends/explore?q\u003dfairmount+bagel\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        sandwiches near me","value":50,"formattedValue":"+50%","link":"/trends/explore?q\u003dbagel+sandwiches+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"bagel
+        street deli","value":50,"formattedValue":"+50%","link":"/trends/explore?q\u003dbagel+street+deli\u0026date\u003d2021-01-01+2021-12-31"},{"query":"best
+        bagel near me","value":50,"formattedValue":"+50%","link":"/trends/explore?q\u003dbest+bagel+near+me\u0026date\u003d2021-01-01+2021-12-31"},{"query":"the
+        bagel nook","value":40,"formattedValue":"+40%","link":"/trends/explore?q\u003dthe+bagel+nook\u0026date\u003d2021-01-01+2021-12-31"}]}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -273,8 +339,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-dA6sDMz-ftz3NHYxUBu6VA'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

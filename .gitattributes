@@ -1,2 +1,1 @@
-tests/cassettes/**/*.yaml binary
 tests/cassettes/**/*.yaml linguist-vendored
