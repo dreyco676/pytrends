@@ -90,7 +90,7 @@ def get_daily_data(word: str,
     """
 
     # Set up start and stop dates
-    start_date = date(start_year, start_mon, 1) 
+    start_date = date(start_year, start_mon, 1)
     stop_date = get_last_date_of_month(stop_year, stop_mon)
 
     # Start pytrends for US region
