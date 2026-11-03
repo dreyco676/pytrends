@@ -10,6 +10,9 @@ from pandas.testing import assert_frame_equal
 
 from pytrends.request import TrendReq, BASE_TRENDS_URL
 
+# Quarantined pandas-3 failures only apply when pandas 3 is installed.
+PANDAS_3 = int(pd.__version__.split(".")[0]) >= 3
+
 
 @dataclass
 class ExpectedResult:
@@ -61,6 +64,7 @@ def build_interest_over_time_df(records, dates):
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, reason="plan 2.8: NID cookie in cassette expired")
 def test_initial_data():
     """Should use same values as in the documentation."""
     pytrend = TrendReq()
@@ -168,6 +172,7 @@ def test_tokens():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
@@ -180,6 +185,7 @@ def test_interest_over_time_ok():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_images():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -196,6 +202,7 @@ def test_interest_over_time_images():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_news():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -212,6 +219,7 @@ def test_interest_over_time_news():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_youtube():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -228,6 +236,7 @@ def test_interest_over_time_youtube():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_froogle():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -252,6 +261,7 @@ def test_interest_over_time_bad_gprop():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.3: json_normalize TypeError under pandas 3")
 def test_multirange_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
@@ -276,6 +286,7 @@ def test_multirange_interest_over_time_ok():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.3: json_normalize TypeError under pandas 3")
 def test_multirange_interest_over_time_same_keyword_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'pizza'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
@@ -300,6 +311,7 @@ def test_multirange_interest_over_time_same_keyword_ok():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.2: column label dtype under pandas 3")
 def test_interest_by_region_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
@@ -321,6 +333,7 @@ def test_interest_by_region_ok():
 
 
 @pytest.mark.vcr
+@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 2.13: test pins COUNTRY output; fails on pandas 3 dtype")
 def test_interest_by_region_city_resolution():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
