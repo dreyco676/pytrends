@@ -416,15 +416,18 @@ class TrendReq(object):
         if (df.empty):
             return df
 
-        # rename the column with the search keyword
-        geo_column = 'geoCode' if 'geoCode' in df.columns else 'coordinates'
-        columns = ['geoName', geo_column, 'value']
+        # some responses carry neither geo column; keep the values without it
+        geo_column = next((column for column in ('geoCode', 'coordinates') if column in df.columns), None)
+        columns = ['geoName', 'value'] + ([geo_column] if geo_column else [])
         df = df[columns].set_index(['geoName']).sort_index()
         # split list columns into separate ones, remove brackets and split on comma
         result_df = df['value'].apply(lambda x: pd.Series(
             str(x).replace('[', '').replace(']', '').split(',')))
         if inc_geo_code:
-            result_df[geo_column] = df[geo_column]
+            if geo_column:
+                result_df[geo_column] = df[geo_column]
+            else:
+                logger.warning('Could not find geo_code column; Skipping')
 
         # rename each column with its search term
         for idx, kw in enumerate(self.kw_list):

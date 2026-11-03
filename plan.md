@@ -348,7 +348,7 @@ Added 2026-11-03 from the review of upstream's open issues (see "Upstream open i
 
 - Configurable base URL / country domains, and SOCKS proxies via a `requests[socks]` extra (PR #624).
 - Monthly interest by region (PR #430) and keyword-less explore (PR #414).
-- `interest_by_region` responses that have neither `geoCode` nor `coordinates` (PR #386).
+- [x] `interest_by_region` responses that have neither `geoCode` nor `coordinates` (PR #386). Done 2026-11-03 on branch `interest-by-region-geo-fallback`, uncommitted: values are returned without the geo column, and `inc_geo_code=True` logs `Could not find geo_code column; Skipping` on the `pytrends` logger. Two Red tests (`KeyError: ['coordinates'] not in index`, then no warning); suite 57 passed on pandas 3 and on the lowest-direct stack.
 - One `requests.Session` per `TrendReq` instead of one per call.
 - Google announced an official Google Trends API (alpha, limited access) in July 2025. If you can get access, evaluate it as a sturdier backend than scraping.
 - `related_queries` keeps only `query` and `value`. It drops Google's `formattedValue` (such as "Breakout" or "+250%") and `link`, which `related_topics` already keeps (upstream #390, #482, #521). Similarly, `interest_over_time` reports the site's "<1" as 0 (#514). Adding columns changes the return shape, so it needs a decision.

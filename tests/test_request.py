@@ -649,6 +649,36 @@ def test_interest_by_region_sends_requested_resolution(geo, resolution, expected
     assert sent['resolution'] == expected
 
 
+def test_interest_by_region_without_geo_columns_returns_values():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
+    pytrend.interest_by_region_widget = {'request': {'resolution': 'COUNTRY'}, 'token': 'token'}
+    geo_map = {'default': {'geoMapData': [
+        {'geoName': 'Texas', 'value': [80]},
+        {'geoName': 'Ohio', 'value': [40]},
+    ]}}
+    with patch.object(TrendReq, '_get_data', return_value=geo_map):
+        result = pytrend.interest_by_region()
+    assert list(result.index) == ['Ohio', 'Texas']
+    assert list(result['pizza']) == [40, 80]
+
+
+def test_interest_by_region_warns_when_geo_code_requested_but_missing(caplog):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
+    pytrend.interest_by_region_widget = {'request': {'resolution': 'COUNTRY'}, 'token': 'token'}
+    geo_map = {'default': {'geoMapData': [{'geoName': 'Texas', 'value': [80]}]}}
+    with patch.object(TrendReq, '_get_data', return_value=geo_map), \
+            caplog.at_level(logging.WARNING, logger='pytrends'):
+        result = pytrend.interest_by_region(inc_geo_code=True)
+    assert list(result['pizza']) == [80]
+    assert 'Could not find geo_code column; Skipping' in caplog.text
+
+
 def test_related_queries_empty_ranked_list_returns_none():
     with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
         pytrend = TrendReq()
