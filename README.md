@@ -95,6 +95,9 @@ pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.20
 * `requests_args`
   - A dict with additional parameters to pass along to the underlying requests library, for example verify=False to ignore SSL errors
 
+* SOCKS proxies
+  - Install the extra with `pip install pytrends[socks]`, then pass `socks5://` proxy URLs.
+
 Note: the parameter `hl` specifies host language for accessing Google Trends. 
 Note: only https proxies will work, and you need to add the port number after the proxy ip address
 
@@ -217,7 +220,7 @@ Many API methods use the following:
 pytrends.interest_over_time()
 ```
 
-Returns pandas.Dataframe
+Returns pandas.Dataframe. Google shows values below 1 as `<1`; pytrends stores them as `0`.
 
 <sub><sup>[back to top](#interest_over_time)</sub></sup>
 

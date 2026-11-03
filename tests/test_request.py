@@ -369,31 +369,10 @@ def test_response_without_content_type_raises_too_many_requests(mocked_responses
         pytrend.build_payload(kw_list=['pizza'])
 
 
-def test_retries_use_allowed_methods(mocked_responses):
-    mocked_responses.add(
-        method='GET',
-        url=f'{BASE_TRENDS_URL}/?geo=US',
-        headers={'Set-Cookie': 'NID=511=test; path=/'},
-    )
-    mocked_responses.add(
-        method='POST',
-        url=TrendReq.GENERAL_URL,
-        body=')]}\'\n{"widgets": []}',
-        content_type='application/json',
-    )
-    created_sessions = []
-    real_session = requests.session
-
-    def capturing_session():
-        session = real_session()
-        created_sessions.append(session)
-        return session
-
-    pytrend = TrendReq(retries=2, backoff_factor=0.1)
-    with patch('pytrends.request.requests.session', side_effect=capturing_session):
-        pytrend.build_payload(kw_list=['pizza'])
-
-    retry = created_sessions[-1].get_adapter('https://').max_retries
+def test_retries_use_allowed_methods():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq(retries=2, backoff_factor=0.1)
+    retry = pytrend.session.get_adapter('https://').max_retries
     assert retry.allowed_methods == frozenset({'GET', 'POST'})
 
 
@@ -866,3 +845,47 @@ def test_get_explore_url_rejects_different_timeframes():
         pytrend.build_payload(['pizza', 'bagel'], timeframe=['2021-01-01 2021-01-05', '2021-02-01 2021-02-05'])
     with pytest.raises(ValueError, match='one timeframe'):
         pytrend.get_explore_url()
+
+
+@pytest.mark.parametrize('geo, resolution', [
+    ('GB', 'CITY'),
+    ('FR', 'DMA'),
+    ('US-CA', 'CITY'),
+])
+def test_interest_by_region_sends_resolution_for_any_single_geo(geo, resolution):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo=geo)
+    pytrend.interest_by_region_widget = {'request': {'resolution': 'COUNTRY'}, 'token': 'token'}
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'geoMapData': []}}) as get_data:
+        pytrend.interest_by_region(resolution=resolution)
+    sent = json.loads(get_data.call_args.kwargs['params']['req'])
+    assert sent['resolution'] == resolution
+
+
+def test_requests_share_one_session_per_instance(mocked_responses):
+    mocked_responses.add(method='GET', url=f'{BASE_TRENDS_URL}/api/test', json={'default': {}})
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch('pytrends.request.requests.session', wraps=requests.session) as make_session:
+        pytrend = TrendReq()
+        pytrend._get_data(url=f'{BASE_TRENDS_URL}/api/test')
+        pytrend._get_data(url=f'{BASE_TRENDS_URL}/api/test')
+    assert make_session.call_count == 1
+
+
+def test_package_ships_py_typed_marker():
+    from importlib.resources import files
+    assert files('pytrends').joinpath('py.typed').is_file()
+
+
+def test_socks_extra_installs_pysocks():
+    import tomllib
+    metadata = tomllib.loads((Path(__file__).parent.parent / 'pyproject.toml').read_text())
+    assert any('socks' in dep for dep in metadata['project']['optional-dependencies']['socks'])
+
+
+def test_removed_methods_and_arguments_are_gone():
+    import inspect
+    assert not hasattr(TrendReq, 'get_historical_interest')
+    assert list(inspect.signature(TrendReq.realtime_trending_searches).parameters) == ['self', 'pn']

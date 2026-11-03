@@ -33,6 +33,9 @@ dependencies = [
     "urllib3>=1.26.5",
 ]
 
+[project.optional-dependencies]
+socks = ["requests[socks]"]
+
 [dependency-groups]
 dev = [
     "pytest",
@@ -44,6 +47,9 @@ dev = [
 
 [tool.setuptools]
 packages = ["pytrends"]
+
+[tool.setuptools.package-data]
+pytrends = ["py.typed"]
 
 [tool.coverage.run]
 branch = true
