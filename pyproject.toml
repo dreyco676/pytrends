@@ -1,44 +1,49 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytrends"
 version = "4.9.2"
 description = "Pseudo API for Google Trends"
+readme = "README.md"
 urls = {homepage = "https://github.com/dreyco676/pytrends"}
-requires-python = ">=3.7"
+requires-python = ">=3.12"
 authors = [
     {name = "John Hogue"},
     {name = "Burton DeWilde"},
     {email = "dreyco676@gmail.com"}
 ]
-license = {text = "Apache 2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "License :: OSI Approved :: Apache Software License"
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
 ]
 keywords = [
     "google trends api search"
 ]
-dynamic = ["readme", "dependencies"]
+dependencies = [
+    "requests>=2.32.4",
+    "pandas>=2.2.2",
+    "urllib3>=1.26.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-recording",
+    "responses",
+    "ruff>=0.17.3",
+]
 
 [tool.setuptools]
 packages = ["pytrends"]
-
-# Taken from https://github.com/pypa/setuptools/blob/d138ec08efc2dbaebb8752e215e324f38bd807a2/setuptools/tests/config/test_pyprojecttoml.py#L68
-[tool.setuptools.dynamic.readme]
-file = ["README.md"]
-content-type = "text/markdown"
-
-[tool.setuptools.dynamic.dependencies]
-file = ["requirements.txt"]
 
 [tool.coverage.run]
 branch = true
@@ -49,3 +54,15 @@ show_missing = true
 
 [tool.pytest.ini_options]
 addopts = "--cov pytrends/"
+
+[tool.ruff]
+line-length = 127
+
+[tool.ruff.lint]
+preview = true
+select = ["E", "W", "F", "C90"]
+# E226 (missing space around arithmetic operator) is ignored by flake8 by default too.
+ignore = ["E226"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10

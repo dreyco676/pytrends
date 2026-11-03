@@ -1,5 +1,0 @@
-flake8
-responses
-pytest
-pytest-cov
-pytest-recording
