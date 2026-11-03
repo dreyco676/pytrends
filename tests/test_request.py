@@ -680,8 +680,10 @@ def test_interest_by_region_warns_when_geo_code_requested_but_missing(caplog):
 
 
 def test_related_queries_empty_ranked_list_returns_none():
-    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
         pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
     pytrend.related_queries_widget_list = [{
         'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
         'keywordName': 'pizza',
@@ -693,8 +695,10 @@ def test_related_queries_empty_ranked_list_returns_none():
 
 
 def test_related_topics_empty_ranked_list_returns_none():
-    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
         pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
     pytrend.related_topics_widget_list = [{
         'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
         'keywordName': 'pizza',
@@ -710,8 +714,10 @@ def test_related_topics_empty_ranked_list_returns_none():
     ('related_topics', 'related_topics_widget_list'),
 ])
 def test_related_results_keyed_by_full_keyword_name(method_name, widget_list_name):
-    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
         pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
     setattr(pytrend, widget_list_name, [{
         'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [
             {'type': 'BROAD', 'value': 'blockchain'},
@@ -774,6 +780,21 @@ def test_interest_over_time_emits_no_warnings():
         pytrend.interest_over_time()
     future_warnings = [str(w.message) for w in caught if issubclass(w.category, FutureWarning)]
     assert future_warnings == []
+
+
+@pytest.mark.parametrize('method', [
+    'interest_over_time',
+    'multirange_interest_over_time',
+    'interest_by_region',
+    'related_queries',
+    'related_topics',
+])
+def test_data_methods_before_build_payload_raise_clear_error(method):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    with patch.object(TrendReq, '_get_data', side_effect=AssertionError('sent a request')), \
+            pytest.raises(ValueError, match=r'build_payload\(\)'):
+        getattr(pytrend, method)()
 
 
 def test_timeframe_list_length_mismatch_raises_value_error():
