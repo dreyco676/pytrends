@@ -203,7 +203,7 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
 - [ ] **1.8 LIVE** `test_live_related_queries_shape`: results keyed by keyword, with `top`/`rising` frames holding `query` and `value`, or `None`. Expected: pass.
 - [ ] **1.9 LIVE** `test_live_related_topics_single_keyword`: frames with `topic_title`, `topic_type` and `value`. Expected: unknown. Also try a 2-keyword comparison on trends.google.com. If the site shows related topics where pytrends returns `{}` (D14), add a TEST item to Phase 2; otherwise document the limitation.
 - [ ] **1.10 LIVE** `test_live_suggestions_and_categories`: suggestions return a list of `{mid, title, type}`; categories return a dict with `children`. Expected: pass.
-- [ ] **1.11 LIVE** `test_live_removed_endpoints`, parametrized over `trending_searches`, `today_searches`, `realtime_trending_searches` and `top_charts(2023)`. It documents the 404 as strict xfail(raises=ResponseError) and is reworked in 4.6.
+- [x] **1.11 LIVE** (done 2026-11-03; live run passes, not rate-limited, 3 of 3) `test_live_trending_rss_methods`, parametrized over `trending_searches`, `today_searches` and `realtime_trending_searches` with `pn='US'`. Each one returns at least one row from the live feed, with no 404. Replaces the removed-endpoint check (`top_charts` was removed in 4.7). Passed on the first run; it is a contract check, not a Red step.
 - [ ] **1.12 LIVE** (slow) `test_live_daily_data_two_months`: `get_daily_data('pizza', 2024, 1, 2024, 2, wait_time=2)` has no NaN in the scaled column. Also record what granularity Google returns for the "monthly" request over a short range; weekly or daily data would undermine the scaling method.
 - [ ] **1.13 EVAL** (optional) Rate limits: run sequential `build_payload` + `interest_over_time` calls at 0 s, 5 s and 30 s spacing. Stop at the first 429 or after 50 requests, and record the counts here. This informs the retry defaults and the README guidance.
 - [ ] **1.14 EVAL** Data fidelity. The departing maintainer claims in upstream #636 that bot traffic gets altered data. For 3 fixed queries, compare `interest_over_time()` with the CSV exported from trends.google.com in a logged-out browser. Record the correlation and the maximum difference.
@@ -253,31 +253,51 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
     - Remove `top_charts`, which has no replacement.
   - Open: the RSS items have no `entityNames`, so `realtime_trending_searches` loses that column. Decide its new columns while doing 4.5.
   - Close PR #621 (realtime articles) when this is merged.
-- [ ] **4.2 LIVE** `test_live_trending_rss_parses`: the RSS feed for `geo=US` answers 200 XML, and its items carry a title, approximate traffic, a pub date and news items. Save the response as `tests/fixtures/trending_rss_US.xml`.
-- [ ] **4.3 TEST** `test_trending_rss_items_parse_into_dataframe`, offline from the fixture. Use stdlib `xml.etree`; no lxml needed.
-- [ ] **4.4 TEST** `test_trending_searches_requests_rss_for_country_code`: `trending_searches(pn='US')` requests the feed with `geo=US` and returns the item titles, using a mocked response. Red today: the old endpoint returns 404.
-- [ ] **4.5 TEST** `test_today_searches_and_realtime_use_rss`: both methods use the same feed. `realtime_trending_searches` returns the columns decided above. Because `today_searches` is rewritten, D11 (the duplicate `requests_args`) goes away with it.
-- [ ] **4.6 TEST** `test_legacy_country_names_raise_value_error`: `trending_searches(pn='united_states')` raises `ValueError` that names the expected code format, without a network call.
-- [ ] **4.7 TIDY** Remove `top_charts` and its test and cassette. Delete the cassettes and tests for the old trending endpoints (`test_trending_searches_ok`, `test_realtime_trending_searches_ok`). Update 1.11 to a live check of the RSS methods.
+- [x] **4.2 LIVE** (done 2026-11-03; live test passes, not rate-limited: 200 `text/xml`, 10 items each with title, approx traffic, pubDate and news items) `test_live_trending_rss_parses`: the RSS feed for `geo=US` answers 200 XML, and its items carry a title, approximate traffic, a pub date and news items. Saved the response as `tests/fixtures/trending_rss_US.xml`.
+- [x] **4.3 TEST** (done 2026-11-03; Red was an ImportError for `parse_trending_rss`, Green with 48 passed) `test_trending_rss_items_parse_into_dataframe`, offline from the fixture. Use stdlib `xml.etree`; no lxml needed. The parser is `pytrends.request.parse_trending_rss(content)`, with columns `title`, `approx_traffic`, `pub_date`.
+- [x] **4.4 TEST** (done 2026-11-03; Red: the old endpoint call and the unmocked feed request; Green with 48 passed) `test_trending_searches_requests_rss_for_country_code`: `trending_searches(pn='US')` requests the feed with `geo=US` and returns the item titles, using a mocked response. Red today: the old endpoint returns 404.
+  - Returns a Series of titles. Session headers (`self.headers`, where `requests_args['headers']` ends up) are sent with the feed request.
+  - Also done here: deleted `test_trending_searches_ok` and its cassette (it pinned the 404 endpoint); `test_request_args_passing` now mocks the feed.
+  - Not yet covered: a non-200 feed response currently surfaces as a parse error, not a `ResponseError`.
+- [x] **4.5 TEST** (done 2026-11-03; Red: `today_searches` still hit the old endpoint; Green with 48 passed) `test_today_searches_and_realtime_use_rss`: both methods use the same feed. `realtime_trending_searches` returns the columns decided above. Because `today_searches` is rewritten, D11 (the duplicate `requests_args`) goes away with it.
+  - Decided: `realtime_trending_searches` returns `title`, `approx_traffic`, `pub_date` and `articles` (a list of `{title, url, source}` dicts from the news items; the old `entityNames` column is gone). `cat` and `count` are accepted but ignored, since the feed has no equivalent; removing them waits for 5.0.0.
+  - `today_searches` returns the same title Series as `trending_searches`. Both go through one `_trending_feed(pn)` helper.
+  - Also done here: deleted `test_realtime_trending_searches_ok` and its cassette (it pinned the old endpoint). `test_trending_rss_items_parse_into_dataframe` now expects the `articles` column.
+- [x] **4.6 TEST** (done 2026-11-03; Red: the request went out with `geo=united_states`; Green with 51 passed) `test_legacy_country_names_raise_value_error`: `trending_searches(pn='united_states')` raises `ValueError` that names the expected code format, without a network call.
+  - The check sits in the shared `_trending_feed(pn)` helper, so `today_searches` and `realtime_trending_searches` get it too. The test is parametrized over all three.
+  - The check accepts any two letters (`str.isalpha`, so not only `[A-Z]`) and passes them through unchanged. It doesn't check that the code is a real country.
+- [x] **4.7 TIDY** (done 2026-11-03; offline suite 50 passed, 2 deselected, `ruff check` clean) Remove `top_charts` and its test and cassette. Also removed its `TOP_CHARTS_URL` constant, its example in `examples/example.py`, and its README section, table-of-contents entry and feature-list entry. Delete the cassettes and tests for the old trending endpoints (both `test_trending_searches_ok` and `test_realtime_trending_searches_ok` were already removed in 4.4 and 4.5). Update 1.11 to a live check of the RSS methods.
 
 ### Phase 5: Structural cleanup (behavior pinned by Phases 2–4)
 
-- [ ] **5.1 TIDY** Extract the duplicated `req`/`token`/`tz` widget payload building into one helper.
-- [ ] **5.2 TIDY** Extract the ranked-list parsing shared by `related_queries` and `related_topics`.
-- [ ] **5.3 TEST** `test_get_data_strips_any_xssi_prefix`: bodies prefixed with `)]}'` or `)]}',`, with or without a newline, parse without `trim_chars` (the idea from PR #458). Then, as a TIDY step, remove the `trim_chars` arguments.
-- [ ] **5.4 TEST** `test_diagnostics_use_logging_not_print`: `GetGoogleCookie`, `interest_by_region` and `dailydata` log via `logging.getLogger("pytrends")` (check with caplog).
+- [x] **5.1 TIDY** (done 2026-11-03; structural, suite unchanged at 55 passed, `ruff check` clean) Extract the duplicated `req`/`token`/`tz` widget payload building into one helper.
+  - `_widget_params(widget)` replaces the five copies in `interest_over_time`, `multirange_interest_over_time`, `interest_by_region`, `related_topics` and `related_queries`. `build_payload`'s own `req` handling is a different shape and is left as it is.
+- [x] **5.2 TIDY** (done 2026-11-03; structural, suite unchanged at 55 passed, `ruff check` clean) Extract the ranked-list parsing shared by `related_queries` and `related_topics`.
+  - `_parse_ranked_list(req_json, index, make_frame)` returns the top (index 0) or rising (index 1) list, or `None` on `KeyError`/`IndexError`. The `try` covers the frame build too, as before. `_topic_frame` and `_query_frame` are the two per-method frame builders.
+- [x] **5.3 TEST** (done 2026-11-03; Red: 4 `JSONDecodeError`s, one per prefix form; Green with 54 passed; then TIDY removed the `trim_chars` parameter and its 7 call-site arguments, still 54 passed) `test_get_data_strips_any_xssi_prefix`: bodies prefixed with `)]}'` or `)]}',`, with or without a newline, parse without `trim_chars` (the idea from PR #458). Then, as a TIDY step, remove the `trim_chars` arguments.
+  - `_get_data` strips the prefix with `XSSI_PREFIX = re.compile(r"^\)\]\}',?\n?")`. The live cassettes still replay.
+- [x] **5.4 TEST** (done 2026-11-03; Red: proxy message printed to stdout, then the dailydata retry messages; Green with 55 passed) `test_diagnostics_use_logging_not_print`: `GetGoogleCookie`, `interest_by_region` and `dailydata` log via `logging.getLogger("pytrends")` (check with caplog).
+  - Covered by the test: the two `GetGoogleCookie` proxy messages (`logger.warning`), and the `dailydata` retry messages (`warning`), abort (`error`), and verbose progress (`info`). Asserts nothing reaches stdout.
+  - `interest_by_region` had no reachable `print`. Its `Could not find geo_code column` branch was dead: the code selects `geo_column` before the check, so the column always exists. I removed the branch rather than converting it, so there is nothing to log there. This departs from the plan's wording.
+  - Behavior change: verbose progress in `get_daily_data` no longer prints. It logs at `info`, which only shows if the application configures logging. Warnings still reach stderr through Python's default handler.
 
 ### Phase 6: Docs, canary, release
 
-- [ ] **6.1 TIDY** Update the README:
-  - Python ≥3.11;
-  - the removed endpoints and their replacements;
-  - delete the `get_historical_interest` section;
-  - caveats on rate limits and data fidelity from 1.13 and 1.14;
-  - fenced code blocks (PR #604).
-- [ ] **6.2 TIDY** Make `examples/example.py` use only working methods. Update CONTRIBUTING to cover uv, offline vs live tests and decoded cassettes, and fix the `pip -r install` typo.
+- [ ] **6.1 TIDY** Update the README (partly done 2026-11-03: the items below except the caveats are finished; the caveats wait for 1.13 and 1.14, so the item stays open):
+  - [x] Python 3.12 (the 0.1 decision; the original text said ≥3.11, which contradicted it), and the dependency list with lxml removed;
+  - [x] the removed endpoints and their replacements, in a new "Removed endpoints" section; trending and realtime documented for the RSS feed, with the new return shapes;
+  - [x] `get_historical_interest` section deleted, with its table-of-contents and method-list entries;
+  - [ ] caveats on rate limits and data fidelity from 1.13 and 1.14. A rate-limit note from our own runs is in place; the fidelity caveat is not written yet;
+  - [x] fenced code blocks (PR #604) for every indented example; the multirange example's extra parenthesis is fixed.
+  - Install instructions now show `pip install git+https://github.com/dreyco676/pytrends.git` until 5.0.0 is released.
+- [x] **6.2 TIDY** (done 2026-11-03; docs only, suite unchanged at 55 passed, `ruff check` clean) Make `examples/example.py` use only working methods. Update CONTRIBUTING to cover uv, offline vs live tests and decoded cassettes, and fix the `pip -r install` typo.
+  - `examples/example.py` needed no change: it calls only methods that still exist and are covered offline, and `top_charts` was removed in 4.7. It compiles. A live run is blocked by the explore rate limit, so it has not been run end to end.
+  - CONTRIBUTING: the setup section now uses `uv sync --locked` (the `pip -r` typo is gone with the requirements files), commands use `uv run`, and new sections cover running the suite offline, linting, and the cassette format (decoded bodies, filtered cookie, vendored in `.gitattributes`).
 - [ ] **6.3 TIDY** Add a weekly scheduled workflow that runs the live suite as a non-blocking canary. GitHub runner IPs may be throttled more than a residential IP.
+  - Skipped 2026-11-03: GitHub Actions is off for this account (no billing), so no workflow is added. Revisit if Actions is enabled.
 - [ ] **6.4 DECIDE** Release 5.0.0 (changelog; PyPI via trusted publishing), and delete `origin/poetry`.
+  - Prepared 2026-11-03, not published: `pyproject.toml` and `uv.lock` set to 5.0.0; `CHANGELOG.md` written (breaking changes, fixes, known limits). Suite 55 passed, lint clean.
+  - Open, needs the maintainer's go-ahead: publishing to PyPI (trusted publishing is not set up here), and deleting `origin/poetry` (a remote branch, so it cannot be undone from here).
 
 ## Backlog (unscheduled)
 

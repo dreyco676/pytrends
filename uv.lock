@@ -507,7 +507,7 @@ wheels = [
 
 [[package]]
 name = "pytrends"
-version = "4.9.2"
+version = "5.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "pandas" },
