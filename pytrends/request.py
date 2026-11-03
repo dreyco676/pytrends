@@ -228,6 +228,8 @@ class TrendReq(object):
         """Create the payload for related queries, interest over time and interest by region"""
         if gprop not in ['', 'images', 'news', 'youtube', 'froogle']:
             raise ValueError('gprop must be empty (to indicate web), images, news, youtube, or froogle')
+        if len(kw_list) > 5:
+            raise ValueError(f'build_payload accepts at most five keywords per request, got {len(kw_list)}')
         self.kw_list = kw_list
         # geo='' means worldwide; only an omitted geo falls back to the constructor default
         self.geo = self.default_geo if geo is None else geo
