@@ -1,4 +1,5 @@
 from itertools import product
+from typing import Optional
 import json
 import logging
 import re
@@ -85,8 +86,9 @@ class TrendReq(object):
     REALTIME_TRENDING_SEARCHES_URL = f'{BASE_TRENDS_URL}/api/realtimetrends'
     ERROR_CODES = (500, 502, 504, 429)
 
-    def __init__(self, hl='en-US', tz=360, geo='', timeout=(2, 5), proxies='',
-                 retries=0, backoff_factor=0, requests_args=None):
+    def __init__(self, hl: str = 'en-US', tz: int = 360, geo: str = '', timeout: tuple = (2, 5),
+                 proxies: list | str = '', retries: int = 0, backoff_factor: float = 0,
+                 requests_args: Optional[dict] = None):
         """
         Initialize default values for params
         """
@@ -118,15 +120,26 @@ class TrendReq(object):
 
         self.headers = {'accept-language': self.hl}
         self.headers.update(self.requests_args.pop('headers', {}))
+        # one session per instance: connections, headers and retries are set up once here
+        self.session = requests.session()
+        # Retries mechanism. Activated when one of statements >0 (best used for proxy)
+        if self.retries > 0 or self.backoff_factor > 0:
+            retry = Retry(total=self.retries, read=self.retries,
+                          connect=self.retries,
+                          backoff_factor=self.backoff_factor,
+                          status_forcelist=TrendReq.ERROR_CODES,
+                          allowed_methods=frozenset(['GET', 'POST']))
+            self.session.mount('https://', HTTPAdapter(max_retries=retry))
+        self.session.headers.update(self.headers)
 
     @staticmethod
-    def _nid_cookie(response):
+    def _nid_cookie(response: requests.Response) -> dict:
         """Return the NID cookie from a cookie-URL response, raising on any non-2xx status"""
         if not 200 <= response.status_code < 300:
             raise exceptions.ResponseError.from_response(response)
         return dict(filter(lambda i: i[0] == 'NID', response.cookies.items()))
 
-    def GetGoogleCookie(self):
+    def GetGoogleCookie(self) -> dict:
         """
         Gets google cookie (used for each and every proxy; once on init otherwise)
         Removes proxy from the list on proxy error
@@ -162,14 +175,14 @@ class TrendReq(object):
                         raise
                     continue
 
-    def _proxy_cookies(self):
+    def _proxy_cookies(self) -> dict:
         """Return the cookies for the current proxy, fetching them only the first time that proxy is used"""
         proxy = self.proxies[self.proxy_index]
         if proxy not in self._proxy_cookies_cache:
             self._proxy_cookies_cache[proxy] = self.GetGoogleCookie()
         return self._proxy_cookies_cache[proxy]
 
-    def GetNewProxy(self):
+    def GetNewProxy(self) -> None:
         """
         Increment proxy INDEX; zero on overflow
         """
@@ -178,34 +191,23 @@ class TrendReq(object):
         else:
             self.proxy_index = 0
 
-    def _get_data(self, url, method=GET_METHOD, **kwargs):
+    def _get_data(self, url: str, method: str = GET_METHOD, **kwargs) -> dict:
         """Send a request to Google and return the JSON response as a Python object
         :param url: the url to which the request will be sent
         :param method: the HTTP method ('get' or 'post')
         :param kwargs: any extra key arguments passed to the request builder (usually query parameters or data)
         :return:
         """
-        s = requests.session()
-        # Retries mechanism. Activated when one of statements >0 (best used for proxy)
-        if self.retries > 0 or self.backoff_factor > 0:
-            retry = Retry(total=self.retries, read=self.retries,
-                          connect=self.retries,
-                          backoff_factor=self.backoff_factor,
-                          status_forcelist=TrendReq.ERROR_CODES,
-                          allowed_methods=frozenset(['GET', 'POST']))
-            s.mount('https://', HTTPAdapter(max_retries=retry))
-
-        s.headers.update(self.headers)
         if len(self.proxies) > 0:
             self.cookies = self._proxy_cookies()
-            s.proxies.update({'https': self.proxies[self.proxy_index]})
+        # the proxy goes per request, so the shared session is never changed by a call
+        request_kwargs = {'timeout': self.timeout, 'cookies': self.cookies, **kwargs, **self.requests_args}
+        if len(self.proxies) > 0:
+            request_kwargs.setdefault('proxies', {'https': self.proxies[self.proxy_index]})
         if method == TrendReq.POST_METHOD:
-            response = s.post(url, timeout=self.timeout,
-                              cookies=self.cookies, **kwargs,
-                              **self.requests_args)  # DO NOT USE retries or backoff_factor here
+            response = self.session.post(url, **request_kwargs)
         else:
-            response = s.get(url, timeout=self.timeout, cookies=self.cookies,
-                             **kwargs, **self.requests_args)  # DO NOT USE retries or backoff_factor here
+            response = self.session.get(url, **request_kwargs)
         # check if the response contains json and throw an exception otherwise
         # Google mostly sends 'application/json' in the Content-Type header,
         # but occasionally it sends 'application/javascript
@@ -226,8 +228,8 @@ class TrendReq(object):
                 raise exceptions.TooManyRequestsError.from_response(response)
             raise exceptions.ResponseError.from_response(response)
 
-    def build_payload(self, kw_list, cat=0, timeframe='today 5-y', geo=None,
-                      gprop=''):
+    def build_payload(self, kw_list: list, cat: int = 0, timeframe: str | list = 'today 5-y',
+                      geo: str | list | None = None, gprop: str = '') -> None:
         """Create the payload for related queries, interest over time and interest by region"""
         if gprop not in ['', 'images', 'news', 'youtube', 'froogle']:
             raise ValueError('gprop must be empty (to indicate web), images, news, youtube, or froogle')
@@ -309,7 +311,7 @@ class TrendReq(object):
         if not self.token_payload:
             raise ValueError('call build_payload() before requesting data')
 
-    def interest_over_time(self):
+    def interest_over_time(self) -> pd.DataFrame:
         """Request data from Google's Interest Over Time section and return a dataframe"""
         self._require_build_payload()
 
@@ -368,7 +370,7 @@ class TrendReq(object):
             final.columns = pd.Index(list(final.columns))
         return final
 
-    def multirange_interest_over_time(self):
+    def multirange_interest_over_time(self) -> pd.DataFrame:
         """Request data from Google's Interest Over Time section across different time ranges and return a dataframe"""
         self._require_build_payload()
 
@@ -408,19 +410,16 @@ class TrendReq(object):
 
         return result_df
 
-    def interest_by_region(self, resolution='COUNTRY', inc_low_vol=False,
-                           inc_geo_code=False):
+    def interest_by_region(self, resolution: str = 'COUNTRY', inc_low_vol: bool = False,
+                           inc_geo_code: bool = False) -> pd.DataFrame:
         """Request data from Google's Interest by Region section and return a dataframe"""
         self._require_build_payload()
 
         # make the request
         # self.geo is always a list after build_payload, e.g. [''] for worldwide
-        if self.geo == ['']:
-            self.interest_by_region_widget['request'][
-                'resolution'] = resolution
-        elif self.geo == ['US'] and resolution in ['DMA', 'CITY', 'REGION']:
-            self.interest_by_region_widget['request'][
-                'resolution'] = resolution
+        # Any single geo sends the requested resolution. Google decides what an unsupported one returns.
+        if len(self.geo) == 1:
+            self.interest_by_region_widget['request']['resolution'] = resolution
 
         self.interest_by_region_widget['request'][
             'includeLowSearchVolumeGeos'] = inc_low_vol
@@ -459,7 +458,7 @@ class TrendReq(object):
         result_df.columns = pd.Index(list(result_df.columns))
         return result_df
 
-    def related_topics(self):
+    def related_topics(self) -> dict:
         """Request data from Google's Related Topics section and return a dictionary of dataframes
 
         If no top and/or rising related topics are found, the value for the key "top" and/or "rising" will be None
@@ -489,7 +488,7 @@ class TrendReq(object):
             result_dict[kw] = {'rising': df_rising, 'top': df_top}
         return result_dict
 
-    def related_queries(self):
+    def related_queries(self) -> dict:
         """Request data from Google's Related Queries section and return a dictionary of dataframes
 
         If no top and/or rising related queries are found, the value for the key "top" and/or "rising" will be None
@@ -527,22 +526,19 @@ class TrendReq(object):
                                 timeout=self.timeout, **self.requests_args)
         return parse_trending_rss(response.content)
 
-    def trending_searches(self, pn='US'):
+    def trending_searches(self, pn: str = 'US') -> pd.Series:
         """Request Google's Trending Now feed for a country code and return the trending search titles"""
         return self._trending_feed(pn)['title']
 
-    def today_searches(self, pn='US'):
+    def today_searches(self, pn: str = 'US') -> pd.Series:
         """Request Google's Trending Now feed for a country code and return the trending search titles"""
         return self._trending_feed(pn)['title']
 
-    def realtime_trending_searches(self, pn='US', cat='all', count=300):
-        """Request Google's Trending Now feed for a country code and return one row per trending search.
-
-        cat and count are ignored: the RSS feed has no equivalent parameters.
-        """
+    def realtime_trending_searches(self, pn: str = 'US') -> pd.DataFrame:
+        """Request Google's Trending Now feed for a country code and return one row per trending search."""
         return self._trending_feed(pn)
 
-    def suggestions(self, keyword):
+    def suggestions(self, keyword: str) -> list:
         """Request data from Google's Keyword Suggestion dropdown and return a dictionary"""
 
         # make the request
@@ -556,7 +552,7 @@ class TrendReq(object):
         )['default']['topics']
         return req_json
 
-    def get_explore_url(self):
+    def get_explore_url(self) -> str:
         """Return the trends.google.com explore link for the payload set up by the last build_payload()"""
         self._require_build_payload()
         request = json.loads(self.token_payload['req'])
@@ -577,7 +573,7 @@ class TrendReq(object):
             params['gprop'] = request['property']
         return f'{BASE_TRENDS_URL}/explore?{urlencode(params)}'
 
-    def categories(self):
+    def categories(self) -> dict:
         """Request available categories data from Google's API and return a dictionary"""
 
         params = {'hl': self.hl}
@@ -588,13 +584,3 @@ class TrendReq(object):
             method=TrendReq.GET_METHOD
         )
         return req_json
-
-    def get_historical_interest(self, *args, **kwargs):
-        raise NotImplementedError(
-            "This method has been removed for incorrectness. It will be removed completely in v5.\n"
-            "If you'd like similar functionality, please try implementing it yourself and "
-            "consider submitting a pull request to add it to pytrends.\n"
-            "\n"
-            "There is discussion at:\n"
-            "https://github.com/GeneralMills/pytrends/pull/542"
-        )
