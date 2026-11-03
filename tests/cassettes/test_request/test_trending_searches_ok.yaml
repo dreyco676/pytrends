@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU224bNxD9FUaGATswtZfYULI3tOgtKNqgzeU54C5nd1lxSZakvHIEAfmN/F6/
-        pENKih0DBQIU7YsEDmfnnDkzPNXoJ0kkU0MNqqkm8Ix0I7MOfL3xPX1+jCk2QX0rYDbaetJp5UH5
-        eiGU8IJJ6jomoc6uyISRaTPdB2bB/VhzuBUd0HhYNJUXXkLzg7Xakuv0mly80p78qDeKXz55klXJ
-        4b5y/k4CUVp1UC/+YL/9/O33r1++evPrd2v+xvz+7mUr5kXzdDcxOwhVpKVhnAs1FOk+dHXVaQ67
-        HqkW2Y3ZJnlutoRZpHvlmHLUgRV9zNy1rFsPNuAXZ33fl52W2hZneZ5/rhlK7FvN73YPLj1sPWVS
-        DKrYKJSsPFJZnRO28ZqkGNgeui6evUjNtkR96AhiGJHU8xA41X+GB5KSAFPun5KGRKwHxDZWXiTJ
-        PM/LQetBwrLTUyImNoBLICjpEqtb7ZdGDZckS9NzgrVQPWrBAPMnJGojep6GhsxJvCyL8EGjUt+C
-        7aWei1FwDmpvLOzmUXigzrAOCjzT2TJT7oVyJzlWq9VBDg6dtswLrQqcHOwZEdOwa7XlYHEy30zA
-        BSOuswCKMMXJxb1GqxXiX+4etx7qHKWlXpvioazx7svW0v3+TOpBf616rUUa+HlyuAqfJtn2wel9
-        7PF9dpNub665OSh8L+yRmYTeFzSoeuxRK3n3ZaOYZcFpuYnyZC9ybsTl7l+Tzb+eLMG1SM+TuB7h
-        p6ST/kAP06ER4j9Ax4H8kyR0hnYtPA3SHE3CiC1IGleoyP9fdcoTnXs46sQHKD7rdVotLpyR7K4Q
-        SgoFtJW6W5fHh31zjY/osJ2Ig/tQJdHJ0EqZUETwesF6Gt8sDU6KQbALYjU65iKkoEMyMlro68d9
-        oicaFksEFtHNqGQtyPqnmHMogg+uQUzMxD/WVKap2gZ9dlklbUMqfLXN25H5vz5+cjgFEpngXYhj
-        7tsRy8CfG3AeOHn3+hcyM4caedIHQXCGxI/CEfRPNIrl43pSkhnIWun5VDIJPTV/AwAA//8DACnq
-        QKBqBgAA
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"jaPJADRHNSMCkdSpQUHbiw\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-cs4gm_ds9vqmdSaDtxNOkA'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

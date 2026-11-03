@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU7WocNxR9FWWNwQ7WzkfW3WS+KC1tCDiFti70X9CM7swIayRV0nrWWRb6Gnm9
-        PkmvtLuxYygESvtnF13duefcc69ONfpJEsnUUINqqgk8I93IrANfb3xPXx9jik1Q3wuYjbaedFp5
-        UL5eCCW8YJK6jkmosysyYWTaTI+BWXA/1hzuRQc0HhZN5YWX0PxgrbZkla7IxU/akx/1RvHLFy+y
-        KjncV84/SCBKqw7qxe/vvjPvwb79+R3c3H+T3axuf/3ezovm5W5idhCqSEvDOBdqKNJ96Oqq0xx2
-        PVItsmuzTfLcbAmzSPfKMeWoAyv6mLlrWXc32IBfnPV9X3Zaaluc5Xn+uWYosW81f9g9ufSw9ZRJ
-        Mahio1Cy8khlfU7YxmuSYmB76Lp49SY12xL1oSOIYURSr0PgVP8VHkhKAky5f0kaErGeENtYeZEk
-        8zwvB60HCctOT4mY2AAugaCkS6xutV8aNVySLE3PCdZC9agFA8yfkKiN6HkaGjIn8bIswgeNSn0P
-        tpd6LkbBOai9sbCbR+GBOsM6KPBMZ8tMuRfKneRYr9cHOTh02jIvtCpwcrBnREzDrtWWg8XJfDsB
-        F4y4zgIowhQnF48ardeIf7l73nqoc5SWem2Kp7LGuy9bS/f7M6kH/bXqtRZp4OfJ4Sp8mmTbJ6cP
-        sccP2XW6vV5xc1D4UdgjMwm9L2hQ9dijVvLhy0Yxy4LTchPlyd7k3IjL3b8mm389WYJrkZ4ncT3C
-        T0kn/ZEepkMjxH+AjgP5J0noDO2d8DRIczQJI7YgaVyhIv9/1SlPdB7hqBMfofis12m1uHBGsodC
-        KCkU0Fbq7q48PuzrFT6iw3YiDu5DlUQnQytlQhHB6wXraXyzNDgpBsEuiNXomIuQgg7JyGihr5/3
-        iZ5oWCwRWEQ3o5K1IOu3MedQBB9cg5iYiX+sqUxTtQ367LJK2oZU+Gqb25H5v/785HAKJDLBuxDH
-        3NsRy8AfG3AeOPntlxsyM4caedIHQXCGxI/CEfRPNIrl83pSkhnIndLzqWQSemr+BgAA//8DAOYr
-        /0tqBgAA
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"XIBpMerGQIeLv61L4TSCrw\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-Bt7Gh2kl-WecOgEknwl3lA'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,46 +84,118 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22US-NY%22%7D%2C+%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22US-IL%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22US-NY%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%22today+5-y%22%2C+%22geo%22%3A+%22US-IL%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        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
-        RuMWjVpQgXQtMIf8PwAAAP//AwAe7wStDTkAAA==
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2018-04-22 2023-04-22","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{"region":"US-NY"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{"region":"US-IL"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{"region":"US-NY"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},{"geo":{"region":"US-IL"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza - New York"},{"text":"pizza - Illinois"},{"text":"bagel
+        - New York"},{"text":"bagel - Illinois"}],"showLegend":false,"showAverages":true,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZEUAQMaNHUJalRZTznMRoUuTCzWY8zBV","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"To
+        see a geographic comparison, please select the same location for all terms."},"id":"geos_note","type":"fe_text","title":"","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"pizza
+        - New York, Past 5 years"},"id":"TITLE_0","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"region":"US-NY"},"comparisonItem":[{"time":"2018-04-22
+        2023-04-22","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"DMA","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"US-NY","resolution":"metros","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by metro","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZEUAQPp6isoEhzxQW61xRbPxkaj76wcE","id":"GEO_MAP_0","type":"fe_geo_chart_explore","title":"Interest
+        by metro","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"region":"US-NY"},"time":"2018-04-22
+        2023-04-22","originalTimeRangeForExploreUrl":"New York","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-04-21
+        2018-04-21"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZEUAQFkHW-IjW_m06SET1BvGmJez_NhA","id":"RELATED_QUERIES_0","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"pizza
+        - Illinois, Past 5 years"},"id":"TITLE_1","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"region":"US-IL"},"comparisonItem":[{"time":"2018-04-22
+        2023-04-22","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"DMA","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"US-IL","resolution":"metros","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by metro","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_2","index":1,"bullet":"pizza","token":"APP6_UEAAAAAZEUAQNZ7k7GlYp50dFxSLZ5P-ELIAvfL","id":"GEO_MAP_1","type":"fe_geo_chart_explore","title":"Interest
+        by metro","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"region":"US-IL"},"time":"2018-04-22
+        2023-04-22","originalTimeRangeForExploreUrl":"Illinois","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-04-21
+        2018-04-21"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_2","keywordName":"pizza","token":"APP6_UEAAAAAZEUAQCRiVAadvzh4i05TpaxAyiluUbGf","id":"RELATED_QUERIES_1","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel
+        - New York, Past 5 years"},"id":"TITLE_2","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"region":"US-NY"},"comparisonItem":[{"time":"2018-04-22
+        2023-04-22","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"DMA","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"US-NY","resolution":"metros","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by metro","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_3","index":2,"bullet":"bagel","token":"APP6_UEAAAAAZEUAQBBlrCVD4U_yEIFf5cshs-rUAwYj","id":"GEO_MAP_2","type":"fe_geo_chart_explore","title":"Interest
+        by metro","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"region":"US-NY"},"time":"2018-04-22
+        2023-04-22","originalTimeRangeForExploreUrl":"New York","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-04-21
+        2018-04-21"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_3","keywordName":"bagel","token":"APP6_UEAAAAAZEUAQI5FcY3LgGBTLD8pbui1oGTIp6Zx","id":"RELATED_QUERIES_2","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel
+        - Illinois, Past 5 years"},"id":"TITLE_3","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"region":"US-IL"},"comparisonItem":[{"time":"2018-04-22
+        2023-04-22","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"DMA","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"US-IL","resolution":"metros","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by metro","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_4","index":3,"bullet":"bagel","token":"APP6_UEAAAAAZEUAQKWsv28Wu0rKuuhhWK5HILGYsoMe","id":"GEO_MAP_3","type":"fe_geo_chart_explore","title":"Interest
+        by metro","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"region":"US-IL"},"time":"2018-04-22
+        2023-04-22","originalTimeRangeForExploreUrl":"Illinois","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2013-04-21
+        2018-04-21"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"DE","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_4","keywordName":"bagel","token":"APP6_UEAAAAAZEUAQCXvW4aV4yXxAg4v9t9pG76H63We","id":"RELATED_QUERIES_3","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"},{"keyword":"pizza","name":"pizza","type":"Search term"},{"keyword":"bagel","name":"bagel","type":"Search
+        term"},{"keyword":"bagel","name":"bagel","type":"Search term"}],"timeRanges":["Past
+        5 years","Past 5 years","Past 5 years","Past 5 years"],"examples":[],"shareText":"Explore
+        search interest for pizza, pizza, bagel, bagel by time, location and popularity
+        on Google Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -135,8 +203,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce--gfBpujEh-lxYgoBXAHmqg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -183,118 +249,271 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/multiline?req=%7B%22time%22%3A+%222018-04-22+2023-04-22%22%2C+%22resolution%22%3A+%22WEEK%22%2C+%22locale%22%3A+%22en-US%22%2C+%22comparisonItem%22%3A+%5B%7B%22geo%22%3A+%7B%22region%22%3A+%22US-NY%22%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%7B%22geo%22%3A+%7B%22region%22%3A+%22US-IL%22%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%7B%22geo%22%3A+%7B%22region%22%3A+%22US-NY%22%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%2C+%7B%22geo%22%3A+%7B%22region%22%3A+%22US-IL%22%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%5D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZEUAQMaNHUJalRZTznMRoUuTCzWY8zBV&tz=360
   response:
     body:
-      string: !!binary |
-        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
+      string: ')]}'',
+
+        {"default":{"timelineData":[{"time":"1524355200","formattedTime":"Apr 22\u2009\u2013\u200928,
+        2018","formattedAxisTime":"Apr 22, 2018","value":[67,69,5,2],"hasData":[true,true,true,true],"formattedValue":["67","69","5","2"]},{"time":"1524960000","formattedTime":"Apr
+        29\u2009\u2013\u2009May 5, 2018","formattedAxisTime":"Apr 29, 2018","value":[65,70,6,2],"hasData":[true,true,true,true],"formattedValue":["65","70","6","2"]},{"time":"1525564800","formattedTime":"May
+        6\u2009\u2013\u200912, 2018","formattedAxisTime":"May 6, 2018","value":[68,64,6,2],"hasData":[true,true,true,true],"formattedValue":["68","64","6","2"]},{"time":"1526169600","formattedTime":"May
+        13\u2009\u2013\u200919, 2018","formattedAxisTime":"May 13, 2018","value":[67,68,5,2],"hasData":[true,true,true,true],"formattedValue":["67","68","5","2"]},{"time":"1526774400","formattedTime":"May
+        20\u2009\u2013\u200926, 2018","formattedAxisTime":"May 20, 2018","value":[66,68,5,2],"hasData":[true,true,true,true],"formattedValue":["66","68","5","2"]},{"time":"1527379200","formattedTime":"May
+        27\u2009\u2013\u2009Jun 2, 2018","formattedAxisTime":"May 27, 2018","value":[78,79,6,2],"hasData":[true,true,true,true],"formattedValue":["78","79","6","2"]},{"time":"1527984000","formattedTime":"Jun
+        3\u2009\u2013\u20099, 2018","formattedAxisTime":"Jun 3, 2018","value":[72,76,5,2],"hasData":[true,true,true,true],"formattedValue":["72","76","5","2"]},{"time":"1528588800","formattedTime":"Jun
+        10\u2009\u2013\u200916, 2018","formattedAxisTime":"Jun 10, 2018","value":[69,75,5,2],"hasData":[true,true,true,true],"formattedValue":["69","75","5","2"]},{"time":"1529193600","formattedTime":"Jun
+        17\u2009\u2013\u200923, 2018","formattedAxisTime":"Jun 17, 2018","value":[75,81,6,2],"hasData":[true,true,true,true],"formattedValue":["75","81","6","2"]},{"time":"1529798400","formattedTime":"Jun
+        24\u2009\u2013\u200930, 2018","formattedAxisTime":"Jun 24, 2018","value":[72,79,7,2],"hasData":[true,true,true,true],"formattedValue":["72","79","7","2"]},{"time":"1530403200","formattedTime":"Jul
+        1\u2009\u2013\u20097, 2018","formattedAxisTime":"Jul 1, 2018","value":[80,89,6,2],"hasData":[true,true,true,true],"formattedValue":["80","89","6","2"]},{"time":"1531008000","formattedTime":"Jul
+        8\u2009\u2013\u200914, 2018","formattedAxisTime":"Jul 8, 2018","value":[72,76,5,2],"hasData":[true,true,true,true],"formattedValue":["72","76","5","2"]},{"time":"1531612800","formattedTime":"Jul
+        15\u2009\u2013\u200921, 2018","formattedAxisTime":"Jul 15, 2018","value":[72,81,6,2],"hasData":[true,true,true,true],"formattedValue":["72","81","6","2"]},{"time":"1532217600","formattedTime":"Jul
+        22\u2009\u2013\u200928, 2018","formattedAxisTime":"Jul 22, 2018","value":[74,80,6,2],"hasData":[true,true,true,true],"formattedValue":["74","80","6","2"]},{"time":"1532822400","formattedTime":"Jul
+        29\u2009\u2013\u2009Aug 4, 2018","formattedAxisTime":"Jul 29, 2018","value":[77,88,6,2],"hasData":[true,true,true,true],"formattedValue":["77","88","6","2"]},{"time":"1533427200","formattedTime":"Aug
+        5\u2009\u2013\u200911, 2018","formattedAxisTime":"Aug 5, 2018","value":[77,87,6,2],"hasData":[true,true,true,true],"formattedValue":["77","87","6","2"]},{"time":"1534032000","formattedTime":"Aug
+        12\u2009\u2013\u200918, 2018","formattedAxisTime":"Aug 12, 2018","value":[72,74,6,2],"hasData":[true,true,true,true],"formattedValue":["72","74","6","2"]},{"time":"1534636800","formattedTime":"Aug
+        19\u2009\u2013\u200925, 2018","formattedAxisTime":"Aug 19, 2018","value":[79,75,6,2],"hasData":[true,true,true,true],"formattedValue":["79","75","6","2"]},{"time":"1535241600","formattedTime":"Aug
+        26\u2009\u2013\u2009Sep 1, 2018","formattedAxisTime":"Aug 26, 2018","value":[72,75,5,2],"hasData":[true,true,true,true],"formattedValue":["72","75","5","2"]},{"time":"1535846400","formattedTime":"Sep
+        2\u2009\u2013\u20098, 2018","formattedAxisTime":"Sep 2, 2018","value":[74,82,6,2],"hasData":[true,true,true,true],"formattedValue":["74","82","6","2"]},{"time":"1536451200","formattedTime":"Sep
+        9\u2009\u2013\u200915, 2018","formattedAxisTime":"Sep 9, 2018","value":[67,72,6,2],"hasData":[true,true,true,true],"formattedValue":["67","72","6","2"]},{"time":"1537056000","formattedTime":"Sep
+        16\u2009\u2013\u200922, 2018","formattedAxisTime":"Sep 16, 2018","value":[67,70,6,2],"hasData":[true,true,true,true],"formattedValue":["67","70","6","2"]},{"time":"1537660800","formattedTime":"Sep
+        23\u2009\u2013\u200929, 2018","formattedAxisTime":"Sep 23, 2018","value":[70,73,6,2],"hasData":[true,true,true,true],"formattedValue":["70","73","6","2"]},{"time":"1538265600","formattedTime":"Sep
+        30\u2009\u2013\u2009Oct 6, 2018","formattedAxisTime":"Sep 30, 2018","value":[68,73,5,2],"hasData":[true,true,true,true],"formattedValue":["68","73","5","2"]},{"time":"1538870400","formattedTime":"Oct
+        7\u2009\u2013\u200913, 2018","formattedAxisTime":"Oct 7, 2018","value":[69,78,5,2],"hasData":[true,true,true,true],"formattedValue":["69","78","5","2"]},{"time":"1539475200","formattedTime":"Oct
+        14\u2009\u2013\u200920, 2018","formattedAxisTime":"Oct 14, 2018","value":[71,74,6,2],"hasData":[true,true,true,true],"formattedValue":["71","74","6","2"]},{"time":"1540080000","formattedTime":"Oct
+        21\u2009\u2013\u200927, 2018","formattedAxisTime":"Oct 21, 2018","value":[65,73,5,2],"hasData":[true,true,true,true],"formattedValue":["65","73","5","2"]},{"time":"1540684800","formattedTime":"Oct
+        28\u2009\u2013\u2009Nov 3, 2018","formattedAxisTime":"Oct 28, 2018","value":[72,81,5,2],"hasData":[true,true,true,true],"formattedValue":["72","81","5","2"]},{"time":"1541289600","formattedTime":"Nov
+        4\u2009\u2013\u200910, 2018","formattedAxisTime":"Nov 4, 2018","value":[66,66,6,2],"hasData":[true,true,true,true],"formattedValue":["66","66","6","2"]},{"time":"1541894400","formattedTime":"Nov
+        11\u2009\u2013\u200917, 2018","formattedAxisTime":"Nov 11, 2018","value":[67,73,6,2],"hasData":[true,true,true,true],"formattedValue":["67","73","6","2"]},{"time":"1542499200","formattedTime":"Nov
+        18\u2009\u2013\u200924, 2018","formattedAxisTime":"Nov 18, 2018","value":[68,75,6,3],"hasData":[true,true,true,true],"formattedValue":["68","75","6","3"]},{"time":"1543104000","formattedTime":"Nov
+        25\u2009\u2013\u2009Dec 1, 2018","formattedAxisTime":"Nov 25, 2018","value":[63,72,5,2],"hasData":[true,true,true,true],"formattedValue":["63","72","5","2"]},{"time":"1543708800","formattedTime":"Dec
+        2\u2009\u2013\u20098, 2018","formattedAxisTime":"Dec 2, 2018","value":[64,61,5,2],"hasData":[true,true,true,true],"formattedValue":["64","61","5","2"]},{"time":"1544313600","formattedTime":"Dec
+        9\u2009\u2013\u200915, 2018","formattedAxisTime":"Dec 9, 2018","value":[65,69,5,2],"hasData":[true,true,true,true],"formattedValue":["65","69","5","2"]},{"time":"1544918400","formattedTime":"Dec
+        16\u2009\u2013\u200922, 2018","formattedAxisTime":"Dec 16, 2018","value":[67,80,6,2],"hasData":[true,true,true,true],"formattedValue":["67","80","6","2"]},{"time":"1545523200","formattedTime":"Dec
+        23\u2009\u2013\u200929, 2018","formattedAxisTime":"Dec 23, 2018","value":[80,99,7,2],"hasData":[true,true,true,true],"formattedValue":["80","99","7","2"]},{"time":"1546128000","formattedTime":"Dec
+        30, 2018\u2009\u2013\u2009Jan 5, 2019","formattedAxisTime":"Dec 30, 2018","value":[81,96,6,2],"hasData":[true,true,true,true],"formattedValue":["81","96","6","2"]},{"time":"1546732800","formattedTime":"Jan
+        6\u2009\u2013\u200912, 2019","formattedAxisTime":"Jan 6, 2019","value":[65,68,5,2],"hasData":[true,true,true,true],"formattedValue":["65","68","5","2"]},{"time":"1547337600","formattedTime":"Jan
+        13\u2009\u2013\u200919, 2019","formattedAxisTime":"Jan 13, 2019","value":[61,75,5,2],"hasData":[true,true,true,true],"formattedValue":["61","75","5","2"]},{"time":"1547942400","formattedTime":"Jan
+        20\u2009\u2013\u200926, 2019","formattedAxisTime":"Jan 20, 2019","value":[63,72,5,2],"hasData":[true,true,true,true],"formattedValue":["63","72","5","2"]},{"time":"1548547200","formattedTime":"Jan
+        27\u2009\u2013\u2009Feb 2, 2019","formattedAxisTime":"Jan 27, 2019","value":[65,79,5,2],"hasData":[true,true,true,true],"formattedValue":["65","79","5","2"]},{"time":"1549152000","formattedTime":"Feb
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Feb 3, 2019","value":[66,84,5,2],"hasData":[true,true,true,true],"formattedValue":["66","84","5","2"]},{"time":"1549756800","formattedTime":"Feb
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Feb 10, 2019","value":[70,90,5,2],"hasData":[true,true,true,true],"formattedValue":["70","90","5","2"]},{"time":"1550361600","formattedTime":"Feb
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Feb 17, 2019","value":[75,88,5,2],"hasData":[true,true,true,true],"formattedValue":["75","88","5","2"]},{"time":"1550966400","formattedTime":"Feb
+        24\u2009\u2013\u2009Mar 2, 2019","formattedAxisTime":"Feb 24, 2019","value":[65,77,5,2],"hasData":[true,true,true,true],"formattedValue":["65","77","5","2"]},{"time":"1551571200","formattedTime":"Mar
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Mar 3, 2019","value":[64,75,5,2],"hasData":[true,true,true,true],"formattedValue":["64","75","5","2"]},{"time":"1552176000","formattedTime":"Mar
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Mar 10, 2019","value":[63,78,5,2],"hasData":[true,true,true,true],"formattedValue":["63","78","5","2"]},{"time":"1552780800","formattedTime":"Mar
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Mar 17, 2019","value":[66,77,6,2],"hasData":[true,true,true,true],"formattedValue":["66","77","6","2"]},{"time":"1553385600","formattedTime":"Mar
+        24\u2009\u2013\u200930, 2019","formattedAxisTime":"Mar 24, 2019","value":[64,82,6,2],"hasData":[true,true,true,true],"formattedValue":["64","82","6","2"]},{"time":"1553990400","formattedTime":"Mar
+        31\u2009\u2013\u2009Apr 6, 2019","formattedAxisTime":"Mar 31, 2019","value":[62,71,5,2],"hasData":[true,true,true,true],"formattedValue":["62","71","5","2"]},{"time":"1554595200","formattedTime":"Apr
+        7\u2009\u2013\u200913, 2019","formattedAxisTime":"Apr 7, 2019","value":[59,70,5,2],"hasData":[true,true,true,true],"formattedValue":["59","70","5","2"]},{"time":"1555200000","formattedTime":"Apr
+        14\u2009\u2013\u200920, 2019","formattedAxisTime":"Apr 14, 2019","value":[72,72,6,2],"hasData":[true,true,true,true],"formattedValue":["72","72","6","2"]},{"time":"1555804800","formattedTime":"Apr
+        21\u2009\u2013\u200927, 2019","formattedAxisTime":"Apr 21, 2019","value":[69,72,5,2],"hasData":[true,true,true,true],"formattedValue":["69","72","5","2"]},{"time":"1556409600","formattedTime":"Apr
+        28\u2009\u2013\u2009May 4, 2019","formattedAxisTime":"Apr 28, 2019","value":[62,69,5,2],"hasData":[true,true,true,true],"formattedValue":["62","69","5","2"]},{"time":"1557014400","formattedTime":"May
+        5\u2009\u2013\u200911, 2019","formattedAxisTime":"May 5, 2019","value":[63,74,6,2],"hasData":[true,true,true,true],"formattedValue":["63","74","6","2"]},{"time":"1557619200","formattedTime":"May
+        12\u2009\u2013\u200918, 2019","formattedAxisTime":"May 12, 2019","value":[67,72,5,2],"hasData":[true,true,true,true],"formattedValue":["67","72","5","2"]},{"time":"1558224000","formattedTime":"May
+        19\u2009\u2013\u200925, 2019","formattedAxisTime":"May 19, 2019","value":[67,69,5,2],"hasData":[true,true,true,true],"formattedValue":["67","69","5","2"]},{"time":"1558828800","formattedTime":"May
+        26\u2009\u2013\u2009Jun 1, 2019","formattedAxisTime":"May 26, 2019","value":[68,81,6,2],"hasData":[true,true,true,true],"formattedValue":["68","81","6","2"]},{"time":"1559433600","formattedTime":"Jun
+        2\u2009\u2013\u20098, 2019","formattedAxisTime":"Jun 2, 2019","value":[67,80,6,2],"hasData":[true,true,true,true],"formattedValue":["67","80","6","2"]},{"time":"1560038400","formattedTime":"Jun
+        9\u2009\u2013\u200915, 2019","formattedAxisTime":"Jun 9, 2019","value":[66,81,5,2],"hasData":[true,true,true,true],"formattedValue":["66","81","5","2"]},{"time":"1560643200","formattedTime":"Jun
+        16\u2009\u2013\u200922, 2019","formattedAxisTime":"Jun 16, 2019","value":[62,80,5,2],"hasData":[true,true,true,true],"formattedValue":["62","80","5","2"]},{"time":"1561248000","formattedTime":"Jun
+        23\u2009\u2013\u200929, 2019","formattedAxisTime":"Jun 23, 2019","value":[73,78,6,2],"hasData":[true,true,true,true],"formattedValue":["73","78","6","2"]},{"time":"1561852800","formattedTime":"Jun
+        30\u2009\u2013\u2009Jul 6, 2019","formattedAxisTime":"Jun 30, 2019","value":[81,95,7,2],"hasData":[true,true,true,true],"formattedValue":["81","95","7","2"]},{"time":"1562457600","formattedTime":"Jul
+        7\u2009\u2013\u200913, 2019","formattedAxisTime":"Jul 7, 2019","value":[71,81,15,4],"hasData":[true,true,true,true],"formattedValue":["71","81","15","4"]},{"time":"1563062400","formattedTime":"Jul
+        14\u2009\u2013\u200920, 2019","formattedAxisTime":"Jul 14, 2019","value":[73,83,8,3],"hasData":[true,true,true,true],"formattedValue":["73","83","8","3"]},{"time":"1563667200","formattedTime":"Jul
+        21\u2009\u2013\u200927, 2019","formattedAxisTime":"Jul 21, 2019","value":[71,83,6,2],"hasData":[true,true,true,true],"formattedValue":["71","83","6","2"]},{"time":"1564272000","formattedTime":"Jul
+        28\u2009\u2013\u2009Aug 3, 2019","formattedAxisTime":"Jul 28, 2019","value":[70,79,6,2],"hasData":[true,true,true,true],"formattedValue":["70","79","6","2"]},{"time":"1564876800","formattedTime":"Aug
+        4\u2009\u2013\u200910, 2019","formattedAxisTime":"Aug 4, 2019","value":[71,81,6,2],"hasData":[true,true,true,true],"formattedValue":["71","81","6","2"]},{"time":"1565481600","formattedTime":"Aug
+        11\u2009\u2013\u200917, 2019","formattedAxisTime":"Aug 11, 2019","value":[69,76,6,2],"hasData":[true,true,true,true],"formattedValue":["69","76","6","2"]},{"time":"1566086400","formattedTime":"Aug
+        18\u2009\u2013\u200924, 2019","formattedAxisTime":"Aug 18, 2019","value":[70,73,6,2],"hasData":[true,true,true,true],"formattedValue":["70","73","6","2"]},{"time":"1566691200","formattedTime":"Aug
+        25\u2009\u2013\u200931, 2019","formattedAxisTime":"Aug 25, 2019","value":[68,71,6,2],"hasData":[true,true,true,true],"formattedValue":["68","71","6","2"]},{"time":"1567296000","formattedTime":"Sep
+        1\u2009\u2013\u20097, 2019","formattedAxisTime":"Sep 1, 2019","value":[70,72,6,2],"hasData":[true,true,true,true],"formattedValue":["70","72","6","2"]},{"time":"1567900800","formattedTime":"Sep
+        8\u2009\u2013\u200914, 2019","formattedAxisTime":"Sep 8, 2019","value":[63,73,5,2],"hasData":[true,true,true,true],"formattedValue":["63","73","5","2"]},{"time":"1568505600","formattedTime":"Sep
+        15\u2009\u2013\u200921, 2019","formattedAxisTime":"Sep 15, 2019","value":[58,70,4,2],"hasData":[true,true,true,true],"formattedValue":["58","70","4","2"]},{"time":"1569110400","formattedTime":"Sep
+        22\u2009\u2013\u200928, 2019","formattedAxisTime":"Sep 22, 2019","value":[62,75,5,2],"hasData":[true,true,true,true],"formattedValue":["62","75","5","2"]},{"time":"1569715200","formattedTime":"Sep
+        29\u2009\u2013\u2009Oct 5, 2019","formattedAxisTime":"Sep 29, 2019","value":[69,79,6,2],"hasData":[true,true,true,true],"formattedValue":["69","79","6","2"]},{"time":"1570320000","formattedTime":"Oct
+        6\u2009\u2013\u200912, 2019","formattedAxisTime":"Oct 6, 2019","value":[67,75,6,2],"hasData":[true,true,true,true],"formattedValue":["67","75","6","2"]},{"time":"1570924800","formattedTime":"Oct
+        13\u2009\u2013\u200919, 2019","formattedAxisTime":"Oct 13, 2019","value":[66,75,5,2],"hasData":[true,true,true,true],"formattedValue":["66","75","5","2"]},{"time":"1571529600","formattedTime":"Oct
+        20\u2009\u2013\u200926, 2019","formattedAxisTime":"Oct 20, 2019","value":[63,80,5,2],"hasData":[true,true,true,true],"formattedValue":["63","80","5","2"]},{"time":"1572134400","formattedTime":"Oct
+        27\u2009\u2013\u2009Nov 2, 2019","formattedAxisTime":"Oct 27, 2019","value":[66,79,5,2],"hasData":[true,true,true,true],"formattedValue":["66","79","5","2"]},{"time":"1572739200","formattedTime":"Nov
+        3\u2009\u2013\u20099, 2019","formattedAxisTime":"Nov 3, 2019","value":[64,66,5,2],"hasData":[true,true,true,true],"formattedValue":["64","66","5","2"]},{"time":"1573344000","formattedTime":"Nov
+        10\u2009\u2013\u200916, 2019","formattedAxisTime":"Nov 10, 2019","value":[61,69,5,2],"hasData":[true,true,true,true],"formattedValue":["61","69","5","2"]},{"time":"1573948800","formattedTime":"Nov
+        17\u2009\u2013\u200923, 2019","formattedAxisTime":"Nov 17, 2019","value":[60,64,5,2],"hasData":[true,true,true,true],"formattedValue":["60","64","5","2"]},{"time":"1574553600","formattedTime":"Nov
+        24\u2009\u2013\u200930, 2019","formattedAxisTime":"Nov 24, 2019","value":[61,71,6,2],"hasData":[true,true,true,true],"formattedValue":["61","71","6","2"]},{"time":"1575158400","formattedTime":"Dec
+        1\u2009\u2013\u20097, 2019","formattedAxisTime":"Dec 1, 2019","value":[59,67,5,2],"hasData":[true,true,true,true],"formattedValue":["59","67","5","2"]},{"time":"1575763200","formattedTime":"Dec
+        8\u2009\u2013\u200914, 2019","formattedAxisTime":"Dec 8, 2019","value":[60,70,5,2],"hasData":[true,true,true,true],"formattedValue":["60","70","5","2"]},{"time":"1576368000","formattedTime":"Dec
+        15\u2009\u2013\u200921, 2019","formattedAxisTime":"Dec 15, 2019","value":[64,68,5,2],"hasData":[true,true,true,true],"formattedValue":["64","68","5","2"]},{"time":"1576972800","formattedTime":"Dec
+        22\u2009\u2013\u200928, 2019","formattedAxisTime":"Dec 22, 2019","value":[76,90,7,2],"hasData":[true,true,true,true],"formattedValue":["76","90","7","2"]},{"time":"1577577600","formattedTime":"Dec
+        29, 2019\u2009\u2013\u2009Jan 4, 2020","formattedAxisTime":"Dec 29, 2019","value":[82,92,7,2],"hasData":[true,true,true,true],"formattedValue":["82","92","7","2"]},{"time":"1578182400","formattedTime":"Jan
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Jan 5, 2020","value":[59,69,5,2],"hasData":[true,true,true,true],"formattedValue":["59","69","5","2"]},{"time":"1578787200","formattedTime":"Jan
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Jan 12, 2020","value":[58,67,5,2],"hasData":[true,true,true,true],"formattedValue":["58","67","5","2"]},{"time":"1579392000","formattedTime":"Jan
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Jan 19, 2020","value":[62,73,5,2],"hasData":[true,true,true,true],"formattedValue":["62","73","5","2"]},{"time":"1579996800","formattedTime":"Jan
+        26\u2009\u2013\u2009Feb 1, 2020","formattedAxisTime":"Jan 26, 2020","value":[59,69,5,2],"hasData":[true,true,true,true],"formattedValue":["59","69","5","2"]},{"time":"1580601600","formattedTime":"Feb
+        2\u2009\u2013\u20098, 2020","formattedAxisTime":"Feb 2, 2020","value":[64,74,5,2],"hasData":[true,true,true,true],"formattedValue":["64","74","5","2"]},{"time":"1581206400","formattedTime":"Feb
+        9\u2009\u2013\u200915, 2020","formattedAxisTime":"Feb 9, 2020","value":[68,84,5,2],"hasData":[true,true,true,true],"formattedValue":["68","84","5","2"]},{"time":"1581811200","formattedTime":"Feb
+        16\u2009\u2013\u200922, 2020","formattedAxisTime":"Feb 16, 2020","value":[65,78,5,2],"hasData":[true,true,true,true],"formattedValue":["65","78","5","2"]},{"time":"1582416000","formattedTime":"Feb
+        23\u2009\u2013\u200929, 2020","formattedAxisTime":"Feb 23, 2020","value":[66,72,5,2],"hasData":[true,true,true,true],"formattedValue":["66","72","5","2"]},{"time":"1583020800","formattedTime":"Mar
+        1\u2009\u2013\u20097, 2020","formattedAxisTime":"Mar 1, 2020","value":[59,72,5,2],"hasData":[true,true,true,true],"formattedValue":["59","72","5","2"]},{"time":"1583625600","formattedTime":"Mar
+        8\u2009\u2013\u200914, 2020","formattedAxisTime":"Mar 8, 2020","value":[56,62,5,2],"hasData":[true,true,true,true],"formattedValue":["56","62","5","2"]},{"time":"1584230400","formattedTime":"Mar
+        15\u2009\u2013\u200921, 2020","formattedAxisTime":"Mar 15, 2020","value":[57,65,4,2],"hasData":[true,true,true,true],"formattedValue":["57","65","4","2"]},{"time":"1584835200","formattedTime":"Mar
+        22\u2009\u2013\u200928, 2020","formattedAxisTime":"Mar 22, 2020","value":[63,66,4,2],"hasData":[true,true,true,true],"formattedValue":["63","66","4","2"]},{"time":"1585440000","formattedTime":"Mar
+        29\u2009\u2013\u2009Apr 4, 2020","formattedAxisTime":"Mar 29, 2020","value":[68,75,5,2],"hasData":[true,true,true,true],"formattedValue":["68","75","5","2"]},{"time":"1586044800","formattedTime":"Apr
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Apr 5, 2020","value":[74,75,5,2],"hasData":[true,true,true,true],"formattedValue":["74","75","5","2"]},{"time":"1586649600","formattedTime":"Apr
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Apr 12, 2020","value":[70,79,5,2],"hasData":[true,true,true,true],"formattedValue":["70","79","5","2"]},{"time":"1587254400","formattedTime":"Apr
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Apr 19, 2020","value":[73,77,5,2],"hasData":[true,true,true,true],"formattedValue":["73","77","5","2"]},{"time":"1587859200","formattedTime":"Apr
+        26\u2009\u2013\u2009May 2, 2020","formattedAxisTime":"Apr 26, 2020","value":[70,81,5,3],"hasData":[true,true,true,true],"formattedValue":["70","81","5","3"]},{"time":"1588464000","formattedTime":"May
+        3\u2009\u2013\u20099, 2020","formattedAxisTime":"May 3, 2020","value":[65,75,6,2],"hasData":[true,true,true,true],"formattedValue":["65","75","6","2"]},{"time":"1589068800","formattedTime":"May
+        10\u2009\u2013\u200916, 2020","formattedAxisTime":"May 10, 2020","value":[73,81,5,3],"hasData":[true,true,true,true],"formattedValue":["73","81","5","3"]},{"time":"1589673600","formattedTime":"May
+        17\u2009\u2013\u200923, 2020","formattedAxisTime":"May 17, 2020","value":[69,83,5,2],"hasData":[true,true,true,true],"formattedValue":["69","83","5","2"]},{"time":"1590278400","formattedTime":"May
+        24\u2009\u2013\u200930, 2020","formattedAxisTime":"May 24, 2020","value":[70,84,5,2],"hasData":[true,true,true,true],"formattedValue":["70","84","5","2"]},{"time":"1590883200","formattedTime":"May
+        31\u2009\u2013\u2009Jun 6, 2020","formattedAxisTime":"May 31, 2020","value":[64,85,5,3],"hasData":[true,true,true,true],"formattedValue":["64","85","5","3"]},{"time":"1591488000","formattedTime":"Jun
+        7\u2009\u2013\u200913, 2020","formattedAxisTime":"Jun 7, 2020","value":[66,81,5,2],"hasData":[true,true,true,true],"formattedValue":["66","81","5","2"]},{"time":"1592092800","formattedTime":"Jun
+        14\u2009\u2013\u200920, 2020","formattedAxisTime":"Jun 14, 2020","value":[66,79,6,3],"hasData":[true,true,true,true],"formattedValue":["66","79","6","3"]},{"time":"1592697600","formattedTime":"Jun
+        21\u2009\u2013\u200927, 2020","formattedAxisTime":"Jun 21, 2020","value":[65,81,6,2],"hasData":[true,true,true,true],"formattedValue":["65","81","6","2"]},{"time":"1593302400","formattedTime":"Jun
+        28\u2009\u2013\u2009Jul 4, 2020","formattedAxisTime":"Jun 28, 2020","value":[69,82,6,3],"hasData":[true,true,true,true],"formattedValue":["69","82","6","3"]},{"time":"1593907200","formattedTime":"Jul
+        5\u2009\u2013\u200911, 2020","formattedAxisTime":"Jul 5, 2020","value":[70,84,5,2],"hasData":[true,true,true,true],"formattedValue":["70","84","5","2"]},{"time":"1594512000","formattedTime":"Jul
+        12\u2009\u2013\u200918, 2020","formattedAxisTime":"Jul 12, 2020","value":[68,83,5,3],"hasData":[true,true,true,true],"formattedValue":["68","83","5","3"]},{"time":"1595116800","formattedTime":"Jul
+        19\u2009\u2013\u200925, 2020","formattedAxisTime":"Jul 19, 2020","value":[70,78,6,3],"hasData":[true,true,true,true],"formattedValue":["70","78","6","3"]},{"time":"1595721600","formattedTime":"Jul
+        26\u2009\u2013\u2009Aug 1, 2020","formattedAxisTime":"Jul 26, 2020","value":[75,84,6,3],"hasData":[true,true,true,true],"formattedValue":["75","84","6","3"]},{"time":"1596326400","formattedTime":"Aug
+        2\u2009\u2013\u20098, 2020","formattedAxisTime":"Aug 2, 2020","value":[72,80,6,3],"hasData":[true,true,true,true],"formattedValue":["72","80","6","3"]},{"time":"1596931200","formattedTime":"Aug
+        9\u2009\u2013\u200915, 2020","formattedAxisTime":"Aug 9, 2020","value":[68,82,6,3],"hasData":[true,true,true,true],"formattedValue":["68","82","6","3"]},{"time":"1597536000","formattedTime":"Aug
+        16\u2009\u2013\u200922, 2020","formattedAxisTime":"Aug 16, 2020","value":[68,73,6,3],"hasData":[true,true,true,true],"formattedValue":["68","73","6","3"]},{"time":"1598140800","formattedTime":"Aug
+        23\u2009\u2013\u200929, 2020","formattedAxisTime":"Aug 23, 2020","value":[70,74,6,2],"hasData":[true,true,true,true],"formattedValue":["70","74","6","2"]},{"time":"1598745600","formattedTime":"Aug
+        30\u2009\u2013\u2009Sep 5, 2020","formattedAxisTime":"Aug 30, 2020","value":[65,69,6,3],"hasData":[true,true,true,true],"formattedValue":["65","69","6","3"]},{"time":"1599350400","formattedTime":"Sep
+        6\u2009\u2013\u200912, 2020","formattedAxisTime":"Sep 6, 2020","value":[67,75,5,3],"hasData":[true,true,true,true],"formattedValue":["67","75","5","3"]},{"time":"1599955200","formattedTime":"Sep
+        13\u2009\u2013\u200919, 2020","formattedAxisTime":"Sep 13, 2020","value":[61,69,5,3],"hasData":[true,true,true,true],"formattedValue":["61","69","5","3"]},{"time":"1600560000","formattedTime":"Sep
+        20\u2009\u2013\u200926, 2020","formattedAxisTime":"Sep 20, 2020","value":[62,67,6,2],"hasData":[true,true,true,true],"formattedValue":["62","67","6","2"]},{"time":"1601164800","formattedTime":"Sep
+        27\u2009\u2013\u2009Oct 3, 2020","formattedAxisTime":"Sep 27, 2020","value":[61,71,6,3],"hasData":[true,true,true,true],"formattedValue":["61","71","6","3"]},{"time":"1601769600","formattedTime":"Oct
+        4\u2009\u2013\u200910, 2020","formattedAxisTime":"Oct 4, 2020","value":[61,66,5,3],"hasData":[true,true,true,true],"formattedValue":["61","66","5","3"]},{"time":"1602374400","formattedTime":"Oct
+        11\u2009\u2013\u200917, 2020","formattedAxisTime":"Oct 11, 2020","value":[66,73,6,2],"hasData":[true,true,true,true],"formattedValue":["66","73","6","2"]},{"time":"1602979200","formattedTime":"Oct
+        18\u2009\u2013\u200924, 2020","formattedAxisTime":"Oct 18, 2020","value":[66,70,5,3],"hasData":[true,true,true,true],"formattedValue":["66","70","5","3"]},{"time":"1603584000","formattedTime":"Oct
+        25\u2009\u2013\u200931, 2020","formattedAxisTime":"Oct 25, 2020","value":[65,74,5,2],"hasData":[true,true,true,true],"formattedValue":["65","74","5","2"]},{"time":"1604188800","formattedTime":"Nov
+        1\u2009\u2013\u20097, 2020","formattedAxisTime":"Nov 1, 2020","value":[54,57,4,2],"hasData":[true,true,true,true],"formattedValue":["54","57","4","2"]},{"time":"1604793600","formattedTime":"Nov
+        8\u2009\u2013\u200914, 2020","formattedAxisTime":"Nov 8, 2020","value":[59,65,5,2],"hasData":[true,true,true,true],"formattedValue":["59","65","5","2"]},{"time":"1605398400","formattedTime":"Nov
+        15\u2009\u2013\u200921, 2020","formattedAxisTime":"Nov 15, 2020","value":[64,69,5,3],"hasData":[true,true,true,true],"formattedValue":["64","69","5","3"]},{"time":"1606003200","formattedTime":"Nov
+        22\u2009\u2013\u200928, 2020","formattedAxisTime":"Nov 22, 2020","value":[59,66,6,2],"hasData":[true,true,true,true],"formattedValue":["59","66","6","2"]},{"time":"1606608000","formattedTime":"Nov
+        29\u2009\u2013\u2009Dec 5, 2020","formattedAxisTime":"Nov 29, 2020","value":[63,70,5,2],"hasData":[true,true,true,true],"formattedValue":["63","70","5","2"]},{"time":"1607212800","formattedTime":"Dec
+        6\u2009\u2013\u200912, 2020","formattedAxisTime":"Dec 6, 2020","value":[62,69,5,3],"hasData":[true,true,true,true],"formattedValue":["62","69","5","3"]},{"time":"1607817600","formattedTime":"Dec
+        13\u2009\u2013\u200919, 2020","formattedAxisTime":"Dec 13, 2020","value":[65,72,5,3],"hasData":[true,true,true,true],"formattedValue":["65","72","5","3"]},{"time":"1608422400","formattedTime":"Dec
+        20\u2009\u2013\u200926, 2020","formattedAxisTime":"Dec 20, 2020","value":[67,87,7,3],"hasData":[true,true,true,true],"formattedValue":["67","87","7","3"]},{"time":"1609027200","formattedTime":"Dec
+        27, 2020\u2009\u2013\u2009Jan 2, 2021","formattedAxisTime":"Dec 27, 2020","value":[81,95,7,3],"hasData":[true,true,true,true],"formattedValue":["81","95","7","3"]},{"time":"1609632000","formattedTime":"Jan
+        3\u2009\u2013\u20099, 2021","formattedAxisTime":"Jan 3, 2021","value":[66,68,5,2],"hasData":[true,true,true,true],"formattedValue":["66","68","5","2"]},{"time":"1610236800","formattedTime":"Jan
+        10\u2009\u2013\u200916, 2021","formattedAxisTime":"Jan 10, 2021","value":[66,71,5,2],"hasData":[true,true,true,true],"formattedValue":["66","71","5","2"]},{"time":"1610841600","formattedTime":"Jan
+        17\u2009\u2013\u200923, 2021","formattedAxisTime":"Jan 17, 2021","value":[65,68,5,2],"hasData":[true,true,true,true],"formattedValue":["65","68","5","2"]},{"time":"1611446400","formattedTime":"Jan
+        24\u2009\u2013\u200930, 2021","formattedAxisTime":"Jan 24, 2021","value":[67,71,5,3],"hasData":[true,true,true,true],"formattedValue":["67","71","5","3"]},{"time":"1612051200","formattedTime":"Jan
+        31\u2009\u2013\u2009Feb 6, 2021","formattedAxisTime":"Jan 31, 2021","value":[63,73,5,2],"hasData":[true,true,true,true],"formattedValue":["63","73","5","2"]},{"time":"1612656000","formattedTime":"Feb
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Feb 7, 2021","value":[65,84,6,2],"hasData":[true,true,true,true],"formattedValue":["65","84","6","2"]},{"time":"1613260800","formattedTime":"Feb
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Feb 14, 2021","value":[69,77,5,2],"hasData":[true,true,true,true],"formattedValue":["69","77","5","2"]},{"time":"1613865600","formattedTime":"Feb
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Feb 21, 2021","value":[65,69,5,2],"hasData":[true,true,true,true],"formattedValue":["65","69","5","2"]},{"time":"1614470400","formattedTime":"Feb
+        28\u2009\u2013\u2009Mar 6, 2021","formattedAxisTime":"Feb 28, 2021","value":[64,66,5,3],"hasData":[true,true,true,true],"formattedValue":["64","66","5","3"]},{"time":"1615075200","formattedTime":"Mar
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Mar 7, 2021","value":[60,68,5,2],"hasData":[true,true,true,true],"formattedValue":["60","68","5","2"]},{"time":"1615680000","formattedTime":"Mar
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Mar 14, 2021","value":[65,77,5,2],"hasData":[true,true,true,true],"formattedValue":["65","77","5","2"]},{"time":"1616284800","formattedTime":"Mar
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Mar 21, 2021","value":[67,75,6,3],"hasData":[true,true,true,true],"formattedValue":["67","75","6","3"]},{"time":"1616889600","formattedTime":"Mar
+        28\u2009\u2013\u2009Apr 3, 2021","formattedAxisTime":"Mar 28, 2021","value":[70,76,6,3],"hasData":[true,true,true,true],"formattedValue":["70","76","6","3"]},{"time":"1617494400","formattedTime":"Apr
+        4\u2009\u2013\u200910, 2021","formattedAxisTime":"Apr 4, 2021","value":[64,73,5,2],"hasData":[true,true,true,true],"formattedValue":["64","73","5","2"]},{"time":"1618099200","formattedTime":"Apr
+        11\u2009\u2013\u200917, 2021","formattedAxisTime":"Apr 11, 2021","value":[64,73,5,3],"hasData":[true,true,true,true],"formattedValue":["64","73","5","3"]},{"time":"1618704000","formattedTime":"Apr
+        18\u2009\u2013\u200924, 2021","formattedAxisTime":"Apr 18, 2021","value":[68,71,5,2],"hasData":[true,true,true,true],"formattedValue":["68","71","5","2"]},{"time":"1619308800","formattedTime":"Apr
+        25\u2009\u2013\u2009May 1, 2021","formattedAxisTime":"Apr 25, 2021","value":[63,71,6,2],"hasData":[true,true,true,true],"formattedValue":["63","71","6","2"]},{"time":"1619913600","formattedTime":"May
+        2\u2009\u2013\u20098, 2021","formattedAxisTime":"May 2, 2021","value":[64,65,5,2],"hasData":[true,true,true,true],"formattedValue":["64","65","5","2"]},{"time":"1620518400","formattedTime":"May
+        9\u2009\u2013\u200915, 2021","formattedAxisTime":"May 9, 2021","value":[69,71,5,3],"hasData":[true,true,true,true],"formattedValue":["69","71","5","3"]},{"time":"1621123200","formattedTime":"May
+        16\u2009\u2013\u200922, 2021","formattedAxisTime":"May 16, 2021","value":[66,72,6,3],"hasData":[true,true,true,true],"formattedValue":["66","72","6","3"]},{"time":"1621728000","formattedTime":"May
+        23\u2009\u2013\u200929, 2021","formattedAxisTime":"May 23, 2021","value":[65,75,5,3],"hasData":[true,true,true,true],"formattedValue":["65","75","5","3"]},{"time":"1622332800","formattedTime":"May
+        30\u2009\u2013\u2009Jun 5, 2021","formattedAxisTime":"May 30, 2021","value":[66,77,6,3],"hasData":[true,true,true,true],"formattedValue":["66","77","6","3"]},{"time":"1622937600","formattedTime":"Jun
+        6\u2009\u2013\u200912, 2021","formattedAxisTime":"Jun 6, 2021","value":[66,70,6,2],"hasData":[true,true,true,true],"formattedValue":["66","70","6","2"]},{"time":"1623542400","formattedTime":"Jun
+        13\u2009\u2013\u200919, 2021","formattedAxisTime":"Jun 13, 2021","value":[67,78,6,3],"hasData":[true,true,true,true],"formattedValue":["67","78","6","3"]},{"time":"1624147200","formattedTime":"Jun
+        20\u2009\u2013\u200926, 2021","formattedAxisTime":"Jun 20, 2021","value":[71,84,6,3],"hasData":[true,true,true,true],"formattedValue":["71","84","6","3"]},{"time":"1624752000","formattedTime":"Jun
+        27\u2009\u2013\u2009Jul 3, 2021","formattedAxisTime":"Jun 27, 2021","value":[69,77,5,2],"hasData":[true,true,true,true],"formattedValue":["69","77","5","2"]},{"time":"1625356800","formattedTime":"Jul
+        4\u2009\u2013\u200910, 2021","formattedAxisTime":"Jul 4, 2021","value":[72,85,6,3],"hasData":[true,true,true,true],"formattedValue":["72","85","6","3"]},{"time":"1625961600","formattedTime":"Jul
+        11\u2009\u2013\u200917, 2021","formattedAxisTime":"Jul 11, 2021","value":[70,79,6,3],"hasData":[true,true,true,true],"formattedValue":["70","79","6","3"]},{"time":"1626566400","formattedTime":"Jul
+        18\u2009\u2013\u200924, 2021","formattedAxisTime":"Jul 18, 2021","value":[69,72,7,3],"hasData":[true,true,true,true],"formattedValue":["69","72","7","3"]},{"time":"1627171200","formattedTime":"Jul
+        25\u2009\u2013\u200931, 2021","formattedAxisTime":"Jul 25, 2021","value":[67,76,6,3],"hasData":[true,true,true,true],"formattedValue":["67","76","6","3"]},{"time":"1627776000","formattedTime":"Aug
+        1\u2009\u2013\u20097, 2021","formattedAxisTime":"Aug 1, 2021","value":[66,74,6,2],"hasData":[true,true,true,true],"formattedValue":["66","74","6","2"]},{"time":"1628380800","formattedTime":"Aug
+        8\u2009\u2013\u200914, 2021","formattedAxisTime":"Aug 8, 2021","value":[68,75,6,2],"hasData":[true,true,true,true],"formattedValue":["68","75","6","2"]},{"time":"1628985600","formattedTime":"Aug
+        15\u2009\u2013\u200921, 2021","formattedAxisTime":"Aug 15, 2021","value":[70,75,6,2],"hasData":[true,true,true,true],"formattedValue":["70","75","6","2"]},{"time":"1629590400","formattedTime":"Aug
+        22\u2009\u2013\u200928, 2021","formattedAxisTime":"Aug 22, 2021","value":[69,71,6,3],"hasData":[true,true,true,true],"formattedValue":["69","71","6","3"]},{"time":"1630195200","formattedTime":"Aug
+        29\u2009\u2013\u2009Sep 4, 2021","formattedAxisTime":"Aug 29, 2021","value":[62,75,6,3],"hasData":[true,true,true,true],"formattedValue":["62","75","6","3"]},{"time":"1630800000","formattedTime":"Sep
+        5\u2009\u2013\u200911, 2021","formattedAxisTime":"Sep 5, 2021","value":[66,77,6,3],"hasData":[true,true,true,true],"formattedValue":["66","77","6","3"]},{"time":"1631404800","formattedTime":"Sep
+        12\u2009\u2013\u200918, 2021","formattedAxisTime":"Sep 12, 2021","value":[59,72,6,3],"hasData":[true,true,true,true],"formattedValue":["59","72","6","3"]},{"time":"1632009600","formattedTime":"Sep
+        19\u2009\u2013\u200925, 2021","formattedAxisTime":"Sep 19, 2021","value":[64,75,6,2],"hasData":[true,true,true,true],"formattedValue":["64","75","6","2"]},{"time":"1632614400","formattedTime":"Sep
+        26\u2009\u2013\u2009Oct 2, 2021","formattedAxisTime":"Sep 26, 2021","value":[62,74,6,2],"hasData":[true,true,true,true],"formattedValue":["62","74","6","2"]},{"time":"1633219200","formattedTime":"Oct
+        3\u2009\u2013\u20099, 2021","formattedAxisTime":"Oct 3, 2021","value":[60,67,6,2],"hasData":[true,true,true,true],"formattedValue":["60","67","6","2"]},{"time":"1633824000","formattedTime":"Oct
+        10\u2009\u2013\u200916, 2021","formattedAxisTime":"Oct 10, 2021","value":[63,73,6,2],"hasData":[true,true,true,true],"formattedValue":["63","73","6","2"]},{"time":"1634428800","formattedTime":"Oct
+        17\u2009\u2013\u200923, 2021","formattedAxisTime":"Oct 17, 2021","value":[59,69,6,2],"hasData":[true,true,true,true],"formattedValue":["59","69","6","2"]},{"time":"1635033600","formattedTime":"Oct
+        24\u2009\u2013\u200930, 2021","formattedAxisTime":"Oct 24, 2021","value":[59,78,5,2],"hasData":[true,true,true,true],"formattedValue":["59","78","5","2"]},{"time":"1635638400","formattedTime":"Oct
+        31\u2009\u2013\u2009Nov 6, 2021","formattedAxisTime":"Oct 31, 2021","value":[61,72,5,3],"hasData":[true,true,true,true],"formattedValue":["61","72","5","3"]},{"time":"1636243200","formattedTime":"Nov
+        7\u2009\u2013\u200913, 2021","formattedAxisTime":"Nov 7, 2021","value":[60,67,6,2],"hasData":[true,true,true,true],"formattedValue":["60","67","6","2"]},{"time":"1636848000","formattedTime":"Nov
+        14\u2009\u2013\u200920, 2021","formattedAxisTime":"Nov 14, 2021","value":[60,68,6,2],"hasData":[true,true,true,true],"formattedValue":["60","68","6","2"]},{"time":"1637452800","formattedTime":"Nov
+        21\u2009\u2013\u200927, 2021","formattedAxisTime":"Nov 21, 2021","value":[59,70,7,3],"hasData":[true,true,true,true],"formattedValue":["59","70","7","3"]},{"time":"1638057600","formattedTime":"Nov
+        28\u2009\u2013\u2009Dec 4, 2021","formattedAxisTime":"Nov 28, 2021","value":[58,66,5,2],"hasData":[true,true,true,true],"formattedValue":["58","66","5","2"]},{"time":"1638662400","formattedTime":"Dec
+        5\u2009\u2013\u200911, 2021","formattedAxisTime":"Dec 5, 2021","value":[68,74,6,2],"hasData":[true,true,true,true],"formattedValue":["68","74","6","2"]},{"time":"1639267200","formattedTime":"Dec
+        12\u2009\u2013\u200918, 2021","formattedAxisTime":"Dec 12, 2021","value":[68,74,7,3],"hasData":[true,true,true,true],"formattedValue":["68","74","7","3"]},{"time":"1639872000","formattedTime":"Dec
+        19\u2009\u2013\u200925, 2021","formattedAxisTime":"Dec 19, 2021","value":[73,87,8,3],"hasData":[true,true,true,true],"formattedValue":["73","87","8","3"]},{"time":"1640476800","formattedTime":"Dec
+        26, 2021\u2009\u2013\u2009Jan 1, 2022","formattedAxisTime":"Dec 26, 2021","value":[79,100,7,3],"hasData":[true,true,true,true],"formattedValue":["79","100","7","3"],"axisNote":{"text":"An
+        improvement to our data collection system was applied from 1/1/22."}},{"time":"1641081600","formattedTime":"Jan
+        2\u2009\u2013\u20098, 2022","formattedAxisTime":"Jan 2, 2022","value":[62,69,6,3],"hasData":[true,true,true,true],"formattedValue":["62","69","6","3"]},{"time":"1641686400","formattedTime":"Jan
+        9\u2009\u2013\u200915, 2022","formattedAxisTime":"Jan 9, 2022","value":[63,67,6,3],"hasData":[true,true,true,true],"formattedValue":["63","67","6","3"]},{"time":"1642291200","formattedTime":"Jan
+        16\u2009\u2013\u200922, 2022","formattedAxisTime":"Jan 16, 2022","value":[59,70,6,3],"hasData":[true,true,true,true],"formattedValue":["59","70","6","3"]},{"time":"1642896000","formattedTime":"Jan
+        23\u2009\u2013\u200929, 2022","formattedAxisTime":"Jan 23, 2022","value":[59,69,6,3],"hasData":[true,true,true,true],"formattedValue":["59","69","6","3"]},{"time":"1643500800","formattedTime":"Jan
+        30\u2009\u2013\u2009Feb 5, 2022","formattedAxisTime":"Jan 30, 2022","value":[57,65,5,2],"hasData":[true,true,true,true],"formattedValue":["57","65","5","2"]},{"time":"1644105600","formattedTime":"Feb
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Feb 6, 2022","value":[67,76,6,3],"hasData":[true,true,true,true],"formattedValue":["67","76","6","3"]},{"time":"1644710400","formattedTime":"Feb
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Feb 13, 2022","value":[63,81,6,3],"hasData":[true,true,true,true],"formattedValue":["63","81","6","3"]},{"time":"1645315200","formattedTime":"Feb
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Feb 20, 2022","value":[65,69,6,2],"hasData":[true,true,true,true],"formattedValue":["65","69","6","2"]},{"time":"1645920000","formattedTime":"Feb
+        27\u2009\u2013\u2009Mar 5, 2022","formattedAxisTime":"Feb 27, 2022","value":[58,68,6,3],"hasData":[true,true,true,true],"formattedValue":["58","68","6","3"]},{"time":"1646524800","formattedTime":"Mar
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Mar 6, 2022","value":[58,65,6,2],"hasData":[true,true,true,true],"formattedValue":["58","65","6","2"]},{"time":"1647129600","formattedTime":"Mar
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Mar 13, 2022","value":[62,75,6,3],"hasData":[true,true,true,true],"formattedValue":["62","75","6","3"]},{"time":"1647734400","formattedTime":"Mar
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Mar 20, 2022","value":[63,73,7,3],"hasData":[true,true,true,true],"formattedValue":["63","73","7","3"]},{"time":"1648339200","formattedTime":"Mar
+        27\u2009\u2013\u2009Apr 2, 2022","formattedAxisTime":"Mar 27, 2022","value":[60,71,6,2],"hasData":[true,true,true,true],"formattedValue":["60","71","6","2"]},{"time":"1648944000","formattedTime":"Apr
+        3\u2009\u2013\u20099, 2022","formattedAxisTime":"Apr 3, 2022","value":[60,67,6,3],"hasData":[true,true,true,true],"formattedValue":["60","67","6","3"]},{"time":"1649548800","formattedTime":"Apr
+        10\u2009\u2013\u200916, 2022","formattedAxisTime":"Apr 10, 2022","value":[63,68,7,3],"hasData":[true,true,true,true],"formattedValue":["63","68","7","3"]},{"time":"1650153600","formattedTime":"Apr
+        17\u2009\u2013\u200923, 2022","formattedAxisTime":"Apr 17, 2022","value":[62,68,6,2],"hasData":[true,true,true,true],"formattedValue":["62","68","6","2"]},{"time":"1650758400","formattedTime":"Apr
+        24\u2009\u2013\u200930, 2022","formattedAxisTime":"Apr 24, 2022","value":[58,68,6,2],"hasData":[true,true,true,true],"formattedValue":["58","68","6","2"]},{"time":"1651363200","formattedTime":"May
+        1\u2009\u2013\u20097, 2022","formattedAxisTime":"May 1, 2022","value":[59,68,6,2],"hasData":[true,true,true,true],"formattedValue":["59","68","6","2"]},{"time":"1651968000","formattedTime":"May
+        8\u2009\u2013\u200914, 2022","formattedAxisTime":"May 8, 2022","value":[60,68,6,2],"hasData":[true,true,true,true],"formattedValue":["60","68","6","2"]},{"time":"1652572800","formattedTime":"May
+        15\u2009\u2013\u200921, 2022","formattedAxisTime":"May 15, 2022","value":[61,74,7,2],"hasData":[true,true,true,true],"formattedValue":["61","74","7","2"]},{"time":"1653177600","formattedTime":"May
+        22\u2009\u2013\u200928, 2022","formattedAxisTime":"May 22, 2022","value":[59,66,7,3],"hasData":[true,true,true,true],"formattedValue":["59","66","7","3"]},{"time":"1653782400","formattedTime":"May
+        29\u2009\u2013\u2009Jun 4, 2022","formattedAxisTime":"May 29, 2022","value":[64,73,7,3],"hasData":[true,true,true,true],"formattedValue":["64","73","7","3"]},{"time":"1654387200","formattedTime":"Jun
+        5\u2009\u2013\u200911, 2022","formattedAxisTime":"Jun 5, 2022","value":[62,73,6,3],"hasData":[true,true,true,true],"formattedValue":["62","73","6","3"]},{"time":"1654992000","formattedTime":"Jun
+        12\u2009\u2013\u200918, 2022","formattedAxisTime":"Jun 12, 2022","value":[60,73,7,2],"hasData":[true,true,true,true],"formattedValue":["60","73","7","2"]},{"time":"1655596800","formattedTime":"Jun
+        19\u2009\u2013\u200925, 2022","formattedAxisTime":"Jun 19, 2022","value":[61,73,7,3],"hasData":[true,true,true,true],"formattedValue":["61","73","7","3"]},{"time":"1656201600","formattedTime":"Jun
+        26\u2009\u2013\u2009Jul 2, 2022","formattedAxisTime":"Jun 26, 2022","value":[68,75,7,3],"hasData":[true,true,true,true],"formattedValue":["68","75","7","3"]},{"time":"1656806400","formattedTime":"Jul
+        3\u2009\u2013\u20099, 2022","formattedAxisTime":"Jul 3, 2022","value":[76,81,7,3],"hasData":[true,true,true,true],"formattedValue":["76","81","7","3"]},{"time":"1657411200","formattedTime":"Jul
+        10\u2009\u2013\u200916, 2022","formattedAxisTime":"Jul 10, 2022","value":[67,80,6,3],"hasData":[true,true,true,true],"formattedValue":["67","80","6","3"]},{"time":"1658016000","formattedTime":"Jul
+        17\u2009\u2013\u200923, 2022","formattedAxisTime":"Jul 17, 2022","value":[65,77,6,2],"hasData":[true,true,true,true],"formattedValue":["65","77","6","2"]},{"time":"1658620800","formattedTime":"Jul
+        24\u2009\u2013\u200930, 2022","formattedAxisTime":"Jul 24, 2022","value":[66,73,7,3],"hasData":[true,true,true,true],"formattedValue":["66","73","7","3"]},{"time":"1659225600","formattedTime":"Jul
+        31\u2009\u2013\u2009Aug 6, 2022","formattedAxisTime":"Jul 31, 2022","value":[66,76,6,2],"hasData":[true,true,true,true],"formattedValue":["66","76","6","2"]},{"time":"1659830400","formattedTime":"Aug
+        7\u2009\u2013\u200913, 2022","formattedAxisTime":"Aug 7, 2022","value":[63,76,7,3],"hasData":[true,true,true,true],"formattedValue":["63","76","7","3"]},{"time":"1660435200","formattedTime":"Aug
+        14\u2009\u2013\u200920, 2022","formattedAxisTime":"Aug 14, 2022","value":[62,75,7,3],"hasData":[true,true,true,true],"formattedValue":["62","75","7","3"]},{"time":"1661040000","formattedTime":"Aug
+        21\u2009\u2013\u200927, 2022","formattedAxisTime":"Aug 21, 2022","value":[66,70,7,3],"hasData":[true,true,true,true],"formattedValue":["66","70","7","3"]},{"time":"1661644800","formattedTime":"Aug
+        28\u2009\u2013\u2009Sep 3, 2022","formattedAxisTime":"Aug 28, 2022","value":[61,67,6,3],"hasData":[true,true,true,true],"formattedValue":["61","67","6","3"]},{"time":"1662249600","formattedTime":"Sep
+        4\u2009\u2013\u200910, 2022","formattedAxisTime":"Sep 4, 2022","value":[58,68,7,3],"hasData":[true,true,true,true],"formattedValue":["58","68","7","3"]},{"time":"1662854400","formattedTime":"Sep
+        11\u2009\u2013\u200917, 2022","formattedAxisTime":"Sep 11, 2022","value":[61,66,6,3],"hasData":[true,true,true,true],"formattedValue":["61","66","6","3"]},{"time":"1663459200","formattedTime":"Sep
+        18\u2009\u2013\u200924, 2022","formattedAxisTime":"Sep 18, 2022","value":[58,69,6,3],"hasData":[true,true,true,true],"formattedValue":["58","69","6","3"]},{"time":"1664064000","formattedTime":"Sep
+        25\u2009\u2013\u2009Oct 1, 2022","formattedAxisTime":"Sep 25, 2022","value":[58,63,6,3],"hasData":[true,true,true,true],"formattedValue":["58","63","6","3"]},{"time":"1664668800","formattedTime":"Oct
+        2\u2009\u2013\u20098, 2022","formattedAxisTime":"Oct 2, 2022","value":[58,66,7,3],"hasData":[true,true,true,true],"formattedValue":["58","66","7","3"]},{"time":"1665273600","formattedTime":"Oct
+        9\u2009\u2013\u200915, 2022","formattedAxisTime":"Oct 9, 2022","value":[60,68,7,3],"hasData":[true,true,true,true],"formattedValue":["60","68","7","3"]},{"time":"1665878400","formattedTime":"Oct
+        16\u2009\u2013\u200922, 2022","formattedAxisTime":"Oct 16, 2022","value":[58,68,6,3],"hasData":[true,true,true,true],"formattedValue":["58","68","6","3"]},{"time":"1666483200","formattedTime":"Oct
+        23\u2009\u2013\u200929, 2022","formattedAxisTime":"Oct 23, 2022","value":[56,68,6,2],"hasData":[true,true,true,true],"formattedValue":["56","68","6","2"]},{"time":"1667088000","formattedTime":"Oct
+        30\u2009\u2013\u2009Nov 5, 2022","formattedAxisTime":"Oct 30, 2022","value":[57,66,6,2],"hasData":[true,true,true,true],"formattedValue":["57","66","6","2"]},{"time":"1667692800","formattedTime":"Nov
+        6\u2009\u2013\u200912, 2022","formattedAxisTime":"Nov 6, 2022","value":[54,58,6,2],"hasData":[true,true,true,true],"formattedValue":["54","58","6","2"]},{"time":"1668297600","formattedTime":"Nov
+        13\u2009\u2013\u200919, 2022","formattedAxisTime":"Nov 13, 2022","value":[55,58,6,2],"hasData":[true,true,true,true],"formattedValue":["55","58","6","2"]},{"time":"1668902400","formattedTime":"Nov
+        20\u2009\u2013\u200926, 2022","formattedAxisTime":"Nov 20, 2022","value":[57,66,7,2],"hasData":[true,true,true,true],"formattedValue":["57","66","7","2"]},{"time":"1669507200","formattedTime":"Nov
+        27\u2009\u2013\u2009Dec 3, 2022","formattedAxisTime":"Nov 27, 2022","value":[53,61,6,3],"hasData":[true,true,true,true],"formattedValue":["53","61","6","3"]},{"time":"1670112000","formattedTime":"Dec
+        4\u2009\u2013\u200910, 2022","formattedAxisTime":"Dec 4, 2022","value":[55,61,6,2],"hasData":[true,true,true,true],"formattedValue":["55","61","6","2"]},{"time":"1670716800","formattedTime":"Dec
+        11\u2009\u2013\u200917, 2022","formattedAxisTime":"Dec 11, 2022","value":[55,65,6,3],"hasData":[true,true,true,true],"formattedValue":["55","65","6","3"]},{"time":"1671321600","formattedTime":"Dec
+        18\u2009\u2013\u200924, 2022","formattedAxisTime":"Dec 18, 2022","value":[59,74,7,3],"hasData":[true,true,true,true],"formattedValue":["59","74","7","3"]},{"time":"1671926400","formattedTime":"Dec
+        25\u2009\u2013\u200931, 2022","formattedAxisTime":"Dec 25, 2022","value":[68,82,7,3],"hasData":[true,true,true,true],"formattedValue":["68","82","7","3"]},{"time":"1672531200","formattedTime":"Jan
+        1\u2009\u2013\u20097, 2023","formattedAxisTime":"Jan 1, 2023","value":[57,67,6,3],"hasData":[true,true,true,true],"formattedValue":["57","67","6","3"]},{"time":"1673136000","formattedTime":"Jan
+        8\u2009\u2013\u200914, 2023","formattedAxisTime":"Jan 8, 2023","value":[58,59,6,3],"hasData":[true,true,true,true],"formattedValue":["58","59","6","3"]},{"time":"1673740800","formattedTime":"Jan
+        15\u2009\u2013\u200921, 2023","formattedAxisTime":"Jan 15, 2023","value":[57,68,7,3],"hasData":[true,true,true,true],"formattedValue":["57","68","7","3"]},{"time":"1674345600","formattedTime":"Jan
+        22\u2009\u2013\u200928, 2023","formattedAxisTime":"Jan 22, 2023","value":[55,62,6,3],"hasData":[true,true,true,true],"formattedValue":["55","62","6","3"]},{"time":"1674950400","formattedTime":"Jan
+        29\u2009\u2013\u2009Feb 4, 2023","formattedAxisTime":"Jan 29, 2023","value":[57,66,5,3],"hasData":[true,true,true,true],"formattedValue":["57","66","5","3"]},{"time":"1675555200","formattedTime":"Feb
+        5\u2009\u2013\u200911, 2023","formattedAxisTime":"Feb 5, 2023","value":[60,73,6,3],"hasData":[true,true,true,true],"formattedValue":["60","73","6","3"]},{"time":"1676160000","formattedTime":"Feb
+        12\u2009\u2013\u200918, 2023","formattedAxisTime":"Feb 12, 2023","value":[62,74,6,2],"hasData":[true,true,true,true],"formattedValue":["62","74","6","2"]},{"time":"1676764800","formattedTime":"Feb
+        19\u2009\u2013\u200925, 2023","formattedAxisTime":"Feb 19, 2023","value":[63,66,7,3],"hasData":[true,true,true,true],"formattedValue":["63","66","7","3"]},{"time":"1677369600","formattedTime":"Feb
+        26\u2009\u2013\u2009Mar 4, 2023","formattedAxisTime":"Feb 26, 2023","value":[52,62,6,3],"hasData":[true,true,true,true],"formattedValue":["52","62","6","3"]},{"time":"1677974400","formattedTime":"Mar
+        5\u2009\u2013\u200911, 2023","formattedAxisTime":"Mar 5, 2023","value":[56,63,6,3],"hasData":[true,true,true,true],"formattedValue":["56","63","6","3"]},{"time":"1678579200","formattedTime":"Mar
+        12\u2009\u2013\u200918, 2023","formattedAxisTime":"Mar 12, 2023","value":[57,69,6,3],"hasData":[true,true,true,true],"formattedValue":["57","69","6","3"]},{"time":"1679184000","formattedTime":"Mar
+        19\u2009\u2013\u200925, 2023","formattedAxisTime":"Mar 19, 2023","value":[57,69,6,3],"hasData":[true,true,true,true],"formattedValue":["57","69","6","3"]},{"time":"1679788800","formattedTime":"Mar
+        26\u2009\u2013\u2009Apr 1, 2023","formattedAxisTime":"Mar 26, 2023","value":[60,66,6,2],"hasData":[true,true,true,true],"formattedValue":["60","66","6","2"]},{"time":"1680393600","formattedTime":"Apr
+        2\u2009\u2013\u20098, 2023","formattedAxisTime":"Apr 2, 2023","value":[62,59,7,3],"hasData":[true,true,true,true],"formattedValue":["62","59","7","3"]},{"time":"1680998400","formattedTime":"Apr
+        9\u2009\u2013\u200915, 2023","formattedAxisTime":"Apr 9, 2023","value":[57,59,6,2],"hasData":[true,true,true,true],"formattedValue":["57","59","6","2"]},{"time":"1681603200","formattedTime":"Apr
+        16\u2009\u2013\u200922, 2023","formattedAxisTime":"Apr 16, 2023","value":[50,60,6,3],"hasData":[true,true,true,true],"formattedValue":["50","60","6","3"],"isPartial":true}],"averages":[65,74,6,2]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -302,8 +521,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-DcQDLXam4zoFZQ2KTOC3fw'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

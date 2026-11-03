@@ -78,7 +78,7 @@ class TrendReq(object):
                         timeout=self.timeout,
                         **self.requests_args
                     ).cookies.items()))
-                except:
+                except:  # noqa: E722
                     continue
             else:
                 if len(self.proxies) > 0:
@@ -324,7 +324,6 @@ class TrendReq(object):
 
         return result_df
 
-
     def interest_by_region(self, resolution='COUNTRY', inc_low_vol=False,
                            inc_geo_code=False):
         """Request data from Google's Interest by Region section and return a dataframe"""
@@ -503,13 +502,12 @@ class TrendReq(object):
         result_df = pd.DataFrame(trend['title'] for trend in req_json)
         return result_df.iloc[:, -1]
 
-    def realtime_trending_searches(self, pn='US', cat='all', count =300):
+    def realtime_trending_searches(self, pn='US', cat='all', count=300):
         """Request data from Google Realtime Search Trends section and returns a dataframe"""
         # Don't know what some of the params mean here, followed the nodejs library
         # https://github.com/pat310/google-trends-api/ 's implemenration
 
-
-        #sort: api accepts only 0 as the value, optional parameter
+        # sort: api accepts only 0 as the value, optional parameter
 
         # ri: number of trending stories IDs returned,
         # max value of ri supported is 300, based on emperical evidence
@@ -524,7 +522,10 @@ class TrendReq(object):
         if count < rs_value:
             rs_value = count-1
 
-        forms = {'ns': 15, 'geo': pn, 'tz': '300', 'hl': self.hl, 'cat': cat, 'fi' : '0', 'fs' : '0', 'ri' : ri_value, 'rs' : rs_value, 'sort' : 0}
+        forms = {
+            'ns': 15, 'geo': pn, 'tz': '300', 'hl': self.hl, 'cat': cat,
+            'fi': '0', 'fs': '0', 'ri': ri_value, 'rs': rs_value, 'sort': 0,
+        }
         req_json = self._get_data(
             url=TrendReq.REALTIME_TRENDING_SEARCHES_URL,
             method=TrendReq.GET_METHOD,
@@ -535,7 +536,7 @@ class TrendReq(object):
         # parse the returned json
         wanted_keys = ["entityNames", "title"]
 
-        final_json = [{ key: ts[key] for key in ts.keys() if key in wanted_keys} for ts in req_json ]
+        final_json = [{key: ts[key] for key in ts.keys() if key in wanted_keys} for ts in req_json]
 
         result_df = pd.DataFrame(final_json)
 
@@ -546,7 +547,7 @@ class TrendReq(object):
 
         try:
             date = int(date)
-        except:
+        except:  # noqa: E722
             raise ValueError(
                 'The date must be a year with format YYYY. See https://github.com/GeneralMills/pytrends/issues/355')
 
@@ -597,9 +598,10 @@ class TrendReq(object):
 
     def get_historical_interest(self, *args, **kwargs):
         raise NotImplementedError(
-            """This method has been removed for incorrectness. It will be removed completely in v5.
-If you'd like similar functionality, please try implementing it yourself and consider submitting a pull request to add it to pytrends.
-
-There is discussion at:
-https://github.com/GeneralMills/pytrends/pull/542"""
+            "This method has been removed for incorrectness. It will be removed completely in v5.\n"
+            "If you'd like similar functionality, please try implementing it yourself and "
+            "consider submitting a pull request to add it to pytrends.\n"
+            "\n"
+            "There is discussion at:\n"
+            "https://github.com/GeneralMills/pytrends/pull/542"
         )

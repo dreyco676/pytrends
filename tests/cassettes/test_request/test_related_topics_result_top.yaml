@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU224bNxD9FUaGATswtRdbkLM3tEAvCJAmSJo+B9zl7C4hLsmSlHdtQUB/o7+X
-        L8lwJcWOgQIBivZFAoezc86cGZ6i94MkkqmuBFUVA3hGmp5ZB77c+pbeHmOKDVDeCRiNtp40WnlQ
-        vlwIJbxgkrqGSSiTKzJgZNgOj4FRcN+XHO5EA3Q+LKrCCy+h+tlabclNfEMu3mpPftFbxS9fvEiK
-        6HBfOH8vgSitGigXP75+uHa3P9HXyepd8vtvm2Hy7Zv3i+rlbmC2EyqLc8M4F6rL4n3o6qrRHHYt
-        Us2SlZmiNDUTYRbpXjmmHHVgRTtn7mrWbDob8LOztm3zRktts7M0Tb/WDCX2teb3uyeXHiZPmRSd
-        yrYKJcuPVNbnhG29JjEGpkPX2fWr2Ew56kN7EF2PpG5D4FT/Gg8kJgEm378kFZmxnhDbWnkRReM4
-        LjutOwnLRg+RGFgHLoKgpIusrrVfGtVdkiSOzwnWQvWoBQPMn5CondHTODRkTuIlyQwfNMr1HdhW
-        6jHrBeeg9sbCbuyFB+oMayDDMx0tM/leKHeSY71eH+Tg0GjLvNAqw8nBnhExdLtaWw4WJ/PDAFww
-        4hoLoAhTnFw8arReI/7l7nnroc5RWuq1yZ7KOt9921q8359J3envVa+2SAM/jw5X4dMomZ6cPs09
-        fkpW8bS64eag8KOwR2YSWp/RoOqxR63k/beNYpYFp+V2lid5lXIjLnf/mmz6/WQJrkV8Hs3rEX5y
-        OugHepgOnSH+A3QcyD9JQkeoN8LTIM3RJIyYQNJ5hbL0/1UnP9F5hKNOPED2Va/TanHhjGT3mVBS
-        KKC11M0mPz7s1Q0+osN2Ig7uQxHNToZWyoQigpcL1tL5zdLgpBgEuyBWo2MuQgo6JCO9hbZ83id6
-        omFzicBidjMqWQ2y/HXOORTBB1chJmbiH6sKUxV1hT67LKK6IgW+2upjz/znv/52OAUyM8G7EMfc
-        jz2WgT+34Dxw8seHN2RkDjXypA2C4AyJ74Uj6J9oFMvn9aQkI5CN0uOpZBR6qr4AAAD//wMA1QDl
-        VGoGAAA=
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"AIz3s8D-I15O1SMkmxtfLQ\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-O4MuvXnJxoqaN1Azq-877Q'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,38 +84,51 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22geo%22%3A+%22%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        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
-        XwAAAP//AwBdHAeUmRUAAA==
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2021-01-01 2021-12-31","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza"}],"showLegend":false,"showAverages":false,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPNDKcKOqxiuarrDzJx21_cDWtRu8z","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPNO2-3FPcBzFK66pKnl1Hq4KHX5n5","id":"GEO_MAP","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"ENTITY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        topics","content":"Users searching for your term also searched for these topics.
+        You can view by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular topics. Scoring is on a relative scale where a value of
+        100 is the most commonly searched topic and a value of 50 is a topic searched
+        half as often as the most popular term, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Related topics with the biggest increase in search frequency since the last
+        time period. Results marked \"Breakout\" had a tremendous increase, probably
+        because these topics are new and had few (if any) prior searches."},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNFx0BkHtODUch_4at3hRe43ENeo3","id":"RELATED_TOPICS","type":"fe_related_searches","title":"Related
+        topics","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNAbwipjoBGmf7phtQ9eNTWrN_JbR","id":"RELATED_QUERIES","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"}],"timeRanges":["2021"],"examples":[],"shareText":"Explore search interest
+        for pizza by time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -127,8 +136,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-qn0SzBWiCv1IrEiUz65yZQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -175,21 +182,28 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/relatedsearches?req=%7B%22restriction%22%3A+%7B%22geo%22%3A+%7B%7D%2C+%22time%22%3A+%222021-01-01+2021-12-31%22%2C+%22originalTimeRangeForExploreUrl%22%3A+%222021-01-01+2021-12-31%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%22keywordType%22%3A+%22ENTITY%22%2C+%22metric%22%3A+%5B%22TOP%22%2C+%22RISING%22%5D%2C+%22trendinessSettings%22%3A+%7B%22compareTime%22%3A+%222020-01-02+2020-12-31%22%7D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22language%22%3A+%22en%22%2C+%22userCountryCode%22%3A+%22ES%22%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZCFPNFx0BkHtODUch_4at3hRe43ENeo3&tz=360
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAMyYW2+bMBSA3/crENJUTU0VTFJC+zKpzS7qWrXqpr1s1eRgA07AJmBurfLfB46y
-        OAmVGKbrpDxgK8jfxznHx/DuYXU0ePOkI+zCNOD6+ZMeQ7rA6Jok1ejHZvgFlzmLkZjhLCJO/c+Q
-        VBP6MBwaljXK9IHOCQ9wNXVHHh9hPS6jejglia+vBnoGg7QaA8MY6C6LQ8g5Rt/Xk3o1W93hw2QK
-        OdTPeZzigR4QuqiX4DGmKBniIgpYjN8vf6aGMUKbleuRaSHI8XreNExwYtS/Y3EJzJMRqAAa0c8c
-        d7mPrn1O+Rb/HiccptVz4JrjQ0IlFXPUYGKOuojUHEoiIyfIQ8lkykJC2VHSSgSYTSExu4gIDiUT
-        c+zNZ5LJDabp1uKbuGGLbjeQ213AxbJK4MgtEHUOsgmx1PO3Ah8ZQxL/uIF/3IV/vbpaDp3OIvnJ
-        T3FAMhyXW/hLFoY4drAk0FQDnUpArN6d3xsCE3gZ8iaSwW2GqUzPFoR6GoyigED6AhpbCKVAnIYg
-        4IeJdBCO/WJoKuNOVSwA1KrY4Jm8H93BCGpXzKftdqTeTASHUlYBN5igEuWzg4DsZtfLBEMGUMup
-        wnLnksI14dWFdglxAuNngsLCCNJSbhRNfaJTgtU0Sj5jp8gzKvcJGDtVw9P2jh//xmdNo5RnpXdq
-        e+P5fKeJH7SOhKeu27uBtLxSUGxruQgkgQuWcEZfJySCRfFMZSXhftV/KKIYJy3PVX25CBIlF77w
-        gFVIMleYv1axrFnU2gtIlvODDflVbASKWofxrKVf5CGSTy6Mkud7S9MrlFjY6VT7fwDUNGYT5ywH
-        pSVp3LMQ0sM8e2mfDYnauyH1fE9y+QpD7VO1BZdyhnFIgobs6lNog6Ik4+X+r/HO2Z7HjPCThJfV
-        KSDaDc/eO0rPMgKlpcxDrdPqI4RKtIBpNX6VuIgxXDDxNeB/jxGwmgSOq+m3rej/Jih97WJ2I7Ld
-        hrifTavevf2slBvJTZlw4uzvV+DMtjWXBKFEP2mkn7R83mLd1kXwsFr9BgAA//8DAJIh8WWsEwAA
+      string: ')]}'',
+
+        {"default":{"rankedList":[{"rankedKeyword":[{"topic":{"mid":"/m/0663v","title":"Pizza","type":"Dish"},"value":100,"formattedValue":"100","hasData":true,"link":"/trends/explore?q\u003d/m/0663v\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09cfq","title":"Pizza
+        Hut","type":"Restaurant chain"},"value":23,"formattedValue":"23","hasData":true,"link":"/trends/explore?q\u003d/m/09cfq\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03clwm","title":"Domino''s","type":"Restaurant
+        chain"},"value":12,"formattedValue":"12","hasData":true,"link":"/trends/explore?q\u003d/m/03clwm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/024gjb","title":"Menu","type":"Topic"},"value":8,"formattedValue":"8","hasData":true,"link":"/trends/explore?q\u003d/m/024gjb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0dfxdnc","title":"Pizza
+        dough","type":"Food"},"value":4,"formattedValue":"4","hasData":true,"link":"/trends/explore?q\u003d/m/0dfxdnc\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/035bpb","title":"Delivery","type":"Commerce"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/m/035bpb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/121gvdg7","title":"Oven","type":"Cooking
+        appliance"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/g/121gvdg7\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05m1lt","title":"Pizza
+        delivery","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/05m1lt\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/020tvm","title":"Papa
+        Johns","type":"Restaurant chain"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/020tvm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11fl7dydwb","title":"Pizza
+        Oven","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/g/11fl7dydwb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05x6fj","title":"Little
+        Caesars","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/05x6fj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/04cxwvn","title":"Marco''s
+        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/04cxwvn\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/1yg58g4jj","title":"Dough","type":"Foodstuff"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/g/1yg58g4jj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/086qkl","title":"Boston
+        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/086qkl\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03c6sm","title":"PizzaExpress","type":"Restaurant
+        chain"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/03c6sm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0tkg16x","title":"Jet''s
+        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/0tkg16x\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/021sqj","title":"Pizza
+        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/021sqj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11b7c9w1y6","title":"Roman''s
+        Pizza","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11b7c9w1y6\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09nghg","title":"Sam
+        Goody","type":"Retail company"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style
+        pizza","type":"Food"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"}]},{"rankedKeyword":[{"topic":{"mid":"/m/09nghg","title":"Sam
+        Goody","type":"Retail company"},"value":12600,"formattedValue":"Breakout","link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style
+        pizza","type":"Food"},"value":160,"formattedValue":"+160%","link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":80,"formattedValue":"+80%","link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/02hvyj","title":"Mystic
+        Pizza","type":"1988 film"},"value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003d/m/02hvyj\u0026date\u003d2021-01-01+2021-12-31"}]}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -197,8 +211,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-syTKN18jFIIjNSTXc99uPQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

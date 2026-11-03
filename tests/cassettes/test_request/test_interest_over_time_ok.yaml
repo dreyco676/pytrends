@@ -14,29 +14,25 @@ interactions:
     uri: https://trends.google.com/trends/explore/?geo=US
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAALxU7YoUORR9ldjDwIxMuj5mhtb6YndBRRGRxQX/SapyqyrbqSQmqakemwZfw9fz
-        Sbyp7nbGgQVh0T/d5ObWPeeee3OK3g+SSKa6ElRVDOAZaXpmHfhy9C19cogpNkB5I2Ay2nrSaOVB
-        +XIhlPCCSeoaJqFMLsiAkWEc7gKT4L4vOdyIBuh8WFSFF15C9cxabclVfEXO3mhPnutR8fNHj5Ii
-        2t8Xzt9KIEqrBsrF2+n9q5fr5mP9kmnx/i3/682/MP65qB5vB2Y7obI4N4xzobos3oWuLhrNYdsi
-        1Sy5NpsoTc2GMIt0LxxTjjqwop0ztzVr1p0N+NlJ27Z5o6W22Umapt9rhhK7WvPb7b1LDxtPmRSd
-        ykaFkuUHKqtTwkavSYyBzb7r7PJpbDY56kN7EF2PpJ6EwLH+JR5ITAJMvntMKjJj3SM2WnkWRdM0
-        LTutOwnLRg+RGFgHLoKgpIusrrVfGtWdkySOTwnWQvWoBQPMH5GondHTODRkjuIlyQwfNMr1DdhW
-        6inrBeegdsbCduqFB+oMayDDM50sM/lOKHeUY7Va7eXg0GjLvNAqw8nBjhExdNtaWw4WJ/PHAFww
-        4hoLoAhTnJzdabRaIf759mHroc5BWuq1ye7LOt/92Fq8251I3emfVa+2SAM/j/ZX4dMo2dw7fZh7
-        /JBcx5vrK272Ct8Je2AmofUZDaoeetRK3v7YKGZZcFqOszzJ05Qbcb7932TTnydLcC3i02hej/CT
-        00F/ovvp0BniF6DjQP5LEjpBvRaeBmkOJmHEBiSdVyhLf686+ZHOHRx14hNk3/U6rhYXzkh2mwkl
-        hQJaS92s88PDvr7CR7TfTsTBfSii2cnQSplQRPBywVo6v1kanBSDYBfEanTMRUhBh2Skt9CWD/tE
-        TzRsLhFYzG5GJatBli/mnH0RfHAVYmIm/rGqMFVRV+izyyKqK1Lgq63e9cx//fzF4RTIzATvQhxz
-        3/VYBj6O4Dxw8s/fr8nEHGrkSRsEwRkS3wtH0D/RKJYP60lJJiBrpadjySj0VH0DAAD//wMAru7h
-        QGoGAAA=
+      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"PwXJIkcqbIaoiXPdBNjeuA\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-tIV8qyIxbgQRov-xpT3KjQ'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -88,43 +84,73 @@ interactions:
     uri: https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22pizza%22%2C+%22time%22%3A+%222021-01-01+2021-01-05%22%2C+%22geo%22%3A+%22%22%7D%2C+%7B%22keyword%22%3A+%22bagel%22%2C+%22time%22%3A+%222021-01-01+2021-01-05%22%2C+%22geo%22%3A+%22%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D
   response:
     body:
-      string: !!binary |
-        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
-        7jZ6OHciAAA=
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2021-01-01 2021-01-05","resolution":"DAY","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"pizza"},{"text":"bagel"}],"showLegend":false,"showAverages":true,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPLHz6xkRipufcZZNE92hnrJrQM4XT","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},{"time":"2021-01-01
+        2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"dataMode":"PERCENTAGES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","showLegend":false,"helpDialog":{"title":"Compared
+        breakdown by region","content":"See which term ranked highest in each region
+        during the specified time frame. Values are scaled from 0 to 100, where 100
+        is the region with peak popularity, a value of 50 is the region where the
+        term is half as popular, and a value of 0 means that term was less than 1%
+        as popular as the peak."},"bullets":[{"value":"pizza","color":"PALETTE_COLOR_1"},{"value":"bagel","color":"PALETTE_COLOR_2"}],"token":"APP6_UEAAAAAZCFPLP_xMN71tvKsbCtrfP42Ln6ffjFn","id":"GEO_MAP","type":"fe_multi_heat_map","title":"Compared
+        breakdown by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"text":{"text":"pizza"},"id":"TITLE_0","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPLIKKly--SdgIqNplqdRzfCzEhqcS","id":"GEO_MAP_0","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-01-05","originalTimeRangeForExploreUrl":"2021-01-01 2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-12-27
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPLMqK4VpobKT3cQ7qsvBRxNpD66wP","id":"RELATED_QUERIES_0","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"text":{"text":"bagel"},"id":"TITLE_1","type":"fe_text","title":"","template":"fe_explore","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
+        2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_2","index":1,"bullet":"bagel","token":"APP6_UEAAAAAZCFPLFnUi6Q2xOw-XpjnyE4DcKZQQNoE","id":"GEO_MAP_1","type":"fe_geo_chart_explore","title":"Interest
+        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
+        2021-01-05","originalTimeRangeForExploreUrl":"2021-01-01 2021-01-05","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"bagel"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-12-27
+        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_2","keywordName":"bagel","token":"APP6_UEAAAAAZCFPLHj8rNzmCU8Zn7DhiGeTdagwdOYG","id":"RELATED_QUERIES_1","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
+        term"},{"keyword":"bagel","name":"bagel","type":"Search term"}],"timeRanges":["1/1/21
+        - 1/5/21","1/1/21 - 1/5/21"],"examples":[],"shareText":"Explore search interest
+        for pizza, bagel by time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -132,8 +158,6 @@ interactions:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-Wy4IYb8h1tFTm10VpVoNGg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
@@ -180,12 +204,14 @@ interactions:
     uri: https://trends.google.com/trends/api/widgetdata/multiline?req=%7B%22time%22%3A+%222021-01-01+2021-01-05%22%2C+%22resolution%22%3A+%22DAY%22%2C+%22locale%22%3A+%22en-US%22%2C+%22comparisonItem%22%3A+%5B%7B%22geo%22%3A+%7B%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22pizza%22%7D%5D%7D%7D%2C+%7B%22geo%22%3A+%7B%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22bagel%22%7D%5D%7D%7D%5D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAZCFPLHz6xkRipufcZZNE92hnrJrQM4XT&tz=360
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAJTQPQvCMBAG4N1fIbeIkOHy1abdBCdncZEOB0YtVIU2LULpfzdqByUtpUuG+8g9
-        vOusW7FFCyd7prpwkLbg8pst8rvdkiNIj98CpMAjTJROBCIwOD/KGzlnT/tvc0f3JWdLgYL/djfP
-        vBqcaKioffXIEZnIGFyp6u+5srbs/WQ//xz6ceCf6wKyjv3BtNLRKExMwkQAM3KWy8hBViR9XGMs
-        OcmSASs2s1ixGWTF3KhRlppkqYClEsZnsFTid3nAMqjMKEtPsnTA0jiLpbFn+S41tqSLrd6ZC595
-        170AAAD//wMAxV1QWSsDAAA=
+      string: ')]}'',
+
+        {"default":{"timelineData":[{"time":"1609459200","formattedTime":"Jan 1, 2021","formattedAxisTime":"Jan
+        1, 2021","value":[100,2],"hasData":[true,true],"formattedValue":["100","2"]},{"time":"1609545600","formattedTime":"Jan
+        2, 2021","formattedAxisTime":"Jan 2, 2021","value":[83,2],"hasData":[true,true],"formattedValue":["83","2"]},{"time":"1609632000","formattedTime":"Jan
+        3, 2021","formattedAxisTime":"Jan 3, 2021","value":[78,2],"hasData":[true,true],"formattedValue":["78","2"]},{"time":"1609718400","formattedTime":"Jan
+        4, 2021","formattedAxisTime":"Jan 4, 2021","value":[49,1],"hasData":[true,true],"formattedValue":["49","1"]},{"time":"1609804800","formattedTime":"Jan
+        5, 2021","formattedAxisTime":"Jan 5, 2021","value":[50,1],"hasData":[true,true],"formattedValue":["50","1"]}],"averages":[72,2]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -193,8 +219,6 @@ interactions:
       - private, max-age=0
       Content-Disposition:
       - attachment; filename="json.txt"
-      Content-Encoding:
-      - gzip
       Content-Security-Policy:
       - 'script-src ''nonce-mm5w_0OdMAvzDnRUl0AsFg'' ''unsafe-inline'' ''strict-dynamic''
         https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri

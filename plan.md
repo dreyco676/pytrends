@@ -145,7 +145,7 @@ Upstream is archived, so "adopt" means re-implementing the change here through t
 
 ### Phase 0: Supported toolchain and a trustworthy green suite
 
-- [x] **0.1 DECIDE** Support policy and tooling. Decided 2026-11-03: uv for environments; minimum Python 3.12 (CI on 3.12–3.15). Also approved: runtime floors `requests>=2.32.4`, `pandas>=2.2.2`, `urllib3>=1.26` declared directly; drop `lxml`; ruff replaces flake8; next release is 5.0.0.
+- [x] **0.1 DECIDE** Support policy and tooling. Decided 2026-11-03: uv for environments; minimum Python 3.12 (CI on 3.12–3.15). Also approved: runtime floors `requests>=2.32.4`, `pandas>=2.2.2`, `urllib3>=1.26.5` declared directly (raised from `>=1.26` on 2026-11-03: 1.26.0–1.26.4 fail to import on Python 3.12, found by the lowest-direct job); drop `lxml`; ruff replaces flake8; next release is 5.0.0.
   - Recommended:
     - Python ≥3.12, with CI on 3.12–3.15.
     - Runtime dependencies `requests>=2.32.4`, `pandas>=2.2.2` (supporting both 2.x and 3.x) and `urllib3>=1.26`, declared directly.
@@ -154,7 +154,7 @@ Upstream is archived, so "adopt" means re-implementing the change here through t
     - ruff replaces flake8.
     - The next release is 5.0.0 (breaking).
   - Alternatives: keep pip with requirements files, or Poetry.
-- [ ] **0.2 TIDY** Local environment:
+- [x] **0.2 TIDY** Local environment. Done 2026-11-03 with uv; observed 3 passed / 23 failed on Python 3.13.18, pandas 3.1.0, urllib3 2.8.0 (matches expected):
   1. Install uv (e.g. `brew install uv`).
   2. `uv python install 3.13`
   3. `uv venv --python 3.13`
@@ -162,23 +162,23 @@ Upstream is archived, so "adopt" means re-implementing the change here through t
   5. `.venv/bin/pytest --block-network`
 
   Expect 3 passed / 23 failed (as of 2026-11-03; newer releases may shift this). Nothing to commit.
-- [ ] **0.3 TIDY** Decompress the cassette bodies with a one-off script (not shipped). For each interaction with `Content-Encoding: gzip`, store the decoded text body and remove `Content-Encoding` and `Content-Length`. Drop `binary` from `.gitattributes` so cassettes diff as text. Expect 16 passed / 10 failed.
-- [ ] **0.4 TIDY** Add a `vcr_config` fixture in `tests/conftest.py` with `decode_compressed_response=True` and `filter_headers=["cookie"]`, so future recordings stay readable and carry no session cookie. Results unchanged.
-- [ ] **0.5 TIDY** Quarantine the 10 failures with strict xfail. Expect 16 passed / 10 xfailed.
+- [x] **0.3 TIDY** (done 2026-11-03; observed 16 passed / 10 failed, as expected) Decompress the cassette bodies with a one-off script (not shipped). For each interaction with `Content-Encoding: gzip`, store the decoded text body and remove `Content-Encoding` and `Content-Length`. Drop `binary` from `.gitattributes` so cassettes diff as text. Expect 16 passed / 10 failed.
+- [x] **0.4 TIDY** (done 2026-11-03; observed 16 passed / 10 failed, unchanged) Add a `vcr_config` fixture in `tests/conftest.py` with `decode_compressed_response=True` and `filter_headers=["cookie"]`, so future recordings stay readable and carry no session cookie. Results unchanged.
+- [x] **0.5 TIDY** (done 2026-11-03; observed 16 passed / 10 xfailed; pandas-3 markers made conditional on pandas ≥3 during 0.8) Quarantine the 10 failures with strict xfail. Expect 16 passed / 10 xfailed.
   - `test_initial_data` → 2.8
   - `test_interest_over_time_{ok,images,news,youtube,froogle}` → 3.1
   - `test_interest_by_region_ok` → 3.2
   - `test_interest_by_region_city_resolution` → 2.13
   - `test_multirange_interest_over_time_{ok,same_keyword_ok}` → 3.3
-- [ ] **0.6 TIDY** Update `pyproject.toml` per 0.1.
+- [x] **0.6 TIDY** (done 2026-11-03; observed `uv run pytest` 16 passed / 10 xfailed, `uv build` clean, `uv.lock` created, `requirements*.txt` removed; nothing committed) Update `pyproject.toml` per 0.1.
   - Set `requires-python` and `dependencies`, and add `[dependency-groups] dev`.
   - Use the SPDX form `license = "Apache-2.0"` plus `license-files`, and update the classifiers.
   - Drop `setuptools-scm` and the `dynamic` block.
   - Delete `requirements*.txt` and commit `uv.lock`.
 
   Expect `uv run pytest` → 16 passed / 10 xfailed, and `uv build` with no deprecation warnings.
-- [ ] **0.7 TIDY** Configure ruff, covering at least the rules CI enforced before, with line length 127 to match CI. Fix the existing warnings. The two bare `except:` clauses are behavioral, so leave them with `# noqa: E722` for 2.6 and Phase 4. `uv run ruff check .` must be clean.
-- [ ] **0.8 TIDY** Rewrite CI:
+- [x] **0.7 TIDY** (done 2026-11-03; `uv run ruff check .` clean, tests unchanged at 16 passed / 10 xfailed, `NotImplementedError` text and realtime request params verified identical to HEAD; flake8 removed, ruff 0.17.3 added to dev group) Configure ruff, covering at least the rules CI enforced before, with line length 127 to match CI. Fix the existing warnings. The two bare `except:` clauses are behavioral, so leave them with `# noqa: E722` for 2.6 and Phase 4. `uv run ruff check .` must be clean.
+- [x] **0.8 TIDY** (done 2026-11-03 locally; not yet run on GitHub) Rewrite CI:
   - uv-based workflow;
   - matrix 3.12–3.15 on locked dependencies;
   - a lowest-direct job on 3.12 using the minimum declared versions;
