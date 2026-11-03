@@ -13,7 +13,7 @@ from requests import status_codes
 
 from pytrends import exceptions
 
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 
 BASE_TRENDS_URL = 'https://trends.google.com/trends'
@@ -555,6 +555,27 @@ class TrendReq(object):
             method=TrendReq.GET_METHOD
         )['default']['topics']
         return req_json
+
+    def get_explore_url(self):
+        """Return the trends.google.com explore link for the payload set up by the last build_payload()"""
+        self._require_build_payload()
+        request = json.loads(self.token_payload['req'])
+        items = request['comparisonItem']
+        timeframes = {item['time'] for item in items}
+        if len(timeframes) > 1:
+            raise ValueError('an explore link needs one timeframe for every keyword and region')
+        params = {
+            'date': timeframes.pop(),
+            'q': ','.join(dict.fromkeys(item['keyword'] for item in items)),
+        }
+        regions = [item['geo'] for item in items if item['geo']]
+        if regions:
+            params['geo'] = ','.join(dict.fromkeys(regions))
+        if request['category']:
+            params['cat'] = request['category']
+        if request['property']:
+            params['gprop'] = request['property']
+        return f'{BASE_TRENDS_URL}/explore?{urlencode(params)}'
 
     def categories(self):
         """Request available categories data from Google's API and return a dictionary"""

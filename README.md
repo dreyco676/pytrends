@@ -339,6 +339,17 @@ Returns dictionary
 
 <sub><sup>[back to top](#suggestions)</sub></sup>
 
+### Explore Link
+
+```python
+pytrends.build_payload(['pizza', 'bagel'], timeframe='today 12-m', geo='US')
+pytrends.get_explore_url()  # https://trends.google.com/trends/explore?date=today+12-m&q=pizza%2Cbagel&geo=US
+```
+
+Returns the trends.google.com explore link for the payload set up by the last `build_payload()`, so you can open the same chart in a browser. It requires `build_payload()` first, and it needs a single timeframe for all keywords and regions.
+
+<sub><sup>[back to top](#explore-link)</sub></sup>
+
 ### Categories
 
 ```python
