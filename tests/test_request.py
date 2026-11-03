@@ -1,16 +1,15 @@
-from dataclasses import dataclass
 from pathlib import Path
-from unittest.mock import ANY, MagicMock, patch
+from unittest.mock import MagicMock, patch
 import json
 import logging
 import re
 import warnings
 
 import pandas as pd
-import numpy as np
 import pytest
 import requests
 import responses
+import yaml
 from pandas.testing import assert_frame_equal
 
 from pytrends import dailydata
@@ -18,53 +17,93 @@ from pytrends.exceptions import ResponseError, TooManyRequestsError
 from pytrends.request import TrendReq, BASE_TRENDS_URL, TRENDING_RSS_URL, parse_trending_rss
 
 
-@dataclass
-class ExpectedResult:
-    """
-    Small class to reduce boilerplate code in the tests that compares a `pd.DataFrame`.
-    Instead of compare against a whole `pd.DataFrame` compares it with a given length, head
-    and tail.
-    The length of head and tail is 3 by default but you can change it.
-    """
-    length: int
-    df_head: pd.DataFrame
-    df_tail: pd.DataFrame
-    head_tail_length: int = 3
+CASSETTE_DIR = Path(__file__).parent / 'cassettes' / 'test_request'
+XSSI_PREFIX = re.compile(r"^\)\]\}',?\n?")
 
-    def assert_equals(self, df_result: pd.DataFrame):
-        assert len(df_result) == self.length
-        assert_frame_equal(df_result.head(self.head_tail_length), self.df_head)
-        assert_frame_equal(df_result.tail(self.head_tail_length), self.df_tail)
+QUERY_PATHS = {'query': ('query',), 'value': ('value',)}
+TOPIC_PATHS = {
+    'topic_mid': ('topic', 'mid'),
+    'topic_title': ('topic', 'title'),
+    'topic_type': ('topic', 'type'),
+    'value': ('value',),
+    'formattedValue': ('formattedValue',),
+    'link': ('link',),
+}
 
 
-def build_interest_over_time_df(records, dates):
-    """
-    Creates a `pd.DataFrame` with the same shape as a pytrends `interest_over_time` result.
-    `records` is a dict of keyword -> results.
-    If `records` doesn't include the key 'isPartial' then `[False]` will be used.
-    Example:
+def recorded_responses(test_name, uri_fragment):
+    """Parsed JSON bodies of the recorded 200 responses whose request URI contains uri_fragment, in order.
 
-        In [6]: build_interest_over_time_df(
-           ...:     {'kw1': [1, 2, 3], 'kw2': [10, 20, 30]},
-           ...:     dates=['2021-01-01', '2021-01-02', '2021-01-03']
-           ...: )
-        Out[6]:
-                    kw1  kw2  isPartial
-        date
-        2021-01-01    1   10      False
-        2021-01-02    2   20      False
-        2021-01-03    3   30      False
+    The cassette tests take their expected values from these bodies instead of typing them in,
+    so re-recording a cassette does not mean editing the test.
     """
-    records = records.copy()
-    if 'isPartial' not in records:
-        records['isPartial'] = [False]
-    return pd.DataFrame(
-        records,
-        index=pd.Index(
-            data=pd.to_datetime(dates),
-            name='date'
-        )
+    interactions = yaml.safe_load((CASSETTE_DIR / f'{test_name}.yaml').read_text())['interactions']
+    bodies = [
+        json.loads(XSSI_PREFIX.sub('', interaction['response']['body']['string']))
+        for interaction in interactions
+        if uri_fragment in interaction['request']['uri'] and interaction['response']['status']['code'] == 200
+    ]
+    assert bodies, f'no recorded response for {uri_fragment!r} in {test_name}'
+    return bodies
+
+
+def ranked_keywords(test_name, nth_request, rank):
+    """The keyword dicts in one ranked list (0 = top, 1 = rising) of the nth related-searches response."""
+    body = recorded_responses(test_name, 'widgetdata/relatedsearches')[nth_request]
+    return body['default']['rankedList'][rank]['rankedKeyword']
+
+
+def assert_interest_over_time_matches_recording(df, test_name, keywords, timeframe=None):
+    points = recorded_responses(test_name, 'widgetdata/multiline')[0]['default']['timelineData']
+    # structure: a datetime index in order, one int column per keyword in 0-100, and a bool isPartial
+    assert isinstance(df.index, pd.DatetimeIndex)
+    assert df.index.is_monotonic_increasing
+    assert list(df.columns) == [*keywords, 'isPartial']
+    assert df[keywords].isin(list(range(101))).all().all()
+    if timeframe is not None:
+        start, end = (pd.Timestamp(day) for day in timeframe.split())
+        assert df.index.min() >= start
+        assert df.index.max() <= end
+    # values: exactly the recorded points
+    expected = pd.DataFrame(
+        {keyword: [point['value'][i] for point in points] for i, keyword in enumerate(keywords)},
+        index=pd.DatetimeIndex(pd.to_datetime([int(point['time']) for point in points], unit='s'), name='date'),
     )
+    expected['isPartial'] = [bool(point.get('isPartial', False)) for point in points]
+    assert_frame_equal(df, expected)
+
+
+def assert_multirange_matches_recording(df, test_name, keywords):
+    body = recorded_responses(test_name, 'widgetdata/multirange')[0]['default']
+    points = body['timelineData']
+    expected = {}
+    for i, keyword in enumerate(keywords):
+        # the average row comes first, then one row per recorded point
+        expected[f'[{i}] {keyword} date'] = ['Average'] + [point['columnData'][i]['formattedTime'] for point in points]
+        expected[f'[{i}] {keyword} value'] = [body['averages'][i]] + [point['columnData'][i]['value'] for point in points]
+    assert_frame_equal(df.reset_index(drop=True), pd.DataFrame(expected))
+
+
+def assert_interest_by_region_matches_recording(df, test_name, keywords):
+    regions = recorded_responses(test_name, 'widgetdata/comparedgeo')[0]['default']['geoMapData']
+    assert df[keywords].isin(list(range(101))).all().all()
+    expected = pd.DataFrame(
+        {keyword: [int(region['value'][i]) for region in regions] for i, keyword in enumerate(keywords)},
+        index=pd.Index([region['geoName'] for region in regions], name='geoName'),
+    ).sort_index()
+    assert_frame_equal(df, expected)
+
+
+def assert_ranked_rows_match_recording(df, keywords, paths):
+    """Each column of df holds, row by row, the recorded value at its path in each ranked keyword."""
+    assert len(df) == len(keywords)
+    for column, path in paths.items():
+        recorded = []
+        for item in keywords:
+            for key in path:
+                item = item[key]
+            recorded.append(item)
+        assert list(df[column]) == recorded, column
 
 
 def test_initial_data(mocked_responses):
@@ -108,74 +147,8 @@ def test_build_payload():
 def test_tokens():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=["pizza", "bagel"], timeframe='2021-01-01 2021-12-31')
-    expected = [
-        {
-            "request": {
-                "restriction": {
-                    "geo": {},
-                    "time": "2021-01-01 2021-12-31",
-                    "originalTimeRangeForExploreUrl": "2021-01-01 2021-12-31",
-                    "complexKeywordsRestriction": {
-                        "keyword": [{"type": "BROAD", "value": "pizza"}]
-                    },
-                },
-                "keywordType": "QUERY",
-                "metric": ["TOP", "RISING"],
-                "trendinessSettings": {"compareTime": "2020-01-02 2020-12-31"},
-                "requestOptions": {"property": "", "backend": "IZG", "category": 0},
-                "language": "en",
-                "userCountryCode": "ES",
-                "userConfig": {"userType": "USER_TYPE_SCRAPER"},
-            },
-            # We don't care if the help dialog changes.
-            "helpDialog": ANY,
-            "color": "PALETTE_COLOR_1",
-            "keywordName": "pizza",
-            # The token will change in every request.
-            "token": ANY,
-            "id": "RELATED_QUERIES_0",
-            "type": "fe_related_searches",
-            "title": "Related queries",
-            "template": "fe",
-            "embedTemplate": "fe_embed",
-            "version": "1",
-            "isLong": False,
-            "isCurated": False,
-        },
-        {
-            "request": {
-                "restriction": {
-                    "geo": {},
-                    "time": "2021-01-01 2021-12-31",
-                    "originalTimeRangeForExploreUrl": "2021-01-01 2021-12-31",
-                    "complexKeywordsRestriction": {
-                        "keyword": [{"type": "BROAD", "value": "bagel"}]
-                    },
-                },
-                "keywordType": "QUERY",
-                "metric": ["TOP", "RISING"],
-                "trendinessSettings": {"compareTime": "2020-01-02 2020-12-31"},
-                "requestOptions": {"property": "", "backend": "IZG", "category": 0},
-                "language": "en",
-                "userCountryCode": "ES",
-                "userConfig": {"userType": "USER_TYPE_SCRAPER"},
-            },
-            # We don't care if the help dialog changes.
-            "helpDialog": ANY,
-            "color": "PALETTE_COLOR_2",
-            "keywordName": "bagel",
-            # The token will change in every request.
-            "token": ANY,
-            "id": "RELATED_QUERIES_1",
-            "type": "fe_related_searches",
-            "title": "Related queries",
-            "template": "fe",
-            "embedTemplate": "fe_embed",
-            "version": "1",
-            "isLong": False,
-            "isCurated": False,
-        },
-    ]
+    widgets = recorded_responses('test_tokens', 'api/explore')[0]['widgets']
+    expected = [widget for widget in widgets if 'RELATED_QUERIES' in widget['id']]
     assert pytrend.related_queries_widget_list == expected
 
 
@@ -184,75 +157,44 @@ def test_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
     df_result = pytrend.interest_over_time()
-    df_expected = build_interest_over_time_df({
-        'pizza': [100, 83, 78, 49, 50],
-        'bagel': [2, 2, 2, 1, 1]
-    }, dates=['2021-01-01', '2021-01-02', '2021-01-03', '2021-01-04', '2021-01-05'])
-    assert_frame_equal(df_result, df_expected)
+    assert_interest_over_time_matches_recording(
+        df_result, 'test_interest_over_time_ok', ['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
 
 
 @pytest.mark.vcr
 def test_interest_over_time_images():
     pytrend = TrendReq()
-    pytrend.build_payload(
-        kw_list=['pizza', 'bagel'],
-        gprop='images',
-        timeframe='2021-01-01 2021-01-05'
-    )
+    pytrend.build_payload(kw_list=['pizza', 'bagel'], gprop='images', timeframe='2021-01-01 2021-01-05')
     df_result = pytrend.interest_over_time()
-    df_expected = build_interest_over_time_df({
-        'pizza': [85, 100, 93, 93, 93],
-        'bagel': [3, 2, 9, 4, 4]
-    }, dates=['2021-01-01', '2021-01-02', '2021-01-03', '2021-01-04', '2021-01-05'])
-    assert_frame_equal(df_result, df_expected)
+    assert_interest_over_time_matches_recording(
+        df_result, 'test_interest_over_time_images', ['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
 
 
 @pytest.mark.vcr
 def test_interest_over_time_news():
     pytrend = TrendReq()
-    pytrend.build_payload(
-        kw_list=['pizza', 'bagel'],
-        gprop='news',
-        timeframe='2021-01-01 2021-01-05'
-    )
+    pytrend.build_payload(kw_list=['pizza', 'bagel'], gprop='news', timeframe='2021-01-01 2021-01-05')
     df_result = pytrend.interest_over_time()
-    df_expected = build_interest_over_time_df({
-        'pizza': [100, 67, 78, 32, 75],
-        'bagel': [0, 0, 0, 20, 0]
-    }, dates=['2021-01-01', '2021-01-02', '2021-01-03', '2021-01-04', '2021-01-05'])
-    assert_frame_equal(df_result, df_expected)
+    assert_interest_over_time_matches_recording(
+        df_result, 'test_interest_over_time_news', ['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
 
 
 @pytest.mark.vcr
 def test_interest_over_time_youtube():
     pytrend = TrendReq()
-    pytrend.build_payload(
-        kw_list=['pizza', 'bagel'],
-        gprop='youtube',
-        timeframe='2021-01-01 2021-01-05'
-    )
+    pytrend.build_payload(kw_list=['pizza', 'bagel'], gprop='youtube', timeframe='2021-01-01 2021-01-05')
     df_result = pytrend.interest_over_time()
-    df_expected = build_interest_over_time_df({
-        'pizza': [88, 100, 100, 92, 95],
-        'bagel': [1, 1, 1, 2, 1]
-    }, dates=['2021-01-01', '2021-01-02', '2021-01-03', '2021-01-04', '2021-01-05'])
-    assert_frame_equal(df_result, df_expected)
+    assert_interest_over_time_matches_recording(
+        df_result, 'test_interest_over_time_youtube', ['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
 
 
 @pytest.mark.vcr
 def test_interest_over_time_froogle():
     pytrend = TrendReq()
-    pytrend.build_payload(
-        kw_list=['pizza', 'bagel'],
-        gprop='froogle',
-        timeframe='2021-01-01 2021-01-05'
-    )
+    pytrend.build_payload(kw_list=['pizza', 'bagel'], gprop='froogle', timeframe='2021-01-01 2021-01-05')
     df_result = pytrend.interest_over_time()
-    df_expected = build_interest_over_time_df({
-        'pizza': [94, 99, 94, 62, 100],
-        'bagel': [0, 0, 0, 0, 8]
-    }, dates=['2021-01-01', '2021-01-02', '2021-01-03', '2021-01-04', '2021-01-05'])
-    assert_frame_equal(df_result, df_expected)
+    assert_interest_over_time_matches_recording(
+        df_result, 'test_interest_over_time_froogle', ['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
 
 
 @pytest.mark.vcr
@@ -268,23 +210,7 @@ def test_multirange_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
     df_result = pytrend.multirange_interest_over_time()
-
-    expected_result = ExpectedResult(
-        length=6,
-        df_head=pd.DataFrame({
-            '[0] pizza date': ['Average', 'Jan 1, 2021', 'Jan 2, 2021'],
-            '[0] pizza value': [72, 100, 83],
-            '[1] bagel date': ['Average', 'Jan 6, 2021', 'Jan 7, 2021'],
-            '[1] bagel value': [1, 1, 1]
-        }),
-        df_tail=pd.DataFrame({
-            '[0] pizza date': ['Jan 3, 2021', 'Jan 4, 2021', 'Jan 5, 2021'],
-            '[0] pizza value': [78, 49, 50],
-            '[1] bagel date': ['Jan 8, 2021', 'Jan 9, 2021', 'Jan 10, 2021'],
-            '[1] bagel value': [1, 2, 2]
-        }, index=pd.Index([3, 4, 5]))
-    )
-    expected_result.assert_equals(df_result)
+    assert_multirange_matches_recording(df_result, 'test_multirange_interest_over_time_ok', ['pizza', 'bagel'])
 
 
 @pytest.mark.vcr
@@ -292,23 +218,8 @@ def test_multirange_interest_over_time_same_keyword_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'pizza'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
     df_result = pytrend.multirange_interest_over_time()
-
-    expected_result = ExpectedResult(
-        length=6,
-        df_head=pd.DataFrame({
-            '[0] pizza date': ['Average', 'Jan 1, 2021', 'Jan 2, 2021'],
-            '[0] pizza value': [72, 100, 83],
-            '[1] pizza date': ['Average', 'Jan 6, 2021', 'Jan 7, 2021'],
-            '[1] pizza value': [68, 52, 52]
-        }),
-        df_tail=pd.DataFrame({
-            '[0] pizza date': ['Jan 3, 2021', 'Jan 4, 2021', 'Jan 5, 2021'],
-            '[0] pizza value': [78, 49, 50],
-            '[1] pizza date': ['Jan 8, 2021', 'Jan 9, 2021', 'Jan 10, 2021'],
-            '[1] pizza value': [70, 89, 74]
-        }, index=pd.Index([3, 4, 5]))
-    )
-    expected_result.assert_equals(df_result)
+    assert_multirange_matches_recording(
+        df_result, 'test_multirange_interest_over_time_same_keyword_ok', ['pizza', 'pizza'])
 
 
 @pytest.mark.vcr
@@ -316,20 +227,7 @@ def test_interest_by_region_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
     df_result = pytrend.interest_by_region()
-    # Both head and tail have all 0's in both values, sort the result to test more meaningful values
-    df_result = df_result.sort_values(by=['bagel', 'pizza', 'geoName'], ascending=False)
-    expected_result = ExpectedResult(
-        length=250,
-        df_head=pd.DataFrame({
-            'pizza': [92, 94, 96],
-            'bagel': [8, 6, 4],
-        }, index=pd.Index(['Singapore', 'Hong Kong', 'Taiwan'], name='geoName')),
-        df_tail=pd.DataFrame({
-            'pizza': [0, 0, 0],
-            'bagel': [0, 0, 0],
-        }, index=pd.Index(['Algeria', 'Albania', 'Afghanistan'], name='geoName'))
-    )
-    expected_result.assert_equals(df_result)
+    assert_interest_by_region_matches_recording(df_result, 'test_interest_by_region_ok', ['pizza', 'bagel'])
 
 
 # FIXME: With more than one term the result is always an empty dict.
@@ -351,36 +249,8 @@ def test_related_topics_result_top():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza'], timeframe='2021-01-01 2021-12-31')
     df_result = pytrend.related_topics()['pizza']['top']
-    expected_result = ExpectedResult(
-        length=21,
-        df_head=pd.DataFrame({
-            'value': [100, 23, 12],
-            'formattedValue': ['100', '23', '12'],
-            'hasData': [True, True, True],
-            'link': [
-                '/trends/explore?q=/m/0663v&date=2021-01-01+2021-12-31',
-                '/trends/explore?q=/m/09cfq&date=2021-01-01+2021-12-31',
-                '/trends/explore?q=/m/03clwm&date=2021-01-01+2021-12-31'
-            ],
-            'topic_mid': ['/m/0663v', '/m/09cfq', '/m/03clwm'],
-            'topic_title': ['Pizza', 'Pizza Hut', "Domino's"],
-            'topic_type': ['Dish', 'Restaurant chain', 'Restaurant chain'],
-        }),
-        df_tail=pd.DataFrame({
-            'value': [0, 0, 0],
-            'formattedValue': ['<1', '<1', '<1'],
-            'hasData': [True, True, True],
-            'link': [
-                '/trends/explore?q=/g/11b7c9w1y6&date=2021-01-01+2021-12-31',
-                '/trends/explore?q=/m/09nghg&date=2021-01-01+2021-12-31',
-                '/trends/explore?q=/m/0gwh_4&date=2021-01-01+2021-12-31',
-            ],
-            'topic_mid': ['/g/11b7c9w1y6', '/m/09nghg', '/m/0gwh_4'],
-            'topic_title': ["Roman's Pizza", 'Sam Goody', 'Detroit-style pizza'],
-            'topic_type': ['Topic', 'Retail company', 'Food']
-        }, index=pd.Index([18, 19, 20]))
-    )
-    expected_result.assert_equals(df_result)
+    keywords = ranked_keywords('test_related_topics_result_top', nth_request=0, rank=0)
+    assert_ranked_rows_match_recording(df_result, keywords, TOPIC_PATHS)
 
 
 @pytest.mark.vcr
@@ -388,20 +258,8 @@ def test_related_topics_result_rising():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza'], timeframe='2021-01-01 2021-12-31')
     df_result = pytrend.related_topics()['pizza']['rising']
-    df_expected = pd.DataFrame({
-        'value': [12600, 160, 80, 70],
-        'formattedValue': ['Breakout', '+160%', '+80%', '+70%'],
-        'link': [
-            '/trends/explore?q=/m/09nghg&date=2021-01-01+2021-12-31',
-            '/trends/explore?q=/m/0gwh_4&date=2021-01-01+2021-12-31',
-            '/trends/explore?q=/g/11g6qhxwmd&date=2021-01-01+2021-12-31',
-            '/trends/explore?q=/m/02hvyj&date=2021-01-01+2021-12-31',
-        ],
-        'topic_mid': ['/m/09nghg', '/m/0gwh_4', '/g/11g6qhxwmd', '/m/02hvyj'],
-        'topic_title': ['Sam Goody', 'Detroit-style pizza', 'Ooni', 'Mystic Pizza'],
-        'topic_type': ['Retail company', 'Food', 'Topic', '1988 film'],
-    })
-    assert_frame_equal(df_result, df_expected)
+    keywords = ranked_keywords('test_related_topics_result_rising', nth_request=0, rank=1)
+    assert_ranked_rows_match_recording(df_result, keywords, TOPIC_PATHS)
 
 
 @pytest.mark.vcr
@@ -421,32 +279,9 @@ def test_related_queries_result_top():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
     df_result = pytrend.related_queries()
-
-    expected_pizza = ExpectedResult(
-        length=25,
-        df_head=pd.DataFrame({
-            'query': ['pizza hut', 'pizza near me', 'pizza pizza near me'],
-            'value': [100, 68, 65],
-        }),
-        df_tail=pd.DataFrame({
-            'query': ['pizza little caesars', 'cheese pizza', 'new york pizza'],
-            'value': [5, 5, 5],
-        }, index=pd.Index([22, 23, 24]))
-    )
-    expected_pizza.assert_equals(df_result['pizza']['top'])
-
-    expected_bagel = ExpectedResult(
-        length=25,
-        df_head=pd.DataFrame({
-            'query': ['the bagel', 'bagel me', 'everything bagel'],
-            'value': [100, 97, 92],
-        }),
-        df_tail=pd.DataFrame({
-            'query': ['what a bagel', 'bagel sandwich', 'coffee meets bagel'],
-            'value': [22, 22, 22],
-        }, index=pd.Index([22, 23, 24]))
-    )
-    expected_bagel.assert_equals(df_result['bagel']['top'])
+    for nth_request, keyword in enumerate(['pizza', 'bagel']):
+        keywords = ranked_keywords('test_related_queries_result_top', nth_request=nth_request, rank=0)
+        assert_ranked_rows_match_recording(df_result[keyword]['top'], keywords, QUERY_PATHS)
 
 
 @pytest.mark.vcr
@@ -454,32 +289,9 @@ def test_related_queries_result_rising():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
     df_result = pytrend.related_queries()
-
-    expected_pizza = ExpectedResult(
-        length=11,
-        df_head=pd.DataFrame({
-            'query': ['licorice pizza', 'history of pizza', 'stoned pizza'],
-            'value': [8550, 400, 300],
-        }),
-        df_tail=pd.DataFrame({
-            'query': ['incredible pizza', 'mountain mike pizza', 'angels pizza'],
-            'value': [60, 50, 40],
-        }, index=pd.Index([8, 9, 10]))
-    )
-    expected_pizza.assert_equals(df_result['pizza']['rising'])
-
-    expected_bagel = ExpectedResult(
-        length=18,
-        df_head=pd.DataFrame({
-            'query': ['rover bagel', 'kettlemans bagel', 'bagel karen'],
-            'value': [350, 250, 180],
-        }),
-        df_tail=pd.DataFrame({
-            'query': ['bagel street deli', 'best bagel near me', 'the bagel nook'],
-            'value': [50, 50, 40],
-        }, index=pd.Index([15, 16, 17]))
-    )
-    expected_bagel.assert_equals(df_result['bagel']['rising'])
+    for nth_request, keyword in enumerate(['pizza', 'bagel']):
+        keywords = ranked_keywords('test_related_queries_result_rising', nth_request=nth_request, rank=1)
+        assert_ranked_rows_match_recording(df_result[keyword]['rising'], keywords, QUERY_PATHS)
 
 
 @pytest.mark.vcr
@@ -487,24 +299,17 @@ def test_suggestions_ok():
     pytrend = TrendReq()
     # suggestions doesn't need to call build_payload.
     result = pytrend.suggestions(keyword='pizza')
-    expected = [
-        {'mid': '/m/0663v', 'title': 'Pizza', 'type': 'Dish'},
-        {'mid': '/g/11k19hmrkk', 'title': 'Licorice Pizza', 'type': '2021 film'},
-        {'mid': '/m/0rg8s1t', 'title': 'Dominos Pizza', 'type': 'Topic'},
-        {'mid': '/m/0dfxdnc', 'title': 'Pizza dough', 'type': 'Food'},
-        {'mid': '/g/11hdxfw7c0', 'title': 'history of pizza', 'type': 'Food'},
-    ]
-    assert result == expected
+    topics = recorded_responses('test_suggestions_ok', 'api/autocomplete/pizza')[0]['default']['topics']
+    assert result == [{'mid': topic['mid'], 'title': topic['title'], 'type': topic['type']} for topic in topics]
 
 
 @pytest.mark.vcr
 def test_interest_over_time_partial():
-    # NOTE: This test may fails if regenerate the cassette on Mondays because the last week will not be partial
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'])
     df_result = pytrend.interest_over_time()
-    s_last_row = df_result.iloc[-1]
-    assert s_last_row.isPartial is np.bool_(True)
+    # the isPartial flags, including the last week's, come from the recording
+    assert_interest_over_time_matches_recording(df_result, 'test_interest_over_time_partial', ['pizza', 'bagel'])
 
 
 def test_request_args_passing(mocked_responses):
@@ -795,6 +600,16 @@ def test_data_methods_before_build_payload_raise_clear_error(method):
     with patch.object(TrendReq, '_get_data', side_effect=AssertionError('sent a request')), \
             pytest.raises(ValueError, match=r'build_payload\(\)'):
         getattr(pytrend, method)()
+
+
+def test_build_payload_rejects_more_than_five_keywords():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    with patch.object(TrendReq, '_tokens') as tokens, \
+            pytest.raises(ValueError, match='at most five keywords'):
+        pytrend.build_payload(['pizza', 'bagel', 'sushi', 'tacos', 'ramen', 'pasta'])
+    # the limit is checked before any request is made
+    tokens.assert_not_called()
 
 
 def test_timeframe_list_length_mismatch_raises_value_error():
