@@ -776,6 +776,16 @@ def test_interest_over_time_emits_no_warnings():
     assert future_warnings == []
 
 
+def test_build_payload_rejects_more_than_five_keywords():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    with patch.object(TrendReq, '_tokens') as tokens, \
+            pytest.raises(ValueError, match='at most five keywords'):
+        pytrend.build_payload(['pizza', 'bagel', 'sushi', 'tacos', 'ramen', 'pasta'])
+    # the limit is checked before any request is made
+    tokens.assert_not_called()
+
+
 def test_timeframe_list_length_mismatch_raises_value_error():
     with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
             patch.object(TrendReq, '_tokens'):
