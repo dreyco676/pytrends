@@ -293,8 +293,14 @@ class TrendReq(object):
             'tz': self.tz,
         }
 
+    def _require_build_payload(self):
+        """Raise a clear error when a data method is called before build_payload() has set up the widgets"""
+        if not self.token_payload:
+            raise ValueError('call build_payload() before requesting data')
+
     def interest_over_time(self):
         """Request data from Google's Interest Over Time section and return a dataframe"""
+        self._require_build_payload()
 
         over_time_payload = self._widget_params(self.interest_over_time_widget)
 
@@ -353,6 +359,7 @@ class TrendReq(object):
 
     def multirange_interest_over_time(self):
         """Request data from Google's Interest Over Time section across different time ranges and return a dataframe"""
+        self._require_build_payload()
 
         over_time_payload = self._widget_params(self.interest_over_time_widget)
 
@@ -393,6 +400,7 @@ class TrendReq(object):
     def interest_by_region(self, resolution='COUNTRY', inc_low_vol=False,
                            inc_geo_code=False):
         """Request data from Google's Interest by Region section and return a dataframe"""
+        self._require_build_payload()
 
         # make the request
         # self.geo is always a list after build_payload, e.g. [''] for worldwide
@@ -445,6 +453,7 @@ class TrendReq(object):
 
         If no top and/or rising related topics are found, the value for the key "top" and/or "rising" will be None
         """
+        self._require_build_payload()
 
         # make the request
         result_dict = dict()
@@ -474,6 +483,7 @@ class TrendReq(object):
 
         If no top and/or rising related queries are found, the value for the key "top" and/or "rising" will be None
         """
+        self._require_build_payload()
 
         # make the request
         result_dict = dict()
