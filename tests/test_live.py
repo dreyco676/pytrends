@@ -8,11 +8,12 @@ They need network access and Google's responses change over time, so each
 test is paced to avoid rate limiting.
 """
 import time
+import xml.etree.ElementTree as ET
 
 import pytest
 import requests
 
-from pytrends.request import BASE_TRENDS_URL
+from pytrends.request import BASE_TRENDS_URL, TrendReq
 
 pytestmark = pytest.mark.live
 
@@ -26,13 +27,32 @@ def pace_live_requests():
     time.sleep(PAUSE_BETWEEN_REQUESTS)
 
 
-@pytest.mark.xfail(
-    strict=True,
-    raises=AssertionError,
-    reason="plan 2.9: cookie URL returns 404 while still setting NID",
-)
 def test_live_cookie_url_answers_200_with_nid():
     # The same URL TrendReq.GetGoogleCookie requests for hl='en-US'.
-    response = requests.get(f'{BASE_TRENDS_URL}/explore/?geo=US', timeout=(5, 15))
+    response = requests.get(f'{BASE_TRENDS_URL}/?geo=US', timeout=(5, 15))
     assert response.status_code == 200
     assert 'NID' in response.cookies
+
+
+TRENDING_RSS_URL = 'https://trends.google.com/trending/rss'
+HT_NAMESPACE = '{https://trends.google.com/trending/rss}'
+
+
+def test_live_trending_rss_parses():
+    response = requests.get(TRENDING_RSS_URL, params={'geo': 'US'}, timeout=(5, 15))
+    assert response.status_code == 200
+    assert response.headers['Content-Type'].startswith('text/xml')
+
+    items = ET.fromstring(response.content).findall('./channel/item')
+    assert items
+    for item in items:
+        assert item.findtext('title')
+        assert item.findtext(f'{HT_NAMESPACE}approx_traffic')
+        assert item.findtext('pubDate')
+        assert item.findall(f'{HT_NAMESPACE}news_item')
+
+
+@pytest.mark.parametrize('method', ['trending_searches', 'today_searches', 'realtime_trending_searches'])
+def test_live_trending_rss_methods(method):
+    result = getattr(TrendReq(), method)(pn='US')
+    assert len(result) > 0

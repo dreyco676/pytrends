@@ -2,21 +2,33 @@
 
 ## Set up your environment
 
-First of all, create a virtualenv usign `python -m venv` or whatever tool you use to manage them, and install the requirements listed in the requirements files:
+The project uses [uv](https://docs.astral.sh/uv/) for environments and needs Python 3.12 or later.
 
 ```bash
-$ python -m venv ~/virtualenvs/pytrends
-$ pip -r install requirements.txt  # library requirements
-$ pip -r install requirements-dev.txt  # development requirements
+$ uv sync --locked
 ```
+
+This creates `.venv`, installs pytrends in editable mode, and installs the `dev` group (pytest, pytest-cov, pytest-recording, responses and ruff). `--locked` installs exactly what `uv.lock` records. Dependencies are declared in `pyproject.toml`; after changing them, run `uv lock` and commit the updated `uv.lock`.
+
+To test another interpreter, add `--python 3.13` (any of 3.12 to 3.15 works).
 
 ## Running the tests
 
-To run the tests, simply run `pytest` inside the project root:
+Run the offline suite from the project root:
 
 ```bash
-$ pytest
+$ uv run pytest
 ```
+
+The suite runs offline. `pytest` blocks network access (`--block-network`), so any request that is neither mocked nor recorded fails. Warnings are errors (`filterwarnings = ["error"]`), so a deprecation warning from pandas fails the run.
+
+## Linting
+
+```bash
+$ uv run ruff check .
+```
+
+CI runs this check, the offline suite on Python 3.12 to 3.15, and the suite on the lowest supported dependency versions.
 
 ## Running the live tests
 
@@ -55,6 +67,14 @@ def test_example():
     pass
 ```
 
+### Cassette format
+
+Cassettes live in `tests/cassettes/<test file name>/`. They are stored as plain text, not gzip bytes:
+
+* The `vcr_config` fixture in `tests/conftest.py` sets `decode_compressed_response`, so response bodies are written decoded and diff cleanly.
+* The `cookie` request header is filtered out, so no session cookie is stored.
+* `.gitattributes` marks the cassettes as vendored, so they don't count toward language statistics.
+
 ### Running a VCR.py test without cassette
 
 The first time you execute a VCR.py test without a cassette file (e.g. a new test) you will get an error:
@@ -84,14 +104,14 @@ You have two options here:
 ```bash
 # The path format is `tests/cassettes/<test file name>/<test function name>.yaml`
 $ rm tests/cassettes/test_request/test_build_payload.yaml
-$ pytest --record-mode=once
+$ uv run pytest --record-mode=once
 ```
 
 * Execute the single test you want using `-k` and `--record-mode=rewrite`:
 
 ```bash
 # the format is `pytest -k <pattern>`
-$ pytest -k test_build_payload --record-mode=rewrite
+$ uv run pytest -k test_build_payload --record-mode=rewrite
 ```
 
 Beware, the latter will execute all the tests whose name matches the pattern and rewrite its cassette.
@@ -99,7 +119,7 @@ Beware, the latter will execute all the tests whose name matches the pattern and
 Please keep in mind that the Google Trends API **can change its returned data over time, even a year-old data**, this means that when you regenerate the cassette of an existing test you may also need to update the data returned by the backend, the fastest way to get the new values is using the pytest `--pdb` flag to start a pdb session when the test fails comparing the expected `pd.DataFrame`:
 
 ```bash
-$ pytest -k test_interest_over_time --pdb
+$ uv run pytest -k test_interest_over_time --pdb
 
 E   AssertionError: DataFrame.iloc[:, 0] (column name="pizza") are different
 E

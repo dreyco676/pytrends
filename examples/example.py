@@ -26,10 +26,6 @@ print(trending_searches_df.head())
 today_searches_df = pytrend.today_searches()
 print(today_searches_df.head())
 
-# Get Google Top Charts
-top_charts_df = pytrend.top_charts(2018, hl='en-US', tz=300, geo='GLOBAL')
-print(top_charts_df.head())
-
 # Get Google Keyword Suggestions
 suggestions_dict = pytrend.suggestions(keyword='pizza')
 print(suggestions_dict)

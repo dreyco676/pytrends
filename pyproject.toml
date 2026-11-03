@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytrends"
-version = "4.9.2"
+version = "5.0.0"
 description = "Pseudo API for Google Trends"
 readme = "README.md"
 urls = {homepage = "https://github.com/dreyco676/pytrends"}
@@ -56,6 +56,9 @@ show_missing = true
 addopts = "--cov pytrends/ -m 'not live' --block-network"
 markers = [
     "live: calls the real Google Trends API; deselected by default",
+]
+filterwarnings = [
+    "error",
 ]
 
 [tool.ruff]

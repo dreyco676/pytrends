@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 from functools import partial
+import logging
 from time import sleep
 from calendar import monthrange
 
@@ -7,6 +8,8 @@ import pandas as pd
 
 from pytrends.exceptions import ResponseError
 from pytrends.request import TrendReq
+
+logger = logging.getLogger('pytrends')
 
 
 def get_last_date_of_month(year: int, month: int) -> date:
@@ -33,13 +36,13 @@ def _fetch_data(pytrends, build_payload, timeframe: str) -> pd.DataFrame:
         try:
             build_payload(timeframe=timeframe)
         except ResponseError as err:
-            print(err)
-            print(f'Trying again in {60 + 5 * attempts} seconds.')
+            logger.warning('%s', err)
+            logger.warning('Trying again in %s seconds.', 60 + 5 * attempts)
             sleep(60 + 5 * attempts)
             attempts += 1
             if attempts > 3:
-                print('Failed after 3 attemps, abort fetching.')
-                break
+                logger.error('Failed after 3 attemps, abort fetching.')
+                raise  # never read stale data from a failed request
         else:
             fetched = True
     return pytrends.interest_over_time()
@@ -76,7 +79,7 @@ def get_daily_data(word: str,
             we are fecthing the data for.
 
     Returns:
-        complete (pd.DataFrame): Contains 4 columns.
+        complete (pd.DataFrame): Contains 5 columns.
             The column named after the word argument contains the daily search
             volume already scaled and comparable through time.
             The column f'{word}_unscaled' is the original daily data fetched
@@ -87,6 +90,8 @@ def get_daily_data(word: str,
             so that there are no NaN present.
             The column 'scale' contains the scale used to obtain the scaled
             daily data.
+            The column 'isPartial' is Google's partial-data flag from the
+            monthly request.
     """
 
     # Set up start and stop dates
@@ -111,16 +116,19 @@ def get_daily_data(word: str,
         last_date_of_month = get_last_date_of_month(current.year, current.month)
         timeframe = convert_dates_to_timeframe(current, last_date_of_month)
         if verbose:
-            print(f'{word}:{timeframe}')
+            logger.info('%s:%s', word, timeframe)
         results[current] = _fetch_data(pytrends, build_payload, timeframe)
         current = last_date_of_month + timedelta(days=1)
         sleep(wait_time)  # don't go too fast or Google will send 429s
 
     daily = pd.concat(results.values()).drop(columns=['isPartial'])
-    complete = daily.join(monthly, lsuffix='_unscaled', rsuffix='_monthly')
+    # same as a left join on the index; merge's suffixes work on pandas 2.2 and 3 alike
+    complete = pd.merge(daily, monthly, left_index=True, right_index=True, how='left',
+                        suffixes=('_unscaled', '_monthly'))
 
     # Scale daily data by monthly weights so the data is comparable
-    complete[f'{word}_monthly'].ffill(inplace=True)  # fill NaN values
+    # assign back: an in-place ffill on a column is a no-op under pandas copy-on-write (pandas 3)
+    complete[f'{word}_monthly'] = complete[f'{word}_monthly'].ffill()  # fill NaN values
     complete['scale'] = complete[f'{word}_monthly'] / 100
     complete[word] = complete[f'{word}_unscaled'] * complete.scale
 

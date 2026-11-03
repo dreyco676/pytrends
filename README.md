@@ -22,13 +22,11 @@ Only good until Google changes their backend again :-P. When that happens feel f
 
     * [Interest Over Time](#interest-over-time)
     * [Multirange Interest Over Time](#multirange-interest-over-time)
-    * [Historical Hourly Interest](#historical-hourly-interest)
     * [Interest by Region](#interest-by-region)
     * [Related Topics](#related-topics)
     * [Related Queries](#related-queries)
     * [Trending Searches](#trending-searches)
     * [Realtime Search Trends](#realtime-search-trends)
-    * [Top Charts](#top-charts)
     * [Suggestions](#suggestions)
 
   * [Caveats](#caveats)
@@ -37,12 +35,22 @@ Only good until Google changes their backend again :-P. When that happens feel f
 
 ## Installation
 
-    pip install pytrends
+Once 5.0.0 is released:
+
+```bash
+pip install pytrends
+```
+
+Until then, install from source:
+
+```bash
+pip install git+https://github.com/dreyco676/pytrends.git
+```
 
 ## Requirements
 
-* Written for Python 3.3+
-* Requires Requests, lxml, Pandas
+* Python 3.12 or later (tested on 3.12 to 3.15)
+* Requires requests, pandas and urllib3, which pip installs for you
 
 <sub><sup>[back to top](#pytrends)</sub></sup>
 
@@ -50,16 +58,20 @@ Only good until Google changes their backend again :-P. When that happens feel f
 
 ### Connect to Google
 
-    from pytrends.request import TrendReq
+```python
+from pytrends.request import TrendReq
 
-    pytrends = TrendReq(hl='en-US', tz=360)
+pytrends = TrendReq(hl='en-US', tz=360)
+```
 
 or if you want to use proxies as you are blocked due to Google rate limit:
 
 
-    from pytrends.request import TrendReq
+```python
+from pytrends.request import TrendReq
 
-    pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
+pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
+```
 
 * `timeout(connect, read)`
   - See explantation on this on [requests docs](https://requests.readthedocs.io/en/master/user/advanced/#timeouts)
@@ -87,8 +99,10 @@ Note: the parameter `hl` specifies host language for accessing Google Trends.
 Note: only https proxies will work, and you need to add the port number after the proxy ip address
 
 ### Build Payload
-    kw_list = ["Blockchain"]
-    pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='', gprop='')
+```python
+kw_list = ["Blockchain"]
+pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='', gprop='')
+```
 
 Parameters
 
@@ -108,8 +122,6 @@ The following API methods are available:
 
 * [Multirange Interest Over Time](#multirange_interest_over_time): returns historical, indexed data similar to interest over time, but across multiple time date ranges. 
 
-* [Historical Hourly Interest](#historical-hourly-interest): returns historical, indexed, hourly data for when the keyword was searched most as shown on Google Trends' Interest Over Time section. It sends multiple requests to Google, each retrieving one week of hourly data. It seems like this would be the only way to get historical, hourly data. 
-
 * [Interest by Region](#interest-by-region): returns data for where the keyword is most searched as shown on Google Trends' Interest by Region section.
 
 * [Related Topics](#related-topics): returns data for the related keywords to a provided keyword shown on Google Trends' Related Topics section.
@@ -117,8 +129,6 @@ The following API methods are available:
 * [Related Queries](#related-queries): returns data for the related keywords to a provided keyword shown on Google Trends' Related Queries section.
 
 * [Trending Searches](#trending-searches): returns data for latest trending searches shown on Google Trends' Trending Searches section.
-
-* [Top Charts](#top-charts): returns the data for a given topic shown in Google Trends' Top Charts section.
 
 * [Suggestions](#suggestions): returns a list of additional suggested keywords that can be used to refine a trend search.
 
@@ -203,7 +213,9 @@ Many API methods use the following:
 
 ### Interest Over Time
 
-    pytrends.interest_over_time()
+```python
+pytrends.interest_over_time()
+```
 
 Returns pandas.Dataframe
 
@@ -211,39 +223,20 @@ Returns pandas.Dataframe
 
 ### Multirange Interest Over Time
 
-    pytrends.build_payload(kw_list=['pizza', 'bagel'], timeframe=['2022-09-04 2022-09-10', '2022-09-18 2022-09-24']))
-    pytrends.multirange_interest_over_time()
+```python
+pytrends.build_payload(kw_list=['pizza', 'bagel'], timeframe=['2022-09-04 2022-09-10', '2022-09-18 2022-09-24'])
+pytrends.multirange_interest_over_time()
+```
 
 Returns pandas.Dataframe. It includes the average in the first row.
 
 <sub><sup>[back to top](#multirange_interest_over_time)</sub></sup>
 
-### Historical Hourly Interest
-
-    pytrends.get_historical_interest(kw_list, year_start=2018, month_start=1, day_start=1, hour_start=0, year_end=2018, month_end=2, day_end=1, hour_end=0, cat=0, geo='', gprop='', sleep=0)
-    
-Parameters 
-
-* `kw_list`
-
-  - *Required*
-  - list of keywords that you would like the historical data
-
-* `year_start, month_start, day_start, hour_start, year_end, month_end, day_end, hour_end`
-
-  - the time period for which you would like the historical data
-  
-* `sleep`
-
-  - If you are rate-limited by Google, you should set this parameter to something (i.e. 60) to space off each API call. 
-  
-Returns pandas.Dataframe
-
-<sub><sup>[back to top](#historical-hourly-interest)</sub></sup>
-
 ### Interest by Region
 
-    pytrends.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
+```python
+pytrends.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
+```
 
 Parameters
 
@@ -268,7 +261,9 @@ Returns pandas.DataFrame
 
 ### Related Topics
 
-    pytrends.related_topics()
+```python
+pytrends.related_topics()
+```
 
 Returns dictionary of pandas.DataFrames
 
@@ -276,7 +271,9 @@ Returns dictionary of pandas.DataFrames
 
 ### Related Queries
 
-    pytrends.related_queries()
+```python
+pytrends.related_queries()
+```
 
 Returns dictionary of pandas.DataFrames
 
@@ -284,43 +281,50 @@ Returns dictionary of pandas.DataFrames
 
 ### Trending Searches
 
-	pytrends.trending_searches(pn='united_states') # trending searches in real time for United States
-	pytrends.trending_searches(pn='japan') # Japan
-
-Returns pandas.DataFrame
-
-<sub><sup>[back to top](#trending_searches)</sub></sup>
-
-### Realtime Search Trends
-
-	pytrends.realtime_trending_searches(pn='US') # realtime search trends for United States
-	pytrends.realtime_trending_searches(pn='IN') # India
-
-Returns pandas.DataFrame
-
-<sub><sup>[back to top](#realtime-search-trends)</sub></sup>
-
-### Top Charts
-
-    pytrends.top_charts(date, hl='en-US', tz=300, geo='GLOBAL')
+```python
+pytrends.trending_searches(pn='US') # today's trending searches for the United States
+pytrends.trending_searches(pn='IN') # India
+```
 
 Parameters
 
-* `date`
+* `pn`
 
-  - *Required*
-  - YYYY integer
-  - Example `2019` for the year 2019 Top Chart data
-  - **Note** Google removed support for monthly queries (e.g. YYYY-MM)
-  - **Note** Google does not return data for the current year
+  - Two-letter country code, for example `'US'` or `'IN'`
+  - Defaults to `'US'`
+  - Legacy names such as `'united_states'` raise a `ValueError`
 
-Returns pandas.DataFrame
+Returns pandas.Series of the trending search titles
 
-<sub><sup>[back to top](#top_charts)</sub></sup>
+<sub><sup>[back to top](#trending-searches)</sub></sup>
+
+### Realtime Search Trends
+
+```python
+pytrends.realtime_trending_searches(pn='US') # realtime search trends for United States
+pytrends.realtime_trending_searches(pn='IN') # India
+```
+
+Parameters
+
+* `pn`
+
+  - Two-letter country code, as for Trending Searches
+
+Returns pandas.DataFrame with the columns:
+
+* `title`
+* `approx_traffic`, for example `'500+'`
+* `pub_date`
+* `articles`, a list of dicts with `title`, `url` and `source` for each news story
+
+<sub><sup>[back to top](#realtime-search-trends)</sub></sup>
 
 ### Suggestions
 
-    pytrends.suggestions(keyword)
+```python
+pytrends.suggestions(keyword)
+```
 
 Parameters
 
@@ -335,11 +339,22 @@ Returns dictionary
 
 ### Categories
 
-    pytrends.categories()
+```python
+pytrends.categories()
+```
 
 Returns dictionary
 
 <sub><sup>[back to top](#suggestions)</sub></sup>
+
+# Removed endpoints
+
+Google removed the endpoints behind some methods, and they now return HTTP 404:
+
+* `trending_searches`, `today_searches` and `realtime_trending_searches` now read Google's Trending Now RSS feed. The feed lists only today's trending searches for one country, so the `pn` argument takes two-letter country codes only.
+* `top_charts` was removed because there is no replacement.
+
+<sub><sup>[back to top](#api-methods)</sub></sup>
 
 # Caveats
 
@@ -348,6 +363,7 @@ Returns dictionary
 * Rate Limit is not publicly known, let me know if you have a consistent estimate
   * One user reports that 1,400 sequential requests of a 4 hours timeframe got them to the limit. (Replicated on 2 networks)
   * It has been tested, and 60 seconds of sleep between requests (successful or not) appears to be the correct amount once you reach the limit.
+  * In our own testing, a run of about eight live requests in quick succession was answered with HTTP 429 (`TooManyRequestsError`). Pause between calls, or use `retries`, `backoff_factor` or `proxies`.
 * For certain configurations the dependency lib certifi requires the environment variable REQUESTS_CA_BUNDLE to be explicitly set and exported. This variable must contain the path where the ca-certificates are saved or a SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] error is given at runtime. 
 
 # Contributing
