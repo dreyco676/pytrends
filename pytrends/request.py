@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util.retry import Retry
 from requests import status_codes
 
 from pytrends import exceptions
@@ -47,13 +47,16 @@ class TrendReq(object):
         self.tz = tz
         self.hl = hl
         self.geo = geo
+        # the constructor's geo is the default for build_payload calls that omit geo
+        self.default_geo = geo
         self.kw_list = list()
         self.timeout = timeout
         self.proxies = proxies  # add a proxy option
         self.retries = retries
         self.backoff_factor = backoff_factor
         self.proxy_index = 0
-        self.requests_args = requests_args or {}
+        # copy so that popping 'headers' below doesn't mutate the caller's dict
+        self.requests_args = dict(requests_args or {})
         self.cookies = self.GetGoogleCookie()
         # intialize widget payloads
         self.token_payload = dict()
@@ -65,6 +68,13 @@ class TrendReq(object):
         self.headers = {'accept-language': self.hl}
         self.headers.update(self.requests_args.pop('headers', {}))
 
+    @staticmethod
+    def _nid_cookie(response):
+        """Return the NID cookie from a cookie-URL response, raising on any non-2xx status"""
+        if not 200 <= response.status_code < 300:
+            raise exceptions.ResponseError.from_response(response)
+        return dict(filter(lambda i: i[0] == 'NID', response.cookies.items()))
+
     def GetGoogleCookie(self):
         """
         Gets google cookie (used for each and every proxy; once on init otherwise)
@@ -72,30 +82,30 @@ class TrendReq(object):
         """
         while True:
             if "proxies" in self.requests_args:
-                try:
-                    return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
-                        timeout=self.timeout,
-                        **self.requests_args
-                    ).cookies.items()))
-                except:  # noqa: E722
-                    continue
+                return self._nid_cookie(requests.get(
+                    f'{BASE_TRENDS_URL}/?geo={self.hl[-2:]}',
+                    timeout=self.timeout,
+                    **self.requests_args
+                ))
             else:
                 if len(self.proxies) > 0:
                     proxy = {'https': self.proxies[self.proxy_index]}
                 else:
                     proxy = ''
                 try:
-                    return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/explore/?geo={self.hl[-2:]}',
+                    return self._nid_cookie(requests.get(
+                        f'{BASE_TRENDS_URL}/?geo={self.hl[-2:]}',
                         timeout=self.timeout,
                         proxies=proxy,
                         **self.requests_args
-                    ).cookies.items()))
+                    ))
                 except requests.exceptions.ProxyError:
                     print('Proxy error. Changing IP')
                     if len(self.proxies) > 1:
                         self.proxies.remove(self.proxies[self.proxy_index])
+                        # the removed proxy may have been the last one in the list
+                        if self.proxy_index >= len(self.proxies):
+                            self.proxy_index = 0
                     else:
                         print('No more proxies available. Bye!')
                         raise
@@ -126,7 +136,7 @@ class TrendReq(object):
                           connect=self.retries,
                           backoff_factor=self.backoff_factor,
                           status_forcelist=TrendReq.ERROR_CODES,
-                          method_whitelist=frozenset(['GET', 'POST']))
+                          allowed_methods=frozenset(['GET', 'POST']))
             s.mount('https://', HTTPAdapter(max_retries=retry))
 
         s.headers.update(self.headers)
@@ -144,10 +154,10 @@ class TrendReq(object):
         # Google mostly sends 'application/json' in the Content-Type header,
         # but occasionally it sends 'application/javascript
         # and sometimes even 'text/javascript
-        if response.status_code == 200 and 'application/json' in \
-                response.headers['Content-Type'] or \
-                'application/javascript' in response.headers['Content-Type'] or \
-                'text/javascript' in response.headers['Content-Type']:
+        if response.status_code == 200 and (
+                'application/json' in response.headers['Content-Type'] or
+                'application/javascript' in response.headers['Content-Type'] or
+                'text/javascript' in response.headers['Content-Type']):
             # trim initial characters
             # some responses start with garbage characters, like ")]}',"
             # these have to be cleaned before being passed to the json parser
@@ -160,13 +170,14 @@ class TrendReq(object):
                 raise exceptions.TooManyRequestsError.from_response(response)
             raise exceptions.ResponseError.from_response(response)
 
-    def build_payload(self, kw_list, cat=0, timeframe='today 5-y', geo='',
+    def build_payload(self, kw_list, cat=0, timeframe='today 5-y', geo=None,
                       gprop=''):
         """Create the payload for related queries, interest over time and interest by region"""
         if gprop not in ['', 'images', 'news', 'youtube', 'froogle']:
             raise ValueError('gprop must be empty (to indicate web), images, news, youtube, or froogle')
         self.kw_list = kw_list
-        self.geo = geo or self.geo
+        # geo='' means worldwide; only an omitted geo falls back to the constructor default
+        self.geo = self.default_geo if geo is None else geo
         self.token_payload = {
             'hl': self.hl,
             'tz': self.tz,
@@ -178,6 +189,11 @@ class TrendReq(object):
 
         # Check if timeframe is a list
         if isinstance(timeframe, list):
+            comparisons = len(self.kw_list) * len(self.geo)
+            if len(timeframe) != comparisons:
+                raise ValueError(
+                    f'timeframe list must have one entry per keyword and region: '
+                    f'expected {comparisons}, got {len(timeframe)}')
             for index, (kw, geo) in enumerate(product(self.kw_list, self.geo)):
                 keyword_payload = {'keyword': kw, 'time': timeframe[index], 'geo': geo}
                 self.token_payload['req']['comparisonItem'].append(keyword_payload)
@@ -263,7 +279,8 @@ class TrendReq(object):
         if 'isPartial' in df:
             # make other dataframe from isPartial key data
             # split list columns into seperate ones, remove brackets and split on comma
-            df = df.fillna(False)
+            # a missing isPartial counts as False; mapping avoids fillna's downcasting warning on pandas 2.2
+            df['isPartial'] = df['isPartial'].map(lambda x: pd.notna(x) and bool(x))
             result_df2 = df['isPartial'].apply(lambda x: pd.Series(
                 str(x).replace('[', '').replace(']', '').split(',')))
             result_df2.columns = ['isPartial']
@@ -280,6 +297,9 @@ class TrendReq(object):
                 [c if isinstance(c, tuple) else (c, ) for c in final],
                 names=['keyword', 'region']
             )
+        else:
+            # rebuild the labels the normal way so their dtype matches pandas' own default (str on pandas 3)
+            final.columns = pd.Index(list(final.columns))
         return final
 
     def multirange_interest_over_time(self):
@@ -304,7 +324,8 @@ class TrendReq(object):
         if (df.empty):
             return df
 
-        result_df = pd.json_normalize(df['columnData'])
+        # one column per keyword, each cell holding that keyword's dict (json_normalize rejects a Series of lists on pandas 3)
+        result_df = pd.DataFrame(df['columnData'].tolist())
 
         # Split dictionary columns into seperate ones
         for i, column in enumerate(result_df.columns):
@@ -321,6 +342,8 @@ class TrendReq(object):
         result_df.loc[-1] = avg_row
         result_df.index = result_df.index + 1
         result_df = result_df.sort_index()
+        # rebuild the labels the normal way so their dtype matches pandas' own default (str on pandas 3)
+        result_df.columns = pd.Index(list(result_df.columns))
 
         return result_df
 
@@ -330,10 +353,11 @@ class TrendReq(object):
 
         # make the request
         region_payload = dict()
-        if self.geo == '':
+        # self.geo is always a list after build_payload, e.g. [''] for worldwide
+        if self.geo == ['']:
             self.interest_by_region_widget['request'][
                 'resolution'] = resolution
-        elif self.geo == 'US' and resolution in ['DMA', 'CITY', 'REGION']:
+        elif self.geo == ['US'] and resolution in ['DMA', 'CITY', 'REGION']:
             self.interest_by_region_widget['request'][
                 'resolution'] = resolution
 
@@ -375,6 +399,8 @@ class TrendReq(object):
             result_df[kw] = result_df[idx].astype('int')
             del result_df[idx]
 
+        # rebuild the labels the normal way so their dtype matches pandas' own default (str on pandas 3)
+        result_df.columns = pd.Index(list(result_df.columns))
         return result_df
 
     def related_topics(self):
@@ -389,8 +415,7 @@ class TrendReq(object):
         for request_json in self.related_topics_widget_list:
             # ensure we know which keyword we are looking at rather than relying on order
             try:
-                kw = request_json['request']['restriction'][
-                    'complexKeywordsRestriction']['keyword'][0]['value']
+                kw = request_json['keywordName']
             except KeyError:
                 kw = ''
             # convert to string as requests will mangle
@@ -410,16 +435,16 @@ class TrendReq(object):
             try:
                 top_list = req_json['default']['rankedList'][0]['rankedKeyword']
                 df_top = pd.json_normalize(top_list, sep='_')
-            except KeyError:
-                # in case no top topics are found, the lines above will throw a KeyError
+            except (KeyError, IndexError):
+                # in case no top topics are found, the lines above will throw a KeyError or IndexError
                 df_top = None
 
             # rising topics
             try:
                 rising_list = req_json['default']['rankedList'][1]['rankedKeyword']
                 df_rising = pd.json_normalize(rising_list, sep='_')
-            except KeyError:
-                # in case no rising topics are found, the lines above will throw a KeyError
+            except (KeyError, IndexError):
+                # in case no rising topics are found, the lines above will throw a KeyError or IndexError
                 df_rising = None
 
             result_dict[kw] = {'rising': df_rising, 'top': df_top}
@@ -437,8 +462,7 @@ class TrendReq(object):
         for request_json in self.related_queries_widget_list:
             # ensure we know which keyword we are looking at rather than relying on order
             try:
-                kw = request_json['request']['restriction'][
-                    'complexKeywordsRestriction']['keyword'][0]['value']
+                kw = request_json['keywordName']
             except KeyError:
                 kw = ''
             # convert to string as requests will mangle
@@ -459,8 +483,8 @@ class TrendReq(object):
                 top_df = pd.DataFrame(
                     req_json['default']['rankedList'][0]['rankedKeyword'])
                 top_df = top_df[['query', 'value']]
-            except KeyError:
-                # in case no top queries are found, the lines above will throw a KeyError
+            except (KeyError, IndexError):
+                # in case no top queries are found, the lines above will throw a KeyError or IndexError
                 top_df = None
 
             # rising queries
@@ -468,8 +492,8 @@ class TrendReq(object):
                 rising_df = pd.DataFrame(
                     req_json['default']['rankedList'][1]['rankedKeyword'])
                 rising_df = rising_df[['query', 'value']]
-            except KeyError:
-                # in case no rising queries are found, the lines above will throw a KeyError
+            except (KeyError, IndexError):
+                # in case no rising queries are found, the lines above will throw a KeyError or IndexError
                 rising_df = None
 
             result_dict[kw] = {'top': top_df, 'rising': rising_df}

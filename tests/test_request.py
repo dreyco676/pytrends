@@ -1,17 +1,18 @@
 from dataclasses import dataclass
-from unittest.mock import ANY
+from unittest.mock import ANY, MagicMock, patch
+import json
 import re
+import warnings
 
 import pandas as pd
 import numpy as np
 import pytest
+import requests
 import responses
 from pandas.testing import assert_frame_equal
 
+from pytrends.exceptions import ResponseError, TooManyRequestsError
 from pytrends.request import TrendReq, BASE_TRENDS_URL
-
-# Quarantined pandas-3 failures only apply when pandas 3 is installed.
-PANDAS_3 = int(pd.__version__.split(".")[0]) >= 3
 
 
 @dataclass
@@ -63,10 +64,14 @@ def build_interest_over_time_df(records, dates):
     )
 
 
-@pytest.mark.vcr
-@pytest.mark.xfail(strict=True, reason="plan 2.8: NID cookie in cassette expired")
-def test_initial_data():
+def test_initial_data(mocked_responses):
     """Should use same values as in the documentation."""
+    # NID cookie without an expiry, so the test doesn't depend on the clock.
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
     pytrend = TrendReq()
     result = {
         "hl": pytrend.hl,
@@ -172,7 +177,6 @@ def test_tokens():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-01-05')
@@ -185,7 +189,6 @@ def test_interest_over_time_ok():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_images():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -202,7 +205,6 @@ def test_interest_over_time_images():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_news():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -219,7 +221,6 @@ def test_interest_over_time_news():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_youtube():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -236,7 +237,6 @@ def test_interest_over_time_youtube():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.1: column label dtype under pandas 3")
 def test_interest_over_time_froogle():
     pytrend = TrendReq()
     pytrend.build_payload(
@@ -261,7 +261,6 @@ def test_interest_over_time_bad_gprop():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.3: json_normalize TypeError under pandas 3")
 def test_multirange_interest_over_time_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
@@ -286,7 +285,6 @@ def test_multirange_interest_over_time_ok():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.3: json_normalize TypeError under pandas 3")
 def test_multirange_interest_over_time_same_keyword_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'pizza'], timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'])
@@ -311,7 +309,6 @@ def test_multirange_interest_over_time_same_keyword_ok():
 
 
 @pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 3.2: column label dtype under pandas 3")
 def test_interest_by_region_ok():
     pytrend = TrendReq()
     pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
@@ -324,28 +321,6 @@ def test_interest_by_region_ok():
             'pizza': [92, 94, 96],
             'bagel': [8, 6, 4],
         }, index=pd.Index(['Singapore', 'Hong Kong', 'Taiwan'], name='geoName')),
-        df_tail=pd.DataFrame({
-            'pizza': [0, 0, 0],
-            'bagel': [0, 0, 0],
-        }, index=pd.Index(['Algeria', 'Albania', 'Afghanistan'], name='geoName'))
-    )
-    expected_result.assert_equals(df_result)
-
-
-@pytest.mark.vcr
-@pytest.mark.xfail(strict=True, condition=PANDAS_3, reason="plan 2.13: test pins COUNTRY output; fails on pandas 3 dtype")
-def test_interest_by_region_city_resolution():
-    pytrend = TrendReq()
-    pytrend.build_payload(kw_list=['pizza', 'bagel'], timeframe='2021-01-01 2021-12-31')
-    df_result = pytrend.interest_by_region(resolution='CITY')
-    # Both head and tail have all 0's in both values, sort the result to test more meaningful values
-    df_result = df_result.sort_values(by=['bagel', 'pizza', 'geoName'], ascending=False)
-    expected_result = ExpectedResult(
-        length=250,
-        df_head=pd.DataFrame({
-            'pizza': [93, 94, 95],
-            'bagel': [7, 6, 5],
-        }, index=pd.Index(['Singapore', 'Hong Kong', 'Japan'], name='geoName')),
         df_tail=pd.DataFrame({
             'pizza': [0, 0, 0],
             'bagel': [0, 0, 0],
@@ -623,7 +598,7 @@ def test_interest_over_time_partial():
 
 def test_request_args_passing(mocked_responses):
     mocked_responses.add(
-        url=f'{BASE_TRENDS_URL}/explore/?geo=US',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
         method='GET',
         match=[responses.matchers.header_matcher({'User-Agent': 'pytrends'})]
     )
@@ -640,6 +615,266 @@ def test_request_args_passing(mocked_responses):
     }}
     pytrend = TrendReq(requests_args=requests_args)
     pytrend.trending_searches()
+
+
+def test_non_200_javascript_response_raises_response_error(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='POST',
+        url=TrendReq.GENERAL_URL,
+        status=500,
+        body='<html>server error</html>',
+        content_type='text/javascript',
+    )
+    pytrend = TrendReq()
+    with pytest.raises(ResponseError):
+        pytrend.build_payload(kw_list=['pizza'])
+
+
+def test_response_without_content_type_raises_too_many_requests(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='POST',
+        url=TrendReq.GENERAL_URL,
+        status=429,
+        body='',
+        content_type=None,
+    )
+    pytrend = TrendReq()
+    with pytest.raises(TooManyRequestsError):
+        pytrend.build_payload(kw_list=['pizza'])
+
+
+def test_retries_use_allowed_methods(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='POST',
+        url=TrendReq.GENERAL_URL,
+        body=')]}\'\n{"widgets": []}',
+        content_type='application/json',
+    )
+    created_sessions = []
+    real_session = requests.session
+
+    def capturing_session():
+        session = real_session()
+        created_sessions.append(session)
+        return session
+
+    pytrend = TrendReq(retries=2, backoff_factor=0.1)
+    with patch('pytrends.request.requests.session', side_effect=capturing_session):
+        pytrend.build_payload(kw_list=['pizza'])
+
+    retry = created_sessions[-1].get_adapter('https://').max_retries
+    assert retry.allowed_methods == frozenset({'GET', 'POST'})
+
+
+def test_init_does_not_mutate_requests_args():
+    requests_args = {'headers': {'User-Agent': 'pytrends'}, 'verify': True}
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        TrendReq(requests_args=requests_args)
+    assert requests_args == {'headers': {'User-Agent': 'pytrends'}, 'verify': True}
+
+
+def test_cookie_error_with_requests_args_proxy_propagates():
+    # The second response is ready so that a retry loop would succeed instead of hanging.
+    ok_response = MagicMock(status_code=200)
+    ok_response.cookies.items.return_value = [('NID', 'cookie-value')]
+    dead_proxy = requests.exceptions.ConnectionError('dead proxy')
+    with patch('pytrends.request.requests.get', side_effect=[dead_proxy, ok_response]) as get:
+        with pytest.raises(requests.exceptions.ConnectionError):
+            TrendReq(requests_args={'proxies': {'https': 'https://127.0.0.1:9'}})
+    assert get.call_count == 1
+
+
+def test_failing_last_proxy_is_skipped_without_index_error():
+    ok_response = MagicMock(status_code=200)
+    ok_response.cookies.items.return_value = [('NID', 'cookie-value')]
+    proxy_error = requests.exceptions.ProxyError('dead proxy')
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq(proxies=['https://10.0.0.1:8080', 'https://10.0.0.2:8080'])
+    pytrend.proxy_index = 1  # the failing proxy is the last one in the list
+    with patch('pytrends.request.requests.get', side_effect=[proxy_error, ok_response]) as get:
+        cookies = pytrend.GetGoogleCookie()
+    assert cookies == {'NID': 'cookie-value'}
+    assert get.call_count == 2
+
+
+def test_empty_geo_after_country_queries_worldwide():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo='US')
+        pytrend.build_payload(['pizza'], geo='')
+    items = json.loads(pytrend.token_payload['req'])['comparisonItem']
+    assert [item['geo'] for item in items] == ['']
+
+
+@pytest.mark.parametrize('geo, resolution, expected', [
+    ('', 'CITY', 'CITY'),
+    ('US', 'DMA', 'DMA'),
+])
+def test_interest_by_region_sends_requested_resolution(geo, resolution, expected):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'], geo=geo)
+    # Google's widget defaults to COUNTRY; the resolution argument should override it.
+    pytrend.interest_by_region_widget = {'request': {'resolution': 'COUNTRY'}, 'token': 'token'}
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'geoMapData': []}}) as get_data:
+        pytrend.interest_by_region(resolution=resolution)
+    sent = json.loads(get_data.call_args.kwargs['params']['req'])
+    assert sent['resolution'] == expected
+
+
+def test_related_queries_empty_ranked_list_returns_none():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    pytrend.related_queries_widget_list = [{
+        'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
+        'keywordName': 'pizza',
+        'token': 'token',
+    }]
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'rankedList': []}}):
+        result = pytrend.related_queries()
+    assert result == {'pizza': {'top': None, 'rising': None}}
+
+
+def test_related_topics_empty_ranked_list_returns_none():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    pytrend.related_topics_widget_list = [{
+        'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
+        'keywordName': 'pizza',
+        'token': 'token',
+    }]
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'rankedList': []}}):
+        result = pytrend.related_topics()
+    assert result == {'pizza': {'top': None, 'rising': None}}
+
+
+@pytest.mark.parametrize('method_name, widget_list_name', [
+    ('related_queries', 'related_queries_widget_list'),
+    ('related_topics', 'related_topics_widget_list'),
+])
+def test_related_results_keyed_by_full_keyword_name(method_name, widget_list_name):
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}):
+        pytrend = TrendReq()
+    setattr(pytrend, widget_list_name, [{
+        'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [
+            {'type': 'BROAD', 'value': 'blockchain'},
+            {'type': 'BROAD', 'value': 'bitcoin'},
+        ]}}},
+        'keywordName': 'blockchain + bitcoin',
+        'token': 'token',
+    }])
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'rankedList': []}}):
+        result = getattr(pytrend, method_name)()
+    assert list(result) == ['blockchain + bitcoin']
+
+
+def test_categories_returns_parsed_tree(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='GET',
+        url=TrendReq.CATEGORIES_URL,
+        body=')]}\',\n{"children": [{"name": "Arts", "id": 3}]}',
+        content_type='application/json',
+    )
+    pytrend = TrendReq()
+    assert pytrend.categories() == {'children': [{'name': 'Arts', 'id': 3}]}
+
+
+def test_interest_by_region_includes_geo_code_when_requested():
+    geo_map = {'default': {'geoMapData': [{'geoName': 'Japan', 'geoCode': 'JP', 'value': [50]}]}}
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'])
+    pytrend.interest_by_region_widget = {'request': {'resolution': 'COUNTRY'}, 'token': 'token'}
+    with patch.object(TrendReq, '_get_data', return_value=geo_map):
+        with_code = pytrend.interest_by_region(inc_geo_code=True)
+        without_code = pytrend.interest_by_region(inc_geo_code=False)
+    assert with_code.loc['Japan', 'geoCode'] == 'JP'
+    assert with_code.loc['Japan', 'pizza'] == 50
+    assert 'geoCode' not in without_code.columns
+
+
+def test_interest_over_time_emits_no_warnings():
+    timeline = {'default': {'timelineData': [
+        {'time': '1609459200', 'value': [10], 'isPartial': False},
+        {'time': '1609545600', 'value': [20], 'isPartial': True},
+        # Some rows (e.g. the newest week) come back without isPartial, which becomes NaN.
+        {'time': '1609632000', 'value': [30]},
+    ]}}
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(['pizza'])
+    pytrend.interest_over_time_widget = {'request': {}, 'token': 'token'}
+    with patch.object(TrendReq, '_get_data', return_value=timeline), \
+            warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter('always')
+        pytrend.interest_over_time()
+    future_warnings = [str(w.message) for w in caught if issubclass(w.category, FutureWarning)]
+    assert future_warnings == []
+
+
+def test_timeframe_list_length_mismatch_raises_value_error():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        # two keywords x two regions need four timeframes, but only two are given
+        with pytest.raises(ValueError, match='timeframe'):
+            pytrend.build_payload(
+                ['pizza', 'bagel'],
+                timeframe=['2021-01-01 2021-01-05', '2021-01-06 2021-01-10'],
+                geo=['US-NY', 'US-IL'],
+            )
+
+
+def test_non_2xx_cookie_response_raises(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        status=404,
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    with pytest.raises(ResponseError):
+        TrendReq()
+
+
+def test_429_json_response_raises_too_many_requests(mocked_responses):
+    mocked_responses.add(
+        method='GET',
+        url=f'{BASE_TRENDS_URL}/?geo=US',
+        headers={'Set-Cookie': 'NID=511=test; path=/'},
+    )
+    mocked_responses.add(
+        method='POST',
+        url=TrendReq.GENERAL_URL,
+        status=429,
+        json={'error': 'quota exceeded'},
+    )
+    pytrend = TrendReq()
+    with pytest.raises(TooManyRequestsError):
+        pytrend.build_payload(kw_list=['pizza'])
 
 
 @pytest.mark.vcr
