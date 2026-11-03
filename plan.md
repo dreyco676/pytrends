@@ -114,10 +114,14 @@ All were reproduced on 2026-11-03, with the network mocked, unless they are note
   - On pandas 3, 57 of 59 rows get a `NaN` scale, because a chained `ffill(inplace=True)` is a no-op under copy-on-write. The output is silently wrong.
   - Found by reading: after exhausting its retries, `_fetch_data` still calls `interest_over_time()` on a stale payload.
   - Found by reading: it returns 5 columns while the docstring promises 4.
-- **D14** `related_topics` with 2 keywords returned `{}` live (see the FIXME in `tests/test_request.py`); cause unknown.
+- **D14** `related_topics` with 2 keywords returned `{}` live (see the FIXME in `tests/test_request.py`); cause not yet confirmed. Upstream #536 reports that for multi-keyword payloads the explore response contains no RELATED_TOPICS widgets, so `related_topics_widget_list` stays empty. 1.9 checks this live.
 - **D15** Proxy failover (found by reading; not reproduced). When the failing proxy is the last list entry, it is removed and `proxy_index` points past the end, raising `IndexError`. It also mutates the caller's list.
 - **D16** The `lxml` dependency is unused.
 - **D17** The `trending_searches`, `today_searches`, `realtime_trending_searches` and `top_charts` endpoints return 404.
+- **D18** `interest_by_region` sends `resolution` only for worldwide and for exactly `'US'` (found by reading; upstream #342, #417, #497, #571, #605). Any other single geo, such as `'GB'`, `'FR'` or `'US-CA'`, silently gets Google's default level.
+- **D19** `build_payload` doesn't enforce Google's five-keyword limit, so a sixth keyword gets HTTP 400 from Google instead of a clear error (upstream #394, #456; not reproduced).
+- **D20** Data methods called before `build_payload` fail unclearly: `interest_over_time`, `multirange_interest_over_time` and `interest_by_region` raise `KeyError: 'request'`, and `related_queries` and `related_topics` return `{}` (upstream #459).
+- **D21** With proxies set, `_get_data` fetches the cookie again before every request: 4 cookie requests for 4 data requests, plus 1 at init (upstream #515).
 
 ### Open PRs and branches
 
@@ -140,6 +144,30 @@ Upstream is archived, so "adopt" means re-implementing the change here through t
 | #430 | `get_monthly_interest` | Backlog (written against 2020 code; uses the removed `DataFrame.append`) |
 | #414 | Keyword-less explore | Backlog (changes the return shape) |
 | fork branch `origin/poetry` | `[tool.poetry]` + `poetry.lock` alongside the setuptools metadata, at v4.8.0 | Superseded by 0.6; delete in 6.4 |
+
+### Upstream open issues
+
+Reviewed 2026-11-03: all 136 open issues in `GeneralMills/pytrends`. Closed issues were not reviewed. Upstream is archived, so none can be answered or closed there.
+
+| Upstream issues | Outcome |
+|---|---|
+| #342, #417, #497, #571, #605 | D18 → 7.1, 7.2 |
+| #394, #456 | D19 → 7.3 |
+| #459 | D20 → 7.4 |
+| #515 | D21 → 7.5 |
+| #569 | 7.6, then 7.7 re-records the hand-edited cassettes |
+| #536 | Likely cause of D14; checked live in 1.9 |
+| #588, #596, #601, #602, #609, #614, #618, #622, #625, #631 | Rate limits → 1.13 |
+| #524, #534, #549, #551, #559, #576, #577, #587, #592, #607 | Data fidelity → 1.14 |
+| #373, #377, #490, #543 | `tz` and timeframe docs → 6.1 |
+| #390, #482, #514, #521 | `formattedValue`, `link` and "<1" → backlog |
+| #562 | Type hints → backlog (its logging half was done in 5.4) |
+| #471 | Explore link for a payload → backlog |
+| #429, #457; #358, #451 | Monthly interest and keyword-less explore → existing backlog items (PR #430, #414) |
+| #316 | Missing geo columns: fixed on branch `interest-by-region-geo-fallback` (`4c35a53`), not merged yet |
+| #439, #600; #583, #591; #606; #608; #616; #628; #635; #487 | Already fixed: D6, D4, D7, Phase 0, D5, D10, Phase 4, D13 |
+| #638 | February 2025 404s. The fix linked there targets Google's daily-trends endpoint, which Phase 4 replaced with the RSS feed |
+| The rest | Not added: support questions; `get_historical_interest` reports (the method raises `NotImplementedError`); Selenium, headless-browser and reverse-engineering requests; JSON output (#398); jsonpath (#472); a time window for trending searches (#630; the feed has none); maintainer threads (#598, #615, #636) |
 
 ## Plan
 
@@ -206,7 +234,9 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
 - [x] **1.11 LIVE** (done 2026-11-03; live run passes, not rate-limited, 3 of 3) `test_live_trending_rss_methods`, parametrized over `trending_searches`, `today_searches` and `realtime_trending_searches` with `pn='US'`. Each one returns at least one row from the live feed, with no 404. Replaces the removed-endpoint check (`top_charts` was removed in 4.7). Passed on the first run; it is a contract check, not a Red step.
 - [ ] **1.12 LIVE** (slow) `test_live_daily_data_two_months`: `get_daily_data('pizza', 2024, 1, 2024, 2, wait_time=2)` has no NaN in the scaled column. Also record what granularity Google returns for the "monthly" request over a short range; weekly or daily data would undermine the scaling method.
 - [ ] **1.13 EVAL** (optional) Rate limits: run sequential `build_payload` + `interest_over_time` calls at 0 s, 5 s and 30 s spacing. Stop at the first 429 or after 50 requests, and record the counts here. This informs the retry defaults and the README guidance.
+  - From the upstream triage: also time `related_queries`, which users report hitting 429 sooner than `interest_over_time` (#588, #625). Upstream 429 reports: #588, #596, #601, #602, #609, #614, #618, #622, #625, #631.
 - [ ] **1.14 EVAL** Data fidelity. The departing maintainer claims in upstream #636 that bot traffic gets altered data. For 3 fixed queries, compare `interest_over_time()` with the CSV exported from trends.google.com in a logged-out browser. Record the correlation and the maximum difference.
+  - From the upstream triage: also record the `userConfig.userType` in the widget requests. Upstream #534 and #551 report `USER_TYPE_SCRAPER` for pytrends and `USER_TYPE_LEGIT_USER` for the browser, and link the scraper tag to zeroed "holes" in the data. The string `USER_TYPE_SCRAPER` appears 124 times in the 2023 cassettes, and `USER_TYPE_LEGIT_USER` never does. Related upstream reports: #524, #549, #559, #576, #577, #587, #592, #607.
 - [ ] **1.15 TIDY** Update the Baseline table above with the Phase 1 results, including the date and network type. This completes the inventory of what works and what doesn't.
 
 ### Phase 2: Core request path (offline TDD with `responses`)
@@ -283,11 +313,12 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
 
 ### Phase 6: Docs, canary, release
 
-- [ ] **6.1 TIDY** Update the README (partly done 2026-11-03: the items below except the caveats are finished; the caveats wait for 1.13 and 1.14, so the item stays open):
+- [ ] **6.1 TIDY** Update the README (partly done 2026-11-03: the items marked done below are finished; the caveats wait for 1.13 and 1.14, and the `tz` and timeframe notes came from the upstream triage, so the item stays open):
   - [x] Python 3.12 (the 0.1 decision; the original text said ≥3.11, which contradicted it), and the dependency list with lxml removed;
   - [x] the removed endpoints and their replacements, in a new "Removed endpoints" section; trending and realtime documented for the RSS feed, with the new return shapes;
   - [x] `get_historical_interest` section deleted, with its table-of-contents and method-list entries;
   - [ ] caveats on rate limits and data fidelity from 1.13 and 1.14. A rate-limit note from our own runs is in place; the fidelity caveat is not written yet;
+  - [ ] document that the `interest_over_time` index is UTC, built from Google's epoch timestamps, and check live whether `tz` shifts the day boundaries (upstream #377, #490); state that the only year-based timeframes are `'today 5-y'` and `'all'` (#373, #543);
   - [x] fenced code blocks (PR #604) for every indented example; the multirange example's extra parenthesis is fixed.
   - Install instructions now show `pip install git+https://github.com/dreyco676/pytrends.git` until 5.0.0 is released.
 - [x] **6.2 TIDY** (done 2026-11-03; docs only, suite unchanged at 55 passed, `ruff check` clean) Make `examples/example.py` use only working methods. Update CONTRIBUTING to cover uv, offline vs live tests and decoded cassettes, and fix the `pip -r install` typo.
@@ -299,6 +330,20 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
   - Prepared 2026-11-03, not published: `pyproject.toml` and `uv.lock` set to 5.0.0; `CHANGELOG.md` written (breaking changes, fixes, known limits). Suite 55 passed, lint clean.
   - Open, needs the maintainer's go-ahead: publishing to PyPI (trusted publishing is not set up here), and deleting `origin/poetry` (a remote branch, so it cannot be undone from here).
 
+### Phase 7: Upstream issue triage
+
+Added 2026-11-03 from the review of upstream's open issues (see "Upstream open issues" above). 7.1 and 7.3 to 7.6 run offline. 7.2 and 7.7 need the explore API, which answered 429 on 2026-11-03.
+
+- [ ] **7.1 TEST** `test_interest_by_region_sends_resolution_for_any_single_geo`, parametrized over `geo='GB'` with `CITY`, `geo='FR'` with `DMA` and `geo='US-CA'` with `CITY`: the GEO_MAP widget request carries the requested resolution (D18). Red today: only worldwide and exactly `'US'` send it, so these silently return the default level.
+  - Proposed: send the requested resolution for any single geo, and let Google's answer for an unsupported combination surface as usual. Alternative: keep the current rule and log a warning when the resolution is ignored. Confirm the choice when starting the item.
+- [ ] **7.2 LIVE** `test_live_interest_by_region_resolution_outside_us`: `geo='GB'` with `CITY` and `geo='US-CA'` with `CITY` return finer areas than the default level. Expected: unknown; upstream #497 says the site lists about 200 UK cities. Record which combinations Google rejects, and document them in the README.
+- [ ] **7.3 TEST** `test_build_payload_rejects_more_than_five_keywords`: six keywords raise `ValueError` naming the five-keyword limit, before any request (D19). Red today: the request goes out and Google answers HTTP 400.
+  - Unverified: whether Google's cap also counts keyword-and-region pairs. Check with one live request when the rate limit allows, and extend the validation if it does.
+- [ ] **7.4 TEST** `test_data_methods_before_build_payload_raise_clear_error`, parametrized over `interest_over_time`, `multirange_interest_over_time`, `interest_by_region`, `related_queries` and `related_topics`: each raises an error that says to call `build_payload()` first, without sending a request (D20). Red today: the first three raise `KeyError: 'request'`, and the related methods return `{}`.
+- [ ] **7.5 TEST** `test_proxied_requests_fetch_one_cookie_per_proxy`: with two proxies, the init plus four data requests fetch the cookie at most once per proxy (D21). Red today: one cookie request per data request. This overlaps the backlog item "one `requests.Session` per `TrendReq`"; do them together if that item is scheduled.
+- [ ] **7.6 TIDY** Make the cassette tests assert structure instead of hard-coded values (upstream #569): columns, index type and range, dtypes, and values within 0–100. Derive any exact values from the cassette's own response body. Re-recording a cassette then no longer rewrites expected data. Suite results must be identical before and after.
+- [ ] **7.7 LIVE** Re-record the 24 cassettes whose cookie status was hand-edited in 2.10, once the explore API stops answering 429. Expected: the whole offline suite still passes, which 7.6 makes possible without editing expected values.
+
 ## Backlog (unscheduled)
 
 - Configurable base URL / country domains, and SOCKS proxies via a `requests[socks]` extra (PR #624).
@@ -306,3 +351,6 @@ Each LIVE test calls the public API, asserts the documented shape, and records t
 - `interest_by_region` responses that have neither `geoCode` nor `coordinates` (PR #386).
 - One `requests.Session` per `TrendReq` instead of one per call.
 - Google announced an official Google Trends API (alpha, limited access) in July 2025. If you can get access, evaluate it as a sturdier backend than scraping.
+- `related_queries` keeps only `query` and `value`. It drops Google's `formattedValue` (such as "Breakout" or "+250%") and `link`, which `related_topics` already keeps (upstream #390, #482, #521). Similarly, `interest_over_time` reports the site's "<1" as 0 (#514). Adding columns changes the return shape, so it needs a decision.
+- Type hints and a `py.typed` marker (upstream #562).
+- A method that returns the trends.google.com explore link for the current payload (upstream #471).
