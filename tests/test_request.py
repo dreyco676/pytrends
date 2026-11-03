@@ -802,6 +802,44 @@ def test_proxied_requests_fetch_one_cookie_per_proxy(mocked_responses):
     assert get_cookie.call_count <= len(proxies)
 
 
+def test_related_queries_keep_formatted_value_and_link():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(kw_list=['pizza'])
+    pytrend.related_queries_widget_list = [{
+        'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
+        'keywordName': 'pizza',
+        'token': 'token',
+    }]
+    ranked = [
+        {'query': 'pizza hut', 'value': 100, 'formattedValue': '100', 'hasData': True,
+         'link': '/trends/explore?q=pizza+hut'},
+        {'query': 'pizza near me', 'value': 68, 'formattedValue': '68', 'hasData': True,
+         'link': '/trends/explore?q=pizza+near+me'},
+    ]
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'rankedList': [{'rankedKeyword': ranked}]}}):
+        top = pytrend.related_queries()['pizza']['top']
+    assert list(top.columns) == ['query', 'value', 'formattedValue', 'link']
+    assert list(top['formattedValue']) == ['100', '68']
+    assert list(top['link']) == ['/trends/explore?q=pizza+hut', '/trends/explore?q=pizza+near+me']
+
+
+def test_related_queries_empty_keyword_list_returns_none():
+    with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
+            patch.object(TrendReq, '_tokens'):
+        pytrend = TrendReq()
+        pytrend.build_payload(kw_list=['pizza'])
+    pytrend.related_queries_widget_list = [{
+        'request': {'restriction': {'complexKeywordsRestriction': {'keyword': [{'value': 'pizza'}]}}},
+        'keywordName': 'pizza',
+        'token': 'token',
+    }]
+    with patch.object(TrendReq, '_get_data', return_value={'default': {'rankedList': [{'rankedKeyword': []}]}}):
+        result = pytrend.related_queries()
+    assert result == {'pizza': {'top': None, 'rising': None}}
+
+
 def test_get_explore_url_describes_the_current_payload():
     with patch.object(TrendReq, 'GetGoogleCookie', return_value={}), \
             patch.object(TrendReq, '_tokens'):

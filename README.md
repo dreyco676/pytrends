@@ -277,6 +277,8 @@ pytrends.related_queries()
 
 Returns dictionary of pandas.DataFrames
 
+Each DataFrame has the columns `query`, `value`, `formattedValue` (Google's label, such as `'Breakout'` or `'+250%'`) and `link`. `formattedValue` and `link` are empty when Google doesn't send them.
+
 <sub><sup>[back to top](#related_queries)</sub></sup>
 
 ### Trending Searches

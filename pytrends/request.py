@@ -61,7 +61,10 @@ def _topic_frame(ranked_keywords):
 
 
 def _query_frame(ranked_keywords):
-    return pd.DataFrame(ranked_keywords)[['query', 'value']]
+    # query and value are required, so an empty list still fails here and gives None.
+    # formattedValue and link are kept when Google sends them.
+    frame = pd.DataFrame(ranked_keywords)
+    return frame[['query', 'value']].join(frame.reindex(columns=['formattedValue', 'link']))
 
 
 class TrendReq(object):
