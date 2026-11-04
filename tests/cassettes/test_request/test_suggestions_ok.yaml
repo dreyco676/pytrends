@@ -9,57 +9,60 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.1
+      - python-requests/2.34.2
     method: GET
     uri: https://trends.google.com/trends/?geo=US
   response:
     body:
-      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
-        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
-        nonce=\"Wo4dWod7TIo7H69PKLbPQA\">*{margin:0;padding:0}html,code{font:15px/22px
-        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
-        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
-        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
-        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
-        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
-        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
-        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
-        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
+      string: ''
     headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Security-Policy:
-      - 'script-src ''nonce--ikn4nlA2wLxXb930hFLdA'' ''unsafe-inline'' ''strict-dynamic''
-        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
-        /cspreport'
+      - script-src 'nonce--D9QQkaW8F6akdmbGQ8_Bg' 'unsafe-inline';object-src 'none';base-uri 'self';report-uri /_/TrendsUi/cspreport;worker-src 'self'
+      - require-trusted-types-for 'script';report-uri /_/TrendsUi/cspreport
       Content-Type:
       - text/html; charset=utf-8
       Cross-Origin-Opener-Policy:
-      - same-origin-allow-popups
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-site
       Date:
-      - Sun, 26 Mar 2023 08:09:33 GMT
+      - Wed, 04 Nov 2026 15:01:27 GMT
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       P3P:
       - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Permissions-Policy:
+      - ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
       Pragma:
       - no-cache
       Server:
-      - GSE
+      - ESF
       Set-Cookie:
-      - NID=511=s3_C9Xk3f71ZbnQalGDySeRDSh1DruCd_joNOWcpnJufjrUbpyPLDOzdy9wxYuNbMsr_06X6OPTzch1uo4yqWIMKpd2WugsEathYqNzB1VLtWc2zsIHG7TauUUvxIDqIkGnvN_XXdoSxcIWwCXl-BDVc-B3qlPOLn0naExeo2m0;
-        expires=Mon, 25-Sep-2023 08:09:33 GMT; path=/; domain=.google.com; HttpOnly
+      - NID=CuUBCAESlwEBM9Aglyw7jBcdcdNsNxLYeKzKs8yW3FrGQZS90ncdhXt_IFWooxBF3N6vbR1Mf-9_53KdTb0sbQmOFNS7jzQOcRNUgnzu3m4DQk31Csufq7NRGCI5lpOMpXOyoIB_1lX4BUL71e3ue0b1hMfAhcvmaEgpymmKQq8z2L2cm-G93iR8_G_ixSLjJK0c1BpI05XJtzvLNZoZKAEyRQFwSkLP_kGxID1vqk9Ciz0M72OqJNmiLDxvs2JKKQFDqDna6aub_t193zANylh4bvCA3ks8jpKofKGiwXo9yiEGl_hlDA; expires=Thu, 06-May-2027 15:01:27 GMT; path=/; domain=.google.com; HttpOnly
       Transfer-Encoding:
       - chunked
+      Vary:
+      - Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
       X-XSS-Protection:
-      - 1; mode=block
+      - '0'
+      content-length:
+      - '985909'
+      document-policy:
+      - include-js-call-stacks-in-crash-reports
+      reporting-endpoints:
+      - default="/_/TrendsUi/web-reports?context=eJzj8tDikmJw0JBiaL15jnUqEJcsOs_aAsRdQDwLiA0VLrE6AnGRxBXWJiD-VHWDVaj6Buu3Yl82thJfNpa3_mx_u2PZhHg4jk9ce51NYMa2YwcYlfSS8gvjS4pS81KKdYFM3eLUorLUomLdtKL8vBKgaLyRgZGZoaGBsZ6BaXyBAQDKdDJN"
+      x-ua-compatible:
+      - IE=edge
     status:
       code: 200
       message: OK
@@ -72,10 +75,8 @@ interactions:
       - gzip, deflate
       Connection:
       - keep-alive
-      Cookie:
-      - NID=511=s3_C9Xk3f71ZbnQalGDySeRDSh1DruCd_joNOWcpnJufjrUbpyPLDOzdy9wxYuNbMsr_06X6OPTzch1uo4yqWIMKpd2WugsEathYqNzB1VLtWc2zsIHG7TauUUvxIDqIkGnvN_XXdoSxcIWwCXl-BDVc-B3qlPOLn0naExeo2m0
       User-Agent:
-      - python-requests/2.28.1
+      - python-requests/2.34.2
       accept-language:
       - en-US
     method: GET
@@ -84,9 +85,7 @@ interactions:
     body:
       string: ')]}'',
 
-        {"default":{"topics":[{"mid":"/m/0663v","title":"Pizza","type":"Dish"},{"mid":"/g/11k19hmrkk","title":"Licorice
-        Pizza","type":"2021 film"},{"mid":"/m/0rg8s1t","title":"Dominos Pizza","type":"Topic"},{"mid":"/m/0dfxdnc","title":"Pizza
-        dough","type":"Food"},{"mid":"/g/11hdxfw7c0","title":"history of pizza","type":"Food"}]}}'
+        {"default":{"topics":[{"mid":"/m/0663v","title":"Pizza","type":"Dish"},{"mid":"/m/0dfxdnc","title":"Pizza dough","type":"Food"},{"mid":"/g/11fl7dydwb","title":"Pizza Oven","type":"Topic"},{"mid":"/g/11k19hmrkk","title":"Licorice Pizza","type":"2021 film"},{"mid":"/m/036bfw","title":"Peel","type":"Tool"}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -95,19 +94,21 @@ interactions:
       Content-Disposition:
       - attachment; filename="json.txt"
       Content-Security-Policy:
-      - 'script-src ''nonce-V0MoaUKFMg_svsxFB1V4Xw'' ''unsafe-inline'' ''strict-dynamic''
-        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
-        /trends/cspreport'
+      - 'script-src ''nonce-Ny7otbGnbWIFfArFsVtlcA'' ''unsafe-inline'' ''strict-dynamic'' https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri /trends/cspreport'
       Content-Type:
       - application/json; charset=UTF-8
       Cross-Origin-Opener-Policy:
       - same-origin-allow-popups
       Date:
-      - Sun, 26 Mar 2023 08:09:33 GMT
+      - Wed, 04 Nov 2026 15:01:27 GMT
       Expires:
-      - Sun, 26 Mar 2023 08:09:33 GMT
+      - Wed, 04 Nov 2026 15:01:27 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
       Server:
       - GSE
+      Set-Cookie:
+      - NID=CuUBCAESlwEBM9AglxNc6nWQ798m2aEZX52P-riDoKBANZYNT_QHXxHOlgj0Ah04uJy5I_9jvbnpPZImEnvaBqsDUqtWl3blxAE95j15df1aBV4MXFUz2mnzAh0p7IzSAK_lMmVjWl8R1A_50nX2YGi98OR506F64s7hnjlhO8qSZ7AsFlWW0J_kUUwYwKszcZRScVm8nfYj-257mDhsKAEyRQFwSkLPe5tw2-GO1jAqGgP98GW3VMNHXYthV9zMirSilcWleXkI-k3YyxWgYss8QxbaBWspobdpHYkKWhv9J1RXI00ODw; expires=Thu, 06-May-2027 15:01:27 GMT; path=/; domain=.google.com; HttpOnly
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -116,6 +117,8 @@ interactions:
       - SAMEORIGIN
       X-XSS-Protection:
       - 1; mode=block
+      content-length:
+      - '313'
     status:
       code: 200
       message: OK
