@@ -14,6 +14,8 @@ import pandas as pd
 import pytest
 import requests
 
+from pytrends.dailydata import get_daily_data
+from pytrends.exceptions import ResponseError
 from pytrends.request import BASE_TRENDS_URL, TrendReq
 
 pytestmark = pytest.mark.live
@@ -201,3 +203,37 @@ def test_live_suggestions_and_categories():
     categories = pytrend.categories()
     assert isinstance(categories, dict)
     assert 'children' in categories
+
+
+def test_live_daily_data_two_months():
+    df = get_daily_data('pizza', 2024, 1, 2024, 2, verbose=False, wait_time=2)
+
+    # 2024 is a leap year: January (31 days) plus February (29 days).
+    assert len(df) == 60
+    assert df['pizza'].notna().all()
+
+
+def test_live_interest_by_region_resolution_outside_us():
+    # GB REGION returned 4 rows (England, Northern Ireland, Scotland, Wales) on 2026-11-03,
+    # so CITY must return more than that. Google caps the city list at 200 rows.
+    pytrend = TrendReq(hl='en-US', tz=360)
+    pytrend.build_payload(['pizza'], geo='GB', timeframe='2024-01-01 2024-12-31')
+    gb_cities = pytrend.interest_by_region(resolution='CITY')
+    assert len(gb_cities) > 4
+
+    pytrend.build_payload(['pizza'], geo='US-CA', timeframe='2024-01-01 2024-12-31')
+    ca_cities = pytrend.interest_by_region(resolution='CITY')
+    assert len(ca_cities) > 0
+
+
+def test_live_interest_by_region_rejects_country_level_for_subregions():
+    # Google answers 400 when the resolution is the geo's own level:
+    # COUNTRY for GB, and REGION for US-CA.
+    pytrend = TrendReq(hl='en-US', tz=360)
+    pytrend.build_payload(['pizza'], geo='GB', timeframe='2024-01-01 2024-12-31')
+    with pytest.raises(ResponseError):
+        pytrend.interest_by_region(resolution='COUNTRY')
+
+    pytrend.build_payload(['pizza'], geo='US-CA', timeframe='2024-01-01 2024-12-31')
+    with pytest.raises(ResponseError):
+        pytrend.interest_by_region(resolution='REGION')
