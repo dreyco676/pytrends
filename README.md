@@ -258,6 +258,12 @@ Parameters
   
   - True/False (includes ISO codes of countries along with the names in the data)
 
+A resolution must be finer than the geo you ask for. Checked live on 2026-11-03:
+
+* `geo='GB'` with `resolution='COUNTRY'` (the default) fails with HTTP 400. Use `'REGION'` for England, Scotland, Wales and Northern Ireland, or `'CITY'`.
+* `geo='US-CA'` with `resolution='REGION'` fails with HTTP 400. Use `'CITY'`.
+* `'CITY'` results are capped at 200 rows.
+
 Returns pandas.DataFrame
 
 <sub><sup>[back to top](#interest_by_region)</sub></sup>
