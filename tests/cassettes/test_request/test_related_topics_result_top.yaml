@@ -9,57 +9,60 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.1
+      - python-requests/2.34.2
     method: GET
     uri: https://trends.google.com/trends/?geo=US
   response:
     body:
-      string: "<html lang=en><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
-        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
-        nonce=\"AIz3s8D-I15O1SMkmxtfLQ\">*{margin:0;padding:0}html,code{font:15px/22px
-        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
-        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
-        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
-        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
-        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
-        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
-        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
-        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
-        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
+      string: ''
     headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Security-Policy:
-      - 'script-src ''nonce-O4MuvXnJxoqaN1Azq-877Q'' ''unsafe-inline'' ''strict-dynamic''
-        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
-        /cspreport'
+      - require-trusted-types-for 'script';report-uri /_/TrendsUi/cspreport
+      - script-src 'nonce-_kJdf1C4_ZLiV-nA7sDWUQ' 'unsafe-inline';object-src 'none';base-uri 'self';report-uri /_/TrendsUi/cspreport;worker-src 'self'
       Content-Type:
       - text/html; charset=utf-8
       Cross-Origin-Opener-Policy:
-      - same-origin-allow-popups
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-site
       Date:
-      - Sun, 26 Mar 2023 08:09:24 GMT
+      - Wed, 04 Nov 2026 15:01:16 GMT
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       P3P:
       - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Permissions-Policy:
+      - ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
       Pragma:
       - no-cache
       Server:
-      - GSE
+      - ESF
       Set-Cookie:
-      - NID=511=VIumpYmInsW7T7L4R8Dnw1bTcQ8UqAAKn002w_B-5y2s4fPPXQiaBjiSEm2cviVDQA_k5Jpdzqi5IxCZJ8uo2zs3SCuoHiLVVUpU0TlDgfI8LNJIBR1bkDGcCZkmKDZzDOAfEPI-xKn4g_5aaIOCE-LNeLXSNKyvjFWhlG6w37M;
-        expires=Mon, 25-Sep-2023 08:09:24 GMT; path=/; domain=.google.com; HttpOnly
+      - NID=CuUBCAESlwEBM9Agl1_ZOU00UHLj737sXcfV_2_ZJ0Pxfu66esVi9CkQdaTJZG4tL_5hpJtfrP47g4Fl5jMSmmFSmELp0_1HaXfCrx_4v77cz-fsQAqTxk2T9yI1oYe2H5KJNBELQ8jq5ixfQTKO_JEl6PRM2pr8ISHC1p_sF1BK-5BSKD0m56vFlVZfES-SzVsUKBV3GufI7EwGp1VpKAEyRQFwSkLPnoHrt4dGCoOZ6ehA1QKHMXX4K5Mmt3-Bb_kszxopOx18xYk3v5pmYH7a73JJEnlBa1JoIFoWYeDChkpHeQ5ECw; expires=Thu, 06-May-2027 15:01:16 GMT; path=/; domain=.google.com; HttpOnly
       Transfer-Encoding:
       - chunked
+      Vary:
+      - Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
       X-XSS-Protection:
-      - 1; mode=block
+      - '0'
+      content-length:
+      - '985909'
+      document-policy:
+      - include-js-call-stacks-in-crash-reports
+      reporting-endpoints:
+      - default="/_/TrendsUi/web-reports?context=eJzj8tDikmLw1JBiaL15jnUqEJcsOs_aAsRdQDwLiA0VLrE6AnGRxBXWJiD-VHWDVaj6Buu3Yl82thJfNpa3_mz_umPZhHg49kxce51N4MP3rX8YlfSS8gvjS4pS81KKdYFM3eLUorLUomLdtKL8vBKgaLyRgZGZoaGBsZ6BaXyBAQD0gDMQ"
+      x-ua-compatible:
+      - IE=edge
     status:
       code: 200
       message: OK
@@ -86,49 +89,7 @@ interactions:
     body:
       string: ')]}''
 
-        {"widgets":[{"request":{"time":"2021-01-01 2021-12-31","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
-        interest","bullets":[{"text":"pizza"}],"showLegend":false,"showAverages":false,"helpDialog":{"title":"Interest
-        over time","content":"Numbers represent search interest relative to the highest
-        point on the chart for the given region and time. A value of 100 is the peak
-        popularity for the term. A value of 50 means that the term is half as popular.
-        A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPNDKcKOqxiuarrDzJx21_cDWtRu8z","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
-        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01
-        2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search
-        interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See
-        in which location your term was most popular during the specified time frame.
-        Values are calculated on a scale from 0 to 100, where 100 is the location
-        with the most popularity as a fraction of total searches in that location,
-        a value of 50 indicates a location which is half as popular. A value of 0
-        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
-        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
-        of all queries, not a higher absolute query count. So a tiny country where
-        80% of the queries are for \"bananas\" will get twice the score of a giant
-        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPNO2-3FPcBzFK66pKnl1Hq4KHX5n5","id":"GEO_MAP","type":"fe_geo_chart_explore","title":"Interest
-        by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
-        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"ENTITY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
-        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
-        topics","content":"Users searching for your term also searched for these topics.
-        You can view by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
-        - The most popular topics. Scoring is on a relative scale where a value of
-        100 is the most commonly searched topic and a value of 50 is a topic searched
-        half as often as the most popular term, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
-        - Related topics with the biggest increase in search frequency since the last
-        time period. Results marked \"Breakout\" had a tremendous increase, probably
-        because these topics are new and had few (if any) prior searches."},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNFx0BkHtODUch_4at3hRe43ENeo3","id":"RELATED_TOPICS","type":"fe_related_searches","title":"Related
-        topics","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01
-        2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02
-        2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
-        queries","content":"Users searching for your term also searched for these
-        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
-        - The most popular search queries. Scoring is on a relative scale where a
-        value of 100 is the most commonly searched query, 50 is a query searched half
-        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
-        - Queries with the biggest increase in search frequency since the last time
-        period. Results marked \"Breakout\" had a tremendous increase, probably because
-        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNAbwipjoBGmf7phtQ9eNTWrN_JbR","id":"RELATED_QUERIES","type":"fe_related_searches","title":"Related
-        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search
-        term"}],"timeRanges":["2021"],"examples":[],"shareText":"Explore search interest
-        for pizza by time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
+        {"widgets":[{"request":{"time":"2021-01-01 2021-12-31","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search interest","bullets":[{"text":"pizza"}],"showLegend":false,"showAverages":false,"helpDialog":{"title":"Interest over time","content":"Numbers represent search interest relative to the highest point on the chart for the given region and time. A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means there was not enough data for this term."},"token":"APP6_UEAAAAAZCFPNDKcKOqxiuarrDzJx21_cDWtRu8z","id":"TIMESERIES","type":"fe_line_chart","title":"Interest over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{},"comparisonItem":[{"time":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}}],"resolution":"COUNTRY","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"world","resolution":"countries","searchInterestLabel":"Search interest","displayMode":"regions","helpDialog":{"title":"Interest by region","content":"See in which location your term was most popular during the specified time frame. Values are calculated on a scale from 0 to 100, where 100 is the location with the most popularity as a fraction of total searches in that location, a value of 50 indicates a location which is half as popular. A value of 0 indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion of all queries, not a higher absolute query count. So a tiny country where 80% of the queries are for \"bananas\" will get twice the score of a giant country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"pizza","token":"APP6_UEAAAAAZCFPNO2-3FPcBzFK66pKnl1Hq4KHX5n5","id":"GEO_MAP","type":"fe_geo_chart_explore","title":"Interest by region","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01 2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"ENTITY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02 2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related topics","content":"Users searching for your term also searched for these topics. You can view by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e - The most popular topics. Scoring is on a relative scale where a value of 100 is the most commonly searched topic and a value of 50 is a topic searched half as often as the most popular term, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e - Related topics with the biggest increase in search frequency since the last time period. Results marked \"Breakout\" had a tremendous increase, probably because these topics are new and had few (if any) prior searches."},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNFx0BkHtODUch_4at3hRe43ENeo3","id":"RELATED_TOPICS","type":"fe_related_searches","title":"Related topics","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{},"time":"2021-01-01 2021-12-31","originalTimeRangeForExploreUrl":"2021-01-01 2021-12-31","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"pizza"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2020-01-02 2020-12-31"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"ES","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related queries","content":"Users searching for your term also searched for these queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e - The most popular search queries. Scoring is on a relative scale where a value of 100 is the most commonly searched query, 50 is a query searched half as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e - Queries with the biggest increase in search frequency since the last time period. Results marked \"Breakout\" had a tremendous increase, probably because these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"pizza","token":"APP6_UEAAAAAZCFPNAbwipjoBGmf7phtQ9eNTWrN_JbR","id":"RELATED_QUERIES","type":"fe_related_searches","title":"Related queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"pizza","name":"pizza","type":"Search term"}],"timeRanges":["2021"],"examples":[],"shareText":"Explore search interest for pizza by time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -137,9 +98,7 @@ interactions:
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
       Content-Security-Policy:
-      - 'script-src ''nonce-qn0SzBWiCv1IrEiUz65yZQ'' ''unsafe-inline'' ''strict-dynamic''
-        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
-        /trends/cspreport'
+      - 'script-src ''nonce-qn0SzBWiCv1IrEiUz65yZQ'' ''unsafe-inline'' ''strict-dynamic'' https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri /trends/cspreport'
       Content-Type:
       - application/json; charset=utf-8
       Cross-Origin-Opener-Policy:
@@ -184,26 +143,7 @@ interactions:
     body:
       string: ')]}'',
 
-        {"default":{"rankedList":[{"rankedKeyword":[{"topic":{"mid":"/m/0663v","title":"Pizza","type":"Dish"},"value":100,"formattedValue":"100","hasData":true,"link":"/trends/explore?q\u003d/m/0663v\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09cfq","title":"Pizza
-        Hut","type":"Restaurant chain"},"value":23,"formattedValue":"23","hasData":true,"link":"/trends/explore?q\u003d/m/09cfq\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03clwm","title":"Domino''s","type":"Restaurant
-        chain"},"value":12,"formattedValue":"12","hasData":true,"link":"/trends/explore?q\u003d/m/03clwm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/024gjb","title":"Menu","type":"Topic"},"value":8,"formattedValue":"8","hasData":true,"link":"/trends/explore?q\u003d/m/024gjb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0dfxdnc","title":"Pizza
-        dough","type":"Food"},"value":4,"formattedValue":"4","hasData":true,"link":"/trends/explore?q\u003d/m/0dfxdnc\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/035bpb","title":"Delivery","type":"Commerce"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/m/035bpb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/121gvdg7","title":"Oven","type":"Cooking
-        appliance"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/g/121gvdg7\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05m1lt","title":"Pizza
-        delivery","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/05m1lt\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/020tvm","title":"Papa
-        Johns","type":"Restaurant chain"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/020tvm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11fl7dydwb","title":"Pizza
-        Oven","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/g/11fl7dydwb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05x6fj","title":"Little
-        Caesars","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/05x6fj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/04cxwvn","title":"Marco''s
-        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/04cxwvn\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/1yg58g4jj","title":"Dough","type":"Foodstuff"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/g/1yg58g4jj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/086qkl","title":"Boston
-        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/086qkl\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03c6sm","title":"PizzaExpress","type":"Restaurant
-        chain"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/03c6sm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0tkg16x","title":"Jet''s
-        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/0tkg16x\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/021sqj","title":"Pizza
-        Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/021sqj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11b7c9w1y6","title":"Roman''s
-        Pizza","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11b7c9w1y6\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09nghg","title":"Sam
-        Goody","type":"Retail company"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style
-        pizza","type":"Food"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"}]},{"rankedKeyword":[{"topic":{"mid":"/m/09nghg","title":"Sam
-        Goody","type":"Retail company"},"value":12600,"formattedValue":"Breakout","link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style
-        pizza","type":"Food"},"value":160,"formattedValue":"+160%","link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":80,"formattedValue":"+80%","link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/02hvyj","title":"Mystic
-        Pizza","type":"1988 film"},"value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003d/m/02hvyj\u0026date\u003d2021-01-01+2021-12-31"}]}]}}'
+        {"default":{"rankedList":[{"rankedKeyword":[{"topic":{"mid":"/m/0663v","title":"Pizza","type":"Dish"},"value":100,"formattedValue":"100","hasData":true,"link":"/trends/explore?q\u003d/m/0663v\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09cfq","title":"Pizza Hut","type":"Restaurant chain"},"value":23,"formattedValue":"23","hasData":true,"link":"/trends/explore?q\u003d/m/09cfq\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03clwm","title":"Domino''s","type":"Restaurant chain"},"value":12,"formattedValue":"12","hasData":true,"link":"/trends/explore?q\u003d/m/03clwm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/024gjb","title":"Menu","type":"Topic"},"value":8,"formattedValue":"8","hasData":true,"link":"/trends/explore?q\u003d/m/024gjb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0dfxdnc","title":"Pizza dough","type":"Food"},"value":4,"formattedValue":"4","hasData":true,"link":"/trends/explore?q\u003d/m/0dfxdnc\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/035bpb","title":"Delivery","type":"Commerce"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/m/035bpb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/121gvdg7","title":"Oven","type":"Cooking appliance"},"value":3,"formattedValue":"3","hasData":true,"link":"/trends/explore?q\u003d/g/121gvdg7\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05m1lt","title":"Pizza delivery","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/05m1lt\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/020tvm","title":"Papa Johns","type":"Restaurant chain"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/m/020tvm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11fl7dydwb","title":"Pizza Oven","type":"Topic"},"value":2,"formattedValue":"2","hasData":true,"link":"/trends/explore?q\u003d/g/11fl7dydwb\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/05x6fj","title":"Little Caesars","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/05x6fj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/04cxwvn","title":"Marco''s Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/04cxwvn\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/1yg58g4jj","title":"Dough","type":"Foodstuff"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/g/1yg58g4jj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/086qkl","title":"Boston Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/086qkl\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/03c6sm","title":"PizzaExpress","type":"Restaurant chain"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/03c6sm\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0tkg16x","title":"Jet''s Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/0tkg16x\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/021sqj","title":"Pizza Pizza","type":"Restaurant company"},"value":1,"formattedValue":"1","hasData":true,"link":"/trends/explore?q\u003d/m/021sqj\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11b7c9w1y6","title":"Roman''s Pizza","type":"Topic"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/g/11b7c9w1y6\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/09nghg","title":"Sam Goody","type":"Retail company"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style pizza","type":"Food"},"value":0,"formattedValue":"\u003c1","hasData":true,"link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"}]},{"rankedKeyword":[{"topic":{"mid":"/m/09nghg","title":"Sam Goody","type":"Retail company"},"value":12600,"formattedValue":"Breakout","link":"/trends/explore?q\u003d/m/09nghg\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/0gwh_4","title":"Detroit-style pizza","type":"Food"},"value":160,"formattedValue":"+160%","link":"/trends/explore?q\u003d/m/0gwh_4\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/g/11g6qhxwmd","title":"Ooni","type":"Topic"},"value":80,"formattedValue":"+80%","link":"/trends/explore?q\u003d/g/11g6qhxwmd\u0026date\u003d2021-01-01+2021-12-31"},{"topic":{"mid":"/m/02hvyj","title":"Mystic Pizza","type":"1988 film"},"value":70,"formattedValue":"+70%","link":"/trends/explore?q\u003d/m/02hvyj\u0026date\u003d2021-01-01+2021-12-31"}]}]}}'
     headers:
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
@@ -212,9 +152,7 @@ interactions:
       Content-Disposition:
       - attachment; filename="json.txt"
       Content-Security-Policy:
-      - 'script-src ''nonce-syTKN18jFIIjNSTXc99uPQ'' ''unsafe-inline'' ''strict-dynamic''
-        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
-        /trends/cspreport'
+      - 'script-src ''nonce-syTKN18jFIIjNSTXc99uPQ'' ''unsafe-inline'' ''strict-dynamic'' https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri /trends/cspreport'
       Content-Type:
       - application/json; charset=UTF-8
       Cross-Origin-Opener-Policy:
